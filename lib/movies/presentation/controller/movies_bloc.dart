@@ -1,5 +1,5 @@
 import 'package:movies_app/core/use_case/base_use_case.dart';
-import 'package:movies_app/core/utls/enums/request_state.dart';
+import 'package:movies_app/core/utils/enums/request_state.dart';
 import 'package:movies_app/movies/domain/usecases/get_now_playing_movies_usecases.dart';
 import 'package:movies_app/movies/domain/usecases/get_popular_movies_usecases.dart';
 import 'package:movies_app/movies/domain/usecases/get_top_rated_movies_usecases.dart';
