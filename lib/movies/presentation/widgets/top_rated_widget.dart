@@ -1,12 +1,11 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:movies_app/core/network/api_constance.dart';
-import 'package:movies_app/core/utils/app_string.dart';
+import 'package:movies_app/core/utils/enums/request_state.dart';
 import 'package:movies_app/movies/presentation/controller/movies_bloc.dart';
 import 'package:movies_app/movies/presentation/controller/movies_states.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:shimmer/shimmer.dart';
 
 class TopRatedWidget extends StatelessWidget {
@@ -15,51 +14,15 @@ class TopRatedWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<MoviesBloc, MoviesStates>(
+      buildWhen: (previous, current) =>
+          previous.topRatedStates != current.topRatedStates,
       builder: (context, state) {
-        return Column(
-          children: [
-            Container(
-              margin: const EdgeInsets.fromLTRB(
-                16.0,
-                24.0,
-                16.0,
-                8.0,
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    AppString.topRated,
-                    style: GoogleFonts.poppins(
-                      fontSize: 19,
-                      color: Colors.white,
-                      fontWeight: FontWeight.w500,
-                      letterSpacing: 0.15,
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () {},
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Row(
-                        children: const [
-                          Text(
-                            AppString.seeMore,
-                            style: TextStyle(color: Colors.white),
-                          ),
-                          Icon(
-                            color: Colors.white,
-                            Icons.arrow_forward_ios,
-                            size: 16.0,
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            FadeIn(
+        switch (state.topRatedStates) {
+          case RequestState.loading:
+            return const SizedBox(
+                height: 170, child: Center(child: CircularProgressIndicator()));
+          case RequestState.loaded:
+            return FadeIn(
               duration: const Duration(milliseconds: 500),
               child: SizedBox(
                 height: 170.0,
@@ -103,9 +66,12 @@ class TopRatedWidget extends StatelessWidget {
                   },
                 ),
               ),
-            ),
-          ],
-        );
+            );
+          case RequestState.error:
+            return SizedBox(
+                height: 400,
+                child: Center(child: Text(state.nowPlayingMessage)));
+        }
       },
     );
   }
