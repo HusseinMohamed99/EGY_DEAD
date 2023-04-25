@@ -40,25 +40,50 @@ class TopRatedWidget extends StatelessWidget {
                         child: ClipRRect(
                           borderRadius:
                               const BorderRadius.all(Radius.circular(8.0)),
-                          child: CachedNetworkImage(
-                            width: 120.0,
-                            fit: BoxFit.cover,
-                            imageUrl:
-                                ApiConstance.imageURL(movie.backdropPath ?? ""),
-                            placeholder: (context, url) => Shimmer.fromColors(
-                              baseColor: Colors.grey[850]!,
-                              highlightColor: Colors.grey[800]!,
-                              child: Container(
-                                height: 170.0,
+                          child: Stack(
+                            children: [
+                              CachedNetworkImage(
+                                height: double.infinity,
                                 width: 120.0,
-                                decoration: BoxDecoration(
-                                  color: Colors.black,
-                                  borderRadius: BorderRadius.circular(8.0),
+                                fit: BoxFit.cover,
+                                imageUrl:
+                                    ApiConstance.imageURL(movie.backdropPath),
+                                placeholder: (context, url) =>
+                                    Shimmer.fromColors(
+                                  baseColor: Colors.grey[850]!,
+                                  highlightColor: Colors.grey[800]!,
+                                  child: Container(
+                                    height: 170.0,
+                                    width: 120.0,
+                                    decoration: BoxDecoration(
+                                      color: Colors.black,
+                                      borderRadius: BorderRadius.circular(8.0),
+                                    ),
+                                  ),
                                 ),
+                                errorWidget: (context, url, error) =>
+                                    const Icon(Icons.error),
                               ),
-                            ),
-                            errorWidget: (context, url, error) =>
-                                const Icon(Icons.error),
+                              if (movie.adult != false)
+                                Positioned.fill(
+                                  left: -8,
+                                  child: ClipRect(
+                                    child: Banner(
+                                      message: '+18',
+                                      textStyle: const TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 12,
+                                        letterSpacing: 0.5,
+                                      ),
+                                      location: BannerLocation.topStart,
+                                      color: Colors.red,
+                                      child: Container(
+                                        height: double.infinity,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                            ],
                           ),
                         ),
                       ),

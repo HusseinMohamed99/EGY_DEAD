@@ -2,16 +2,13 @@ import 'package:movies_app/core/error/failure.dart';
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 
-abstract  class BaseUseCase <T,parameters>{
-  // T استقبل التايب ايا كان عشان مسنفعش احدد انها ليست من الافلام
- Future<Either<Failure , T>> call(parameters parameter);
-
+abstract class BaseUseCase<T, Parameters> {
+  Future<Either<Failure, T>> call(Parameters parameters);
 }
 
-class NoParameter extends Equatable  {
- const NoParameter();
-  @override
-  // TODO: implement props
-  List<Object?> get props => throw UnimplementedError();
+class NoParameters extends Equatable {
+  const NoParameters();
 
+  @override
+  List<Object> get props => [];
 }

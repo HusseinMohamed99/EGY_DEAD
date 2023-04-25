@@ -1,9 +1,9 @@
 import 'package:movies_app/movies/domain/entities/movie.dart';
 
-List<Movies> moviesList =const  [
+List<Movies> moviesList = const [
   Movies(
     backdropPath: "/nmGWzTLMXy9x7mKd8NKPLmHtWGa.jpg",
-    genreIds:  [
+    genreIds: [
       14,
       28,
       12,
@@ -14,6 +14,8 @@ List<Movies> moviesList =const  [
     releaseDate: "2022-05-04",
     title: "Movie Title",
     voteAverage: 5.0,
+    posterPath: '/3bhkrj58Vtu7enYsRolD1fZdja1.jpg',
+    adult: false,
   ),
   Movies(
     backdropPath: "/nmGWzTLMXy9x7mKd8NKPLmHtWGa.jpg",
@@ -28,6 +30,8 @@ List<Movies> moviesList =const  [
     releaseDate: "2022-05-04",
     title: "Movie Title",
     voteAverage: 5.0,
+    posterPath: '/3bhkrj58Vtu7enYsRolD1fZdja1.jpg',
+    adult: false,
   ),
   Movies(
     backdropPath: "/nmGWzTLMXy9x7mKd8NKPLmHtWGa.jpg",
@@ -42,6 +46,8 @@ List<Movies> moviesList =const  [
     releaseDate: "2022-05-04",
     title: "Movie Title",
     voteAverage: 5.0,
+    posterPath: '/3bhkrj58Vtu7enYsRolD1fZdja1.jpg',
+    adult: false,
   ),
   Movies(
     backdropPath: "/nmGWzTLMXy9x7mKd8NKPLmHtWGa.jpg",
@@ -56,6 +62,8 @@ List<Movies> moviesList =const  [
     releaseDate: "2022-05-04",
     title: "Movie Title",
     voteAverage: 5.0,
+    posterPath: '/3bhkrj58Vtu7enYsRolD1fZdja1.jpg',
+    adult: false,
   ),
   Movies(
     backdropPath: "/nmGWzTLMXy9x7mKd8NKPLmHtWGa.jpg",
@@ -70,6 +78,8 @@ List<Movies> moviesList =const  [
     releaseDate: "2022-05-04",
     title: "Movie Title",
     voteAverage: 5.0,
+    posterPath: '/3bhkrj58Vtu7enYsRolD1fZdja1.jpg',
+    adult: false,
   ),
   Movies(
     backdropPath: "/nmGWzTLMXy9x7mKd8NKPLmHtWGa.jpg",
@@ -84,5 +94,7 @@ List<Movies> moviesList =const  [
     releaseDate: "2022-05-04",
     title: "Movie Title",
     voteAverage: 5.0,
+    posterPath: '/3bhkrj58Vtu7enYsRolD1fZdja1.jpg',
+    adult: false,
   ),
 ];
