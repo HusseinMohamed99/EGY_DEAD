@@ -1,16 +1,20 @@
 import 'dart:async';
 import 'package:movies_app/core/utils/enums/request_state.dart';
 import 'package:movies_app/movies/domain/usecases/get_movie_details_usecases.dart';
+import 'package:movies_app/movies/domain/usecases/get_movies_recommendation_usecases.dart';
 import 'package:movies_app/movies/presentation/controller/movies_details_events.dart';
 import 'package:movies_app/movies/presentation/controller/movies_details_states.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class MoviesDetailsBloc extends Bloc<MoviesDetailsEvent, MoviesDetailsStates> {
   final GetMovieDetailsUseCase getMovieDetailsUseCase;
+  final GetMovieRecommendationUseCase getMovieRecommendationsUseCase;
 
-  MoviesDetailsBloc(this.getMovieDetailsUseCase)
+  MoviesDetailsBloc(
+      this.getMovieDetailsUseCase, this.getMovieRecommendationsUseCase)
       : super(const MoviesDetailsStates()) {
     on<GetMoviesDetailsEvent>(_getMovieDetails);
+    on<GetMoviesRecommendationEvent>(_getMovieRecommendations);
   }
 
   FutureOr<void> _getMovieDetails(
@@ -23,5 +27,20 @@ class MoviesDetailsBloc extends Bloc<MoviesDetailsEvent, MoviesDetailsStates> {
             moviesDetailsMessage: l.message)),
         (r) => emit(state.copyWith(
             moviesDetailsStates: RequestState.loaded, moviesDetails: r)));
+  }
+
+  FutureOr<void> _getMovieRecommendations(GetMoviesRecommendationEvent event,
+      Emitter<MoviesDetailsStates> emit) async {
+    final result = await getMovieRecommendationsUseCase(
+        MovieRecommendationParameters(movieID: event.id));
+    result.fold(
+        (l) => emit(state.copyWith(
+              moviesRecommendationStates: RequestState.error,
+              moviesRecommendationMessage: l.message,
+            )),
+        (r) => emit(state.copyWith(
+              moviesRecommendationStates: RequestState.loaded,
+              moviesRecommendation: r,
+            )));
   }
 }
