@@ -3,7 +3,9 @@ import 'package:movies_app/movies/domain/entities/movie.dart';
 import 'package:dartz/dartz.dart';
 import 'package:movies_app/movies/domain/entities/movie_details.dart';
 import 'package:movies_app/movies/domain/entities/movie_recommendation.dart';
+import 'package:movies_app/movies/domain/entities/movie_similar.dart';
 import 'package:movies_app/movies/domain/usecases/get_movie_details_usecases.dart';
+import 'package:movies_app/movies/domain/usecases/get_movies_similar_usecases.dart';
 import 'package:movies_app/movies/domain/usecases/get_movies_recommendation_usecases.dart';
 
 abstract class BaseMovieRepository {
@@ -18,4 +20,7 @@ abstract class BaseMovieRepository {
 
   Future<Either<Failure, List<MoviesRecommendation>>> getMovieRecommendation(
       MovieRecommendationParameters parameters);
+
+  Future<Either<Failure, List<MoviesSimilar>>> getMovieSimilar(
+      MovieSimilarParameters parameters);
 }

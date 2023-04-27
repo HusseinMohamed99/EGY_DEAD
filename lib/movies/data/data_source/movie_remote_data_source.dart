@@ -3,10 +3,12 @@ import 'package:movies_app/core/network/api_constance.dart';
 import 'package:movies_app/core/network/error_message_model.dart';
 import 'package:movies_app/movies/data/models/movie_details_model.dart';
 import 'package:movies_app/movies/data/models/movie_recommendation.dart';
+import 'package:movies_app/movies/data/models/movie_similar.dart';
 import 'package:movies_app/movies/data/models/movies_model.dart';
 import 'package:dio/dio.dart';
 import 'package:movies_app/movies/domain/usecases/get_movie_details_usecases.dart';
 import 'package:movies_app/movies/domain/usecases/get_movies_recommendation_usecases.dart';
+import 'package:movies_app/movies/domain/usecases/get_movies_similar_usecases.dart';
 
 abstract class BaseMovieRemoteDataSource {
   Future<List<MovieModel>> getNowPlayingMovies();
@@ -19,6 +21,9 @@ abstract class BaseMovieRemoteDataSource {
 
   Future<List<MoviesRecommendationModel>> getMovieRecommendation(
       MovieRecommendationParameters parameters);
+
+  Future<List<MoviesSimilarModel>> getMovieSimilar(
+      MovieSimilarParameters parameters);
 }
 
 class MovieRemoteDataSource extends BaseMovieRemoteDataSource {
@@ -87,6 +92,24 @@ class MovieRemoteDataSource extends BaseMovieRemoteDataSource {
       return List<MoviesRecommendationModel>.from(
           (response.data["results"] as List).map(
         (e) => MoviesRecommendationModel.fromJson(e),
+      ));
+    } else {
+      throw ServerException(
+        errorMessageModel: ErrorMessageModel.fromJson(response.data),
+      );
+    }
+  }
+
+  @override
+  Future<List<MoviesSimilarModel>> getMovieSimilar(
+      MovieSimilarParameters parameters) async {
+    final response =
+        await Dio().get(ApiConstance.movieSimilarPath(parameters.movieID));
+    print(response);
+    if (response.statusCode == 200) {
+      return List<MoviesSimilarModel>.from(
+          (response.data["results"] as List).map(
+        (e) => MoviesSimilarModel.fromJson(e),
       ));
     } else {
       throw ServerException(

@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:movies_app/core/global/app_string/app_string.dart';
 import 'package:movies_app/core/services/services_locator.dart';
 import 'package:movies_app/movies/presentation/screens/movies_screen.dart';
 
-void main() async{
+void main() async {
   ServiceLocator().init();
-  runApp( const MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Movies App',
+      title: AppString.appTitle,
       theme: ThemeData.dark()
           .copyWith(scaffoldBackgroundColor: Colors.grey.shade900),
       home: const MoviesScreen(),

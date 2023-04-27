@@ -4,10 +4,12 @@ import 'package:movies_app/movies/data/data_source/movie_remote_data_source.dart
 import 'package:movies_app/movies/domain/entities/movie.dart';
 import 'package:movies_app/movies/domain/entities/movie_details.dart';
 import 'package:movies_app/movies/domain/entities/movie_recommendation.dart';
+import 'package:movies_app/movies/domain/entities/movie_similar.dart';
 import 'package:movies_app/movies/domain/repository/base_movies_repository.dart';
 import 'package:dartz/dartz.dart';
 import 'package:movies_app/movies/domain/usecases/get_movie_details_usecases.dart';
 import 'package:movies_app/movies/domain/usecases/get_movies_recommendation_usecases.dart';
+import 'package:movies_app/movies/domain/usecases/get_movies_similar_usecases.dart';
 
 class MoviesRepository extends BaseMovieRepository {
   final BaseMovieRemoteDataSource baseMovieRemoteDataSource;
@@ -64,6 +66,18 @@ class MoviesRepository extends BaseMovieRepository {
       MovieRecommendationParameters parameters) async {
     final result =
         await baseMovieRemoteDataSource.getMovieRecommendation(parameters);
+    try {
+      return Right(result);
+    } on ServerException catch (failure) {
+      return Left(
+          ServerFailure(message: failure.errorMessageModel.statusMessage));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<MoviesSimilar>>> getMovieSimilar(
+      MovieSimilarParameters parameters) async {
+    final result = await baseMovieRemoteDataSource.getMovieSimilar(parameters);
     try {
       return Right(result);
     } on ServerException catch (failure) {

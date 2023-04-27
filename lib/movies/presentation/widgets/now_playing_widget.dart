@@ -4,9 +4,10 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:movies_app/core/network/api_constance.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movies_app/core/utils/enums/request_state.dart';
+import 'package:movies_app/core/utils/enum.dart';
 import 'package:movies_app/movies/presentation/controller/movies_bloc.dart';
 import 'package:movies_app/movies/presentation/controller/movies_states.dart';
+import 'package:movies_app/movies/presentation/screens/movie_detail_screen.dart';
 
 class NowPlayingWidget extends StatelessWidget {
   const NowPlayingWidget({Key? key}) : super(key: key);
@@ -36,7 +37,10 @@ class NowPlayingWidget extends StatelessWidget {
                     return GestureDetector(
                       key: const Key('openMovieMinimalDetail'),
                       onTap: () {
-                        /// TODO : NAVIGATE TO MOVIE DETAILS
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (BuildContext context) {
+                          return MovieDetailScreen(movieID: item.id);
+                        }));
                       },
                       child: Stack(
                         children: [
