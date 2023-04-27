@@ -5,6 +5,8 @@ class Assets {
   static const String imagesHomeScreen = 'assets/images/HomeScreen.jpg';
   static const String imagesMovieDetails = 'assets/images/MovieDetails.jpg';
   static const String imagesPopularScreen = 'assets/images/PopularScreen.jpg';
+  static const String imagesRecommendationScreen =
+      'assets/images/RecommendationScreen.jpg';
   static const String imagesSimilarScreen = 'assets/images/SimilarScreen.jpg';
   static const String imagesTopRatedScreen = 'assets/images/TopRatedScreen.jpg';
 }
