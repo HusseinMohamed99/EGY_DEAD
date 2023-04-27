@@ -105,7 +105,6 @@ class MovieRemoteDataSource extends BaseMovieRemoteDataSource {
       MovieSimilarParameters parameters) async {
     final response =
         await Dio().get(ApiConstance.movieSimilarPath(parameters.movieID));
-    print(response);
     if (response.statusCode == 200) {
       return List<MoviesSimilarModel>.from(
           (response.data["results"] as List).map(

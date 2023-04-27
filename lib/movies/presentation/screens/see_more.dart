@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:movies_app/core/network/api_constance.dart';
 import 'package:movies_app/movies/domain/entities/movie.dart';
-import 'package:movies_app/movies/presentation/screens/movie_detail_screen.dart';
+import 'package:movies_app/movies/presentation/screens/movie_details_screen.dart';
 import 'package:shimmer/shimmer.dart';
 
 class SeeMoreScreen extends StatelessWidget {
@@ -40,7 +40,7 @@ class SeeMoreScreen extends StatelessWidget {
             child: InkWell(
                 onTap: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return MovieDetailScreen(movieID: movie.id);
+                    return MovieDetailsScreen(movieID: movie.id);
                   }));
                 },
                 child: Row(

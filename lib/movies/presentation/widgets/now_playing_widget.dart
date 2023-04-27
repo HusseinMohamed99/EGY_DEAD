@@ -7,7 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies_app/core/utils/enum.dart';
 import 'package:movies_app/movies/presentation/controller/movies_bloc.dart';
 import 'package:movies_app/movies/presentation/controller/movies_states.dart';
-import 'package:movies_app/movies/presentation/screens/movie_detail_screen.dart';
+import 'package:movies_app/movies/presentation/screens/movie_details_screen.dart';
 
 class NowPlayingWidget extends StatelessWidget {
   const NowPlayingWidget({Key? key}) : super(key: key);
@@ -39,7 +39,7 @@ class NowPlayingWidget extends StatelessWidget {
                       onTap: () {
                         Navigator.push(context,
                             MaterialPageRoute(builder: (BuildContext context) {
-                          return MovieDetailScreen(movieID: item.id);
+                              return MovieDetailsScreen(movieID: item.id);
                         }));
                       },
                       child: Stack(
@@ -69,44 +69,72 @@ class NowPlayingWidget extends StatelessWidget {
                               fit: BoxFit.cover,
                             ),
                           ),
-                          Align(
-                            alignment: Alignment.bottomCenter,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(bottom: 16.0),
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      const Icon(
-                                        Icons.circle,
-                                        color: Colors.redAccent,
-                                        size: 16.0,
-                                      ),
-                                      const SizedBox(width: 4.0),
-                                      Text(
-                                        'Now Playing'.toUpperCase(),
-                                        style: const TextStyle(
-                                            fontSize: 16.0,
-                                            color: Colors.white),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(bottom: 16.0),
-                                  child: Text(
-                                    item.title,
-                                    textAlign: TextAlign.center,
-                                    style: const TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 24,
+                          Column(
+                            children: [
+                              Padding(
+                                padding:
+                                    const EdgeInsets.only(left: 8.0, top: 40),
+                                child: ClipRRect(
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(12.0)),
+                                  child: Align(
+                                    alignment: Alignment.bottomLeft,
+                                    child: CachedNetworkImage(
+                                      height:
+                                          MediaQuery.of(context).size.width / 2,
+                                      width:
+                                          MediaQuery.of(context).size.width / 3,
+                                      imageUrl: ApiConstance.imageURL(
+                                          item.posterPath),
+                                      fit: BoxFit.fill,
                                     ),
                                   ),
                                 ),
-                              ],
-                            ),
+                              ),
+                              const Spacer(),
+                              Align(
+                                alignment: Alignment.bottomCenter,
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    Padding(
+                                      padding:
+                                          const EdgeInsets.only(bottom: 16.0),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          const Icon(
+                                            Icons.circle,
+                                            color: Colors.redAccent,
+                                            size: 16.0,
+                                          ),
+                                          const SizedBox(width: 4.0),
+                                          Text(
+                                            'Now Playing'.toUpperCase(),
+                                            style: const TextStyle(
+                                                fontSize: 16.0,
+                                                color: Colors.white),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding:
+                                          const EdgeInsets.only(bottom: 16.0),
+                                      child: Text(
+                                        item.title,
+                                        textAlign: TextAlign.center,
+                                        style: const TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 24,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
                           ),
                         ],
                       ),
