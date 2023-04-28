@@ -11,10 +11,8 @@ class GetOnTheAirTvsEvent extends TvsEvent {}
 
 class GetAiringTodayTvsEvent extends TvsEvent {}
 
-// class GetUpcomingMoviesEvent extends MoviesEvent {}
-//
-// class GetPopularMoviesEvent extends MoviesEvent {}
-//
-// class GetTopRatedMoviesEvent extends MoviesEvent {}
-//
-// class GetMoviesDetailsEvent extends MoviesEvent {}
+class GetPopularTvsEvent extends TvsEvent {}
+
+class GetTopRatedTvsEvent extends TvsEvent {}
+
+class GetTvsDetailsEvent extends TvsEvent {}

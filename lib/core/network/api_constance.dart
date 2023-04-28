@@ -8,11 +8,11 @@ class ApiConstance {
   static const String upcomingMoviesPath =
       "$baseUrl/movie/upcoming?api_key=$appKey";
 
-  static const String topRatedMoviesPath =
-      "$baseUrl/movie/top_rated?api_key=$appKey";
-
   static const String popularMoviesPath =
       "$baseUrl/movie/popular?api_key=$appKey";
+
+  static const String topRatedMoviesPath =
+      "$baseUrl/movie/top_rated?api_key=$appKey";
 
   static String movieDetailsPath(int movieID) =>
       "$baseUrl/movie/$movieID?api_key=$appKey";
@@ -31,4 +31,10 @@ class ApiConstance {
 
   static const String airingTodayTvPath =
       "$baseUrl/tv/airing_today?api_key=$appKey&page=2";
+
+  static const String popularTvsPath = "$baseUrl/tv/popular?api_key=$appKey";
+
+  static const String topRatedTvsPath = "$baseUrl/tv/top_rated?api_key=$appKey";
+
+  static String tvDetailsPath(int tvID) => "$baseUrl/tv/$tvID?api_key=$appKey";
 }

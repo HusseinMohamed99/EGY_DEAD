@@ -5,6 +5,8 @@ import 'package:movies_app/tvs/presentation/controller/tvs_bloc.dart';
 import 'package:movies_app/tvs/presentation/controller/tvs_events.dart';
 import 'package:movies_app/tvs/presentation/widgets/airing_today_widget.dart';
 import 'package:movies_app/tvs/presentation/widgets/on_the_air_widget.dart';
+import 'package:movies_app/tvs/presentation/widgets/popular_tvs_widget.dart';
+import 'package:movies_app/tvs/presentation/widgets/top_rated_tvs_widget.dart';
 
 class TvsScreen extends StatelessWidget {
   const TvsScreen({Key? key}) : super(key: key);
@@ -15,7 +17,9 @@ class TvsScreen extends StatelessWidget {
       create: (context) {
         return sl<TvsBloc>()
           ..add(GetOnTheAirTvsEvent())
-          ..add(GetAiringTodayTvsEvent());
+          ..add(GetAiringTodayTvsEvent())
+          ..add(GetPopularTvsEvent())
+          ..add(GetTopRatedTvsEvent());
       },
       child: Scaffold(
         body: SingleChildScrollView(
@@ -25,8 +29,8 @@ class TvsScreen extends StatelessWidget {
             children: const [
               OnTheAirWidget(),
               AiringTodayWidget(),
-              // PopularWidget(),
-              // TopRatedWidget(),
+              PopularTvsWidget(),
+              TopRatedTvsWidget(),
               SizedBox(height: 50.0),
             ],
           ),

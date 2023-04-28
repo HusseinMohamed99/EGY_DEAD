@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movies_app/core/global/app_string/app_string.dart';
 import 'package:movies_app/core/services/services_locator.dart';
-import 'package:movies_app/tvs/presentation/screens/tvs_screen.dart';
+import 'package:movies_app/presentation_main_app/screen/main_screen.dart';
 
 void main() async {
   ServiceLocator().init();
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       title: AppString.appTitle,
       theme: ThemeData.dark()
           .copyWith(scaffoldBackgroundColor: Colors.grey.shade900),
-      home: const TvsScreen(),
+      home: const MainScreen(),
     );
   }
 }

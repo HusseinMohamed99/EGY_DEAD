@@ -11,26 +11,42 @@ import 'package:movies_app/movies/domain/usecases/get_up_coming_movies_usecases.
 import 'package:movies_app/movies/presentation/controller/movies_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:movies_app/movies/presentation/controller/movies_details_bloc.dart';
+import 'package:movies_app/presentation_main_app/controller/main_bloc.dart';
 import 'package:movies_app/tvs/data/datasource/tv_remote_data_source.dart';
 import 'package:movies_app/tvs/data/repository/tvs_repository.dart';
 import 'package:movies_app/tvs/domain/repository/base_tvs_repository.dart';
 import 'package:movies_app/tvs/domain/usecases/get_airing_today_tvs_usecases.dart';
 import 'package:movies_app/tvs/domain/usecases/get_on_air_tvs_usecases.dart';
+import 'package:movies_app/tvs/domain/usecases/get_popular_tvs_usecases.dart';
+import 'package:movies_app/tvs/domain/usecases/get_top_rated_tvs_usecases.dart';
+import 'package:movies_app/tvs/domain/usecases/get_tv_details_usecases.dart';
 import 'package:movies_app/tvs/presentation/controller/tvs_bloc.dart';
+import 'package:movies_app/tvs/presentation/controller/tvs_details_bloc.dart';
 
 final sl = GetIt.instance;
 
 class ServiceLocator {
   void init() {
+    /// Main Application
+    sl.registerFactory(() => MainBloc());
+
     /// TVS =>
     /// TVS Bloc
-    sl.registerFactory(() => TvsBloc(sl(), sl()));
+    sl.registerFactory(() => TvsBloc(sl(), sl(), sl(), sl()));
+    sl.registerFactory(() => TvsDetailsBloc(sl()));
 
     /// TVS Use Cases
     sl.registerLazySingleton(
         () => GetOnTheAirTvsUseCase(baseTvRepository: sl()));
     sl.registerLazySingleton(
         () => GetAiringTodayTvsUseCase(baseTvRepository: sl()));
+
+    sl.registerLazySingleton(
+        () => GetPopularTvsUseCase(baseTvRepository: sl()));
+    sl.registerLazySingleton(
+        () => GetTopRatedTvsUseCase(baseTvRepository: sl()));
+    sl.registerLazySingleton(
+        () => GetTvsDetailsUseCase(baseTvsRepository: sl()));
 
     /// TVS Repository
     sl.registerLazySingleton<BaseTvRepository>(
@@ -47,30 +63,30 @@ class ServiceLocator {
 
     /// Movies Use Cases
     sl.registerLazySingleton(
-        () => GetNowPlayingMoviesUseCase(baseMovieRepository: sl()));
+            () => GetNowPlayingMoviesUseCase(baseMovieRepository: sl()));
 
     sl.registerLazySingleton(
-        () => GetUpcomingMoviesUseCase(baseMovieRepository: sl()));
+            () => GetUpcomingMoviesUseCase(baseMovieRepository: sl()));
 
     sl.registerLazySingleton(
-        () => GetPopularMoviesUseCase(baseMovieRepository: sl()));
+            () => GetPopularMoviesUseCase(baseMovieRepository: sl()));
     sl.registerLazySingleton(
-        () => GetTopRatedMoviesUseCase(baseMovieRepository: sl()));
+            () => GetTopRatedMoviesUseCase(baseMovieRepository: sl()));
 
     sl.registerLazySingleton(
-        () => GetMovieDetailsUseCase(baseMovieRepository: sl()));
+            () => GetMovieDetailsUseCase(baseMovieRepository: sl()));
 
     sl.registerLazySingleton(
-        () => GetMovieRecommendationUseCase(baseMovieRepository: sl()));
+            () => GetMovieRecommendationUseCase(baseMovieRepository: sl()));
     sl.registerLazySingleton(
-        () => GetMovieSimilarUseCase(baseMovieRepository: sl()));
+            () => GetMovieSimilarUseCase(baseMovieRepository: sl()));
 
     /// Movies Repository
     sl.registerLazySingleton<BaseMovieRepository>(
-        () => MoviesRepository(baseMovieRemoteDataSource: sl()));
+            () => MoviesRepository(baseMovieRemoteDataSource: sl()));
 
     /// Movies Data Source
     sl.registerLazySingleton<BaseMovieRemoteDataSource>(
-        () => MovieRemoteDataSource());
+            () => MovieRemoteDataSource());
   }
 }

@@ -4,6 +4,8 @@ import 'package:movies_app/core/utils/enum.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies_app/tvs/domain/usecases/get_airing_today_tvs_usecases.dart';
 import 'package:movies_app/tvs/domain/usecases/get_on_air_tvs_usecases.dart';
+import 'package:movies_app/tvs/domain/usecases/get_popular_tvs_usecases.dart';
+import 'package:movies_app/tvs/domain/usecases/get_top_rated_tvs_usecases.dart';
 import 'package:movies_app/tvs/presentation/controller/tvs_events.dart';
 import 'package:movies_app/tvs/presentation/controller/tvs_states.dart';
 
@@ -11,18 +13,18 @@ class TvsBloc extends Bloc<TvsEvent, TvsStates> {
   final GetOnTheAirTvsUseCase getOnTheAirTvsUseCase;
   final GetAiringTodayTvsUseCase getAiringTodayTvsUseCase;
 
-  // final GetUpcomingTvsUseCase getUpcomingTvsUseCase;
-  // final GetPopularTvsUseCase getPopularTvsUseCase;
-  // final GetTopRatedTvsUseCase getTopRatedTvsUseCase;
+  final GetPopularTvsUseCase getPopularTvsUseCase;
+  final GetTopRatedTvsUseCase getTopRatedTvsUseCase;
 
-  TvsBloc(this.getOnTheAirTvsUseCase, this.getAiringTodayTvsUseCase)
+  TvsBloc(this.getOnTheAirTvsUseCase, this.getAiringTodayTvsUseCase,
+      this.getPopularTvsUseCase, this.getTopRatedTvsUseCase)
       : super(const TvsStates()) {
     on<GetOnTheAirTvsEvent>(_getOnTheAirTvs);
     on<GetAiringTodayTvsEvent>(_getAiringTodayTvs);
-    // on<GetUpcomingTvsEvent>(_getUpcomingTvs);
-    // on<GetPopularTvsEvent>(_getPopularTvs);
-    //
-    // on<GetTopRatedTvsEvent>(_getTopRatedTvs);
+
+    on<GetPopularTvsEvent>(_getPopularTvs);
+
+    on<GetTopRatedTvsEvent>(_getTopRatedTvs);
   }
 
   FutureOr<void> _getOnTheAirTvs(
@@ -48,34 +50,23 @@ class TvsBloc extends Bloc<TvsEvent, TvsStates> {
             airingTodayState: RequestState.loaded, airingTodayTvs: r)));
   }
 
-// FutureOr<void> _getUpcomingTvs(
-//     GetUpcomingTvsEvent event, Emitter<TvsStates> emit) async {
-//   final result = await getUpcomingTvsUseCase(const NoParameters());
-//
-//   result.fold(
-//       (l) => emit(state.copyWith(
-//           upcomingState: RequestState.error, upcomingMessage: l.message)),
-//       (r) => emit(state.copyWith(
-//           upcomingState: RequestState.loaded, upcomingTvs: r)));
-// }
-//
-// FutureOr<void> _getPopularTvs(
-//     GetPopularTvsEvent event, Emitter<TvsStates> emit) async {
-//   final result = await getPopularTvsUseCase(const NoParameters());
-//   result.fold(
-//       (l) => emit(state.copyWith(
-//           popularState: RequestState.error, popularMessage: l.message)),
-//       (r) => emit(state.copyWith(
-//           popularState: RequestState.loaded, popularTvs: r)));
-// }
-//
-// FutureOr<void> _getTopRatedTvs(
-//     GetTopRatedTvsEvent event, Emitter<TvsStates> emit) async {
-//   final result = await getTopRatedTvsUseCase(const NoParameters());
-//   result.fold(
-//       (l) => emit(state.copyWith(
-//           topRatedStates: RequestState.error, topRatedMessage: l.message)),
-//       (r) => emit(state.copyWith(
-//           topRatedStates: RequestState.loaded, topRatedTvs: r)));
-// }
+  FutureOr<void> _getPopularTvs(
+      GetPopularTvsEvent event, Emitter<TvsStates> emit) async {
+    final result = await getPopularTvsUseCase(const NoParameters());
+    result.fold(
+        (l) => emit(state.copyWith(
+            popularState: RequestState.error, popularMessage: l.message)),
+        (r) => emit(
+            state.copyWith(popularState: RequestState.loaded, popularTvs: r)));
+  }
+
+  FutureOr<void> _getTopRatedTvs(
+      GetTopRatedTvsEvent event, Emitter<TvsStates> emit) async {
+    final result = await getTopRatedTvsUseCase(const NoParameters());
+    result.fold(
+        (l) => emit(state.copyWith(
+            topRatedStates: RequestState.error, topRatedMessage: l.message)),
+        (r) => emit(state.copyWith(
+            topRatedStates: RequestState.loaded, topRatedTvs: r)));
+  }
 }

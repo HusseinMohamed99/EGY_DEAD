@@ -7,6 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies_app/core/utils/enum.dart';
 import 'package:movies_app/tvs/presentation/controller/tvs_bloc.dart';
 import 'package:movies_app/tvs/presentation/controller/tvs_states.dart';
+import 'package:movies_app/tvs/presentation/screens/tvs_details_screen.dart';
 import 'package:shimmer/shimmer.dart';
 
 class OnTheAirWidget extends StatelessWidget {
@@ -42,14 +43,15 @@ class OnTheAirWidget extends StatelessWidget {
                     return GestureDetector(
                       key: const Key('openMovieMinimalDetail'),
                       onTap: () {
-                        // Navigator.push(
-                        //   context,
-                        //   MaterialPageRoute(
-                        //     builder: (BuildContext context) {
-                        //       return MovieDetailsScreen(movieID: item.id);
-                        //     },
-                        //   ),
-                        // );
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (BuildContext context) {
+                              return TvsDetailsScreen(tvsID: item.id);
+                            },
+                          ),
+                        );
+                        print(item.id);
                       },
                       child: Stack(
                         children: [

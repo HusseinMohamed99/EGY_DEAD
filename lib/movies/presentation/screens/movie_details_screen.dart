@@ -59,7 +59,7 @@ class MovieDetailContent extends StatelessWidget {
                         height: MediaQuery.of(context).size.height / 3,
                         imageUrl: ApiConstance.imageURL(
                             state.moviesDetails!.backdropPath),
-                        fit: BoxFit.cover,
+                        fit: BoxFit.fill,
                       ),
                       FadeInUp(
                         from: 20,

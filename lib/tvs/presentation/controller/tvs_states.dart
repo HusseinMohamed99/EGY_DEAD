@@ -11,18 +11,14 @@ class TvsStates extends Equatable {
   final RequestState airingTodayState;
   final String airingTodayMessage;
 
-  // final List<Tvs> upcomingTvs;
-  // final RequestState upcomingState;
-  // final String upcomingMessage;
-  //
-  // final List<Tvs> popularTvs;
-  // final RequestState popularState;
-  // final String popularMessage;
-  //
-  // final List<Tvs> topRatedTvs;
-  // final RequestState topRatedStates;
-  // final String topRatedMessage;
-  //
+  final List<Tvs> popularTvs;
+  final RequestState popularState;
+  final String popularMessage;
+
+  final List<Tvs> topRatedTvs;
+  final RequestState topRatedStates;
+  final String topRatedMessage;
+
   // final List<MovieDetails> moviesDetails;
   // final RequestState moviesDetailsStates;
   // final String moviesDetailsMessage;
@@ -34,15 +30,12 @@ class TvsStates extends Equatable {
     this.airingTodayTvs = const [],
     this.airingTodayState = RequestState.loading,
     this.airingTodayMessage = "",
-    // this.upcomingTvs = const [],
-    // this.upcomingState = RequestState.loading,
-    // this.upcomingMessage = "",
-    // this.popularTvs = const [],
-    // this.popularState = RequestState.loading,
-    // this.popularMessage = "",
-    // this.topRatedStates = RequestState.loading,
-    // this.topRatedTvs = const [],
-    // this.topRatedMessage = "",
+    this.popularTvs = const [],
+    this.popularState = RequestState.loading,
+    this.popularMessage = "",
+    this.topRatedStates = RequestState.loading,
+    this.topRatedTvs = const [],
+    this.topRatedMessage = "",
     // this.moviesDetails = const [],
     // this.moviesDetailsStates = RequestState.loading,
     // this.moviesDetailsMessage = "",
@@ -55,15 +48,12 @@ class TvsStates extends Equatable {
     List<Tvs>? airingTodayTvs,
     RequestState? airingTodayState,
     String? airingTodayMessage,
-    // List<Tvs>? upcomingTvs,
-    // RequestState? upcomingState,
-    // String? upcomingMessage,
-    // List<Tvs>? popularTvs,
-    // RequestState? popularState,
-    // String? popularMessage,
-    // List<Tvs>? topRatedTvs,
-    // RequestState? topRatedStates,
-    // String? topRatedMessage,
+    List<Tvs>? popularTvs,
+    RequestState? popularState,
+    String? popularMessage,
+    List<Tvs>? topRatedTvs,
+    RequestState? topRatedStates,
+    String? topRatedMessage,
     // List<MovieDetails>? moviesDetails,
     // RequestState? moviesDetailsStates,
     // String? moviesDetailsMessage,
@@ -75,15 +65,13 @@ class TvsStates extends Equatable {
       airingTodayTvs: airingTodayTvs ?? this.airingTodayTvs,
       airingTodayState: airingTodayState ?? this.airingTodayState,
       airingTodayMessage: airingTodayMessage ?? this.airingTodayMessage,
-      // upcomingTvs: upcomingTvs ?? this.upcomingTvs,
-      // upcomingState: upcomingState ?? this.upcomingState,
-      // upcomingMessage: upcomingMessage ?? this.upcomingMessage,
-      // popularMessage: popularMessage ?? this.popularMessage,
-      // popularTvs: popularTvs ?? this.popularTvs,
-      // popularState: popularState ?? this.popularState,
-      // topRatedMessage: topRatedMessage ?? this.topRatedMessage,
-      // topRatedTvs: topRatedTvs ?? this.topRatedTvs,
-      // topRatedStates: topRatedStates ?? this.topRatedStates,
+
+      popularMessage: popularMessage ?? this.popularMessage,
+      popularTvs: popularTvs ?? this.popularTvs,
+      popularState: popularState ?? this.popularState,
+      topRatedMessage: topRatedMessage ?? this.topRatedMessage,
+      topRatedTvs: topRatedTvs ?? this.topRatedTvs,
+      topRatedStates: topRatedStates ?? this.topRatedStates,
       // moviesDetailsMessage: moviesDetailsMessage ?? this.moviesDetailsMessage,
       // moviesDetails: moviesDetails ?? this.moviesDetails,
       // moviesDetailsStates: moviesDetailsStates ?? this.moviesDetailsStates,
@@ -91,22 +79,21 @@ class TvsStates extends Equatable {
   }
 
   @override
-  List<Object?> get props => [
+  List<Object?> get props =>
+      [
         onTheAirTvs,
         onTheAirState,
         onTheAirMessage,
         airingTodayTvs,
         airingTodayState,
         airingTodayMessage,
-        // upcomingTvs,
-        // upcomingState,
-        // upcomingMessage,
-        // popularMessage,
-        // popularState,
-        // popularTvs,
-        // topRatedStates,
-        // topRatedTvs,
-        // topRatedMessage,
+
+        popularMessage,
+        popularState,
+        popularTvs,
+        topRatedStates,
+        topRatedTvs,
+        topRatedMessage,
         // moviesDetails,
         // moviesDetailsMessage,
         // moviesDetailsStates,

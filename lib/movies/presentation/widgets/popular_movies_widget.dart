@@ -12,8 +12,8 @@ import 'package:movies_app/movies/presentation/screens/movie_details_screen.dart
 import 'package:movies_app/movies/presentation/screens/see_more.dart';
 import 'package:shimmer/shimmer.dart';
 
-class PopularWidget extends StatelessWidget {
-  const PopularWidget({Key? key}) : super(key: key);
+class PopularMoviesWidget extends StatelessWidget {
+  const PopularMoviesWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -141,8 +141,7 @@ class PopularWidget extends StatelessWidget {
             );
           case RequestState.error:
             return SizedBox(
-                height: 400,
-                child: Center(child: Text(state.nowPlayingMessage)));
+                height: 400, child: Center(child: Text(state.popularMessage)));
         }
       },
     );

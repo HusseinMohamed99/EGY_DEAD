@@ -1,6 +1,7 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:movies_app/core/global/app_string/app_string.dart';
 import 'package:movies_app/core/network/api_constance.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -136,7 +137,7 @@ class NowPlayingWidget extends StatelessWidget {
                                           ),
                                           const SizedBox(width: 4.0),
                                           Text(
-                                            'Now Playing'.toUpperCase(),
+                                            AppString.nowPlaying.toUpperCase(),
                                             style: const TextStyle(
                                                 fontSize: 16.0,
                                                 color: Colors.white),
