@@ -13,6 +13,8 @@ import 'package:movies_app/movies/domain/usecases/get_movies_similar_usecases.da
 abstract class BaseMovieRemoteDataSource {
   Future<List<MovieModel>> getNowPlayingMovies();
 
+  Future<List<MovieModel>> getUpcomingMovies();
+
   Future<List<MovieModel>> getPopularMovies();
 
   Future<List<MovieModel>> getTopRatedMovies();
@@ -30,6 +32,20 @@ class MovieRemoteDataSource extends BaseMovieRemoteDataSource {
   @override
   Future<List<MovieModel>> getNowPlayingMovies() async {
     final response = await Dio().get(ApiConstance.nowPlayingMoviesPath);
+    if (response.statusCode == 200) {
+      return List<MovieModel>.from((response.data["results"] as List).map(
+        (e) => MovieModel.fromJson(e),
+      ));
+    } else {
+      throw ServerException(
+        errorMessageModel: ErrorMessageModel.fromJson(response.data),
+      );
+    }
+  }
+
+  @override
+  Future<List<MovieModel>> getUpcomingMovies() async {
+    final response = await Dio().get(ApiConstance.upcomingMoviesPath);
     if (response.statusCode == 200) {
       return List<MovieModel>.from((response.data["results"] as List).map(
         (e) => MovieModel.fromJson(e),

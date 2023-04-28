@@ -8,6 +8,10 @@ class MoviesStates extends Equatable {
   final RequestState nowPlayingState;
   final String nowPlayingMessage;
 
+  final List<Movies> upcomingMovies;
+  final RequestState upcomingState;
+  final String upcomingMessage;
+
   final List<Movies> popularMovies;
   final RequestState popularState;
   final String popularMessage;
@@ -21,15 +25,18 @@ class MoviesStates extends Equatable {
   final String moviesDetailsMessage;
 
   const MoviesStates({
-    this.topRatedMessage = "",
-    this.topRatedMovies = const [],
-    this.topRatedStates = RequestState.loading,
     this.nowPlayingMovies = const [],
     this.nowPlayingState = RequestState.loading,
     this.nowPlayingMessage = "",
+    this.upcomingMovies = const [],
+    this.upcomingState = RequestState.loading,
+    this.upcomingMessage = "",
     this.popularMovies = const [],
     this.popularState = RequestState.loading,
     this.popularMessage = "",
+    this.topRatedStates = RequestState.loading,
+    this.topRatedMovies = const [],
+    this.topRatedMessage = "",
     this.moviesDetails = const [],
     this.moviesDetailsStates = RequestState.loading,
     this.moviesDetailsMessage = "",
@@ -39,6 +46,9 @@ class MoviesStates extends Equatable {
     List<Movies>? nowPlayingMovies,
     RequestState? nowPlayingState,
     String? nowPlayingMessage,
+    List<Movies>? upcomingMovies,
+    RequestState? upcomingState,
+    String? upcomingMessage,
     List<Movies>? popularMovies,
     RequestState? popularState,
     String? popularMessage,
@@ -53,6 +63,9 @@ class MoviesStates extends Equatable {
       nowPlayingMovies: nowPlayingMovies ?? this.nowPlayingMovies,
       nowPlayingState: nowPlayingState ?? this.nowPlayingState,
       nowPlayingMessage: nowPlayingMessage ?? this.nowPlayingMessage,
+      upcomingMovies: upcomingMovies ?? this.upcomingMovies,
+      upcomingState: upcomingState ?? this.upcomingState,
+      upcomingMessage: upcomingMessage ?? this.upcomingMessage,
       popularMessage: popularMessage ?? this.popularMessage,
       popularMovies: popularMovies ?? this.popularMovies,
       popularState: popularState ?? this.popularState,
@@ -70,6 +83,9 @@ class MoviesStates extends Equatable {
         nowPlayingMovies,
         nowPlayingState,
         nowPlayingMessage,
+        upcomingMovies,
+        upcomingState,
+        upcomingMessage,
         popularMessage,
         popularState,
         popularMovies,

@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies_app/movies/presentation/widgets/now_playing_widget.dart';
 import 'package:movies_app/movies/presentation/widgets/popular_widget.dart';
 import 'package:movies_app/movies/presentation/widgets/top_rated_widget.dart';
+import 'package:movies_app/movies/presentation/widgets/upcoming_widget.dart';
 
 class MoviesScreen extends StatelessWidget {
   const MoviesScreen({Key? key}) : super(key: key);
@@ -17,7 +18,8 @@ class MoviesScreen extends StatelessWidget {
         return sl<MoviesBloc>()
           ..add(GetNowPlayingMoviesEvent())
           ..add(GetPopularMoviesEvent())
-          ..add(GetTopRatedMoviesEvent());
+          ..add(GetTopRatedMoviesEvent())
+          ..add(GetUpcomingMoviesEvent());
       },
       child: Scaffold(
         body: SingleChildScrollView(
@@ -26,6 +28,7 @@ class MoviesScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: const [
               NowPlayingWidget(),
+              UpcomingWidget(),
               PopularWidget(),
               TopRatedWidget(),
               SizedBox(height: 50.0),

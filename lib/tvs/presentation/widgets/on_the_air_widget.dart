@@ -5,21 +5,20 @@ import 'package:movies_app/core/network/api_constance.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies_app/core/utils/enum.dart';
-import 'package:movies_app/movies/presentation/controller/movies_bloc.dart';
-import 'package:movies_app/movies/presentation/controller/movies_states.dart';
-import 'package:movies_app/movies/presentation/screens/movie_details_screen.dart';
+import 'package:movies_app/tvs/presentation/controller/tvs_bloc.dart';
+import 'package:movies_app/tvs/presentation/controller/tvs_states.dart';
 import 'package:shimmer/shimmer.dart';
 
-class NowPlayingWidget extends StatelessWidget {
-  const NowPlayingWidget({Key? key}) : super(key: key);
+class OnTheAirWidget extends StatelessWidget {
+  const OnTheAirWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<MoviesBloc, MoviesStates>(
+    return BlocBuilder<TvsBloc, TvsStates>(
       buildWhen: (previous, current) =>
-          previous.nowPlayingState != current.nowPlayingState,
+          previous.onTheAirState != current.onTheAirState,
       builder: (context, state) {
-        switch (state.nowPlayingState) {
+        switch (state.onTheAirState) {
           case RequestState.loading:
             return const SizedBox(
               height: 400,
@@ -38,19 +37,19 @@ class NowPlayingWidget extends StatelessWidget {
                   viewportFraction: 1.0,
                   onPageChanged: (index, reason) {},
                 ),
-                items: state.nowPlayingMovies.map(
+                items: state.onTheAirTvs.map(
                   (item) {
                     return GestureDetector(
                       key: const Key('openMovieMinimalDetail'),
                       onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (BuildContext context) {
-                              return MovieDetailsScreen(movieID: item.id);
-                            },
-                          ),
-                        );
+                        // Navigator.push(
+                        //   context,
+                        //   MaterialPageRoute(
+                        //     builder: (BuildContext context) {
+                        //       return MovieDetailsScreen(movieID: item.id);
+                        //     },
+                        //   ),
+                        // );
                       },
                       child: Stack(
                         children: [
@@ -136,7 +135,7 @@ class NowPlayingWidget extends StatelessWidget {
                                           ),
                                           const SizedBox(width: 4.0),
                                           Text(
-                                            'Now Playing'.toUpperCase(),
+                                            'On The Air'.toUpperCase(),
                                             style: const TextStyle(
                                                 fontSize: 16.0,
                                                 color: Colors.white),
@@ -148,7 +147,7 @@ class NowPlayingWidget extends StatelessWidget {
                                       padding:
                                           const EdgeInsets.only(bottom: 16.0),
                                       child: Text(
-                                        item.title,
+                                        item.name,
                                         textAlign: TextAlign.center,
                                         style: const TextStyle(
                                           color: Colors.white,
@@ -173,7 +172,7 @@ class NowPlayingWidget extends StatelessWidget {
             return SizedBox(
               height: 400,
               child: Center(
-                child: Text(state.nowPlayingMessage),
+                child: Text(state.onTheAirMessage),
               ),
             );
         }

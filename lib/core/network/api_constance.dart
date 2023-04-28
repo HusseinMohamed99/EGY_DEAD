@@ -5,6 +5,9 @@ class ApiConstance {
   static const String nowPlayingMoviesPath =
       "$baseUrl/movie/now_playing?api_key=$appKey";
 
+  static const String upcomingMoviesPath =
+      "$baseUrl/movie/upcoming?api_key=$appKey";
+
   static const String topRatedMoviesPath =
       "$baseUrl/movie/top_rated?api_key=$appKey";
 
@@ -23,4 +26,9 @@ class ApiConstance {
   static const String baseImageURL = "https://image.tmdb.org/t/p/w500";
 
   static String imageURL(String imagePath) => '$baseImageURL$imagePath';
+
+  static const String onTheAirTvPath = "$baseUrl/tv/on_the_air?api_key=$appKey";
+
+  static const String airingTodayTvPath =
+      "$baseUrl/tv/airing_today?api_key=$appKey&page=2";
 }
