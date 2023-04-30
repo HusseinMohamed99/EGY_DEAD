@@ -2,9 +2,13 @@ import 'package:movies_app/core/error/exceptions.dart';
 import 'package:movies_app/core/network/api_constance.dart';
 import 'package:movies_app/core/network/error_message_model.dart';
 import 'package:dio/dio.dart';
+import 'package:movies_app/tvs/data/model/tv_recommendation.dart';
+import 'package:movies_app/tvs/data/model/tv_similar.dart';
 import 'package:movies_app/tvs/data/model/tvs_details_model.dart';
 import 'package:movies_app/tvs/data/model/tvs_model.dart';
 import 'package:movies_app/tvs/domain/usecases/get_tv_details_usecases.dart';
+import 'package:movies_app/tvs/domain/usecases/get_tvs_recommendation_usecases.dart';
+import 'package:movies_app/tvs/domain/usecases/get_tvs_similar_usecases.dart';
 
 abstract class BaseTvRemoteDataSource {
   Future<List<TvModel>> getOnTheAirTvs();
@@ -17,11 +21,10 @@ abstract class BaseTvRemoteDataSource {
 
   Future<TvsDetailsModel> getTvDetails(TvsDetailsParameters parameters);
 
-// Future<List<MoviesRecommendationModel>> getMovieRecommendation(
-//     MovieRecommendationParameters parameters);
-//
-// Future<List<MoviesSimilarModel>> getMovieSimilar(
-//     MovieSimilarParameters parameters);
+  Future<List<TvsRecommendationModel>> getTvRecommendation(
+      TvRecommendationParameters parameters);
+
+  Future<List<TvsSimilarModel>> getTvSimilar(TvSimilarParameters parameters);
 }
 
 class TvRemoteDataSource extends BaseTvRemoteDataSource {
@@ -94,37 +97,36 @@ class TvRemoteDataSource extends BaseTvRemoteDataSource {
     }
   }
 
-// @override
-// Future<List<MoviesRecommendationModel>> getMovieRecommendation(
-//     MovieRecommendationParameters parameters) async {
-//   final response = await Dio()
-//       .get(ApiConstance.movieRecommendationPath(parameters.movieID));
-//   if (response.statusCode == 200) {
-//     return List<MoviesRecommendationModel>.from(
-//         (response.data["results"] as List).map(
-//       (e) => MoviesRecommendationModel.fromJson(e),
-//     ));
-//   } else {
-//     throw ServerException(
-//       errorMessageModel: ErrorMessageModel.fromJson(response.data),
-//     );
-//   }
-// }
-//
-// @override
-// Future<List<MoviesSimilarModel>> getMovieSimilar(
-//     MovieSimilarParameters parameters) async {
-//   final response =
-//       await Dio().get(ApiConstance.movieSimilarPath(parameters.movieID));
-//   if (response.statusCode == 200) {
-//     return List<MoviesSimilarModel>.from(
-//         (response.data["results"] as List).map(
-//       (e) => MoviesSimilarModel.fromJson(e),
-//     ));
-//   } else {
-//     throw ServerException(
-//       errorMessageModel: ErrorMessageModel.fromJson(response.data),
-//     );
-//   }
-// }
+  @override
+  Future<List<TvsRecommendationModel>> getTvRecommendation(
+      TvRecommendationParameters parameters) async {
+    final response =
+        await Dio().get(ApiConstance.tvRecommendationPath(parameters.tvID));
+    if (response.statusCode == 200) {
+      return List<TvsRecommendationModel>.from(
+          (response.data["results"] as List).map(
+        (e) => TvsRecommendationModel.fromJson(e),
+      ));
+    } else {
+      throw ServerException(
+        errorMessageModel: ErrorMessageModel.fromJson(response.data),
+      );
+    }
+  }
+
+  @override
+  Future<List<TvsSimilarModel>> getTvSimilar(
+      TvSimilarParameters parameters) async {
+    final response =
+        await Dio().get(ApiConstance.tvSimilarPath(parameters.tvID));
+    if (response.statusCode == 200) {
+      return List<TvsSimilarModel>.from((response.data["results"] as List).map(
+        (e) => TvsSimilarModel.fromJson(e),
+      ));
+    } else {
+      throw ServerException(
+        errorMessageModel: ErrorMessageModel.fromJson(response.data),
+      );
+    }
+  }
 }

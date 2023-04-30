@@ -1,5 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/foundation.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:movies_app/core/global/app_string/app_string.dart';
 import 'package:movies_app/core/network/api_constance.dart';
@@ -9,6 +10,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies_app/tvs/presentation/controller/tvs_bloc.dart';
 import 'package:movies_app/tvs/presentation/controller/tvs_states.dart';
 import 'package:movies_app/tvs/presentation/screens/see_more.dart';
+import 'package:movies_app/tvs/presentation/screens/tvs_details_screen.dart';
 import 'package:shimmer/shimmer.dart';
 
 class PopularTvsWidget extends StatelessWidget {
@@ -94,15 +96,17 @@ class PopularTvsWidget extends StatelessWidget {
                           padding: const EdgeInsets.only(right: 8.0),
                           child: InkWell(
                             onTap: () {
-                              // Navigator.push(
-                              //   context,
-                              //   MaterialPageRoute(
-                              //     builder: (context) => MovieDetailsScreen(
-                              //       tvsID: tvs.id,
-                              //     ),
-                              //   ),
-                              // );
-                              // print(tvs.id);
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => TvsDetailsScreen(
+                                    tvsID: tvs.id,
+                                  ),
+                                ),
+                              );
+                              if (kDebugMode) {
+                                print(tvs.id);
+                              }
                             },
                             child: ClipRRect(
                               borderRadius:

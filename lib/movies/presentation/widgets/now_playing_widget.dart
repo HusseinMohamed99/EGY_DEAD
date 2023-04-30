@@ -99,14 +99,14 @@ class NowPlayingWidget extends StatelessWidget {
                               Padding(
                                 padding:
                                     const EdgeInsets.only(left: 8.0, top: 40),
-                                child: ClipRRect(
-                                  borderRadius: const BorderRadius.all(
-                                      Radius.circular(12.0)),
-                                  child: Align(
-                                    alignment: Alignment.bottomLeft,
+                                child: Align(
+                                  alignment: Alignment.topLeft,
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(70),
                                     child: CachedNetworkImage(
                                       height:
-                                          MediaQuery.of(context).size.width / 2,
+                                          MediaQuery.of(context).size.height /
+                                              7,
                                       width:
                                           MediaQuery.of(context).size.width / 3,
                                       imageUrl: ApiConstance.imageURL(

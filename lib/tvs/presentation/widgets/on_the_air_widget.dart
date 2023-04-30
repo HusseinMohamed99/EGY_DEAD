@@ -1,6 +1,7 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter/foundation.dart';
 import 'package:movies_app/core/network/api_constance.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -51,7 +52,9 @@ class OnTheAirWidget extends StatelessWidget {
                             },
                           ),
                         );
-                        print(item.id);
+                        if (kDebugMode) {
+                          print(item.id);
+                        }
                       },
                       child: Stack(
                         children: [
@@ -99,14 +102,14 @@ class OnTheAirWidget extends StatelessWidget {
                               Padding(
                                 padding:
                                     const EdgeInsets.only(left: 8.0, top: 40),
-                                child: ClipRRect(
-                                  borderRadius: const BorderRadius.all(
-                                      Radius.circular(12.0)),
-                                  child: Align(
-                                    alignment: Alignment.bottomLeft,
+                                child: Align(
+                                  alignment: Alignment.topLeft,
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(70),
                                     child: CachedNetworkImage(
                                       height:
-                                          MediaQuery.of(context).size.width / 2,
+                                          MediaQuery.of(context).size.height /
+                                              7,
                                       width:
                                           MediaQuery.of(context).size.width / 3,
                                       imageUrl: ApiConstance.imageURL(

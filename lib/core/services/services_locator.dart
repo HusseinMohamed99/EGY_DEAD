@@ -20,6 +20,8 @@ import 'package:movies_app/tvs/domain/usecases/get_on_air_tvs_usecases.dart';
 import 'package:movies_app/tvs/domain/usecases/get_popular_tvs_usecases.dart';
 import 'package:movies_app/tvs/domain/usecases/get_top_rated_tvs_usecases.dart';
 import 'package:movies_app/tvs/domain/usecases/get_tv_details_usecases.dart';
+import 'package:movies_app/tvs/domain/usecases/get_tvs_recommendation_usecases.dart';
+import 'package:movies_app/tvs/domain/usecases/get_tvs_similar_usecases.dart';
 import 'package:movies_app/tvs/presentation/controller/tvs_bloc.dart';
 import 'package:movies_app/tvs/presentation/controller/tvs_details_bloc.dart';
 
@@ -33,7 +35,7 @@ class ServiceLocator {
     /// TVS =>
     /// TVS Bloc
     sl.registerFactory(() => TvsBloc(sl(), sl(), sl(), sl()));
-    sl.registerFactory(() => TvsDetailsBloc(sl()));
+    sl.registerFactory(() => TvsDetailsBloc(sl(), sl(), sl()));
 
     /// TVS Use Cases
     sl.registerLazySingleton(
@@ -47,6 +49,10 @@ class ServiceLocator {
         () => GetTopRatedTvsUseCase(baseTvRepository: sl()));
     sl.registerLazySingleton(
         () => GetTvsDetailsUseCase(baseTvsRepository: sl()));
+
+    sl.registerLazySingleton(
+        () => GetTvRecommendationUseCase(baseTvRepository: sl()));
+    sl.registerLazySingleton(() => GetTvSimilarUseCase(baseTvRepository: sl()));
 
     /// TVS Repository
     sl.registerLazySingleton<BaseTvRepository>(

@@ -37,4 +37,10 @@ class ApiConstance {
   static const String topRatedTvsPath = "$baseUrl/tv/top_rated?api_key=$appKey";
 
   static String tvDetailsPath(int tvID) => "$baseUrl/tv/$tvID?api_key=$appKey";
+
+  static String tvRecommendationPath(int tvID) =>
+      "$baseUrl/tv/$tvID/recommendations?api_key=$appKey";
+
+  static String tvSimilarPath(int tvID) =>
+      "$baseUrl/tv/$tvID/similar?api_key=$appKey";
 }

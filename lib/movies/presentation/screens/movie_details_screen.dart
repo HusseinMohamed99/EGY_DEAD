@@ -1,5 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -219,6 +220,7 @@ class MovieDetailContent extends StatelessWidget {
                         ),
                       ),
                       _showSimilar(),
+                      const SizedBox(height: 20),
                     ],
                   ),
                   Positioned(
@@ -297,7 +299,9 @@ class MovieDetailContent extends StatelessWidget {
                               ),
                             ),
                           );
-                          print(recommendation.id);
+                          if (kDebugMode) {
+                            print(recommendation.id);
+                          }
                         },
                         child: ClipRRect(
                           borderRadius:
@@ -370,7 +374,9 @@ class MovieDetailContent extends StatelessWidget {
                               ),
                             ),
                           );
-                          print(similar.id);
+                          if (kDebugMode) {
+                            print(similar.id);
+                          }
                         },
                         child: ClipRRect(
                           borderRadius:

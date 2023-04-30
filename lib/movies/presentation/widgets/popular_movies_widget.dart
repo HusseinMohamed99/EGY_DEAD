@@ -1,5 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/foundation.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:movies_app/core/global/app_string/app_string.dart';
 import 'package:movies_app/core/network/api_constance.dart';
@@ -103,7 +104,9 @@ class PopularMoviesWidget extends StatelessWidget {
                                   ),
                                 ),
                               );
-                              print(movie.id);
+                              if (kDebugMode) {
+                                print(movie.id);
+                              }
                             },
                             child: ClipRRect(
                               borderRadius:
