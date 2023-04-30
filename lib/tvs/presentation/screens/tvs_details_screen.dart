@@ -3,6 +3,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:movies_app/core/global/app_string/app_string.dart';
 import 'package:movies_app/core/network/api_constance.dart';
@@ -88,36 +89,46 @@ class TvsDetailsContent extends StatelessWidget {
                                 children: [
                                   Row(
                                     children: [
-                                      ClipRRect(
-                                        borderRadius: BorderRadius.circular(10),
-                                        child: CachedNetworkImage(
-                                          height: MediaQuery.of(context)
-                                                  .size
-                                                  .height /
-                                              4,
-                                          width: MediaQuery.of(context)
-                                                  .size
-                                                  .width /
-                                              2.5,
-                                          imageUrl: ApiConstance.imageURL(
-                                              state.tvsDetails!.posterPath),
-                                          fit: BoxFit.cover,
-                                          placeholder: (context, url) =>
-                                              Shimmer.fromColors(
-                                            baseColor: Colors.grey[850]!,
-                                            highlightColor: Colors.grey[800]!,
-                                            child: Container(
-                                              height: 170.0,
-                                              width: 120.0,
-                                              decoration: BoxDecoration(
-                                                color: Colors.black,
-                                                borderRadius:
-                                                    BorderRadius.circular(8.0),
+                                      Container(
+                                        decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                            border: Border.all(
+                                                color: Colors.white)),
+                                        child: ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                          child: CachedNetworkImage(
+                                            height: MediaQuery.of(context)
+                                                    .size
+                                                    .height /
+                                                4,
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .width /
+                                                2.5,
+                                            imageUrl: ApiConstance.imageURL(
+                                                state.tvsDetails!.posterPath),
+                                            fit: BoxFit.cover,
+                                            placeholder: (context, url) =>
+                                                Shimmer.fromColors(
+                                              baseColor: Colors.grey[850]!,
+                                              highlightColor: Colors.grey[800]!,
+                                              child: Container(
+                                                height: 170.0,
+                                                width: 120.0,
+                                                decoration: BoxDecoration(
+                                                  color: Colors.black,
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          8.0),
+                                                ),
                                               ),
                                             ),
+                                            errorWidget:
+                                                (context, url, error) =>
+                                                    const Icon(Icons.error),
                                           ),
-                                          errorWidget: (context, url, error) =>
-                                              const Icon(Icons.error),
                                         ),
                                       ),
                                       const SizedBox(width: 16.0),
@@ -189,16 +200,21 @@ class TvsDetailsContent extends StatelessWidget {
                                                   ],
                                                 ),
                                                 const SizedBox(width: 16.0),
-                                                Text(
-                                                  _showDuration(state
-                                                      .tvsDetails!.runtime),
-                                                  style: const TextStyle(
-                                                    color: Colors.white70,
-                                                    fontSize: 16.0,
-                                                    fontWeight: FontWeight.w500,
-                                                    letterSpacing: 1.2,
-                                                  ),
-                                                ),
+                                                state.tvsDetails!.runtime
+                                                        .isNotEmpty
+                                                    ? Text(
+                                                        _showDuration(state
+                                                            .tvsDetails!
+                                                            .runtime),
+                                                        style: const TextStyle(
+                                                          color: Colors.white70,
+                                                          fontSize: 16.0,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                          letterSpacing: 1.2,
+                                                        ),
+                                                      )
+                                                    : const Text(''),
                                               ],
                                             ),
                                           ],
@@ -331,8 +347,8 @@ class TvsDetailsContent extends StatelessWidget {
   }
 
   String _showDuration(List<int> runtime) {
-    final int hours = runtime.length ~/ 60;
-    final int minutes = runtime.length % 60;
+    final int hours = runtime[0] ~/ 60;
+    final int minutes = runtime[0] % 60;
 
     if (hours > 0) {
       return '${hours}h ${minutes}m';
@@ -374,29 +390,34 @@ class TvsDetailsContent extends StatelessWidget {
                             print(recommendation.id);
                           }
                         },
-                        child: ClipRRect(
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(8.0)),
-                          child: CachedNetworkImage(
-                            height: 200,
-                            width: 200.0,
-                            fit: BoxFit.cover,
-                            imageUrl: ApiConstance.imageURL(
-                                recommendation.backdropPath!),
-                            placeholder: (context, url) => Shimmer.fromColors(
-                              baseColor: Colors.grey[850]!,
-                              highlightColor: Colors.grey[800]!,
-                              child: Container(
-                                height: 170.0,
-                                width: 120.0,
-                                decoration: BoxDecoration(
-                                  color: Colors.black,
-                                  borderRadius: BorderRadius.circular(8.0),
+                        child: Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              border: Border.all(color: Colors.white)),
+                          child: ClipRRect(
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(8.0)),
+                            child: CachedNetworkImage(
+                              height: 200,
+                              width: 200.0,
+                              fit: BoxFit.cover,
+                              imageUrl: ApiConstance.imageURL(
+                                  recommendation.backdropPath!),
+                              placeholder: (context, url) => Shimmer.fromColors(
+                                baseColor: Colors.grey[850]!,
+                                highlightColor: Colors.grey[800]!,
+                                child: Container(
+                                  height: 170.0,
+                                  width: 120.0,
+                                  decoration: BoxDecoration(
+                                    color: Colors.black,
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
                                 ),
                               ),
+                              errorWidget: (context, url, error) =>
+                                  const Icon(Icons.error),
                             ),
-                            errorWidget: (context, url, error) =>
-                                const Icon(Icons.error),
                           ),
                         ),
                       ),
@@ -449,29 +470,36 @@ class TvsDetailsContent extends StatelessWidget {
                               print(similar.id);
                             }
                           },
-                          child: ClipRRect(
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(8.0)),
-                            child: CachedNetworkImage(
-                              height: 200,
-                              width: 200,
-                              fit: BoxFit.cover,
-                              imageUrl:
-                                  ApiConstance.imageURL(similar.backdropPath!),
-                              placeholder: (context, url) => Shimmer.fromColors(
-                                baseColor: Colors.grey[850]!,
-                                highlightColor: Colors.grey[800]!,
-                                child: Container(
-                                  height: 170.0,
-                                  width: 120.0,
-                                  decoration: BoxDecoration(
-                                    color: Colors.black,
-                                    borderRadius: BorderRadius.circular(8.0),
+                          child: Container(
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                border: Border.all(color: Colors.white)),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(8),
+                              child: CachedNetworkImage(
+                                height: 200,
+                                width: 200,
+                                fit: BoxFit.fill,
+                                imageUrl: ApiConstance.imageURL(
+                                    similar.backdropPath!),
+                                placeholder: (context, url) =>
+                                    Shimmer.fromColors(
+                                  baseColor: Colors.grey[850]!,
+                                  highlightColor: Colors.grey[800]!,
+                                  child: Container(
+                                    height: 170.0,
+                                    width: 120.0,
+                                    decoration: BoxDecoration(
+                                      color: Colors.black,
+                                      borderRadius: BorderRadius.circular(8.0),
+                                    ),
                                   ),
                                 ),
+                                errorWidget: (context, url, error) => Icon(
+                                  Icons.error,
+                                  size: 30.sp,
+                                ),
                               ),
-                              errorWidget: (context, url, error) =>
-                                  const Icon(Icons.error),
                             ),
                           ),
                         ),

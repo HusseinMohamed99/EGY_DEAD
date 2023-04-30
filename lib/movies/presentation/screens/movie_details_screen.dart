@@ -71,17 +71,24 @@ class MovieDetailContent extends StatelessWidget {
                             children: [
                               Row(
                                 children: [
-                                  ClipRRect(
-                                    borderRadius: BorderRadius.circular(16),
-                                    child: CachedNetworkImage(
-                                      height:
-                                          MediaQuery.of(context).size.height /
-                                              4,
-                                      width: MediaQuery.of(context).size.width /
-                                          2.5,
-                                      imageUrl: ApiConstance.imageURL(
-                                          state.moviesDetails!.posterPath),
-                                      fit: BoxFit.cover,
+                                  Container(
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(10),
+                                        border:
+                                            Border.all(color: Colors.white)),
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(16),
+                                      child: CachedNetworkImage(
+                                        height:
+                                            MediaQuery.of(context).size.height /
+                                                4,
+                                        width:
+                                            MediaQuery.of(context).size.width /
+                                                2.5,
+                                        imageUrl: ApiConstance.imageURL(
+                                            state.moviesDetails!.posterPath),
+                                        fit: BoxFit.cover,
+                                      ),
                                     ),
                                   ),
                                   const SizedBox(width: 16.0),
@@ -313,29 +320,34 @@ class MovieDetailContent extends StatelessWidget {
                             print(recommendation.id);
                           }
                         },
-                        child: ClipRRect(
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(8.0)),
-                          child: CachedNetworkImage(
-                            height: double.infinity,
-                            width: 120.0,
-                            fit: BoxFit.cover,
-                            imageUrl: ApiConstance.imageURL(
-                                recommendation.backdropPath!),
-                            placeholder: (context, url) => Shimmer.fromColors(
-                              baseColor: Colors.grey[850]!,
-                              highlightColor: Colors.grey[800]!,
-                              child: Container(
-                                height: 170.0,
-                                width: 120.0,
-                                decoration: BoxDecoration(
-                                  color: Colors.black,
-                                  borderRadius: BorderRadius.circular(8.0),
+                        child: Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              border: Border.all(color: Colors.white)),
+                          child: ClipRRect(
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(8.0)),
+                            child: CachedNetworkImage(
+                              height: double.infinity,
+                              width: 120.0,
+                              fit: BoxFit.cover,
+                              imageUrl: ApiConstance.imageURL(
+                                  recommendation.backdropPath!),
+                              placeholder: (context, url) => Shimmer.fromColors(
+                                baseColor: Colors.grey[850]!,
+                                highlightColor: Colors.grey[800]!,
+                                child: Container(
+                                  height: 170.0,
+                                  width: 120.0,
+                                  decoration: BoxDecoration(
+                                    color: Colors.black,
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
                                 ),
                               ),
+                              errorWidget: (context, url, error) =>
+                                  const Icon(Icons.error),
                             ),
-                            errorWidget: (context, url, error) =>
-                                const Icon(Icons.error),
                           ),
                         ),
                       ),
@@ -388,29 +400,34 @@ class MovieDetailContent extends StatelessWidget {
                             print(similar.id);
                           }
                         },
-                        child: ClipRRect(
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(8.0)),
-                          child: CachedNetworkImage(
-                            height: double.infinity,
-                            width: 120.0,
-                            fit: BoxFit.cover,
-                            imageUrl:
-                                ApiConstance.imageURL(similar.backdropPath!),
-                            placeholder: (context, url) => Shimmer.fromColors(
-                              baseColor: Colors.grey[850]!,
-                              highlightColor: Colors.grey[800]!,
-                              child: Container(
-                                height: 170.0,
-                                width: 120.0,
-                                decoration: BoxDecoration(
-                                  color: Colors.black,
-                                  borderRadius: BorderRadius.circular(8.0),
+                        child: Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              border: Border.all(color: Colors.white)),
+                          child: ClipRRect(
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(8.0)),
+                            child: CachedNetworkImage(
+                              height: double.infinity,
+                              width: 120.0,
+                              fit: BoxFit.cover,
+                              imageUrl:
+                                  ApiConstance.imageURL(similar.backdropPath!),
+                              placeholder: (context, url) => Shimmer.fromColors(
+                                baseColor: Colors.grey[850]!,
+                                highlightColor: Colors.grey[800]!,
+                                child: Container(
+                                  height: 170.0,
+                                  width: 120.0,
+                                  decoration: BoxDecoration(
+                                    color: Colors.black,
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
                                 ),
                               ),
+                              errorWidget: (context, url, error) =>
+                                  const Icon(Icons.error),
                             ),
-                            errorWidget: (context, url, error) =>
-                                const Icon(Icons.error),
                           ),
                         ),
                       ),
