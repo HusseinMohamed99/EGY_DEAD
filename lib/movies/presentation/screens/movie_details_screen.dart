@@ -65,127 +65,137 @@ class MovieDetailContent extends StatelessWidget {
                       FadeInUp(
                         from: 20,
                         duration: const Duration(milliseconds: 500),
-                        child: Column(
-                          children: [
-                            Row(
-                              children: [
-                                CachedNetworkImage(
-                                  height:
-                                      MediaQuery.of(context).size.height / 4,
-                                  width:
-                                      MediaQuery.of(context).size.width / 2.5,
-                                  imageUrl: ApiConstance.imageURL(
-                                      state.moviesDetails!.posterPath),
-                                  fit: BoxFit.cover,
-                                ),
-                                const SizedBox(width: 16.0),
-                                Expanded(
-                                  child: Column(
-                                    children: [
-                                      Text(state.moviesDetails!.title,
-                                          style: GoogleFonts.poppins(
-                                            fontSize: 23,
-                                            fontWeight: FontWeight.w700,
-                                            letterSpacing: 1.2,
-                                          )),
-                                      const SizedBox(height: 8.0),
-                                      Row(
-                                        children: [
-                                          Container(
-                                            padding: const EdgeInsets.symmetric(
-                                              vertical: 2.0,
-                                              horizontal: 8.0,
-                                            ),
-                                            decoration: BoxDecoration(
-                                              color: Colors.grey[800],
-                                              borderRadius:
-                                                  BorderRadius.circular(4.0),
-                                            ),
-                                            child: Text(
-                                              state.moviesDetails!.releaseDate
-                                                  .split('-')[0],
-                                              style: const TextStyle(
-                                                fontSize: 16.0,
-                                                fontWeight: FontWeight.w500,
+                        child: Padding(
+                          padding: const EdgeInsets.all(12.0),
+                          child: Column(
+                            children: [
+                              Row(
+                                children: [
+                                  ClipRRect(
+                                    borderRadius: BorderRadius.circular(16),
+                                    child: CachedNetworkImage(
+                                      height:
+                                          MediaQuery.of(context).size.height /
+                                              4,
+                                      width: MediaQuery.of(context).size.width /
+                                          2.5,
+                                      imageUrl: ApiConstance.imageURL(
+                                          state.moviesDetails!.posterPath),
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                  const SizedBox(width: 16.0),
+                                  Expanded(
+                                    child: Column(
+                                      children: [
+                                        Text(state.moviesDetails!.title,
+                                            style: GoogleFonts.poppins(
+                                              fontSize: 23,
+                                              fontWeight: FontWeight.w700,
+                                              letterSpacing: 1.2,
+                                            )),
+                                        const SizedBox(height: 8.0),
+                                        Row(
+                                          children: [
+                                            Container(
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                vertical: 2.0,
+                                                horizontal: 8.0,
                                               ),
-                                            ),
-                                          ),
-                                          const SizedBox(width: 16.0),
-                                          Row(
-                                            children: [
-                                              const Icon(
-                                                Icons.star,
-                                                color: Colors.amber,
-                                                size: 20.0,
+                                              decoration: BoxDecoration(
+                                                color: Colors.grey[800],
+                                                borderRadius:
+                                                    BorderRadius.circular(4.0),
                                               ),
-                                              const SizedBox(width: 4.0),
-                                              Text(
-                                                (state.moviesDetails!
-                                                            .voteAverage /
-                                                        2)
-                                                    .toStringAsFixed(1),
+                                              child: Text(
+                                                state.moviesDetails!.releaseDate
+                                                    .split('-')[0],
                                                 style: const TextStyle(
+                                                  fontSize: 16.0,
+                                                  fontWeight: FontWeight.w500,
+                                                ),
+                                              ),
+                                            ),
+                                            const SizedBox(width: 16.0),
+                                            Row(
+                                              children: [
+                                                const Icon(
+                                                  Icons.star,
+                                                  color: Colors.amber,
+                                                  size: 20.0,
+                                                ),
+                                                const SizedBox(width: 4.0),
+                                                Text(
+                                                  (state.moviesDetails!
+                                                              .voteAverage /
+                                                          2)
+                                                      .toStringAsFixed(1),
+                                                  style: const TextStyle(
+                                                    fontSize: 16.0,
+                                                    fontWeight: FontWeight.w500,
+                                                    letterSpacing: 1.2,
+                                                  ),
+                                                ),
+                                                const SizedBox(width: 4.0),
+                                                Text(
+                                                  '(${state.moviesDetails!.voteAverage})',
+                                                  style: const TextStyle(
+                                                    fontSize: 1.0,
+                                                    fontWeight: FontWeight.w500,
+                                                    letterSpacing: 1.2,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                            const SizedBox(width: 16.0),
+                                            Expanded(
+                                              child: Text(
+                                                _showDuration(state
+                                                    .moviesDetails!.runtime),
+                                                style: const TextStyle(
+                                                  color: Colors.white70,
                                                   fontSize: 16.0,
                                                   fontWeight: FontWeight.w500,
                                                   letterSpacing: 1.2,
                                                 ),
                                               ),
-                                              const SizedBox(width: 4.0),
-                                              Text(
-                                                '(${state.moviesDetails!.voteAverage})',
-                                                style: const TextStyle(
-                                                  fontSize: 1.0,
-                                                  fontWeight: FontWeight.w500,
-                                                  letterSpacing: 1.2,
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                          const SizedBox(width: 16.0),
-                                          Text(
-                                            _showDuration(
-                                                state.moviesDetails!.runtime),
-                                            style: const TextStyle(
-                                              color: Colors.white70,
-                                              fontSize: 16.0,
-                                              fontWeight: FontWeight.w500,
-                                              letterSpacing: 1.2,
                                             ),
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    state.moviesDetails!.overview,
-                                    style: const TextStyle(
-                                      fontSize: 14.0,
-                                      fontWeight: FontWeight.w400,
-                                      letterSpacing: 1.2,
-                                    ),
-                                  ),
-                                  const SizedBox(height: 8.0),
-                                  Text(
-                                    'Genres: ${_showGenres(state.moviesDetails!.genres)}',
-                                    style: const TextStyle(
-                                      color: Colors.white70,
-                                      fontSize: 12.0,
-                                      fontWeight: FontWeight.w500,
-                                      letterSpacing: 1.2,
+                                          ],
+                                        ),
+                                      ],
                                     ),
                                   ),
                                 ],
                               ),
-                            ),
-                          ],
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      state.moviesDetails!.overview,
+                                      style: const TextStyle(
+                                        fontSize: 14.0,
+                                        fontWeight: FontWeight.w400,
+                                        letterSpacing: 1.2,
+                                      ),
+                                    ),
+                                    const SizedBox(height: 8.0),
+                                    Text(
+                                      'Genres: ${_showGenres(state.moviesDetails!.genres)}',
+                                      style: const TextStyle(
+                                        color: Colors.white70,
+                                        fontSize: 12.0,
+                                        fontWeight: FontWeight.w500,
+                                        letterSpacing: 1.2,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                       FadeInUp(
