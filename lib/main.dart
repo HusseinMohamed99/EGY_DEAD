@@ -7,7 +7,6 @@ import 'package:movies_app/presentation_main_app/screen/main_screen.dart';
 
 void main() async {
   ScreenUtil.ensureScreenSize();
-
   ServiceLocator().init();
   runApp(const MyApp());
 }
@@ -18,12 +17,13 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return Builder(builder: (context) {
-      SystemChrome.setPreferredOrientations([
-        DeviceOrientation.portraitUp,
-        DeviceOrientation.portraitDown,
-      ]);
-      return ScreenUtilInit(
+    return Builder(
+      builder: (context) {
+        SystemChrome.setPreferredOrientations([
+          DeviceOrientation.portraitUp,
+          DeviceOrientation.portraitDown,
+        ]);
+        return ScreenUtilInit(
           designSize: const Size(360, 690),
           minTextAdapt: true,
           splitScreenMode: true,
@@ -35,7 +35,9 @@ class MyApp extends StatelessWidget {
                   .copyWith(scaffoldBackgroundColor: Colors.grey.shade900),
               home: const MainScreen(),
             );
-          });
-    });
+          },
+        );
+      },
+    );
   }
 }
