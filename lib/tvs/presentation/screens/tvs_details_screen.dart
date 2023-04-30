@@ -49,7 +49,7 @@ class TvsDetailsContent extends StatelessWidget {
                 height: 400, child: Center(child: CircularProgressIndicator()));
           case RequestState.loaded:
             return DefaultTabController(
-              length: 2,
+              length: 3,
               initialIndex: 0,
               child: Scaffold(
                 body: SingleChildScrollView(
@@ -200,21 +200,24 @@ class TvsDetailsContent extends StatelessWidget {
                                                   ],
                                                 ),
                                                 const SizedBox(width: 16.0),
-                                                state.tvsDetails!.runtime
-                                                        .isNotEmpty
-                                                    ? Text(
-                                                        _showDuration(state
-                                                            .tvsDetails!
-                                                            .runtime),
-                                                        style: const TextStyle(
-                                                          color: Colors.white70,
-                                                          fontSize: 16.0,
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                          letterSpacing: 1.2,
-                                                        ),
-                                                      )
-                                                    : const Text(''),
+                                                Expanded(
+                                                  child: Text(
+                                                    _showDuration(
+                                                      state.tvsDetails!.runtime
+                                                              .isNotEmpty
+                                                          ? state.tvsDetails!
+                                                              .runtime[0]
+                                                          : 0,
+                                                    ),
+                                                    style: const TextStyle(
+                                                      color: Colors.white70,
+                                                      fontSize: 16.0,
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                      letterSpacing: 1.2,
+                                                    ),
+                                                  ),
+                                                )
                                               ],
                                             ),
                                           ],
@@ -266,15 +269,11 @@ class TvsDetailsContent extends StatelessWidget {
                                 child: FadeInUp(
                                   from: 20,
                                   duration: const Duration(milliseconds: 500),
-                                  child: const Padding(
-                                    padding: EdgeInsets.all(12.0),
-                                    child: Text(
-                                      AppString.recommendations,
-                                      style: TextStyle(
-                                        fontSize: 16.0,
-                                        fontWeight: FontWeight.w500,
-                                        letterSpacing: 1.2,
-                                      ),
+                                  child: const Text(
+                                    AppString.episodes,
+                                    style: TextStyle(
+                                      fontSize: 13.0,
+                                      fontWeight: FontWeight.w600,
                                     ),
                                   ),
                                 ),
@@ -283,15 +282,24 @@ class TvsDetailsContent extends StatelessWidget {
                                 child: FadeInUp(
                                   from: 20,
                                   duration: const Duration(milliseconds: 500),
-                                  child: const Padding(
-                                    padding: EdgeInsets.all(12.0),
-                                    child: Text(
-                                      AppString.moreLikeThis,
-                                      style: TextStyle(
-                                        fontSize: 16.0,
-                                        fontWeight: FontWeight.w500,
-                                        letterSpacing: 1.2,
-                                      ),
+                                  child: const Text(
+                                    AppString.recommendations,
+                                    style: TextStyle(
+                                      fontSize: 13.0,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Tab(
+                                child: FadeInUp(
+                                  from: 20,
+                                  duration: const Duration(milliseconds: 500),
+                                  child: const Text(
+                                    AppString.moreLikeThis,
+                                    style: TextStyle(
+                                      fontSize: 13.0,
+                                      fontWeight: FontWeight.w600,
                                     ),
                                   ),
                                 ),
@@ -303,6 +311,7 @@ class TvsDetailsContent extends StatelessWidget {
                             height: 600,
                             child: TabBarView(
                               children: [
+                                _showSeasons(),
                                 _showRecommendations(),
                                 _showSimilar(),
                               ],
@@ -346,9 +355,9 @@ class TvsDetailsContent extends StatelessWidget {
     return result.substring(0, result.length - 2);
   }
 
-  String _showDuration(List<int> runtime) {
-    final int hours = runtime[0] ~/ 60;
-    final int minutes = runtime[0] % 60;
+  String _showDuration(int runtime) {
+    final int hours = runtime ~/ 60;
+    final int minutes = runtime % 60;
 
     if (hours > 0) {
       return '${hours}h ${minutes}m';
@@ -514,6 +523,82 @@ class TvsDetailsContent extends StatelessWidget {
                 height: 400,
                 child: Center(child: Text(state.tvsSimilarMessage)));
         }
+      },
+    );
+  }
+
+  Widget _showSeasons() {
+    return BlocBuilder<TvsDetailsBloc, TvsDetailsStates>(
+      builder: (context, state) {
+        return ListView.separated(
+          padding: const EdgeInsets.all(16),
+          itemCount: state.tvsDetails!.season.length,
+          itemBuilder: (context, index) {
+            final season = state.tvsDetails!.season[index];
+            return InkWell(
+              onTap: () {
+                // TODO: Navigator Episodes Details:
+                if (kDebugMode) {
+                  print(season.id);
+                }
+              },
+              child: Container(
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(color: Colors.white)),
+                child: Row(
+                  children: [
+                    Container(
+                      margin: const EdgeInsets.only(right: 100),
+                      decoration: BoxDecoration(
+                          borderRadius: const BorderRadius.only(
+                            topLeft: Radius.circular(10),
+                            bottomLeft: Radius.circular(10),
+                          ),
+                          border: Border.all(color: Colors.white)),
+                      child: ClipRRect(
+                        borderRadius: const BorderRadius.only(
+                          topLeft: Radius.circular(7),
+                          bottomLeft: Radius.circular(7),
+                        ),
+                        child: CachedNetworkImage(
+                          height: 100,
+                          width: 100,
+                          fit: BoxFit.fill,
+                          imageUrl: ApiConstance.imageURL(season.posterPath),
+                          placeholder: (context, url) => Shimmer.fromColors(
+                            baseColor: Colors.grey[850]!,
+                            highlightColor: Colors.grey[800]!,
+                            child: Container(
+                              height: 100,
+                              width: 100,
+                              decoration: BoxDecoration(
+                                color: Colors.black,
+                                borderRadius: BorderRadius.circular(8.0),
+                              ),
+                            ),
+                          ),
+                          errorWidget: (context, url, error) => Icon(
+                            Icons.error,
+                            size: 30.sp,
+                          ),
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: Text(
+                        season.name,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            );
+          },
+          separatorBuilder: (context, index) => const SizedBox(
+            height: 20,
+          ),
+        );
       },
     );
   }

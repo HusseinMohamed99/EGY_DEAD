@@ -43,4 +43,7 @@ class ApiConstance {
 
   static String tvSimilarPath(int tvID) =>
       "$baseUrl/tv/$tvID/similar?api_key=$appKey";
+
+  static String tvSeasonPath(int tvID, int numberOfSeason) =>
+      "$baseUrl/tv/$tvID/season/$numberOfSeason?api_key=$appKey";
 }

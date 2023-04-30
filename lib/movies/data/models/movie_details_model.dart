@@ -20,9 +20,9 @@ class MovieDetailsModel extends MovieDetails {
       id: json["id"],
       title: json["title"],
       voteAverage: json["vote_average"].toDouble(),
-      backdropPath: json["backdrop_path"],
+      backdropPath: json["backdrop_path"] ?? '',
       releaseDate: json["release_date"],
-      posterPath: json["poster_path"],
+      posterPath: json["poster_path"] ?? '',
       adult: json['adult'],
       genres: List<GenresModel>.from(
           json["genres"].map((e) => GenresModel.fromJson(e))),

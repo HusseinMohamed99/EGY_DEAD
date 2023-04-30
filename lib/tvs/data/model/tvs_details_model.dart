@@ -1,4 +1,5 @@
 import 'package:movies_app/tvs/data/model/genres_model.dart';
+import 'package:movies_app/tvs/data/model/season_model.dart';
 import 'package:movies_app/tvs/domain/entities/tv_details.dart';
 
 class TvsDetailsModel extends TvDetails {
@@ -15,6 +16,7 @@ class TvsDetailsModel extends TvDetails {
     required super.genres,
     required super.runtime,
     required super.numberOfSeason,
+    required super.season,
   });
 
   factory TvsDetailsModel.fromJson(Map<String, dynamic> json) {
@@ -23,15 +25,17 @@ class TvsDetailsModel extends TvDetails {
       id: json["id"],
       name: json["name"],
       voteAverage: json["vote_average"].toDouble(),
-      backdropPath: json["backdrop_path"],
+      backdropPath: json["backdrop_path"] ?? '',
       firstDate: json["first_air_date"],
       lastDate: json["last_air_date"],
-      posterPath: json["poster_path"],
+      posterPath: json["poster_path"] ?? '',
       adult: json['adult'],
       numberOfSeason: json['number_of_seasons'],
       genres: List<GenresModel>.from(
           json["genres"].map((e) => GenresModel.fromJson(e))),
-      runtime: List<int>.from(json["episode_run_time"].map((e) => e)),
+      season: List<SeasonModel>.from(
+          json["seasons"].map((e) => SeasonModel.fromJson(e))),
+      runtime: json["episode_run_time"],
     );
   }
 }

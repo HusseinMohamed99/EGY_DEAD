@@ -21,7 +21,7 @@ class TvModel extends Tvs {
       genreIds: List<int>.from(json["genre_ids"].map((e) => e)),
       backdropPath: json["backdrop_path"] ?? '',
       firstAirDate: json["first_air_date"],
-      posterPath: json["poster_path"],
+      posterPath: json["poster_path"] ?? '',
     );
   }
 }
