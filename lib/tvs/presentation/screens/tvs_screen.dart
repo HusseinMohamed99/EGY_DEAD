@@ -1,6 +1,6 @@
-import 'package:movies_app/core/services/services_locator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movies_app/core/services/services_locator.dart';
 import 'package:movies_app/tvs/presentation/controller/tvs_bloc.dart';
 import 'package:movies_app/tvs/presentation/controller/tvs_events.dart';
 import 'package:movies_app/tvs/presentation/widgets/airing_today_widget.dart';
@@ -21,12 +21,12 @@ class TvsScreen extends StatelessWidget {
           ..add(GetPopularTvsEvent())
           ..add(GetTopRatedTvsEvent());
       },
-      child: Scaffold(
+      child: const Scaffold(
         body: SingleChildScrollView(
-          key: const Key('movieScrollView'),
+          key: Key('movieScrollView'),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
+            children: [
               OnTheAirWidget(),
               AiringTodayWidget(),
               PopularTvsWidget(),

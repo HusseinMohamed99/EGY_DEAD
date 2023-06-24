@@ -26,6 +26,8 @@ class MainScreen extends StatelessWidget {
                     icon: Icons.movie, label: "Movies".toUpperCase()),
                 bottomNavigationBarItem(
                     icon: Icons.tv, label: "Tvs".toUpperCase()),
+                bottomNavigationBarItem(
+                    icon: Icons.settings, label: "settings".toUpperCase()),
               ],
             ),
             body: state.screens[state.currentIndex],
