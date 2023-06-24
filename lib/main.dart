@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
               debugShowCheckedModeBanner: false,
               title: AppString.appTitle,
               theme: ThemeData.dark()
-                  .copyWith(scaffoldBackgroundColor: Colors.grey.shade900),
+                  .copyWith(scaffoldBackgroundColor: Colors.black),
               home: const MainScreen(),
             );
           },
