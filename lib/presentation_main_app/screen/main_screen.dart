@@ -22,8 +22,10 @@ class MainScreen extends StatelessWidget {
               showSelectedLabels: true,
               showUnselectedLabels: false,
               items: [
-                bottomNavigationBarItem(icon: Icons.movie, label: "Movies"),
-                bottomNavigationBarItem(icon: Icons.tv, label: "Tvs"),
+                bottomNavigationBarItem(
+                    icon: Icons.movie, label: "Movies".toUpperCase()),
+                bottomNavigationBarItem(
+                    icon: Icons.tv, label: "Tvs".toUpperCase()),
               ],
             ),
             body: state.screens[state.currentIndex],
