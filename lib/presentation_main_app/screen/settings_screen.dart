@@ -1,5 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:movies_app/core/components/size_box.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
@@ -28,6 +31,49 @@ class SettingsScreen extends StatelessWidget {
           Text(
             'Hussein Mohamed'.toUpperCase(),
             style: const TextStyle(fontSize: 16.0, color: Colors.white),
+          ),
+          Card(
+            clipBehavior: Clip.antiAlias,
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15).r),
+            elevation: 10,
+            child: InkWell(
+              onTap: () {},
+              child: Container(
+                padding: const EdgeInsets.all(10).r,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    CircleAvatar(
+                      radius: 22.r,
+                      backgroundColor:
+                          const Color.fromRGBO(105, 155, 247, 0.15),
+                      child: Icon(
+                        Icons.edit_outlined,
+                        size: 26.sp,
+                        color: const Color(0xff699BF7),
+                      ),
+                    ),
+                    Space(
+                      width: 35.w,
+                      height: 0.h,
+                    ),
+                    Text(
+                      'Custom Profile',
+                      style: GoogleFonts.roboto(
+                        fontWeight: FontWeight.w400,
+                        fontSize: 18.sp,
+                        color: Colors.black54,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          Space(
+            width: 0.w,
+            height: 20.h,
           ),
         ],
       ),
