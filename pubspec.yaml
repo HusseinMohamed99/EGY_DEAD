@@ -28,6 +28,7 @@ dependencies:
   google_fonts: ^4.0.3
   shimmer: ^3.0.0
   flutter_screenutil: ^5.7.0
+  wakelock: ^0.6.2
 
 dev_dependencies:
   flutter_test:
