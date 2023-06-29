@@ -1,5 +1,7 @@
-enum  RequestState{
-  loading ,
+enum RequestState {
+  loading,
   loaded,
-  error
+  error,
 }
+
+enum GetAllRequestStatus { loading, loaded, error, fetchMoreError }

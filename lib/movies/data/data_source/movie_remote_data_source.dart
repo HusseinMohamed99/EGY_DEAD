@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:movies_app/core/error/exceptions.dart';
 import 'package:movies_app/core/network/api_constance.dart';
 import 'package:movies_app/core/network/error_message_model.dart';
@@ -5,12 +6,17 @@ import 'package:movies_app/movies/data/models/movie_details_model.dart';
 import 'package:movies_app/movies/data/models/movie_recommendation.dart';
 import 'package:movies_app/movies/data/models/movie_similar.dart';
 import 'package:movies_app/movies/data/models/movies_model.dart';
-import 'package:dio/dio.dart';
 import 'package:movies_app/movies/domain/usecases/get_movie_details_usecases.dart';
 import 'package:movies_app/movies/domain/usecases/get_movies_recommendation_usecases.dart';
 import 'package:movies_app/movies/domain/usecases/get_movies_similar_usecases.dart';
 
 abstract class BaseMovieRemoteDataSource {
+  Future<List<MovieModel>> getAllPopularMovies(int page);
+
+  Future<List<MovieModel>> getAllTopRatedMovies(int page);
+
+  Future<List<List<MovieModel>>> getMovies();
+
   Future<List<MovieModel>> getNowPlayingMovies();
 
   Future<List<MovieModel>> getUpcomingMovies();
@@ -126,6 +132,47 @@ class MovieRemoteDataSource extends BaseMovieRemoteDataSource {
           (response.data["results"] as List).map(
         (e) => MoviesSimilarModel.fromJson(e),
       ));
+    } else {
+      throw ServerException(
+        errorMessageModel: ErrorMessageModel.fromJson(response.data),
+      );
+    }
+  }
+
+  @override
+  Future<List<List<MovieModel>>> getMovies() async {
+    final response = Future.wait(
+      [
+        getNowPlayingMovies(),
+        getPopularMovies(),
+        getTopRatedMovies(),
+      ],
+      eagerError: true,
+    );
+    return response;
+  }
+
+  @override
+  Future<List<MovieModel>> getAllPopularMovies(int page) async {
+    final response =
+        await Dio().get(ApiConstance.getAllPopularMoviesPath(page));
+    if (response.statusCode == 200) {
+      return List<MovieModel>.from((response.data['results'] as List)
+          .map((e) => MovieModel.fromJson(e)));
+    } else {
+      throw ServerException(
+        errorMessageModel: ErrorMessageModel.fromJson(response.data),
+      );
+    }
+  }
+
+  @override
+  Future<List<MovieModel>> getAllTopRatedMovies(int page) async {
+    final response =
+        await Dio().get(ApiConstance.getAllTopRatedMoviesPath(page));
+    if (response.statusCode == 200) {
+      return List<MovieModel>.from((response.data['results'] as List)
+          .map((e) => MovieModel.fromJson(e)));
     } else {
       throw ServerException(
         errorMessageModel: ErrorMessageModel.fromJson(response.data),

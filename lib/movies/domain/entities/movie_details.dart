@@ -1,5 +1,7 @@
 import 'package:equatable/equatable.dart';
+import 'package:movies_app/movies/domain/entities/cast.dart';
 import 'package:movies_app/movies/domain/entities/genres.dart';
+import 'package:movies_app/movies/domain/entities/review.dart';
 
 class MovieDetails extends Equatable {
   final int id;
@@ -12,6 +14,9 @@ class MovieDetails extends Equatable {
   final int runtime;
   final List<Genres> genres;
   final bool adult;
+  final String trailerUrl;
+  final List<Cast>? cast;
+  final List<Review>? reviews;
 
   const MovieDetails({
     required this.overview,
@@ -24,6 +29,9 @@ class MovieDetails extends Equatable {
     required this.posterPath,
     required this.adult,
     required this.runtime,
+    required this.trailerUrl,
+    this.cast,
+    this.reviews,
   });
 
   @override
@@ -37,5 +45,6 @@ class MovieDetails extends Equatable {
         adult,
         releaseDate,
         runtime,
+        trailerUrl,
       ];
 }

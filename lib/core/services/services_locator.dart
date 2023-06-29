@@ -1,6 +1,9 @@
+import 'package:get_it/get_it.dart';
 import 'package:movies_app/movies/data/data_source/movie_remote_data_source.dart';
 import 'package:movies_app/movies/data/repository/movies_repository.dart';
 import 'package:movies_app/movies/domain/repository/base_movies_repository.dart';
+import 'package:movies_app/movies/domain/usecases/get_all_popular_movies_usecase.dart';
+import 'package:movies_app/movies/domain/usecases/get_all_top_rated_movies_usecase.dart';
 import 'package:movies_app/movies/domain/usecases/get_movie_details_usecases.dart';
 import 'package:movies_app/movies/domain/usecases/get_movies_recommendation_usecases.dart';
 import 'package:movies_app/movies/domain/usecases/get_movies_similar_usecases.dart';
@@ -9,7 +12,6 @@ import 'package:movies_app/movies/domain/usecases/get_popular_movies_usecases.da
 import 'package:movies_app/movies/domain/usecases/get_top_rated_movies_usecases.dart';
 import 'package:movies_app/movies/domain/usecases/get_up_coming_movies_usecases.dart';
 import 'package:movies_app/movies/presentation/controller/movies_bloc.dart';
-import 'package:get_it/get_it.dart';
 import 'package:movies_app/movies/presentation/controller/movies_details_bloc.dart';
 import 'package:movies_app/presentation_main_app/controller/main_bloc.dart';
 import 'package:movies_app/tvs/data/datasource/tv_remote_data_source.dart';
@@ -69,30 +71,32 @@ class ServiceLocator {
 
     /// Movies Use Cases
     sl.registerLazySingleton(
-            () => GetNowPlayingMoviesUseCase(baseMovieRepository: sl()));
+        () => GetNowPlayingMoviesUseCase(baseMovieRepository: sl()));
 
     sl.registerLazySingleton(
-            () => GetUpcomingMoviesUseCase(baseMovieRepository: sl()));
+        () => GetUpcomingMoviesUseCase(baseMovieRepository: sl()));
 
     sl.registerLazySingleton(
-            () => GetPopularMoviesUseCase(baseMovieRepository: sl()));
+        () => GetPopularMoviesUseCase(baseMovieRepository: sl()));
     sl.registerLazySingleton(
-            () => GetTopRatedMoviesUseCase(baseMovieRepository: sl()));
+        () => GetTopRatedMoviesUseCase(baseMovieRepository: sl()));
 
     sl.registerLazySingleton(
-            () => GetMovieDetailsUseCase(baseMovieRepository: sl()));
+        () => GetMovieDetailsUseCase(baseMovieRepository: sl()));
 
     sl.registerLazySingleton(
-            () => GetMovieRecommendationUseCase(baseMovieRepository: sl()));
+        () => GetMovieRecommendationUseCase(baseMovieRepository: sl()));
     sl.registerLazySingleton(
-            () => GetMovieSimilarUseCase(baseMovieRepository: sl()));
+        () => GetMovieSimilarUseCase(baseMovieRepository: sl()));
+    sl.registerLazySingleton(() => GetAllPopularMoviesUseCase(sl()));
+    sl.registerLazySingleton(() => GetAllTopRatedMoviesUseCase(sl()));
 
     /// Movies Repository
     sl.registerLazySingleton<BaseMovieRepository>(
-            () => MoviesRepository(baseMovieRemoteDataSource: sl()));
+        () => MoviesRepository(baseMovieRemoteDataSource: sl()));
 
     /// Movies Data Source
     sl.registerLazySingleton<BaseMovieRemoteDataSource>(
-            () => MovieRemoteDataSource());
+        () => MovieRemoteDataSource());
   }
 }
