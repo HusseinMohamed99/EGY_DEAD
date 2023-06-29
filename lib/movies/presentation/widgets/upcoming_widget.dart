@@ -1,14 +1,14 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:movies_app/core/global/app_string/app_string.dart';
 import 'package:movies_app/core/network/api_constance.dart';
 import 'package:movies_app/core/utils/enum.dart';
 import 'package:movies_app/movies/presentation/controller/movies_bloc.dart';
 import 'package:movies_app/movies/presentation/controller/movies_states.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies_app/movies/presentation/screens/movie_details_screen.dart';
 import 'package:movies_app/movies/presentation/screens/see_more.dart';
 import 'package:shimmer/shimmer.dart';
@@ -61,10 +61,10 @@ class UpcomingWidget extends StatelessWidget {
                             ),
                           );
                         },
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
+                        child: const Padding(
+                          padding: EdgeInsets.all(8.0),
                           child: Row(
-                            children: const [
+                            children: [
                               Text(
                                 AppString.seeMore,
                                 style: TextStyle(color: Colors.white),

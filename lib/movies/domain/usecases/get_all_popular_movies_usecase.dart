@@ -10,7 +10,7 @@ class GetAllPopularMoviesUseCase extends BaseUseCase<List<Movies>, int> {
   GetAllPopularMoviesUseCase(this.baseMovieRepository);
 
   @override
-  Future<Either<Failure, List<Movies>>> call(int p) async {
-    return await baseMovieRepository.getAllPopularMovies(p);
+  Future<Either<Failure, List<Movies>>> call(int parameters) async {
+    return await baseMovieRepository.getAllPopularMovies(parameters);
   }
 }

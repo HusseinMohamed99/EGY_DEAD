@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:movies_app/movies/domain/entities/movie.dart';
 import 'package:movies_app/movies/presentation/screens/movie_details_screen.dart';
@@ -15,17 +16,17 @@ class VerticalListViewCard extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
     return GestureDetector(
       onTap: () {
-        // Navigator.push(
-        //   context,
-        //   MaterialPageRoute(
-        //     builder: (BuildContext context) {
-        //       return SeeMoreScreen(
-        //         movieList: state.popularMovies,
-        //         title: AppString.popular,
-        //       );
-        //     },
-        //   ),
-        // );
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => MovieDetailsScreen(
+              movieID: movies.id,
+            ),
+          ),
+        );
+        if (kDebugMode) {
+          print(movies.id);
+        }
       },
       child: Container(
         height: 175,

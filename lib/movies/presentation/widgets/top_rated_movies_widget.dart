@@ -61,10 +61,10 @@ class TopRatedMoviesWidget extends StatelessWidget {
                                 title: AppString.topRated);
                           }));
                         },
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
+                        child: const Padding(
+                          padding: EdgeInsets.all(8.0),
                           child: Row(
-                            children: const [
+                            children: [
                               Text(
                                 AppString.seeMore,
                                 style: TextStyle(color: Colors.white),

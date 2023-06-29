@@ -97,7 +97,6 @@ class MoviesRepository extends BaseMovieRepository {
     }
   }
 
-  @override
   Future<Either<Failure, List<List<Movies>>>> getMovies() async {
     try {
       final result = await baseMovieRemoteDataSource.getMovies();
