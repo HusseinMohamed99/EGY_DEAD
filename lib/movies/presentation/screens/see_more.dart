@@ -76,7 +76,7 @@ class SeeMoreScreen extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(movieList[index].title,
+                          Text(movie.title,
                               overflow: TextOverflow.ellipsis,
                               maxLines: 1,
                               textAlign: TextAlign.start,
@@ -100,7 +100,7 @@ class SeeMoreScreen extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(4.0),
                                 ),
                                 child: Text(
-                                  movieList[index].releaseDate.split('-')[0],
+                                  movie.releaseDate.split('-')[0],
                                   style: const TextStyle(
                                     fontSize: 14.0,
                                     fontWeight: FontWeight.w500,
@@ -112,31 +112,20 @@ class SeeMoreScreen extends StatelessWidget {
                                 children: [
                                   const Icon(
                                     Icons.star,
-                                    color: Colors.amber,
+                                    color: Colors.yellowAccent,
                                     size: 20.0,
                                   ),
                                   const SizedBox(width: 4.0),
                                   Text(
-                                    (movieList[index].voteAverage)
-                                        .toStringAsFixed(1),
+                                    (movie.voteAverage).toStringAsFixed(1),
                                     style: const TextStyle(
                                       fontSize: 16.0,
                                       fontWeight: FontWeight.w500,
                                       letterSpacing: 1.2,
                                     ),
                                   ),
-                                  const SizedBox(width: 4.0),
-                                  Text(
-                                    '(${movieList[index].voteAverage})',
-                                    style: const TextStyle(
-                                      fontSize: 1.0,
-                                      fontWeight: FontWeight.w500,
-                                      letterSpacing: 1.2,
-                                    ),
-                                  ),
                                 ],
                               ),
-                              const SizedBox(width: 16.0),
                             ],
                           ),
                           const SizedBox(

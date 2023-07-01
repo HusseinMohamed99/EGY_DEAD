@@ -1,6 +1,6 @@
+import 'package:equatable/equatable.dart';
 import 'package:movies_app/core/utils/enum.dart';
 import 'package:movies_app/movies/domain/entities/movie.dart';
-import 'package:equatable/equatable.dart';
 import 'package:movies_app/movies/domain/entities/movie_details.dart';
 
 class MoviesStates extends Equatable {
@@ -13,11 +13,11 @@ class MoviesStates extends Equatable {
   final String upcomingMessage;
 
   final List<Movies> popularMovies;
-  final RequestState popularState;
+  final GetAllRequestStatus popularState;
   final String popularMessage;
 
   final List<Movies> topRatedMovies;
-  final RequestState topRatedStates;
+  final GetAllRequestStatus topRatedStates;
   final String topRatedMessage;
 
   final List<MovieDetails> moviesDetails;
@@ -32,9 +32,9 @@ class MoviesStates extends Equatable {
     this.upcomingState = RequestState.loading,
     this.upcomingMessage = "",
     this.popularMovies = const [],
-    this.popularState = RequestState.loading,
+    this.popularState = GetAllRequestStatus.loading,
     this.popularMessage = "",
-    this.topRatedStates = RequestState.loading,
+    this.topRatedStates = GetAllRequestStatus.loading,
     this.topRatedMovies = const [],
     this.topRatedMessage = "",
     this.moviesDetails = const [],
@@ -50,10 +50,10 @@ class MoviesStates extends Equatable {
     RequestState? upcomingState,
     String? upcomingMessage,
     List<Movies>? popularMovies,
-    RequestState? popularState,
+    GetAllRequestStatus? popularState,
     String? popularMessage,
     List<Movies>? topRatedMovies,
-    RequestState? topRatedStates,
+    GetAllRequestStatus? topRatedStates,
     String? topRatedMessage,
     List<MovieDetails>? moviesDetails,
     RequestState? moviesDetailsStates,

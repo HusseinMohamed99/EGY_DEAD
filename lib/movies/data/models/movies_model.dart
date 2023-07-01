@@ -1,3 +1,4 @@
+import 'package:movies_app/core/utils/fuction.dart';
 import 'package:movies_app/movies/domain/entities/movie.dart';
 
 class MovieModel extends Movies {
@@ -20,7 +21,7 @@ class MovieModel extends Movies {
       voteAverage: json["vote_average"].toDouble(),
       genreIds: List<int>.from(json["genre_ids"].map((e) => e)),
       backdropPath: json["backdrop_path"] ?? '',
-      releaseDate: json["release_date"],
+      releaseDate: getDate(json['release_date']),
       posterPath: json["poster_path"] ?? '',
       adult: json['adult'],
     );

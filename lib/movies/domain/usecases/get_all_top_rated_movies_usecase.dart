@@ -7,7 +7,7 @@ import 'package:movies_app/movies/domain/repository/base_movies_repository.dart'
 class GetAllTopRatedMoviesUseCase extends BaseUseCase<List<Movies>, int> {
   final BaseMovieRepository baseMovieRepository;
 
-  GetAllTopRatedMoviesUseCase(this.baseMovieRepository);
+  GetAllTopRatedMoviesUseCase({required this.baseMovieRepository});
 
   @override
   Future<Either<Failure, List<Movies>>> call(int parameters) async {

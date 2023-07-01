@@ -35,15 +35,20 @@ class _VerticalListViewState extends State<VerticalListView> {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.separated(
-      padding: const EdgeInsets.all(8),
-      controller: _scrollController,
-      physics: const BouncingScrollPhysics(),
-      itemCount: widget.itemCount,
-      itemBuilder: widget.itemBuilder,
-      separatorBuilder: (context, index) {
-        return const SizedBox(height: 10);
-      },
+    return SizedBox(
+      height: 170,
+      child: ListView.separated(
+        shrinkWrap: true,
+        scrollDirection: Axis.horizontal,
+        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+        controller: _scrollController,
+        physics: const BouncingScrollPhysics(),
+        itemCount: widget.itemCount,
+        itemBuilder: widget.itemBuilder,
+        separatorBuilder: (context, index) {
+          return const SizedBox(height: 10);
+        },
+      ),
     );
   }
 
