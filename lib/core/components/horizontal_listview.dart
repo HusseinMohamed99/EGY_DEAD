@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class VerticalListView extends StatefulWidget {
+class HorizontalListView extends StatefulWidget {
   final int itemCount;
   final Widget Function(BuildContext context, int index) itemBuilder;
   final Function addEvent;
 
-  const VerticalListView({
+  const HorizontalListView({
     super.key,
     required this.itemCount,
     required this.itemBuilder,
@@ -13,10 +13,10 @@ class VerticalListView extends StatefulWidget {
   });
 
   @override
-  State<VerticalListView> createState() => _VerticalListViewState();
+  State<HorizontalListView> createState() => _HorizontalListViewState();
 }
 
-class _VerticalListViewState extends State<VerticalListView> {
+class _HorizontalListViewState extends State<HorizontalListView> {
   final _scrollController = ScrollController();
 
   @override

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:movies_app/core/components/horizontal_listview.dart';
 import 'package:movies_app/core/components/listview_card.dart';
 import 'package:movies_app/core/components/loading_indicator.dart';
-import 'package:movies_app/core/components/vertical_listview.dart';
 import 'package:movies_app/core/global/app_string/app_string.dart';
 import 'package:movies_app/core/utils/enum.dart';
 import 'package:movies_app/movies/domain/entities/movie.dart';
@@ -154,11 +154,11 @@ class TopRatedWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<MoviesBloc, MoviesStates>(
       builder: (context, state) {
-        return VerticalListView(
+        return HorizontalListView(
           itemCount: movies.length + 1,
           itemBuilder: (context, index) {
             if (index < movies.length) {
-              return VerticalListViewCard(movies: movies[index]);
+              return HorizontalListViewCard(movies: movies[index]);
             } else {
               return const LoadingIndicator();
             }

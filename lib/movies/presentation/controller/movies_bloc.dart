@@ -12,18 +12,16 @@ import 'package:movies_app/movies/presentation/controller/movies_states.dart';
 
 class MoviesBloc extends Bloc<MoviesEvent, MoviesStates> {
   final GetNowPlayingMoviesUseCase getNowPlayingMoviesUseCase;
-
   final GetUpcomingMoviesUseCase getUpcomingMoviesUseCase;
+  final GetAllPopularMoviesUseCase allPopularMoviesUseCase;
+  final GetAllTopRatedMoviesUseCase allTopRatedMoviesUseCase;
 
   // final GetPopularMoviesUseCase getPopularMoviesUseCase;
-  final GetAllPopularMoviesUseCase allPopularMoviesUseCase;
-  final GetAllTopRatedMoviesUseCase getAllTopRatedMoviesUseCase;
-
   MoviesBloc(
       this.getNowPlayingMoviesUseCase,
       this.getUpcomingMoviesUseCase,
       // this.getPopularMoviesUseCase,
-      this.getAllTopRatedMoviesUseCase,
+      this.allTopRatedMoviesUseCase,
       this.allPopularMoviesUseCase)
       : super(const MoviesStates()) {
     on<GetNowPlayingMoviesEvent>(_getNowPlayingMovies);
@@ -137,6 +135,7 @@ class MoviesBloc extends Bloc<MoviesEvent, MoviesStates> {
   //       (r) => emit(state.copyWith(
   //           topRatedStates: GetAllRequestStatus.loaded, topRatedMovies: r)));
   // }
+  int pages = 1;
 
   Future<void> _getAllTopRatedMovies(
       GetTopRatedMoviesEvent event, Emitter<MoviesStates> emit) async {
@@ -155,7 +154,7 @@ class MoviesBloc extends Bloc<MoviesEvent, MoviesStates> {
   }
 
   Future<void> _getTopRatedMovies(Emitter<MoviesStates> emit) async {
-    final result = await getAllTopRatedMoviesUseCase(page);
+    final result = await allTopRatedMoviesUseCase(pages);
     result.fold(
       (l) => emit(
         state.copyWith(
@@ -176,7 +175,7 @@ class MoviesBloc extends Bloc<MoviesEvent, MoviesStates> {
 
   Future<void> _fetchMoreTopRatedMovies(
       FetchMoreTopRatedMoviesEvent event, Emitter<MoviesStates> emit) async {
-    final result = await getAllTopRatedMoviesUseCase(page);
+    final result = await allTopRatedMoviesUseCase(pages);
     result.fold(
       (l) => emit(
         state.copyWith(
@@ -184,7 +183,7 @@ class MoviesBloc extends Bloc<MoviesEvent, MoviesStates> {
         ),
       ),
       (r) {
-        page++;
+        pages++;
         return emit(
           state.copyWith(
             topRatedStates: GetAllRequestStatus.loaded,

@@ -6,8 +6,8 @@ import 'package:movies_app/movies/domain/entities/movie.dart';
 import 'package:movies_app/movies/presentation/screens/movie_details_screen.dart';
 import 'package:shimmer/shimmer.dart';
 
-class VerticalListViewCard extends StatelessWidget {
-  const VerticalListViewCard({
+class HorizontalListViewCard extends StatelessWidget {
+  const HorizontalListViewCard({
     super.key,
     required this.movies,
   });

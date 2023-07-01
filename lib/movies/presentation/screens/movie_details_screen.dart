@@ -3,8 +3,10 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:movies_app/core/components/cast_card.dart';
+import 'package:movies_app/core/components/loading_indicator.dart';
+import 'package:movies_app/core/components/review_card.dart';
 import 'package:movies_app/core/global/app_string/app_string.dart';
 import 'package:movies_app/core/network/api_constance.dart';
 import 'package:movies_app/core/services/services_locator.dart';
@@ -48,8 +50,7 @@ class MovieDetailContent extends StatelessWidget {
       builder: (context, state) {
         switch (state.moviesDetailsStates) {
           case RequestState.loading:
-            return const SizedBox(
-                height: 400, child: Center(child: CircularProgressIndicator()));
+            return const SizedBox(height: 400, child: LoadingIndicator());
 
           case RequestState.loaded:
             return SingleChildScrollView(
@@ -99,6 +100,22 @@ class MovieDetailContent extends StatelessWidget {
                                   Expanded(
                                     child: Column(
                                       children: [
+                                        CircleAvatar(
+                                          radius: 20,
+                                          backgroundColor: Colors.red,
+                                          child: IconButton(
+                                              onPressed: () {
+                                                urlLauncher(
+                                                  Uri.parse(state.moviesDetails
+                                                          ?.trailerUrl ??
+                                                      ''),
+                                                );
+                                              },
+                                              icon: const Icon(
+                                                Icons.play_circle,
+                                                color: Colors.white,
+                                              )),
+                                        ),
                                         Text(state.moviesDetails!.title,
                                             style: GoogleFonts.poppins(
                                               fontSize: 23,
@@ -277,14 +294,26 @@ class MovieDetailContent extends StatelessWidget {
                     ],
                   ),
                   Positioned(
-                      top: 40,
+                    top: 40,
+                    left: 10,
+                    child: CircleAvatar(
+                      backgroundColor: Colors.black,
+                      radius: 22,
                       child: IconButton(
-                          onPressed: () {
-                            if (Navigator.canPop(context)) {
-                              Navigator.pop(context);
-                            }
-                          },
-                          icon: const Icon(Icons.arrow_back_ios))),
+                        alignment: Alignment.center,
+                        onPressed: () {
+                          if (Navigator.canPop(context)) {
+                            Navigator.pop(context);
+                          }
+                        },
+                        icon: const Icon(
+                          Icons.arrow_circle_left_rounded,
+                          color: Colors.white,
+                          size: 26,
+                        ),
+                      ),
+                    ),
+                  ),
                 ],
               ),
             );
@@ -483,18 +512,12 @@ class MovieDetailContent extends StatelessWidget {
 
   Widget _getCast(List<Cast>? cast) {
     if (cast != null && cast.isNotEmpty) {
-      return Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Text(AppString.cast),
-          SectionListView(
-            height: 175,
-            itemCount: cast.length,
-            itemBuilder: (context, index) => CastCard(
-              cast: cast[index],
-            ),
-          ),
-        ],
+      return SectionListView(
+        height: 170,
+        itemCount: cast.length,
+        itemBuilder: (context, index) => CastCard(
+          cast: cast[index],
+        ),
       );
     } else {
       return const SizedBox();
@@ -503,18 +526,12 @@ class MovieDetailContent extends StatelessWidget {
 
   Widget _getReviews(List<Review>? reviews) {
     if (reviews != null && reviews.isNotEmpty) {
-      return Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Text(AppString.reviews),
-          SectionListView(
-            height: 175,
-            itemCount: reviews.length,
-            itemBuilder: (context, index) => ReviewCard(
-              review: reviews[index],
-            ),
-          ),
-        ],
+      return SectionListView(
+        height: 175,
+        itemCount: reviews.length,
+        itemBuilder: (context, index) => ReviewCard(
+          review: reviews[index],
+        ),
       );
     } else {
       return const SizedBox();
@@ -544,254 +561,6 @@ class SectionListView extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         itemBuilder: itemBuilder,
         separatorBuilder: (context, index) => const SizedBox(width: 10),
-      ),
-    );
-  }
-}
-
-class CastCard extends StatelessWidget {
-  final Cast cast;
-
-  const CastCard({
-    required this.cast,
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
-    return SizedBox(
-      width: 100,
-      child: Column(
-        children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(8),
-            child: ImageWithShimmer(
-              imageUrl: cast.profileUrl,
-              width: double.infinity,
-              height: 130,
-            ),
-          ),
-          Text(
-            cast.name,
-            style: textTheme.bodyLarge,
-            maxLines: 2,
-            textAlign: TextAlign.center,
-          )
-        ],
-      ),
-    );
-  }
-}
-
-class ReviewCard extends StatelessWidget {
-  final Review review;
-
-  const ReviewCard({
-    required this.review,
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
-    return InkWell(
-      onTap: () {
-        showCustomBottomSheet(context, ReviewContent(review: review));
-      },
-      child: Container(
-        padding: const EdgeInsets.all(12),
-        width: 240,
-        height: double.infinity,
-        decoration: BoxDecoration(
-          color: Colors.yellow,
-          borderRadius: BorderRadius.circular(12),
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            Row(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(right: 6),
-                  child: Avatar(avatarUrl: review.avatarUrl),
-                ),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        review.authorName,
-                        style: textTheme.bodyMedium,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                      Text(
-                        review.authorUserName,
-                        style: textTheme.bodyLarge,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ],
-                  ),
-                )
-              ],
-            ),
-            Text(
-              review.content,
-              style: textTheme.bodyLarge,
-              maxLines: 3,
-              overflow: TextOverflow.ellipsis,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                _getRatingBarIndicator(review.rating),
-                Text(
-                  review.elapsedTime,
-                  style: textTheme.bodySmall,
-                ),
-              ],
-            )
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-Widget _getRatingBarIndicator(double rating) {
-  if (rating != -1) {
-    return RatingBarIndicator(
-      rating: rating,
-      itemSize: 16,
-      unratedColor: Colors.blue,
-      itemBuilder: (_, __) {
-        return const Icon(
-          Icons.star_rate_rounded,
-          color: Colors.redAccent,
-        );
-      },
-    );
-  } else {
-    return const SizedBox();
-  }
-}
-
-class ReviewContent extends StatelessWidget {
-  const ReviewContent({
-    super.key,
-    required this.review,
-  });
-
-  final Review review;
-
-  @override
-  Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
-    return SingleChildScrollView(
-      physics: const BouncingScrollPhysics(),
-      child: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          children: [
-            Row(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(right: 6),
-                  child: Avatar(avatarUrl: review.avatarUrl),
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      review.authorName,
-                      style: textTheme.bodyMedium,
-                    ),
-                    Text(
-                      review.authorUserName,
-                      style: textTheme.bodyLarge,
-                    ),
-                  ],
-                )
-              ],
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 10),
-              child: Text(
-                review.content,
-                style: textTheme.bodyLarge,
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class Avatar extends StatelessWidget {
-  const Avatar({
-    super.key,
-    required this.avatarUrl,
-  });
-
-  final String avatarUrl;
-
-  @override
-  Widget build(BuildContext context) {
-    return CachedNetworkImage(
-      imageUrl: avatarUrl,
-      imageBuilder: (context, imageProvider) => CircleAvatar(
-        radius: 20,
-        backgroundColor: Colors.transparent,
-        backgroundImage: imageProvider,
-      ),
-      placeholder: (context, _) => Shimmer.fromColors(
-        baseColor: Colors.grey[850]!,
-        highlightColor: Colors.grey[800]!,
-        child: const CircleAvatar(
-          radius: 20,
-        ),
-      ),
-      errorWidget: (_, __, ___) => const Icon(
-        Icons.error,
-        color: Colors.redAccent,
-      ),
-    );
-  }
-}
-
-class ImageWithShimmer extends StatelessWidget {
-  const ImageWithShimmer({
-    super.key,
-    required this.imageUrl,
-    required this.width,
-    required this.height,
-  });
-
-  final String imageUrl;
-  final double height;
-  final double width;
-
-  @override
-  Widget build(BuildContext context) {
-    return CachedNetworkImage(
-      imageUrl: imageUrl,
-      height: height,
-      width: width,
-      fit: BoxFit.cover,
-      placeholder: (_, __) => Shimmer.fromColors(
-        baseColor: Colors.grey[850]!,
-        highlightColor: Colors.grey[800]!,
-        child: Container(
-          height: height,
-          color: Colors.green,
-        ),
-      ),
-      errorWidget: (_, __, ___) => const Icon(
-        Icons.error,
-        color: Colors.red,
       ),
     );
   }

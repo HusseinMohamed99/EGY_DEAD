@@ -77,8 +77,6 @@ class ServiceLocator {
     /// Movies Use Cases
     sl.registerLazySingleton(
         () => GetNowPlayingMoviesUseCase(baseMovieRepository: sl()));
-    sl.registerLazySingleton(
-        () => GetAllPopularMoviesUseCase(baseMovieRepository: sl()));
 
     sl.registerLazySingleton(
         () => GetUpcomingMoviesUseCase(baseMovieRepository: sl()));
@@ -86,7 +84,7 @@ class ServiceLocator {
     sl.registerLazySingleton(
         () => GetPopularMoviesUseCase(baseMovieRepository: sl()));
     sl.registerLazySingleton(
-        () => GetAllTopRatedMoviesUseCase(baseMovieRepository: sl()));
+        () => GetAllPopularMoviesUseCase(baseMovieRepository: sl()));
 
     sl.registerLazySingleton(
         () => GetMovieDetailsUseCase(baseMovieRepository: sl()));
@@ -97,6 +95,8 @@ class ServiceLocator {
         () => GetMovieSimilarUseCase(baseMovieRepository: sl()));
     sl.registerLazySingleton(
         () => GetTopRatedMoviesUseCase(baseMovieRepository: sl()));
+    sl.registerLazySingleton(
+        () => GetAllTopRatedMoviesUseCase(baseMovieRepository: sl()));
 
     /// Movies Repository
     sl.registerLazySingleton<BaseMovieRepository>(

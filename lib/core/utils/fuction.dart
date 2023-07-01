@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movies_app/core/network/api_constance.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 String getProfileImageUrl(Map<String, dynamic> json) {
   if (json['profile_path'] != null) {
@@ -52,7 +53,7 @@ void showCustomBottomSheet(BuildContext context, Widget child) {
   final size = MediaQuery.of(context).size.height;
   showModalBottomSheet(
     context: context,
-    backgroundColor: Colors.yellow,
+    backgroundColor: Colors.grey.shade900,
     shape: const RoundedRectangleBorder(
       borderRadius: BorderRadius.vertical(
         top: Radius.circular(20),
@@ -135,4 +136,10 @@ String getDate(String? date) {
   }
 
   return '$month $day, $year';
+}
+
+Future<void> urlLauncher(Uri url) async {
+  if (!await launchUrl(url)) {
+    throw Exception('Could not launch $url');
+  }
 }

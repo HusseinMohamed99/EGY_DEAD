@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:movies_app/core/components/circle_avatar.dart';
+import 'package:movies_app/core/components/review_content.dart';
 import 'package:movies_app/core/utils/fuction.dart';
 import 'package:movies_app/movies/domain/entities/review.dart';
-import 'package:movies_app/movies/presentation/screens/movie_details_screen.dart';
 
 class ReviewCard extends StatelessWidget {
   final Review review;
@@ -24,7 +25,7 @@ class ReviewCard extends StatelessWidget {
         width: 240,
         height: double.infinity,
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: Colors.grey.shade900,
           borderRadius: BorderRadius.circular(12),
         ),
         child: Column(
@@ -85,7 +86,7 @@ Widget _getRatingBarIndicator(double rating) {
     return RatingBarIndicator(
       rating: rating,
       itemSize: 16,
-      unratedColor: Colors.red,
+      unratedColor: Colors.white54,
       itemBuilder: (_, __) {
         return const Icon(
           Icons.star_rate_rounded,

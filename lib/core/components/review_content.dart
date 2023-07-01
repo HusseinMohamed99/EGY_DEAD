@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:movies_app/core/components/circle_avatar.dart';
 import 'package:movies_app/movies/domain/entities/review.dart';
-import 'package:movies_app/movies/presentation/screens/movie_details_screen.dart';
 
 class ReviewContent extends StatelessWidget {
   const ReviewContent({
