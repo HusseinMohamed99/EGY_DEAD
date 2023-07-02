@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:movies_app/core/global/theme/app_color/app_color_dark.dart';
+import 'package:movies_app/core/global/theme/app_color/app_color_light.dart';
+import 'package:movies_app/core/global/theme/theme_data/theme_data_dark.dart';
 import 'package:movies_app/search/presentation/controllers/search_bloc/search_bloc.dart';
 import 'package:movies_app/search/presentation/controllers/search_bloc/search_event.dart';
 
@@ -23,47 +27,47 @@ class _SearchBarItemState extends State<SearchBarItem> {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
-    return Form(
-      child: TextFormField(
-        keyboardType: TextInputType.text,
-        controller: textController,
-        cursorColor: Colors.grey,
-        cursorWidth: 1,
-        style: textTheme.bodyLarge,
-        onChanged: (title) {
-          context.read<SearchBloc>().add(GetSearchResultsEvent(title));
-        },
-        decoration: InputDecoration(
-          focusedBorder: OutlineInputBorder(
-            borderSide: const BorderSide(
-              color: Colors.grey,
-            ),
-            borderRadius: BorderRadius.circular(8),
+    final textTheme = getThemeDataDark().textTheme;
+    return TextFormField(
+      keyboardType: TextInputType.text,
+      controller: textController,
+      cursorColor: AppColorsDark.greyDarkColor,
+      cursorWidth: 1,
+      style: textTheme.bodyLarge,
+      onChanged: (title) {
+        context.read<SearchBloc>().add(GetSearchResultsEvent(title));
+      },
+      decoration: InputDecoration(
+        focusedBorder: OutlineInputBorder(
+          borderSide: const BorderSide(
+            color: AppColorsDark.greyDarkColor,
           ),
-          enabledBorder: OutlineInputBorder(
-            borderSide: const BorderSide(
-              color: Colors.grey,
-            ),
-            borderRadius: BorderRadius.circular(8),
-          ),
-          prefixIcon: const Icon(
-            Icons.search_rounded,
-            color: Colors.white,
-          ),
-          suffixIcon: GestureDetector(
-            onTap: () {
-              textController.text = '';
-              context.read<SearchBloc>().add(const GetSearchResultsEvent(''));
-            },
-            child: const Icon(
-              Icons.clear_rounded,
-              color: Colors.white,
-            ),
-          ),
-          hintText: 'Search',
-          hintStyle: textTheme.bodyLarge,
+          borderRadius: BorderRadius.circular(8).r,
         ),
+        enabledBorder: OutlineInputBorder(
+          borderSide: const BorderSide(
+            color: AppColorsDark.greyDarkColor,
+          ),
+          borderRadius: BorderRadius.circular(8).r,
+        ),
+        prefixIcon: Icon(
+          Icons.search_rounded,
+          size: 24.sp,
+          color: AppColorsLight.lightPrimary,
+        ),
+        suffixIcon: GestureDetector(
+          onTap: () {
+            textController.text = '';
+            context.read<SearchBloc>().add(const GetSearchResultsEvent(''));
+          },
+          child: Icon(
+            Icons.clear_rounded,
+            size: 24.sp,
+            color: AppColorsLight.lightPrimary,
+          ),
+        ),
+        hintText: 'Search',
+        hintStyle: textTheme.bodyLarge,
       ),
     );
   }

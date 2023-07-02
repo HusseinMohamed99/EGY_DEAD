@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shimmer/shimmer.dart';
 
 class ImageWithShimmer extends StatelessWidget {
@@ -8,11 +9,13 @@ class ImageWithShimmer extends StatelessWidget {
     required this.imageUrl,
     required this.width,
     required this.height,
+    this.boxFit,
   });
 
   final String imageUrl;
   final double height;
   final double width;
+  final BoxFit? boxFit;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +23,7 @@ class ImageWithShimmer extends StatelessWidget {
       imageUrl: imageUrl,
       height: height,
       width: width,
-      fit: BoxFit.cover,
+      fit: boxFit ?? BoxFit.cover,
       placeholder: (_, __) => Shimmer.fromColors(
         baseColor: Colors.grey[850]!,
         highlightColor: Colors.grey[800]!,
@@ -29,9 +32,10 @@ class ImageWithShimmer extends StatelessWidget {
           color: Colors.green,
         ),
       ),
-      errorWidget: (_, __, ___) => const Icon(
+      errorWidget: (_, __, ___) => Icon(
         Icons.error,
         color: Colors.red,
+        size: 24.sp,
       ),
     );
   }

@@ -3,10 +3,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies_app/core/global/theme/app_color/app_color_light.dart';
 
 ThemeData getThemeDataLight() => ThemeData(
-      scaffoldBackgroundColor: AppColors.lightPrimary,
-      primaryColor: AppColors.lightPrimary,
+      scaffoldBackgroundColor: AppColorsLight.lightPrimary,
+      primaryColor: AppColorsLight.lightPrimary,
       bottomSheetTheme: BottomSheetThemeData(
-        backgroundColor: AppColors.bottomSheetColor,
+        backgroundColor: AppColorsLight.bottomSheetColor,
         shape: RoundedRectangleBorder(
           borderRadius: const BorderRadius.only(
             topLeft: Radius.circular(18),
@@ -16,13 +16,13 @@ ThemeData getThemeDataLight() => ThemeData(
       ),
       textTheme: const TextTheme(
         bodyLarge: TextStyle(
-          color: AppColors.textColor,
+          color: AppColorsLight.textColor,
         ),
         bodyMedium: TextStyle(
-          color: AppColors.textColor,
+          color: AppColorsLight.textColor,
         ),
         bodySmall: TextStyle(
-          color: AppColors.textColor,
+          color: AppColorsLight.textColor,
         ),
       ),
       bottomNavigationBarTheme: BottomNavigationBarThemeData(

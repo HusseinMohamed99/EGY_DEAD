@@ -3,10 +3,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies_app/core/global/theme/app_color/app_color_dark.dart';
 
 ThemeData getThemeDataDark() => ThemeData(
-      scaffoldBackgroundColor: AppColors.darkPrimary,
-      primaryColor: AppColors.darkPrimary,
+      scaffoldBackgroundColor: AppColorsDark.darkPrimary,
+      primaryColor: AppColorsDark.darkPrimary,
       bottomSheetTheme: BottomSheetThemeData(
-        backgroundColor: AppColors.bottomSheetColor,
+        backgroundColor: AppColorsDark.greyDarkColor,
         shape: RoundedRectangleBorder(
           borderRadius: const BorderRadius.only(
             topLeft: Radius.circular(18),
@@ -14,16 +14,25 @@ ThemeData getThemeDataDark() => ThemeData(
           ).r,
         ),
       ),
-      textTheme: const TextTheme(
+      textTheme: TextTheme(
         bodyLarge: TextStyle(
-          color: AppColors.textColor,
+          color: AppColorsDark.textColor,
         ),
         bodyMedium: TextStyle(
-          color: AppColors.textColor,
+          color: AppColorsDark.textColor,
         ),
         bodySmall: TextStyle(
-          color: AppColors.textColor,
+          color: AppColorsDark.textColor,
         ),
+        titleLarge: TextStyle(color: AppColorsDark.textColor, fontSize: 24.sp),
+        titleMedium: TextStyle(
+          color: AppColorsDark.textColor,
+        ),
+        titleSmall: TextStyle(
+          color: AppColorsDark.textColor,
+        ),
+        labelLarge: TextStyle(color: AppColorsDark.textColor, fontSize: 18.sp),
+        labelSmall: TextStyle(color: AppColorsDark.textColor, fontSize: 12.sp),
       ),
       bottomNavigationBarTheme: BottomNavigationBarThemeData(
         backgroundColor: Colors.black,

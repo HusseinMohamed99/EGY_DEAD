@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies_app/core/components/horizontal_listview.dart';
 import 'package:movies_app/core/components/listview_card.dart';
 import 'package:movies_app/core/components/loading_indicator.dart';
 import 'package:movies_app/core/global/app_string/app_string.dart';
+import 'package:movies_app/core/global/theme/app_color/app_color_dark.dart';
+import 'package:movies_app/core/global/theme/theme_data/theme_data_dark.dart';
 import 'package:movies_app/core/utils/enum.dart';
 import 'package:movies_app/movies/domain/entities/movie.dart';
 import 'package:movies_app/movies/presentation/controller/movies_bloc.dart';
@@ -17,34 +19,25 @@ class PopularMoviesWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = getThemeDataDark().textTheme;
     return BlocBuilder<MoviesBloc, MoviesStates>(
       buildWhen: (previous, current) =>
           previous.popularState != current.popularState,
       builder: (context, state) {
         switch (state.popularState) {
           case GetAllRequestStatus.loading:
-            return const SizedBox(
-              height: 170,
-              child: Center(
-                child: CircularProgressIndicator(),
-              ),
-            );
+            return SizedBox(height: 130.h, child: const LoadingIndicator());
           case GetAllRequestStatus.loaded:
             return Column(
               children: [
                 Container(
-                  margin: const EdgeInsets.fromLTRB(16.0, 24.0, 16.0, 8.0),
+                  margin: const EdgeInsets.fromLTRB(16.0, 24.0, 16.0, 8.0).r,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
                         AppString.popular,
-                        style: GoogleFonts.poppins(
-                          fontSize: 19,
-                          color: Colors.white,
-                          fontWeight: FontWeight.w500,
-                          letterSpacing: 0.15,
-                        ),
+                        style: textTheme.labelLarge,
                       ),
                       InkWell(
                         onTap: () {
@@ -60,18 +53,18 @@ class PopularMoviesWidget extends StatelessWidget {
                             ),
                           );
                         },
-                        child: const Padding(
-                          padding: EdgeInsets.all(8.0),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
                           child: Row(
                             children: [
                               Text(
                                 AppString.seeMore,
-                                style: TextStyle(color: Colors.white),
+                                style: textTheme.labelSmall,
                               ),
                               Icon(
                                 Icons.arrow_forward_ios,
-                                size: 16.0,
-                                color: Colors.white,
+                                size: 16.sp,
+                                color: AppColorsDark.iconColor,
                               )
                             ],
                           ),
@@ -85,23 +78,25 @@ class PopularMoviesWidget extends StatelessWidget {
             );
           case GetAllRequestStatus.error:
             return SizedBox(
-                height: 400, child: Center(child: Text(state.popularMessage)));
+              height: 300.h,
+              child: Center(
+                child: Text(
+                  state.popularMessage,
+                  style: textTheme.labelLarge,
+                ),
+              ),
+            );
           case GetAllRequestStatus.fetchMoreError:
             return Column(
               children: [
                 Container(
-                  margin: const EdgeInsets.fromLTRB(16.0, 24.0, 16.0, 8.0),
+                  margin: const EdgeInsets.fromLTRB(16.0, 24.0, 16.0, 8.0).r,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
                         AppString.popular,
-                        style: GoogleFonts.poppins(
-                          fontSize: 19,
-                          color: Colors.white,
-                          fontWeight: FontWeight.w500,
-                          letterSpacing: 0.15,
-                        ),
+                        style: textTheme.labelLarge,
                       ),
                       InkWell(
                         onTap: () {
@@ -117,18 +112,18 @@ class PopularMoviesWidget extends StatelessWidget {
                             ),
                           );
                         },
-                        child: const Padding(
-                          padding: EdgeInsets.all(8.0),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0).r,
                           child: Row(
                             children: [
                               Text(
                                 AppString.seeMore,
-                                style: TextStyle(color: Colors.white),
+                                style: textTheme.labelSmall,
                               ),
                               Icon(
                                 Icons.arrow_forward_ios,
-                                size: 16.0,
-                                color: Colors.white,
+                                size: 16.sp,
+                                color: AppColorsDark.iconColor,
                               )
                             ],
                           ),

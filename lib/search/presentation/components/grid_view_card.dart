@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies_app/core/components/image_shimmer.dart';
+import 'package:movies_app/core/global/theme/theme_data/theme_data_dark.dart';
 import 'package:movies_app/core/network/api_constance.dart';
 import 'package:movies_app/movies/presentation/screens/movie_details_screen.dart';
 import 'package:movies_app/search/domain/entities/search_result_item.dart';
@@ -15,7 +17,7 @@ class GridViewCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
+    final textTheme = getThemeDataDark().textTheme;
     return Column(
       children: [
         GestureDetector(
@@ -41,7 +43,7 @@ class GridViewCard extends StatelessWidget {
           child: AspectRatio(
             aspectRatio: 2 / 3,
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(8),
+              borderRadius: BorderRadius.circular(8).r,
               child: ImageWithShimmer(
                 imageUrl: ApiConstance.imageURL(item.posterUrl),
                 width: double.infinity,

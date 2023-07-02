@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movies_app/core/global/theme/theme_data/theme_data_dark.dart';
 
 class NoResults extends StatelessWidget {
   const NoResults({
@@ -7,12 +8,12 @@ class NoResults extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
+    final textTheme = getThemeDataDark().textTheme;
 
     return Expanded(
       child: Center(
         child: Text(
-          'noResults',
+          'No Results',
           style: textTheme.bodyLarge,
         ),
       ),

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:movies_app/core/components/size_box.dart';
 
 class HorizontalListView extends StatefulWidget {
   final int itemCount;
@@ -36,7 +38,7 @@ class _HorizontalListViewState extends State<HorizontalListView> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 170,
+      height: 130.h,
       child: ListView.separated(
         shrinkWrap: true,
         scrollDirection: Axis.horizontal,
@@ -46,7 +48,10 @@ class _HorizontalListViewState extends State<HorizontalListView> {
         itemCount: widget.itemCount,
         itemBuilder: widget.itemBuilder,
         separatorBuilder: (context, index) {
-          return const SizedBox(height: 10);
+          return Space(
+            height: 10.sp,
+            width: 0,
+          );
         },
       ),
     );

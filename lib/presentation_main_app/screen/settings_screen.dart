@@ -1,21 +1,26 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:movies_app/core/components/image_shimmer.dart';
 import 'package:movies_app/core/components/size_box.dart';
+import 'package:movies_app/core/global/theme/app_color/app_color_dark.dart';
+import 'package:movies_app/core/global/theme/theme_data/theme_data_dark.dart';
+import 'package:movies_app/presentation_main_app/screen/about_us_screen.dart';
+import 'package:movies_app/presentation_main_app/screen/help_screen.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = getThemeDataDark().textTheme;
+
     return Scaffold(
       body: SingleChildScrollView(
         key: const Key('settingsScrollView'),
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.only(left: 8.0, top: 60, bottom: 20),
+              padding: const EdgeInsets.only(left: 8.0, top: 60, bottom: 20).r,
               child: CircleAvatar(
                 maxRadius: 93.r,
                 minRadius: 93.r,
@@ -25,36 +30,25 @@ class SettingsScreen extends StatelessWidget {
                   minRadius: 90.r,
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(95).r,
-                    child: CachedNetworkImage(
-                      imageUrl:
-                          'https://scontent.fcai20-2.fna.fbcdn.net/v/t39.30808-1/334981904_1091437138478765_5655346587829136132_n.jpg?stp=dst-jpg_p240x240&_nc_cat=109&cb=99be929b-3346023f&ccb=1-7&_nc_sid=7206a8&_nc_ohc=lFXApVUoF74AX-PPxQV&_nc_ht=scontent.fcai20-2.fna&oh=00_AfBN3gIGqefTIvVc0KwDmb5jlqeJt5cR5BlZMY8P5UQkCg&oe=64A4F175',
-                      fit: BoxFit.fill,
-                      height: 200.h,
-                      width: double.infinity,
-                      progressIndicatorBuilder:
-                          (context, url, downloadProgress) => const Center(
-                        child: CircularProgressIndicator(),
-                      ),
-                      errorWidget: (context, url, error) => const Center(
-                        child: CircularProgressIndicator(),
-                      ),
-                    ),
+                    child: ImageWithShimmer(
+                        imageUrl:
+                            'https://scontent.fcai20-2.fna.fbcdn.net/v/t39.30808-1/334981904_1091437138478765_5655346587829136132_n.jpg?stp=dst-jpg_p240x240&_nc_cat=109&cb=99be929b-3346023f&ccb=1-7&_nc_sid=7206a8&_nc_ohc=lFXApVUoF74AX-PPxQV&_nc_ht=scontent.fcai20-2.fna&oh=00_AfBN3gIGqefTIvVc0KwDmb5jlqeJt5cR5BlZMY8P5UQkCg&oe=64A4F175',
+                        width: double.infinity,
+                        height: 200.h),
                   ),
                 ),
               ),
             ),
             Text(
               'Hussein Mohamed'.toUpperCase(),
-              style: GoogleFonts.roboto(
-                  fontSize: 20.0,
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold),
+              style: textTheme.bodyLarge,
             ),
             Space(
               width: 0.w,
               height: 30.h,
             ),
             Card(
+              color: AppColorsDark.greyDarkColor,
               clipBehavior: Clip.antiAlias,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(15).r),
@@ -82,11 +76,7 @@ class SettingsScreen extends StatelessWidget {
                       ),
                       Text(
                         'Change Theme',
-                        style: GoogleFonts.roboto(
-                          fontWeight: FontWeight.w400,
-                          fontSize: 18.sp,
-                          color: Colors.white,
-                        ),
+                        style: textTheme.bodyMedium,
                       ),
                     ],
                   ),
@@ -98,12 +88,18 @@ class SettingsScreen extends StatelessWidget {
               height: 8.h,
             ),
             Card(
+              color: AppColorsDark.greyDarkColor,
               clipBehavior: Clip.antiAlias,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(15).r),
               elevation: 10,
               child: InkWell(
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (BuildContext context) {
+                    return const AboutUsScreen();
+                  }));
+                },
                 child: Container(
                   padding: const EdgeInsets.all(10).r,
                   child: Row(
@@ -125,11 +121,7 @@ class SettingsScreen extends StatelessWidget {
                       ),
                       Text(
                         'About us',
-                        style: GoogleFonts.roboto(
-                          fontWeight: FontWeight.w400,
-                          fontSize: 18.sp,
-                          color: Colors.white,
-                        ),
+                        style: textTheme.bodyMedium,
                       ),
                     ],
                   ),
@@ -141,12 +133,18 @@ class SettingsScreen extends StatelessWidget {
               height: 8.h,
             ),
             Card(
+              color: AppColorsDark.greyDarkColor,
               clipBehavior: Clip.antiAlias,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(15).r),
               elevation: 10,
               child: InkWell(
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (BuildContext context) {
+                    return const HelpScreen();
+                  }));
+                },
                 child: Container(
                   padding: const EdgeInsets.all(10).r,
                   child: Row(
@@ -168,11 +166,7 @@ class SettingsScreen extends StatelessWidget {
                       ),
                       Text(
                         'Help',
-                        style: GoogleFonts.roboto(
-                          fontWeight: FontWeight.w400,
-                          fontSize: 18.sp,
-                          color: Colors.white,
-                        ),
+                        style: textTheme.bodyMedium,
                       ),
                     ],
                   ),

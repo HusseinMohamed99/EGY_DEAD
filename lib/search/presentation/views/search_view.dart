@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies_app/core/components/loading_indicator.dart';
+import 'package:movies_app/core/global/theme/theme_data/theme_data_dark.dart';
 import 'package:movies_app/core/services/services_locator.dart';
 import 'package:movies_app/search/presentation/components/no_results.dart';
 import 'package:movies_app/search/presentation/components/search_bar.dart';
@@ -26,6 +28,8 @@ class SearchWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = getThemeDataDark().textTheme;
+
     return SafeArea(
       child: Scaffold(
         body: Padding(
@@ -33,7 +37,7 @@ class SearchWidget extends StatelessWidget {
             top: 12,
             left: 16,
             right: 16,
-          ),
+          ).r,
           child: Column(
             children: [
               const SearchBarItem(),
@@ -50,7 +54,7 @@ class SearchWidget extends StatelessWidget {
                       return Expanded(
                         child: Text(
                           'Please try again later',
-                          style: Theme.of(context).textTheme.titleMedium,
+                          style: textTheme.titleMedium,
                         ),
                       );
                     case SearchRequestStatus.noResults:

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movies_app/core/global/theme/theme_data/theme_data_dark.dart';
 
 class SearchText extends StatelessWidget {
   const SearchText({
@@ -7,24 +8,15 @@ class SearchText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
+    final textTheme = getThemeDataDark().textTheme;
+
     return Expanded(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            'search',
-            style: textTheme.titleMedium,
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 6),
-            child: Text(
-              'searchText',
-              style: textTheme.bodyLarge,
-              textAlign: TextAlign.center,
-            ),
-          ),
-        ],
+      child: Center(
+        child: Text(
+          'Search Text',
+          style: textTheme.bodyLarge,
+          textAlign: TextAlign.center,
+        ),
       ),
     );
   }
