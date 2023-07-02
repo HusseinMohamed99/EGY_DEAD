@@ -53,7 +53,6 @@ void showCustomBottomSheet(BuildContext context, Widget child) {
   final size = MediaQuery.of(context).size.height;
   showModalBottomSheet(
     context: context,
-    backgroundColor: Colors.grey.shade900,
     shape: const RoundedRectangleBorder(
       borderRadius: BorderRadius.vertical(
         top: Radius.circular(20),

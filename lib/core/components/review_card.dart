@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:movies_app/core/components/circle_avatar.dart';
 import 'package:movies_app/core/components/review_content.dart';
-import 'package:movies_app/core/utils/fuction.dart';
+import 'package:movies_app/core/global/theme/theme_data/theme_data_dark.dart';
+import 'package:movies_app/core/utils/function.dart';
 import 'package:movies_app/movies/domain/entities/review.dart';
 
 class ReviewCard extends StatelessWidget {
@@ -15,7 +16,7 @@ class ReviewCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
+    final textTheme = getThemeDataDark().textTheme;
     return InkWell(
       onTap: () {
         showCustomBottomSheet(context, ReviewContent(review: review));

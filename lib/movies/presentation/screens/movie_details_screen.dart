@@ -11,7 +11,7 @@ import 'package:movies_app/core/global/app_string/app_string.dart';
 import 'package:movies_app/core/network/api_constance.dart';
 import 'package:movies_app/core/services/services_locator.dart';
 import 'package:movies_app/core/utils/enum.dart';
-import 'package:movies_app/core/utils/fuction.dart';
+import 'package:movies_app/core/utils/function.dart';
 import 'package:movies_app/movies/domain/entities/cast.dart';
 import 'package:movies_app/movies/domain/entities/genres.dart';
 import 'package:movies_app/movies/domain/entities/review.dart';
