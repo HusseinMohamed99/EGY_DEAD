@@ -14,6 +14,11 @@ import 'package:movies_app/movies/domain/usecases/get_up_coming_movies_usecases.
 import 'package:movies_app/movies/presentation/controller/movies_bloc.dart';
 import 'package:movies_app/movies/presentation/controller/movies_details_bloc.dart';
 import 'package:movies_app/presentation_main_app/controller/main_bloc.dart';
+import 'package:movies_app/search/data/datasource/search_remote_data_source.dart';
+import 'package:movies_app/search/data/repository/search_repository.dart';
+import 'package:movies_app/search/domain/repository/search_repository.dart';
+import 'package:movies_app/search/domain/usecases/search_usecase.dart';
+import 'package:movies_app/search/presentation/controllers/search_bloc/search_bloc.dart';
 import 'package:movies_app/tvs/data/datasource/tv_remote_data_source.dart';
 import 'package:movies_app/tvs/data/repository/tvs_repository.dart';
 import 'package:movies_app/tvs/domain/repository/base_tvs_repository.dart';
@@ -75,6 +80,7 @@ class ServiceLocator {
     sl.registerFactory(() => MoviesDetailsBloc(sl(), sl(), sl()));
 
     /// Movies Use Cases
+
     sl.registerLazySingleton(
         () => GetNowPlayingMoviesUseCase(baseMovieRepository: sl()));
 
@@ -97,13 +103,20 @@ class ServiceLocator {
         () => GetTopRatedMoviesUseCase(baseMovieRepository: sl()));
     sl.registerLazySingleton(
         () => GetAllTopRatedMoviesUseCase(baseMovieRepository: sl()));
+    sl.registerLazySingleton(() => SearchUseCase(baseSearchRepository: sl()));
 
     /// Movies Repository
     sl.registerLazySingleton<BaseMovieRepository>(
         () => MoviesRepository(baseMovieRemoteDataSource: sl()));
+    sl.registerLazySingleton<SearchRepository>(
+        () => SearchRepositoryImpl(baseSearchRemoteDataSource: sl()));
 
     /// Movies Data Source
     sl.registerLazySingleton<BaseMovieRemoteDataSource>(
         () => MovieRemoteDataSource());
+    sl.registerLazySingleton<SearchRemoteDataSource>(
+        () => SearchRemoteDataSourceImpl());
+
+    sl.registerFactory(() => SearchBloc(sl()));
   }
 }

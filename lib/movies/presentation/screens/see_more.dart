@@ -40,7 +40,9 @@ class SeeMoreScreen extends StatelessWidget {
             child: InkWell(
                 onTap: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return MovieDetailsScreen(movieID: movie.id);
+                    return MovieDetailsScreen(
+                      movieID: movie.id,
+                    );
                   }));
                 },
                 child: Row(

@@ -21,6 +21,24 @@ class MovieDetailsModel extends MovieDetails {
     required super.reviews,
   });
 
+  factory MovieDetailsModel.fromMediaDetails(MovieDetails movieDetails) {
+    return MovieDetailsModel(
+      id: movieDetails.id,
+      title: movieDetails.title,
+      posterPath: movieDetails.posterPath,
+      backdropPath: movieDetails.backdropPath,
+      voteAverage: movieDetails.voteAverage,
+      releaseDate: movieDetails.releaseDate,
+      overview: movieDetails.overview,
+      adult: movieDetails.adult,
+      genres: movieDetails.genres,
+      runtime: movieDetails.runtime,
+      trailerUrl: movieDetails.trailerUrl,
+      cast: movieDetails.cast,
+      reviews: movieDetails.reviews,
+    );
+  }
+
   factory MovieDetailsModel.fromJson(Map<String, dynamic> json) {
     return MovieDetailsModel(
       overview: json["overview"],

@@ -10,6 +10,7 @@ class Movies extends Equatable {
   final String backdropPath;
   final String posterPath;
   final bool adult;
+  final bool isAdded;
 
   const Movies({
     required this.overview,
@@ -21,6 +22,7 @@ class Movies extends Equatable {
     required this.releaseDate,
     required this.posterPath,
     required this.adult,
+    this.isAdded = false,
   });
 
   @override
@@ -33,5 +35,6 @@ class Movies extends Equatable {
         posterPath,
         adult,
         releaseDate,
+        isAdded,
       ];
 }

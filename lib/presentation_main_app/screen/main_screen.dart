@@ -27,6 +27,8 @@ class MainScreen extends StatelessWidget {
                 bottomNavigationBarItem(
                     icon: Icons.tv, label: "Tvs".toUpperCase()),
                 bottomNavigationBarItem(
+                    icon: Icons.search, label: "Search".toUpperCase()),
+                bottomNavigationBarItem(
                     icon: Icons.settings, label: "settings".toUpperCase()),
               ],
             ),
