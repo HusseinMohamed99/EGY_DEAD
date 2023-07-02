@@ -57,7 +57,7 @@ class TopRatedMoviesWidget extends StatelessWidget {
                           );
                         },
                         child: Padding(
-                          padding: EdgeInsets.all(8.0).r,
+                          padding: const EdgeInsets.all(8.0).r,
                           child: Row(
                             children: [
                               Text(
@@ -116,7 +116,7 @@ class TopRatedMoviesWidget extends StatelessWidget {
                           );
                         },
                         child: Padding(
-                          padding: EdgeInsets.all(8.0).r,
+                          padding: const EdgeInsets.all(8.0).r,
                           child: Row(
                             children: [
                               Text(
