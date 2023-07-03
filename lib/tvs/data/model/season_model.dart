@@ -15,7 +15,7 @@ class SeasonModel extends Season {
     return SeasonModel(
       id: json["id"],
       name: json["name"],
-      airDate: json["air_date"],
+      airDate: json["air_date"] ?? '',
       posterPath: json["poster_path"] ?? '',
       seasonNumber: json["season_number"],
       episodeCount: json["episode_count"],

@@ -16,6 +16,7 @@ class TvDetails extends Equatable {
   final List<Season> season;
   final bool adult;
   final int numberOfSeason;
+  final String trailerUrl;
 
   const TvDetails({
     required this.overview,
@@ -31,6 +32,7 @@ class TvDetails extends Equatable {
     required this.runtime,
     required this.numberOfSeason,
     required this.season,
+    required this.trailerUrl,
   });
 
   @override
@@ -47,5 +49,6 @@ class TvDetails extends Equatable {
         runtime,
         numberOfSeason,
         season,
+        trailerUrl,
       ];
 }

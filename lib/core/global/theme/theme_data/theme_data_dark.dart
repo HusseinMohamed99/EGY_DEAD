@@ -32,6 +32,7 @@ ThemeData getThemeDataDark() => ThemeData(
         ),
         titleMedium: GoogleFonts.roboto(
           color: AppColorsDark.textColor,
+          fontSize: 14.sp,
         ),
         titleSmall: GoogleFonts.roboto(
           color: AppColorsDark.textColor,

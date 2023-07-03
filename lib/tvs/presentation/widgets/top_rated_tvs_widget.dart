@@ -1,31 +1,36 @@
 import 'package:animate_do/animate_do.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:movies_app/core/components/image_shimmer.dart';
+import 'package:movies_app/core/components/loading_indicator.dart';
 import 'package:movies_app/core/global/app_string/app_string.dart';
+import 'package:movies_app/core/global/theme/app_color/app_color_dark.dart';
+import 'package:movies_app/core/global/theme/theme_data/theme_data_dark.dart';
 import 'package:movies_app/core/network/api_constance.dart';
 import 'package:movies_app/core/utils/enum.dart';
 import 'package:movies_app/tvs/presentation/controller/tvs_bloc.dart';
 import 'package:movies_app/tvs/presentation/controller/tvs_states.dart';
 import 'package:movies_app/tvs/presentation/screens/see_more.dart';
 import 'package:movies_app/tvs/presentation/screens/tvs_details_screen.dart';
-import 'package:shimmer/shimmer.dart';
 
 class TopRatedTvsWidget extends StatelessWidget {
   const TopRatedTvsWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = getThemeDataDark().textTheme;
     return BlocBuilder<TvsBloc, TvsStates>(
       buildWhen: (previous, current) =>
           previous.topRatedStates != current.topRatedStates,
       builder: (context, state) {
         switch (state.topRatedStates) {
           case RequestState.loading:
-            return const SizedBox(
-                height: 170, child: Center(child: CircularProgressIndicator()));
+            return SizedBox(
+              height: 130.h,
+              child: const LoadingIndicator(),
+            );
           case RequestState.loaded:
             return Column(
               children: [
@@ -35,18 +40,13 @@ class TopRatedTvsWidget extends StatelessWidget {
                     24.0,
                     16.0,
                     8.0,
-                  ),
+                  ).r,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
                         AppString.topRated,
-                        style: GoogleFonts.poppins(
-                          fontSize: 19,
-                          color: Colors.white,
-                          fontWeight: FontWeight.w500,
-                          letterSpacing: 0.15,
-                        ),
+                        style: textTheme.labelLarge,
                       ),
                       InkWell(
                         onTap: () {
@@ -55,24 +55,25 @@ class TopRatedTvsWidget extends StatelessWidget {
                             MaterialPageRoute(
                               builder: (BuildContext context) {
                                 return SeeMoreScreen(
-                                    tvsList: state.topRatedTvs,
-                                    name: AppString.topRated);
+                                  tvsList: state.topRatedTvs,
+                                  name: AppString.topRated,
+                                );
                               },
                             ),
                           );
                         },
-                        child: const Padding(
-                          padding: EdgeInsets.all(8.0),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0).r,
                           child: Row(
                             children: [
                               Text(
                                 AppString.seeMore,
-                                style: TextStyle(color: Colors.white),
+                                style: textTheme.labelSmall,
                               ),
                               Icon(
-                                color: Colors.white,
                                 Icons.arrow_forward_ios,
-                                size: 16.0,
+                                size: 16.sp,
+                                color: AppColorsDark.iconColor,
                               )
                             ],
                           ),
@@ -84,16 +85,16 @@ class TopRatedTvsWidget extends StatelessWidget {
                 FadeIn(
                   duration: const Duration(milliseconds: 500),
                   child: SizedBox(
-                    height: 170.0,
+                    height: 130.h,
                     child: ListView.builder(
                       shrinkWrap: true,
                       scrollDirection: Axis.horizontal,
-                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                      padding: const EdgeInsets.symmetric(horizontal: 16).r,
                       itemCount: state.topRatedTvs.length,
                       itemBuilder: (context, index) {
                         final tvs = state.topRatedTvs[index];
                         return Container(
-                          padding: const EdgeInsets.only(right: 8.0),
+                          padding: const EdgeInsets.only(right: 8.0).r,
                           child: InkWell(
                             onTap: () {
                               Navigator.push(
@@ -110,28 +111,13 @@ class TopRatedTvsWidget extends StatelessWidget {
                             },
                             child: ClipRRect(
                               borderRadius:
-                                  const BorderRadius.all(Radius.circular(8.0)),
-                              child: CachedNetworkImage(
-                                height: double.infinity,
-                                width: 120.0,
-                                fit: BoxFit.cover,
+                                  const BorderRadius.all(Radius.circular(8.0))
+                                      .r,
+                              child: ImageWithShimmer(
                                 imageUrl:
                                     ApiConstance.imageURL(tvs.backdropPath),
-                                placeholder: (context, url) =>
-                                    Shimmer.fromColors(
-                                  baseColor: Colors.grey[850]!,
-                                  highlightColor: Colors.grey[800]!,
-                                  child: Container(
-                                    height: 170.0,
-                                    width: 120.0,
-                                    decoration: BoxDecoration(
-                                      color: Colors.black,
-                                      borderRadius: BorderRadius.circular(8.0),
-                                    ),
-                                  ),
-                                ),
-                                errorWidget: (context, url, error) =>
-                                    const Icon(Icons.error),
+                                width: 120.w,
+                                height: double.infinity,
                               ),
                             ),
                           ),
@@ -144,7 +130,14 @@ class TopRatedTvsWidget extends StatelessWidget {
             );
           case RequestState.error:
             return SizedBox(
-                height: 400, child: Center(child: Text(state.topRatedMessage)));
+              height: 300.h,
+              child: Center(
+                child: Text(
+                  state.topRatedMessage,
+                  style: textTheme.labelLarge,
+                ),
+              ),
+            );
         }
       },
     );

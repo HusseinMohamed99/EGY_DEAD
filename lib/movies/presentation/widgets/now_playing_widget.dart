@@ -78,11 +78,12 @@ class NowPlayingWidget extends StatelessWidget {
                             },
                             blendMode: BlendMode.dstIn,
                             child: ImageWithShimmer(
-                                boxFit: BoxFit.fill,
-                                imageUrl:
-                                    ApiConstance.imageURL(item.backdropPath),
-                                width: double.infinity,
-                                height: 560.h),
+                              boxFit: BoxFit.fill,
+                              imageUrl:
+                                  ApiConstance.imageURL(item.backdropPath),
+                              width: double.infinity,
+                              height: 560.h,
+                            ),
                           ),
                           Column(
                             children: [
@@ -92,7 +93,7 @@ class NowPlayingWidget extends StatelessWidget {
                                 child: Align(
                                   alignment: Alignment.topLeft,
                                   child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(70),
+                                    borderRadius: BorderRadius.circular(70).r,
                                     child: ImageWithShimmer(
                                       boxFit: BoxFit.fill,
                                       imageUrl: ApiConstance.imageURL(
@@ -132,7 +133,7 @@ class NowPlayingWidget extends StatelessWidget {
                                     ),
                                     Padding(
                                       padding:
-                                          const EdgeInsets.only(bottom: 16.0),
+                                          const EdgeInsets.only(bottom: 16).r,
                                       child: Text(
                                         item.title,
                                         textAlign: TextAlign.center,

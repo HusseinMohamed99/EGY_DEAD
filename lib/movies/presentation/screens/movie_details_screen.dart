@@ -54,7 +54,7 @@ class MovieDetailContent extends StatelessWidget {
       builder: (context, state) {
         switch (state.moviesDetailsStates) {
           case RequestState.loading:
-            return const SizedBox(height: 400, child: LoadingIndicator());
+            return SizedBox(height: 250.h, child: const LoadingIndicator());
 
           case RequestState.loaded:
             return SingleChildScrollView(

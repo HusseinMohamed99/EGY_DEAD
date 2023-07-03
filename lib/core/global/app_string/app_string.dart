@@ -9,8 +9,8 @@ class AppString {
   static const String moreLikeThis = "More Like This";
   static const String recommendations = "Recommendations";
   static const String airingToday = "Airing Today";
-  static const String onTheAir = "On The Air";
   static const String episodes = "Episodes";
   static const String cast = "Cast";
   static const String reviews = "Reviews";
+  static const String onAir = "On The Air";
 }

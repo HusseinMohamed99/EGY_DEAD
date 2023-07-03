@@ -1,3 +1,4 @@
+import 'package:movies_app/core/utils/function.dart';
 import 'package:movies_app/tvs/data/model/genres_model.dart';
 import 'package:movies_app/tvs/data/model/season_model.dart';
 import 'package:movies_app/tvs/domain/entities/tv_details.dart';
@@ -17,6 +18,7 @@ class TvsDetailsModel extends TvDetails {
     required super.runtime,
     required super.numberOfSeason,
     required super.season,
+    required super.trailerUrl,
   });
 
   factory TvsDetailsModel.fromJson(Map<String, dynamic> json) {
@@ -35,6 +37,7 @@ class TvsDetailsModel extends TvDetails {
           json["genres"].map((e) => GenresModel.fromJson(e))),
       season: List<SeasonModel>.from(
           json["seasons"].map((e) => SeasonModel.fromJson(e))),
+      trailerUrl: getTrailerUrl(json),
       runtime: json["episode_run_time"],
     );
   }

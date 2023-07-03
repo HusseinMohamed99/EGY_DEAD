@@ -1,19 +1,22 @@
 import 'package:animate_do/animate_do.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:movies_app/core/components/image_shimmer.dart';
+import 'package:movies_app/core/components/loading_indicator.dart';
+import 'package:movies_app/core/components/size_box.dart';
 import 'package:movies_app/core/global/app_string/app_string.dart';
+import 'package:movies_app/core/global/theme/app_color/app_color_dark.dart';
+import 'package:movies_app/core/global/theme/theme_data/theme_data_dark.dart';
 import 'package:movies_app/core/network/api_constance.dart';
 import 'package:movies_app/core/services/services_locator.dart';
 import 'package:movies_app/core/utils/enum.dart';
+import 'package:movies_app/core/utils/function.dart';
 import 'package:movies_app/tvs/domain/entities/genres.dart';
 import 'package:movies_app/tvs/presentation/controller/tvs_details_bloc.dart';
 import 'package:movies_app/tvs/presentation/controller/tvs_details_events.dart';
 import 'package:movies_app/tvs/presentation/controller/tvs_details_states.dart';
-import 'package:shimmer/shimmer.dart';
 
 class TvsDetailsScreen extends StatelessWidget {
   final int tvsID;
@@ -41,12 +44,12 @@ class TvsDetailsContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = getThemeDataDark().textTheme;
     return BlocBuilder<TvsDetailsBloc, TvsDetailsStates>(
       builder: (context, state) {
         switch (state.tvsDetailsStates) {
           case RequestState.loading:
-            return const SizedBox(
-                height: 400, child: Center(child: CircularProgressIndicator()));
+            return SizedBox(height: 250.h, child: const LoadingIndicator());
           case RequestState.loaded:
             return DefaultTabController(
               length: 3,
@@ -54,94 +57,83 @@ class TvsDetailsContent extends StatelessWidget {
               child: Scaffold(
                 body: SingleChildScrollView(
                   key: const Key('tvDetailScrollView'),
+                  physics: const BouncingScrollPhysics(),
                   child: Stack(
                     children: [
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
-                          CachedNetworkImage(
-                            width: MediaQuery.of(context).size.width,
-                            height: MediaQuery.of(context).size.height / 3,
+                          ImageWithShimmer(
                             imageUrl: ApiConstance.imageURL(
                                 state.tvsDetails!.backdropPath),
-                            fit: BoxFit.fill,
-                            placeholder: (context, url) => Shimmer.fromColors(
-                              baseColor: Colors.grey[850]!,
-                              highlightColor: Colors.grey[800]!,
-                              child: Container(
-                                height: 170.0,
-                                width: 120.0,
-                                decoration: BoxDecoration(
-                                  color: Colors.black,
-                                  borderRadius: BorderRadius.circular(8.0),
-                                ),
-                              ),
-                            ),
-                            errorWidget: (context, url, error) =>
-                                const Icon(Icons.error),
+                            width: double.infinity,
+                            height: 250.h,
+                            boxFit: BoxFit.fill,
                           ),
                           FadeInUp(
                             from: 20,
                             duration: const Duration(milliseconds: 500),
                             child: Padding(
-                              padding: const EdgeInsets.all(12.0),
+                              padding: const EdgeInsets.all(12.0).r,
                               child: Column(
                                 children: [
                                   Row(
                                     children: [
                                       Container(
                                         decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(10),
-                                            border: Border.all(
-                                                color: Colors.white)),
-                                        child: ClipRRect(
                                           borderRadius:
-                                              BorderRadius.circular(10),
-                                          child: CachedNetworkImage(
-                                            height: MediaQuery.of(context)
-                                                    .size
-                                                    .height /
-                                                4,
-                                            width: MediaQuery.of(context)
-                                                    .size
-                                                    .width /
-                                                2.5,
-                                            imageUrl: ApiConstance.imageURL(
-                                                state.tvsDetails!.posterPath),
-                                            fit: BoxFit.cover,
-                                            placeholder: (context, url) =>
-                                                Shimmer.fromColors(
-                                              baseColor: Colors.grey[850]!,
-                                              highlightColor: Colors.grey[800]!,
-                                              child: Container(
-                                                height: 170.0,
-                                                width: 120.0,
-                                                decoration: BoxDecoration(
-                                                  color: Colors.black,
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          8.0),
-                                                ),
-                                              ),
-                                            ),
-                                            errorWidget:
-                                                (context, url, error) =>
-                                                    const Icon(Icons.error),
+                                              BorderRadius.circular(10).r,
+                                          border: Border.all(
+                                            color: AppColorsDark.borderColor,
                                           ),
                                         ),
+                                        child: Stack(
+                                          children: [
+                                            ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(16).r,
+                                              child: ImageWithShimmer(
+                                                imageUrl: ApiConstance.imageURL(
+                                                  state.tvsDetails!.posterPath,
+                                                ),
+                                                width: 120.w,
+                                                height: 150.h,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
                                       ),
-                                      const SizedBox(width: 16.0),
+                                      Space(height: 0, width: 16.w),
                                       Expanded(
                                         child: Column(
                                           children: [
-                                            Text(state.tvsDetails!.name,
-                                                style: GoogleFonts.poppins(
-                                                  fontSize: 23,
-                                                  fontWeight: FontWeight.w700,
-                                                  letterSpacing: 1.2,
-                                                )),
-                                            const SizedBox(height: 8.0),
+                                            CircleAvatar(
+                                              radius: 19.r,
+                                              backgroundColor:
+                                                  AppColorsDark.primaryRedColor,
+                                              child: IconButton(
+                                                onPressed: () {
+                                                  urlLauncher(
+                                                    Uri.parse(
+                                                      state.tvsDetails
+                                                              ?.trailerUrl ??
+                                                          '',
+                                                    ),
+                                                  );
+                                                },
+                                                icon: const Icon(
+                                                  Icons.play_circle,
+                                                  color:
+                                                      AppColorsDark.iconColor,
+                                                ),
+                                              ),
+                                            ),
+                                            Space(height: 10.h, width: 0),
+                                            Text(
+                                              state.tvsDetails!.name,
+                                              style: textTheme.titleLarge,
+                                            ),
+                                            Space(height: 8.h, width: 0),
                                             Row(
                                               children: [
                                                 Container(
@@ -149,57 +141,43 @@ class TvsDetailsContent extends StatelessWidget {
                                                       .symmetric(
                                                     vertical: 2.0,
                                                     horizontal: 8.0,
-                                                  ),
+                                                  ).r,
                                                   decoration: BoxDecoration(
-                                                    color: Colors.grey[800],
+                                                    color: AppColorsDark
+                                                        .greyDarkColor,
                                                     borderRadius:
                                                         BorderRadius.circular(
-                                                            4.0),
+                                                                4.0)
+                                                            .r,
                                                   ),
                                                   child: Text(
                                                     state.tvsDetails!.firstDate
                                                         .split('-')[0],
-                                                    style: const TextStyle(
-                                                      fontSize: 16.0,
-                                                      fontWeight:
-                                                          FontWeight.w500,
-                                                    ),
+                                                    style:
+                                                        textTheme.labelMedium,
                                                   ),
                                                 ),
-                                                const SizedBox(width: 16.0),
+                                                Space(height: 0, width: 16.w),
                                                 Row(
                                                   children: [
-                                                    const Icon(
+                                                    Icon(
                                                       Icons.star,
-                                                      color: Colors.amber,
-                                                      size: 20.0,
+                                                      color: AppColorsDark
+                                                          .iconRateColor,
+                                                      size: 20.sp,
                                                     ),
-                                                    const SizedBox(width: 4.0),
+                                                    Space(
+                                                        height: 0, width: 4.w),
                                                     Text(
                                                       (state.tvsDetails!
-                                                                  .voteAverage /
-                                                              2)
+                                                              .voteAverage)
                                                           .toStringAsFixed(1),
-                                                      style: const TextStyle(
-                                                        fontSize: 16.0,
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                        letterSpacing: 1.2,
-                                                      ),
-                                                    ),
-                                                    const SizedBox(width: 4.0),
-                                                    Text(
-                                                      '(${state.tvsDetails!.voteAverage})',
-                                                      style: const TextStyle(
-                                                        fontSize: 1.0,
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                        letterSpacing: 1.2,
-                                                      ),
+                                                      style:
+                                                          textTheme.labelMedium,
                                                     ),
                                                   ],
                                                 ),
-                                                const SizedBox(width: 16.0),
+                                                Space(height: 0, width: 16.w),
                                                 Expanded(
                                                   child: Text(
                                                     _showDuration(
@@ -209,15 +187,13 @@ class TvsDetailsContent extends StatelessWidget {
                                                               .runtime[0]
                                                           : 0,
                                                     ),
-                                                    style: const TextStyle(
-                                                      color: Colors.white70,
-                                                      fontSize: 16.0,
-                                                      fontWeight:
-                                                          FontWeight.w500,
-                                                      letterSpacing: 1.2,
+                                                    style: textTheme
+                                                        .labelMedium!
+                                                        .copyWith(
+                                                      color: Colors.grey,
                                                     ),
                                                   ),
-                                                )
+                                                ),
                                               ],
                                             ),
                                           ],
@@ -226,27 +202,20 @@ class TvsDetailsContent extends StatelessWidget {
                                     ],
                                   ),
                                   Padding(
-                                    padding: const EdgeInsets.all(8.0),
+                                    padding: const EdgeInsets.all(8.0).r,
                                     child: Column(
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: [
                                         Text(
                                           state.tvsDetails!.overview,
-                                          style: const TextStyle(
-                                            fontSize: 14.0,
-                                            fontWeight: FontWeight.w400,
-                                            letterSpacing: 1.2,
-                                          ),
+                                          style: textTheme.titleMedium,
                                         ),
-                                        const SizedBox(height: 8.0),
+                                        Space(height: 8.h, width: 0),
                                         Text(
                                           'Genres: ${_showGenres(state.tvsDetails!.genres)}',
-                                          style: const TextStyle(
-                                            color: Colors.white70,
-                                            fontSize: 12.0,
-                                            fontWeight: FontWeight.w500,
-                                            letterSpacing: 1.2,
+                                          style: textTheme.labelSmall!.copyWith(
+                                            color: Colors.grey,
                                           ),
                                         ),
                                       ],
@@ -256,9 +225,7 @@ class TvsDetailsContent extends StatelessWidget {
                               ),
                             ),
                           ),
-                          const SizedBox(
-                            height: 15,
-                          ),
+                          Space(height: 5.h, width: 0),
                           TabBar(
                             labelColor: Colors.white,
                             unselectedLabelColor: Colors.grey.shade700,
@@ -308,7 +275,7 @@ class TvsDetailsContent extends StatelessWidget {
                           ),
                           SizedBox(
                             width: double.maxFinite,
-                            height: 600,
+                            height: 600.h,
                             child: TabBarView(
                               children: [
                                 _showSeasons(),
@@ -320,14 +287,26 @@ class TvsDetailsContent extends StatelessWidget {
                         ],
                       ),
                       Positioned(
-                          top: 40,
+                        top: 40.h,
+                        left: 10.w,
+                        child: CircleAvatar(
+                          backgroundColor: AppColorsDark.primaryRedColor,
+                          radius: 20.r,
                           child: IconButton(
-                              onPressed: () {
-                                if (Navigator.canPop(context)) {
-                                  Navigator.pop(context);
-                                }
-                              },
-                              icon: const Icon(Icons.arrow_back_ios))),
+                            alignment: Alignment.center,
+                            onPressed: () {
+                              if (Navigator.canPop(context)) {
+                                Navigator.pop(context);
+                              }
+                            },
+                            icon: Icon(
+                              Icons.arrow_circle_left_rounded,
+                              color: AppColorsDark.iconColor,
+                              size: 24.sp,
+                            ),
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -335,8 +314,14 @@ class TvsDetailsContent extends StatelessWidget {
             );
           case RequestState.error:
             return SizedBox(
-                height: 400,
-                child: Center(child: Text(state.tvsDetailsMessage)));
+              height: 300.h,
+              child: Center(
+                child: Text(
+                  state.tvsDetailsMessage,
+                  style: textTheme.labelLarge,
+                ),
+              ),
+            );
         }
       },
     );
@@ -367,161 +352,161 @@ class TvsDetailsContent extends StatelessWidget {
   }
 
   Widget _showRecommendations() {
+    final textTheme = getThemeDataDark().textTheme;
+
     return BlocBuilder<TvsDetailsBloc, TvsDetailsStates>(
       builder: (context, state) {
         switch (state.tvsRecommendationStates) {
           case RequestState.loading:
-            return const SizedBox(
-                height: 400, child: Center(child: CircularProgressIndicator()));
+            return SizedBox(height: 300.h, child: const LoadingIndicator());
           case RequestState.loaded:
             return FadeIn(
               duration: const Duration(milliseconds: 500),
               child: ListView.separated(
-                  shrinkWrap: true,
-                  scrollDirection: Axis.vertical,
-                  padding: const EdgeInsets.all(16),
-                  itemCount: state.tvsRecommendation.length,
-                  itemBuilder: (context, index) {
-                    final recommendation = state.tvsRecommendation[index];
-                    return Container(
-                      padding: const EdgeInsets.only(right: 8.0),
-                      child: InkWell(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => TvsDetailsScreen(
-                                tvsID: recommendation.id,
-                              ),
+                shrinkWrap: true,
+                scrollDirection: Axis.vertical,
+                padding: const EdgeInsets.all(16),
+                itemCount: state.tvsRecommendation.length,
+                itemBuilder: (context, index) {
+                  final recommendation = state.tvsRecommendation[index];
+                  return Container(
+                    padding: const EdgeInsets.only(right: 8).r,
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => TvsDetailsScreen(
+                              tvsID: recommendation.id,
                             ),
-                          );
-                          if (kDebugMode) {
-                            print(recommendation.id);
-                          }
-                        },
-                        child: Container(
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              border: Border.all(color: Colors.white)),
-                          child: ClipRRect(
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(8.0)),
-                            child: CachedNetworkImage(
-                              height: 200,
-                              width: 200.0,
-                              fit: BoxFit.cover,
-                              imageUrl: ApiConstance.imageURL(
-                                  recommendation.backdropPath!),
-                              placeholder: (context, url) => Shimmer.fromColors(
-                                baseColor: Colors.grey[850]!,
-                                highlightColor: Colors.grey[800]!,
-                                child: Container(
-                                  height: 170.0,
-                                  width: 120.0,
-                                  decoration: BoxDecoration(
-                                    color: Colors.black,
-                                    borderRadius: BorderRadius.circular(8.0),
-                                  ),
-                                ),
-                              ),
-                              errorWidget: (context, url, error) =>
-                                  const Icon(Icons.error),
+                          ),
+                        );
+                        if (kDebugMode) {
+                          print(recommendation.id);
+                        }
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10).r,
+                          border: Border.all(
+                            color: AppColorsDark.borderColor,
+                          ),
+                        ),
+                        child: ClipRRect(
+                          borderRadius: const BorderRadius.all(
+                            Radius.circular(8.0),
+                          ).r,
+                          child: ImageWithShimmer(
+                            imageUrl: ApiConstance.imageURL(
+                              recommendation.backdropPath!,
                             ),
+                            width: 100.w,
+                            height: 100.h,
+                            boxFit: BoxFit.fill,
                           ),
                         ),
                       ),
-                    );
-                  },
-                  separatorBuilder: (context, index) =>
-                      const SizedBox(height: 20)),
+                    ),
+                  );
+                },
+                separatorBuilder: (context, index) => Space(
+                  height: 20.h,
+                  width: 0,
+                ),
+              ),
             );
           case RequestState.error:
             return SizedBox(
-                height: 400,
-                child: Center(child: Text(state.tvsRecommendationMessage)));
+              height: 300.h,
+              child: Center(
+                child: Text(
+                  state.tvsRecommendationMessage,
+                  style: textTheme.titleLarge,
+                ),
+              ),
+            );
         }
       },
     );
   }
 
   Widget _showSimilar() {
+    final textTheme = getThemeDataDark().textTheme;
     return BlocBuilder<TvsDetailsBloc, TvsDetailsStates>(
       builder: (context, state) {
         switch (state.tvsSimilarStates) {
           case RequestState.loading:
-            return const SizedBox(
-                height: 400, child: Center(child: CircularProgressIndicator()));
+            return SizedBox(
+              height: 300.h,
+              child: const LoadingIndicator(),
+            );
           case RequestState.loaded:
             return FadeIn(
               duration: const Duration(milliseconds: 500),
-              child: SizedBox(
-                height: 170.0,
-                child: ListView.separated(
-                    shrinkWrap: true,
-                    scrollDirection: Axis.vertical,
-                    padding: const EdgeInsets.all(16),
-                    itemCount: state.tvsSimilar.length,
-                    itemBuilder: (context, index) {
-                      final similar = state.tvsSimilar[index];
-                      return Container(
-                        padding: const EdgeInsets.only(right: 8.0),
-                        child: InkWell(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => TvsDetailsScreen(
-                                  tvsID: similar.id,
-                                ),
-                              ),
-                            );
-                            if (kDebugMode) {
-                              print(similar.id);
-                            }
-                          },
-                          child: Container(
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                border: Border.all(color: Colors.white)),
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(8),
-                              child: CachedNetworkImage(
-                                height: 200,
-                                width: 200,
-                                fit: BoxFit.fill,
-                                imageUrl: ApiConstance.imageURL(
-                                    similar.backdropPath!),
-                                placeholder: (context, url) =>
-                                    Shimmer.fromColors(
-                                  baseColor: Colors.grey[850]!,
-                                  highlightColor: Colors.grey[800]!,
-                                  child: Container(
-                                    height: 170.0,
-                                    width: 120.0,
-                                    decoration: BoxDecoration(
-                                      color: Colors.black,
-                                      borderRadius: BorderRadius.circular(8.0),
-                                    ),
-                                  ),
-                                ),
-                                errorWidget: (context, url, error) => Icon(
-                                  Icons.error,
-                                  size: 30.sp,
-                                ),
-                              ),
+              child: ListView.separated(
+                shrinkWrap: true,
+                scrollDirection: Axis.vertical,
+                padding: const EdgeInsets.all(16),
+                itemCount: state.tvsSimilar.length,
+                itemBuilder: (context, index) {
+                  final similar = state.tvsSimilar[index];
+
+                  return Container(
+                    padding: const EdgeInsets.only(right: 8).r,
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => TvsDetailsScreen(
+                              tvsID: similar.id,
                             ),
                           ),
+                        );
+                        if (kDebugMode) {
+                          print(similar.id);
+                        }
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10).r,
+                          border: Border.all(
+                            color: AppColorsDark.borderColor,
+                          ),
                         ),
-                      );
-                    },
-                    separatorBuilder: (context, index) =>
-                        const SizedBox(height: 20)),
+                        child: ClipRRect(
+                          borderRadius: const BorderRadius.all(
+                            Radius.circular(8.0),
+                          ).r,
+                          child: ImageWithShimmer(
+                            imageUrl: ApiConstance.imageURL(
+                              similar.backdropPath!,
+                            ),
+                            width: 100.w,
+                            height: 100.h,
+                            boxFit: BoxFit.fill,
+                          ),
+                        ),
+                      ),
+                    ),
+                  );
+                },
+                separatorBuilder: (context, index) => Space(
+                  height: 20.h,
+                  width: 0,
+                ),
               ),
             );
           case RequestState.error:
             return SizedBox(
-                height: 400,
-                child: Center(child: Text(state.tvsSimilarMessage)));
+              height: 300.h,
+              child: Center(
+                child: Text(
+                  state.tvsSimilarMessage,
+                  style: textTheme.titleLarge,
+                ),
+              ),
+            );
         }
       },
     );
@@ -530,75 +515,62 @@ class TvsDetailsContent extends StatelessWidget {
   Widget _showSeasons() {
     return BlocBuilder<TvsDetailsBloc, TvsDetailsStates>(
       builder: (context, state) {
-        return ListView.separated(
-          padding: const EdgeInsets.all(16),
-          itemCount: state.tvsDetails!.season.length,
-          itemBuilder: (context, index) {
-            final season = state.tvsDetails!.season[index];
-            return InkWell(
-              onTap: () {
-                // TODO: Navigator Episodes Details:
-                if (kDebugMode) {
-                  print(season.id);
-                }
-              },
-              child: Container(
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    border: Border.all(color: Colors.white)),
-                child: Row(
-                  children: [
-                    Container(
-                      margin: const EdgeInsets.only(right: 100),
-                      decoration: BoxDecoration(
-                          borderRadius: const BorderRadius.only(
-                            topLeft: Radius.circular(10),
-                            bottomLeft: Radius.circular(10),
-                          ),
-                          border: Border.all(color: Colors.white)),
-                      child: ClipRRect(
-                        borderRadius: const BorderRadius.only(
-                          topLeft: Radius.circular(7),
-                          bottomLeft: Radius.circular(7),
-                        ),
-                        child: CachedNetworkImage(
-                          height: 100,
-                          width: 100,
-                          fit: BoxFit.fill,
-                          imageUrl: ApiConstance.imageURL(season.posterPath),
-                          placeholder: (context, url) => Shimmer.fromColors(
-                            baseColor: Colors.grey[850]!,
-                            highlightColor: Colors.grey[800]!,
-                            child: Container(
-                              height: 100,
-                              width: 100,
-                              decoration: BoxDecoration(
-                                color: Colors.black,
-                                borderRadius: BorderRadius.circular(8.0),
-                              ),
+        final textTheme = getThemeDataDark().textTheme;
+        return state.tvsDetails!.season.isEmpty
+            ? const LoadingIndicator()
+            : ListView.separated(
+                padding: const EdgeInsets.all(16).r,
+                itemCount: state.tvsDetails!.season.length,
+                itemBuilder: (context, index) {
+                  final season = state.tvsDetails!.season[index];
+                  return Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10).r,
+                      border: Border.all(
+                        color: AppColorsDark.borderColor,
+                      ),
+                    ),
+                    child: Row(
+                      children: [
+                        Container(
+                          margin: const EdgeInsets.only(right: 50).r,
+                          decoration: BoxDecoration(
+                            borderRadius: const BorderRadius.only(
+                              topLeft: Radius.circular(10),
+                              bottomLeft: Radius.circular(10),
+                            ).r,
+                            border: Border.all(
+                              color: AppColorsDark.borderColor,
                             ),
                           ),
-                          errorWidget: (context, url, error) => Icon(
-                            Icons.error,
-                            size: 30.sp,
+                          child: ClipRRect(
+                            borderRadius: const BorderRadius.only(
+                              topLeft: Radius.circular(7),
+                              bottomLeft: Radius.circular(7),
+                            ).r,
+                            child: ImageWithShimmer(
+                              imageUrl: ApiConstance.imageURL(
+                                season.posterPath,
+                              ),
+                              width: 100.w,
+                              height: 90.h,
+                              boxFit: BoxFit.fill,
+                            ),
                           ),
                         ),
-                      ),
+                        Expanded(
+                          child: Text(
+                            season.name,
+                            style: textTheme.labelMedium,
+                          ),
+                        ),
+                      ],
                     ),
-                    Expanded(
-                      child: Text(
-                        season.name,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            );
-          },
-          separatorBuilder: (context, index) => const SizedBox(
-            height: 20,
-          ),
-        );
+                  );
+                },
+                separatorBuilder: (context, index) =>
+                    Space(height: 20.h, width: 0),
+              );
       },
     );
   }

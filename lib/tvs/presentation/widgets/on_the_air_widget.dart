@@ -1,32 +1,36 @@
 import 'package:animate_do/animate_do.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/foundation.dart';
-import 'package:movies_app/core/network/api_constance.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:movies_app/core/components/image_shimmer.dart';
+import 'package:movies_app/core/components/loading_indicator.dart';
+import 'package:movies_app/core/components/size_box.dart';
+import 'package:movies_app/core/global/app_string/app_string.dart';
+import 'package:movies_app/core/global/theme/app_color/app_color_dark.dart';
+import 'package:movies_app/core/global/theme/theme_data/theme_data_dark.dart';
+import 'package:movies_app/core/network/api_constance.dart';
 import 'package:movies_app/core/utils/enum.dart';
 import 'package:movies_app/tvs/presentation/controller/tvs_bloc.dart';
 import 'package:movies_app/tvs/presentation/controller/tvs_states.dart';
 import 'package:movies_app/tvs/presentation/screens/tvs_details_screen.dart';
-import 'package:shimmer/shimmer.dart';
 
 class OnTheAirWidget extends StatelessWidget {
   const OnTheAirWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = getThemeDataDark().textTheme;
     return BlocBuilder<TvsBloc, TvsStates>(
       buildWhen: (previous, current) =>
           previous.onTheAirState != current.onTheAirState,
       builder: (context, state) {
         switch (state.onTheAirState) {
           case RequestState.loading:
-            return const SizedBox(
-              height: 400,
-              child: Center(
-                child: CircularProgressIndicator(),
-              ),
+            return SizedBox(
+              height: 300.h,
+              child: const LoadingIndicator(),
             );
 
           case RequestState.loaded:
@@ -35,7 +39,7 @@ class OnTheAirWidget extends StatelessWidget {
               child: CarouselSlider(
                 options: CarouselOptions(
                   autoPlay: true,
-                  height: 400.0,
+                  height: 300.h,
                   viewportFraction: 1.0,
                   onPageChanged: (index, reason) {},
                 ),
@@ -76,25 +80,12 @@ class OnTheAirWidget extends StatelessWidget {
                               );
                             },
                             blendMode: BlendMode.dstIn,
-                            child: CachedNetworkImage(
-                              height: 560.0,
-                              fit: BoxFit.fill,
+                            child: ImageWithShimmer(
+                              boxFit: BoxFit.fill,
                               imageUrl:
                                   ApiConstance.imageURL(item.backdropPath),
-                              placeholder: (context, url) => Shimmer.fromColors(
-                                baseColor: Colors.grey[850]!,
-                                highlightColor: Colors.grey[800]!,
-                                child: Container(
-                                  height: 170.0,
-                                  width: 120.0,
-                                  decoration: BoxDecoration(
-                                    color: Colors.black,
-                                    borderRadius: BorderRadius.circular(8.0),
-                                  ),
-                                ),
-                              ),
-                              errorWidget: (context, url, error) =>
-                                  const Center(child: Icon(Icons.error)),
+                              width: double.infinity,
+                              height: 560.h,
                             ),
                           ),
                           Column(
@@ -105,17 +96,14 @@ class OnTheAirWidget extends StatelessWidget {
                                 child: Align(
                                   alignment: Alignment.topLeft,
                                   child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(70),
-                                    child: CachedNetworkImage(
-                                      height:
-                                          MediaQuery.of(context).size.height /
-                                              7,
-                                      width:
-                                          MediaQuery.of(context).size.width / 3,
+                                    borderRadius: BorderRadius.circular(70).r,
+                                    child: ImageWithShimmer(
+                                      boxFit: BoxFit.fill,
                                       imageUrl: ApiConstance.imageURL(
                                         item.posterPath,
                                       ),
-                                      fit: BoxFit.fill,
+                                      width: 110.w,
+                                      height: 100.h,
                                     ),
                                   ),
                                 ),
@@ -128,36 +116,32 @@ class OnTheAirWidget extends StatelessWidget {
                                   children: [
                                     Padding(
                                       padding:
-                                          const EdgeInsets.only(bottom: 16.0),
+                                          const EdgeInsets.only(bottom: 16).r,
                                       child: Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
                                         children: [
-                                          const Icon(
+                                          Icon(
                                             Icons.circle,
-                                            color: Colors.redAccent,
-                                            size: 16.0,
+                                            color:
+                                                AppColorsDark.primaryRedColor,
+                                            size: 16.sp,
                                           ),
-                                          const SizedBox(width: 4.0),
+                                          Space(height: 0, width: 4.w),
                                           Text(
-                                            'On The Air'.toUpperCase(),
-                                            style: const TextStyle(
-                                                fontSize: 16.0,
-                                                color: Colors.white),
+                                            AppString.onAir.toUpperCase(),
+                                            style: textTheme.bodyLarge,
                                           ),
                                         ],
                                       ),
                                     ),
                                     Padding(
                                       padding:
-                                          const EdgeInsets.only(bottom: 16.0),
+                                          const EdgeInsets.only(bottom: 16).r,
                                       child: Text(
                                         item.name,
                                         textAlign: TextAlign.center,
-                                        style: const TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 24,
-                                        ),
+                                        style: textTheme.titleLarge,
                                       ),
                                     ),
                                   ],
@@ -175,9 +159,12 @@ class OnTheAirWidget extends StatelessWidget {
 
           case RequestState.error:
             return SizedBox(
-              height: 400,
+              height: 300.h,
               child: Center(
-                child: Text(state.onTheAirMessage),
+                child: Text(
+                  state.onTheAirMessage,
+                  style: textTheme.labelLarge,
+                ),
               ),
             );
         }
