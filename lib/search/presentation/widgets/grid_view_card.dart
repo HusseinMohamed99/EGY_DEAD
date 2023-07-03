@@ -47,7 +47,7 @@ class GridViewCard extends StatelessWidget {
               child: ImageWithShimmer(
                 imageUrl: ApiConstance.imageURL(item.posterUrl),
                 width: double.infinity,
-                height: 150,
+                height: 150.h,
               ),
             ),
           ),
