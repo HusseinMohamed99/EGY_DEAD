@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:movies_app/core/global/theme/app_color/app_color_dark.dart';
 import 'package:shimmer/shimmer.dart';
 
 class ImageWithShimmer extends StatelessWidget {
@@ -29,7 +30,7 @@ class ImageWithShimmer extends StatelessWidget {
         highlightColor: Colors.grey[800]!,
         child: Container(
           height: height,
-          color: Colors.green,
+          color: AppColorsDark.primaryGreenColor,
         ),
       ),
       errorWidget: (_, __, ___) => Icon(

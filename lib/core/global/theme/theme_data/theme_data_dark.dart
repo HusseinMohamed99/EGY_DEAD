@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:movies_app/core/global/theme/app_color/app_color_dark.dart';
 
 ThemeData getThemeDataDark() => ThemeData(
@@ -15,24 +16,38 @@ ThemeData getThemeDataDark() => ThemeData(
         ),
       ),
       textTheme: TextTheme(
-        bodyLarge: TextStyle(
+        bodyLarge: GoogleFonts.roboto(
           color: AppColorsDark.textColor,
         ),
-        bodyMedium: TextStyle(
+        bodyMedium: GoogleFonts.roboto(
           color: AppColorsDark.textColor,
         ),
-        bodySmall: TextStyle(
+        bodySmall: GoogleFonts.roboto(
           color: AppColorsDark.textColor,
         ),
-        titleLarge: TextStyle(color: AppColorsDark.textColor, fontSize: 24.sp),
-        titleMedium: TextStyle(
+        titleLarge: GoogleFonts.roboto(
+          color: AppColorsDark.textColor,
+          fontSize: 24.sp,
+          fontWeight: FontWeight.w700,
+        ),
+        titleMedium: GoogleFonts.roboto(
           color: AppColorsDark.textColor,
         ),
-        titleSmall: TextStyle(
+        titleSmall: GoogleFonts.roboto(
           color: AppColorsDark.textColor,
         ),
-        labelLarge: TextStyle(color: AppColorsDark.textColor, fontSize: 18.sp),
-        labelSmall: TextStyle(color: AppColorsDark.textColor, fontSize: 12.sp),
+        labelLarge: GoogleFonts.roboto(
+          color: AppColorsDark.textColor,
+          fontSize: 18.sp,
+        ),
+        labelMedium: GoogleFonts.roboto(
+          color: AppColorsDark.textColor,
+          fontSize: 16.sp,
+        ),
+        labelSmall: GoogleFonts.roboto(
+          color: AppColorsDark.textColor,
+          fontSize: 12.sp,
+        ),
       ),
       bottomNavigationBarTheme: BottomNavigationBarThemeData(
         backgroundColor: Colors.black,
@@ -40,15 +55,15 @@ ThemeData getThemeDataDark() => ThemeData(
         showUnselectedLabels: false,
         selectedIconTheme: IconThemeData(
           size: 30.sp,
-          color: Colors.green,
+          color: AppColorsDark.primaryGreenColor,
         ),
         unselectedIconTheme: IconThemeData(
           size: 24.sp,
           color: Colors.white,
         ),
-        selectedLabelStyle: const TextStyle(
-          color: Colors.green,
+        selectedLabelStyle: GoogleFonts.roboto(
+          color: AppColorsDark.primaryGreenColor,
         ),
-        selectedItemColor: Colors.green,
+        selectedItemColor: AppColorsDark.primaryGreenColor,
       ),
     );

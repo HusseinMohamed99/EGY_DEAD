@@ -1,13 +1,16 @@
 import 'package:animate_do/animate_do.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies_app/core/components/cast_card.dart';
+import 'package:movies_app/core/components/image_shimmer.dart';
 import 'package:movies_app/core/components/loading_indicator.dart';
 import 'package:movies_app/core/components/review_card.dart';
+import 'package:movies_app/core/components/size_box.dart';
 import 'package:movies_app/core/global/app_string/app_string.dart';
+import 'package:movies_app/core/global/theme/app_color/app_color_dark.dart';
+import 'package:movies_app/core/global/theme/theme_data/theme_data_dark.dart';
 import 'package:movies_app/core/network/api_constance.dart';
 import 'package:movies_app/core/services/services_locator.dart';
 import 'package:movies_app/core/utils/enum.dart';
@@ -18,7 +21,6 @@ import 'package:movies_app/movies/domain/entities/review.dart';
 import 'package:movies_app/movies/presentation/controller/movies_details_bloc.dart';
 import 'package:movies_app/movies/presentation/controller/movies_details_events.dart';
 import 'package:movies_app/movies/presentation/controller/movies_details_states.dart';
-import 'package:shimmer/shimmer.dart';
 
 class MovieDetailsScreen extends StatelessWidget {
   final int movieID;
@@ -46,6 +48,8 @@ class MovieDetailContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = getThemeDataDark().textTheme;
+
     return BlocBuilder<MoviesDetailsBloc, MoviesDetailsStates>(
       builder: (context, state) {
         switch (state.moviesDetailsStates) {
@@ -60,69 +64,69 @@ class MovieDetailContent extends StatelessWidget {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      CachedNetworkImage(
-                        width: MediaQuery.of(context).size.width,
-                        height: MediaQuery.of(context).size.height / 3,
+                      ImageWithShimmer(
                         imageUrl: ApiConstance.imageURL(
                             state.moviesDetails!.backdropPath),
-                        fit: BoxFit.fill,
+                        width: double.infinity,
+                        height: 250.h,
+                        boxFit: BoxFit.fill,
                       ),
                       FadeInUp(
                         from: 20,
                         duration: const Duration(milliseconds: 500),
                         child: Padding(
-                          padding: const EdgeInsets.all(12.0),
+                          padding: const EdgeInsets.all(12.0).r,
                           child: Column(
                             children: [
                               Row(
                                 children: [
                                   Container(
                                     decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(10),
-                                        border:
-                                            Border.all(color: Colors.white)),
+                                      borderRadius: BorderRadius.circular(10).r,
+                                      border: Border.all(
+                                        color: AppColorsDark.borderColor,
+                                      ),
+                                    ),
                                     child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(16),
-                                      child: CachedNetworkImage(
-                                        height:
-                                            MediaQuery.of(context).size.height /
-                                                4,
-                                        width:
-                                            MediaQuery.of(context).size.width /
-                                                2.5,
+                                      borderRadius: BorderRadius.circular(16).r,
+                                      child: ImageWithShimmer(
                                         imageUrl: ApiConstance.imageURL(
-                                            state.moviesDetails!.posterPath),
-                                        fit: BoxFit.cover,
+                                          state.moviesDetails!.posterPath,
+                                        ),
+                                        width: 120.w,
+                                        height: 150.h,
                                       ),
                                     ),
                                   ),
-                                  const SizedBox(width: 16.0),
+                                  Space(height: 0, width: 16.w),
                                   Expanded(
                                     child: Column(
                                       children: [
                                         CircleAvatar(
-                                          radius: 20,
-                                          backgroundColor: Colors.red,
+                                          radius: 19.r,
+                                          backgroundColor:
+                                              AppColorsDark.circleAvatarColor,
                                           child: IconButton(
-                                              onPressed: () {
-                                                urlLauncher(
-                                                  Uri.parse(state.moviesDetails
+                                            onPressed: () {
+                                              urlLauncher(
+                                                Uri.parse(
+                                                  state.moviesDetails
                                                           ?.trailerUrl ??
-                                                      ''),
-                                                );
-                                              },
-                                              icon: const Icon(
-                                                Icons.play_circle,
-                                                color: Colors.white,
-                                              )),
+                                                      '',
+                                                ),
+                                              );
+                                            },
+                                            icon: const Icon(
+                                              Icons.play_circle,
+                                              color: AppColorsDark.iconColor,
+                                            ),
+                                          ),
                                         ),
-                                        Text(state.moviesDetails!.title,
-                                            style: GoogleFonts.poppins(
-                                              fontSize: 23,
-                                              fontWeight: FontWeight.w700,
-                                              letterSpacing: 1.2,
-                                            )),
-                                        const SizedBox(height: 8.0),
+                                        Text(
+                                          state.moviesDetails!.title,
+                                          style: textTheme.titleLarge,
+                                        ),
+                                        Space(height: 8.h, width: 0),
                                         Row(
                                           children: [
                                             Container(
@@ -130,62 +134,46 @@ class MovieDetailContent extends StatelessWidget {
                                                   const EdgeInsets.symmetric(
                                                 vertical: 2.0,
                                                 horizontal: 8.0,
-                                              ),
+                                              ).r,
                                               decoration: BoxDecoration(
-                                                color: Colors.grey[800],
+                                                color:
+                                                    AppColorsDark.greyDarkColor,
                                                 borderRadius:
-                                                    BorderRadius.circular(4.0),
+                                                    BorderRadius.circular(4.0)
+                                                        .r,
                                               ),
                                               child: Text(
                                                 state.moviesDetails!.releaseDate
                                                     .split('-')[0],
-                                                style: const TextStyle(
-                                                  fontSize: 16.0,
-                                                  fontWeight: FontWeight.w500,
-                                                ),
+                                                style: textTheme.labelMedium,
                                               ),
                                             ),
-                                            const SizedBox(width: 16.0),
+                                            Space(height: 0, width: 16.w),
                                             Row(
                                               children: [
-                                                const Icon(
+                                                Icon(
                                                   Icons.star,
-                                                  color: Colors.amber,
-                                                  size: 20.0,
+                                                  color: AppColorsDark
+                                                      .iconRateColor,
+                                                  size: 20.0.sp,
                                                 ),
-                                                const SizedBox(width: 4.0),
+                                                Space(height: 0, width: 4.w),
                                                 Text(
                                                   (state.moviesDetails!
-                                                              .voteAverage /
-                                                          2)
+                                                          .voteAverage)
                                                       .toStringAsFixed(1),
-                                                  style: const TextStyle(
-                                                    fontSize: 16.0,
-                                                    fontWeight: FontWeight.w500,
-                                                    letterSpacing: 1.2,
-                                                  ),
-                                                ),
-                                                const SizedBox(width: 4.0),
-                                                Text(
-                                                  '(${state.moviesDetails!.voteAverage})',
-                                                  style: const TextStyle(
-                                                    fontSize: 1.0,
-                                                    fontWeight: FontWeight.w500,
-                                                    letterSpacing: 1.2,
-                                                  ),
+                                                  style: textTheme.labelMedium,
                                                 ),
                                               ],
                                             ),
-                                            const SizedBox(width: 16.0),
+                                            Space(height: 0, width: 16.w),
                                             Expanded(
                                               child: Text(
                                                 _showDuration(state
                                                     .moviesDetails!.runtime),
-                                                style: const TextStyle(
-                                                  color: Colors.white70,
-                                                  fontSize: 16.0,
-                                                  fontWeight: FontWeight.w500,
-                                                  letterSpacing: 1.2,
+                                                style: textTheme.labelMedium!
+                                                    .copyWith(
+                                                  color: Colors.grey,
                                                 ),
                                               ),
                                             ),
@@ -197,26 +185,19 @@ class MovieDetailContent extends StatelessWidget {
                                 ],
                               ),
                               Padding(
-                                padding: const EdgeInsets.all(8.0),
+                                padding: const EdgeInsets.all(8.0).r,
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
                                       state.moviesDetails!.overview,
-                                      style: const TextStyle(
-                                        fontSize: 14.0,
-                                        fontWeight: FontWeight.w400,
-                                        letterSpacing: 1.2,
-                                      ),
+                                      style: textTheme.titleMedium,
                                     ),
-                                    const SizedBox(height: 8.0),
+                                    Space(height: 8.h, width: 0),
                                     Text(
                                       'Genres: ${_showGenres(state.moviesDetails!.genres)}',
-                                      style: const TextStyle(
-                                        color: Colors.white70,
-                                        fontSize: 12.0,
-                                        fontWeight: FontWeight.w500,
-                                        letterSpacing: 1.2,
+                                      style: textTheme.labelSmall!.copyWith(
+                                        color: Colors.grey,
                                       ),
                                     ),
                                   ],
@@ -229,15 +210,11 @@ class MovieDetailContent extends StatelessWidget {
                       FadeInUp(
                         from: 20,
                         duration: const Duration(milliseconds: 500),
-                        child: const Padding(
-                          padding: EdgeInsets.all(12.0),
+                        child: Padding(
+                          padding: const EdgeInsets.all(12).r,
                           child: Text(
                             AppString.cast,
-                            style: TextStyle(
-                              fontSize: 16.0,
-                              fontWeight: FontWeight.w500,
-                              letterSpacing: 1.2,
-                            ),
+                            style: textTheme.labelLarge,
                           ),
                         ),
                       ),
@@ -245,60 +222,50 @@ class MovieDetailContent extends StatelessWidget {
                       FadeInUp(
                         from: 20,
                         duration: const Duration(milliseconds: 500),
-                        child: const Padding(
-                          padding: EdgeInsets.all(12.0),
+                        child: Padding(
+                          padding: const EdgeInsets.all(12).r,
                           child: Text(
                             AppString.reviews,
-                            style: TextStyle(
-                              fontSize: 16.0,
-                              fontWeight: FontWeight.w500,
-                              letterSpacing: 1.2,
-                            ),
+                            style: textTheme.labelLarge,
                           ),
                         ),
                       ),
                       _getReviews(state.moviesDetails!.reviews),
+                      Space(height: 18.h, width: 0),
                       FadeInUp(
                         from: 20,
                         duration: const Duration(milliseconds: 500),
-                        child: const Padding(
-                          padding: EdgeInsets.all(12.0),
+                        child: Padding(
+                          padding: const EdgeInsets.all(12).r,
                           child: Text(
                             AppString.recommendations,
-                            style: TextStyle(
-                              fontSize: 16.0,
-                              fontWeight: FontWeight.w500,
-                              letterSpacing: 1.2,
-                            ),
+                            style: textTheme.labelLarge,
                           ),
                         ),
                       ),
                       _showRecommendations(),
+                      Space(height: 18.h, width: 0),
                       FadeInUp(
                         from: 20,
                         duration: const Duration(milliseconds: 500),
-                        child: const Padding(
-                          padding: EdgeInsets.all(12.0),
+                        child: Padding(
+                          padding: const EdgeInsets.all(12.0).r,
                           child: Text(
                             AppString.moreLikeThis,
-                            style: TextStyle(
-                              fontSize: 16.0,
-                              fontWeight: FontWeight.w500,
-                              letterSpacing: 1.2,
-                            ),
+                            style: textTheme.labelLarge,
                           ),
                         ),
                       ),
                       _showSimilar(),
-                      const SizedBox(height: 20),
+                      Space(height: 20.h, width: 0),
                     ],
                   ),
                   Positioned(
-                    top: 40,
-                    left: 10,
+                    top: 40.h,
+                    left: 10.w,
                     child: CircleAvatar(
-                      backgroundColor: Colors.black,
-                      radius: 22,
+                      backgroundColor: AppColorsDark.circleAvatarColor,
+                      radius: 20.r,
                       child: IconButton(
                         alignment: Alignment.center,
                         onPressed: () {
@@ -306,10 +273,10 @@ class MovieDetailContent extends StatelessWidget {
                             Navigator.pop(context);
                           }
                         },
-                        icon: const Icon(
+                        icon: Icon(
                           Icons.arrow_circle_left_rounded,
-                          color: Colors.white,
-                          size: 26,
+                          color: AppColorsDark.iconColor,
+                          size: 24.sp,
                         ),
                       ),
                     ),
@@ -319,8 +286,14 @@ class MovieDetailContent extends StatelessWidget {
             );
           case RequestState.error:
             return SizedBox(
-                height: 400,
-                child: Center(child: Text(state.moviesDetailsMessage)));
+              height: 300.h,
+              child: Center(
+                child: Text(
+                  state.moviesDetailsMessage,
+                  style: textTheme.titleLarge,
+                ),
+              ),
+            );
         }
       },
     );
@@ -351,26 +324,27 @@ class MovieDetailContent extends StatelessWidget {
   }
 
   Widget _showRecommendations() {
+    final textTheme = getThemeDataDark().textTheme;
+
     return BlocBuilder<MoviesDetailsBloc, MoviesDetailsStates>(
       builder: (context, state) {
         switch (state.moviesRecommendationStates) {
           case RequestState.loading:
-            return const SizedBox(
-                height: 400, child: Center(child: CircularProgressIndicator()));
+            return SizedBox(height: 300.h, child: const LoadingIndicator());
           case RequestState.loaded:
             return FadeIn(
               duration: const Duration(milliseconds: 500),
               child: SizedBox(
-                height: 170.0,
+                height: 170.h,
                 child: ListView.builder(
                   shrinkWrap: true,
                   scrollDirection: Axis.horizontal,
-                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 16).r,
                   itemCount: state.moviesRecommendation.length,
                   itemBuilder: (context, index) {
                     final recommendation = state.moviesRecommendation[index];
                     return Container(
-                      padding: const EdgeInsets.only(right: 8.0),
+                      padding: const EdgeInsets.only(right: 8).r,
                       child: InkWell(
                         onTap: () {
                           Navigator.push(
@@ -387,31 +361,20 @@ class MovieDetailContent extends StatelessWidget {
                         },
                         child: Container(
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              border: Border.all(color: Colors.white)),
+                            borderRadius: BorderRadius.circular(10).r,
+                            border: Border.all(
+                              color: AppColorsDark.borderColor,
+                            ),
+                          ),
                           child: ClipRRect(
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(8.0)),
-                            child: CachedNetworkImage(
-                              height: double.infinity,
-                              width: 120.0,
-                              fit: BoxFit.cover,
+                            borderRadius: const BorderRadius.all(
+                              Radius.circular(8.0),
+                            ).r,
+                            child: ImageWithShimmer(
                               imageUrl: ApiConstance.imageURL(
                                   recommendation.backdropPath!),
-                              placeholder: (context, url) => Shimmer.fromColors(
-                                baseColor: Colors.grey[850]!,
-                                highlightColor: Colors.grey[800]!,
-                                child: Container(
-                                  height: 170.0,
-                                  width: 120.0,
-                                  decoration: BoxDecoration(
-                                    color: Colors.black,
-                                    borderRadius: BorderRadius.circular(8.0),
-                                  ),
-                                ),
-                              ),
-                              errorWidget: (context, url, error) =>
-                                  const Icon(Icons.error),
+                              width: 120.w,
+                              height: double.infinity,
                             ),
                           ),
                         ),
@@ -423,34 +386,43 @@ class MovieDetailContent extends StatelessWidget {
             );
           case RequestState.error:
             return SizedBox(
-                height: 400,
-                child: Center(child: Text(state.moviesRecommendationMessage)));
+              height: 300.h,
+              child: Center(
+                child: Text(
+                  state.moviesRecommendationMessage,
+                  style: textTheme.titleLarge,
+                ),
+              ),
+            );
         }
       },
     );
   }
 
   Widget _showSimilar() {
+    final textTheme = getThemeDataDark().textTheme;
     return BlocBuilder<MoviesDetailsBloc, MoviesDetailsStates>(
       builder: (context, state) {
         switch (state.moviesSimilarStates) {
           case RequestState.loading:
-            return const SizedBox(
-                height: 400, child: Center(child: CircularProgressIndicator()));
+            return SizedBox(
+              height: 300.h,
+              child: const LoadingIndicator(),
+            );
           case RequestState.loaded:
             return FadeIn(
               duration: const Duration(milliseconds: 500),
               child: SizedBox(
-                height: 170.0,
+                height: 170.h,
                 child: ListView.builder(
                   shrinkWrap: true,
                   scrollDirection: Axis.horizontal,
-                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 16).r,
                   itemCount: state.moviesSimilar.length,
                   itemBuilder: (context, index) {
                     final similar = state.moviesSimilar[index];
                     return Container(
-                      padding: const EdgeInsets.only(right: 8.0),
+                      padding: const EdgeInsets.only(right: 8).r,
                       child: InkWell(
                         onTap: () {
                           Navigator.push(
@@ -467,31 +439,20 @@ class MovieDetailContent extends StatelessWidget {
                         },
                         child: Container(
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              border: Border.all(color: Colors.white)),
+                            borderRadius: BorderRadius.circular(10).r,
+                            border: Border.all(
+                              color: AppColorsDark.borderColor,
+                            ),
+                          ),
                           child: ClipRRect(
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(8.0)),
-                            child: CachedNetworkImage(
-                              height: double.infinity,
-                              width: 120.0,
-                              fit: BoxFit.cover,
+                            borderRadius: const BorderRadius.all(
+                              Radius.circular(8.0),
+                            ).r,
+                            child: ImageWithShimmer(
                               imageUrl:
                                   ApiConstance.imageURL(similar.backdropPath!),
-                              placeholder: (context, url) => Shimmer.fromColors(
-                                baseColor: Colors.grey[850]!,
-                                highlightColor: Colors.grey[800]!,
-                                child: Container(
-                                  height: 170.0,
-                                  width: 120.0,
-                                  decoration: BoxDecoration(
-                                    color: Colors.black,
-                                    borderRadius: BorderRadius.circular(8.0),
-                                  ),
-                                ),
-                              ),
-                              errorWidget: (context, url, error) =>
-                                  const Icon(Icons.error),
+                              width: 120.w,
+                              height: double.infinity,
                             ),
                           ),
                         ),
@@ -503,8 +464,14 @@ class MovieDetailContent extends StatelessWidget {
             );
           case RequestState.error:
             return SizedBox(
-                height: 400,
-                child: Center(child: Text(state.moviesSimilarMessage)));
+              height: 300.h,
+              child: Center(
+                child: Text(
+                  state.moviesSimilarMessage,
+                  style: textTheme.titleLarge,
+                ),
+              ),
+            );
         }
       },
     );
@@ -513,7 +480,7 @@ class MovieDetailContent extends StatelessWidget {
   Widget _getCast(List<Cast>? cast) {
     if (cast != null && cast.isNotEmpty) {
       return SectionListView(
-        height: 170,
+        height: 140.h,
         itemCount: cast.length,
         itemBuilder: (context, index) => CastCard(
           cast: cast[index],
@@ -527,7 +494,7 @@ class MovieDetailContent extends StatelessWidget {
   Widget _getReviews(List<Review>? reviews) {
     if (reviews != null && reviews.isNotEmpty) {
       return SectionListView(
-        height: 175,
+        height: 150.h,
         itemCount: reviews.length,
         itemBuilder: (context, index) => ReviewCard(
           review: reviews[index],
@@ -556,11 +523,12 @@ class SectionListView extends StatelessWidget {
     return SizedBox(
       height: height,
       child: ListView.separated(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
+        shrinkWrap: true,
+        padding: const EdgeInsets.symmetric(horizontal: 16).r,
         itemCount: itemCount,
         scrollDirection: Axis.horizontal,
         itemBuilder: itemBuilder,
-        separatorBuilder: (context, index) => const SizedBox(width: 10),
+        separatorBuilder: (context, index) => SizedBox(width: 10.w),
       ),
     );
   }
