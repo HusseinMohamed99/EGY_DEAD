@@ -7,6 +7,7 @@ import 'package:movies_app/core/components/image_shimmer.dart';
 import 'package:movies_app/core/components/loading_indicator.dart';
 import 'package:movies_app/core/components/size_box.dart';
 import 'package:movies_app/core/global/app_string/app_string.dart';
+import 'package:movies_app/core/global/theme/app_color/app_color_dark.dart';
 import 'package:movies_app/core/global/theme/theme_data/theme_data_dark.dart';
 import 'package:movies_app/core/network/api_constance.dart';
 import 'package:movies_app/core/utils/enum.dart';
@@ -93,11 +94,12 @@ class NowPlayingWidget extends StatelessWidget {
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.circular(70),
                                     child: ImageWithShimmer(
-                                        boxFit: BoxFit.fill,
-                                        imageUrl: ApiConstance.imageURL(
-                                            item.posterPath),
-                                        width: 110.w,
-                                        height: 100.h),
+                                      boxFit: BoxFit.fill,
+                                      imageUrl: ApiConstance.imageURL(
+                                          item.posterPath),
+                                      width: 110.w,
+                                      height: 100.h,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -116,7 +118,8 @@ class NowPlayingWidget extends StatelessWidget {
                                         children: [
                                           Icon(
                                             Icons.circle,
-                                            color: Colors.redAccent,
+                                            color:
+                                                AppColorsDark.primaryRedColor,
                                             size: 16.sp,
                                           ),
                                           Space(height: 0, width: 4.w),

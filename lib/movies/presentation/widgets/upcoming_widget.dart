@@ -59,7 +59,7 @@ class UpcomingWidget extends StatelessWidget {
                           );
                         },
                         child: Padding(
-                          padding: EdgeInsets.all(8.0).r,
+                          padding: const EdgeInsets.all(8.0).r,
                           child: Row(
                             children: [
                               Text(
@@ -126,12 +126,14 @@ class UpcomingWidget extends StatelessWidget {
             );
           case RequestState.error:
             return SizedBox(
-                height: 400.h,
-                child: Center(
-                    child: Text(
+              height: 400.h,
+              child: Center(
+                child: Text(
                   state.nowPlayingMessage,
                   style: textTheme.labelLarge,
-                )));
+                ),
+              ),
+            );
         }
       },
     );

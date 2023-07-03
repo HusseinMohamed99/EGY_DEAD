@@ -105,7 +105,7 @@ class MovieDetailContent extends StatelessWidget {
                                         CircleAvatar(
                                           radius: 19.r,
                                           backgroundColor:
-                                              AppColorsDark.circleAvatarColor,
+                                              AppColorsDark.primaryRedColor,
                                           child: IconButton(
                                             onPressed: () {
                                               urlLauncher(
@@ -264,7 +264,7 @@ class MovieDetailContent extends StatelessWidget {
                     top: 40.h,
                     left: 10.w,
                     child: CircleAvatar(
-                      backgroundColor: AppColorsDark.circleAvatarColor,
+                      backgroundColor: AppColorsDark.primaryRedColor,
                       radius: 20.r,
                       child: IconButton(
                         alignment: Alignment.center,

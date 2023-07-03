@@ -26,7 +26,10 @@ class PopularMoviesWidget extends StatelessWidget {
       builder: (context, state) {
         switch (state.popularState) {
           case GetAllRequestStatus.loading:
-            return SizedBox(height: 130.h, child: const LoadingIndicator());
+            return SizedBox(
+              height: 130.h,
+              child: const LoadingIndicator(),
+            );
           case GetAllRequestStatus.loaded:
             return Column(
               children: [
@@ -54,7 +57,7 @@ class PopularMoviesWidget extends StatelessWidget {
                           );
                         },
                         child: Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding: const EdgeInsets.all(8.0).r,
                           child: Row(
                             children: [
                               Text(

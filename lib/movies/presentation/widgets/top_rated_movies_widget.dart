@@ -81,7 +81,7 @@ class TopRatedMoviesWidget extends StatelessWidget {
             );
           case GetAllRequestStatus.error:
             return SizedBox(
-              height: 400.h,
+              height: 300.h,
               child: Center(
                 child: Text(
                   state.topRatedMessage,
