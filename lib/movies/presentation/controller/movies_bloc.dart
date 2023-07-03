@@ -135,7 +135,6 @@ class MoviesBloc extends Bloc<MoviesEvent, MoviesStates> {
   //       (r) => emit(state.copyWith(
   //           topRatedStates: GetAllRequestStatus.loaded, topRatedMovies: r)));
   // }
-  int pages = 1;
 
   Future<void> _getAllTopRatedMovies(
       GetTopRatedMoviesEvent event, Emitter<MoviesStates> emit) async {
@@ -154,7 +153,7 @@ class MoviesBloc extends Bloc<MoviesEvent, MoviesStates> {
   }
 
   Future<void> _getTopRatedMovies(Emitter<MoviesStates> emit) async {
-    final result = await allTopRatedMoviesUseCase(pages);
+    final result = await allTopRatedMoviesUseCase(page);
     result.fold(
       (l) => emit(
         state.copyWith(
@@ -175,7 +174,7 @@ class MoviesBloc extends Bloc<MoviesEvent, MoviesStates> {
 
   Future<void> _fetchMoreTopRatedMovies(
       FetchMoreTopRatedMoviesEvent event, Emitter<MoviesStates> emit) async {
-    final result = await allTopRatedMoviesUseCase(pages);
+    final result = await allTopRatedMoviesUseCase(page);
     result.fold(
       (l) => emit(
         state.copyWith(
@@ -183,10 +182,10 @@ class MoviesBloc extends Bloc<MoviesEvent, MoviesStates> {
         ),
       ),
       (r) {
-        pages++;
+        page++;
         return emit(
           state.copyWith(
-            topRatedStates: GetAllRequestStatus.loaded,
+            topRatedStates: GetAllRequestStatus.fetchMoreError,
             topRatedMovies: state.topRatedMovies + r,
           ),
         );
