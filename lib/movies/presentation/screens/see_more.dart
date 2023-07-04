@@ -3,8 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies_app/core/components/image_shimmer.dart';
 import 'package:movies_app/core/components/size_box.dart';
 import 'package:movies_app/core/global/theme/app_color/app_color_dark.dart';
-import 'package:movies_app/core/global/theme/theme_data/theme_data_dark.dart';
+import 'package:movies_app/core/global/theme/theme_data/theme_data.dart';
 import 'package:movies_app/core/network/api_constance.dart';
+import 'package:movies_app/core/utils/enum.dart';
 import 'package:movies_app/movies/domain/entities/movie.dart';
 import 'package:movies_app/movies/presentation/screens/movie_details_screen.dart';
 
@@ -17,7 +18,7 @@ class SeeMoreScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = getThemeDataDark().textTheme;
+    final textTheme = getThemeData[AppTheme.darkTheme]!.textTheme;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColorsDark.greyDarkColor,

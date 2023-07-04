@@ -8,7 +8,7 @@ import 'package:movies_app/core/components/loading_indicator.dart';
 import 'package:movies_app/core/components/size_box.dart';
 import 'package:movies_app/core/global/app_string/app_string.dart';
 import 'package:movies_app/core/global/theme/app_color/app_color_dark.dart';
-import 'package:movies_app/core/global/theme/theme_data/theme_data_dark.dart';
+import 'package:movies_app/core/global/theme/theme_data/theme_data.dart';
 import 'package:movies_app/core/network/api_constance.dart';
 import 'package:movies_app/core/services/services_locator.dart';
 import 'package:movies_app/core/utils/enum.dart';
@@ -44,7 +44,7 @@ class TvsDetailsContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = getThemeDataDark().textTheme;
+    final textTheme = getThemeData[AppTheme.darkTheme]!.textTheme;
     return BlocBuilder<TvsDetailsBloc, TvsDetailsStates>(
       builder: (context, state) {
         switch (state.tvsDetailsStates) {
@@ -352,7 +352,7 @@ class TvsDetailsContent extends StatelessWidget {
   }
 
   Widget _showRecommendations() {
-    final textTheme = getThemeDataDark().textTheme;
+    final textTheme = getThemeData[AppTheme.darkTheme]!.textTheme;
 
     return BlocBuilder<TvsDetailsBloc, TvsDetailsStates>(
       builder: (context, state) {
@@ -431,7 +431,7 @@ class TvsDetailsContent extends StatelessWidget {
   }
 
   Widget _showSimilar() {
-    final textTheme = getThemeDataDark().textTheme;
+    final textTheme = getThemeData[AppTheme.darkTheme]!.textTheme;
     return BlocBuilder<TvsDetailsBloc, TvsDetailsStates>(
       builder: (context, state) {
         switch (state.tvsSimilarStates) {
@@ -515,7 +515,7 @@ class TvsDetailsContent extends StatelessWidget {
   Widget _showSeasons() {
     return BlocBuilder<TvsDetailsBloc, TvsDetailsStates>(
       builder: (context, state) {
-        final textTheme = getThemeDataDark().textTheme;
+        final textTheme = getThemeData[AppTheme.darkTheme]!.textTheme;
         return state.tvsDetails!.season.isEmpty
             ? const LoadingIndicator()
             : ListView.separated(

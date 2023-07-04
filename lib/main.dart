@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies_app/core/global/app_string/app_string.dart';
-import 'package:movies_app/core/global/theme/theme_data/theme_data_dark.dart';
+import 'package:movies_app/core/global/theme/theme_data/theme_data.dart';
 import 'package:movies_app/core/services/services_locator.dart';
+import 'package:movies_app/core/utils/enum.dart';
 import 'package:movies_app/presentation_main_app/screen/main_screen.dart';
 import 'package:wakelock/wakelock.dart';
 
@@ -35,7 +36,7 @@ class MyApp extends StatelessWidget {
             return MaterialApp(
               debugShowCheckedModeBanner: false,
               title: AppString.appTitle,
-              theme: getThemeDataDark(),
+              theme: getThemeData[AppTheme.darkTheme],
               home: const MainScreen(),
             );
           },

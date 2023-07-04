@@ -6,9 +6,7 @@ import 'package:movies_app/search/presentation/views/search_view.dart';
 import 'package:movies_app/tvs/presentation/screens/tvs_screen.dart';
 
 class MainState extends Equatable {
-  MainState({
-    this.currentIndex = 0,
-  });
+  MainState({this.currentIndex = 0});
 
   final int currentIndex;
   final List<Widget> screens = [

@@ -6,7 +6,7 @@ import 'package:movies_app/core/components/listview_card.dart';
 import 'package:movies_app/core/components/loading_indicator.dart';
 import 'package:movies_app/core/global/app_string/app_string.dart';
 import 'package:movies_app/core/global/theme/app_color/app_color_dark.dart';
-import 'package:movies_app/core/global/theme/theme_data/theme_data_dark.dart';
+import 'package:movies_app/core/global/theme/theme_data/theme_data.dart';
 import 'package:movies_app/core/utils/enum.dart';
 import 'package:movies_app/movies/domain/entities/movie.dart';
 import 'package:movies_app/movies/presentation/controller/movies_bloc.dart';
@@ -19,7 +19,7 @@ class PopularMoviesWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = getThemeDataDark().textTheme;
+    final textTheme = getThemeData[AppTheme.darkTheme]!.textTheme;
     return BlocBuilder<MoviesBloc, MoviesStates>(
       buildWhen: (previous, current) =>
           previous.popularState != current.popularState,

@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies_app/core/components/loading_indicator.dart';
-import 'package:movies_app/core/global/theme/theme_data/theme_data_dark.dart';
+import 'package:movies_app/core/global/theme/theme_data/theme_data.dart';
 import 'package:movies_app/core/services/services_locator.dart';
+import 'package:movies_app/core/utils/enum.dart';
 import 'package:movies_app/search/presentation/controllers/search_bloc/search_bloc.dart';
 import 'package:movies_app/search/presentation/controllers/search_bloc/search_state.dart';
 import 'package:movies_app/search/presentation/widgets/no_results.dart';
@@ -28,7 +29,7 @@ class SearchWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = getThemeDataDark().textTheme;
+    final textTheme = getThemeData[AppTheme.darkTheme]!.textTheme;
 
     return SafeArea(
       child: Scaffold(

@@ -3,7 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies_app/core/global/theme/app_color/app_color_dark.dart';
 import 'package:movies_app/core/global/theme/app_color/app_color_light.dart';
-import 'package:movies_app/core/global/theme/theme_data/theme_data_dark.dart';
+import 'package:movies_app/core/global/theme/theme_data/theme_data.dart';
+import 'package:movies_app/core/utils/enum.dart';
 import 'package:movies_app/search/presentation/controllers/search_bloc/search_bloc.dart';
 import 'package:movies_app/search/presentation/controllers/search_bloc/search_event.dart';
 
@@ -27,7 +28,7 @@ class _SearchBarItemState extends State<SearchBarItem> {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = getThemeDataDark().textTheme;
+    final textTheme = getThemeData[AppTheme.darkTheme]!.textTheme;
     return TextFormField(
       keyboardType: TextInputType.text,
       controller: textController,
