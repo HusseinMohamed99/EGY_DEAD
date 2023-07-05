@@ -9,6 +9,7 @@ final getThemeData = {
   AppTheme.darkTheme: ThemeData(
     scaffoldBackgroundColor: AppColorsDark.darkPrimary,
     primaryColor: AppColorsDark.darkPrimary,
+    appBarTheme: const AppBarTheme(backgroundColor: Colors.transparent),
     bottomSheetTheme: BottomSheetThemeData(
       backgroundColor: AppColorsDark.greyDarkColor,
       shape: RoundedRectangleBorder(

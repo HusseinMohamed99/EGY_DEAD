@@ -17,6 +17,7 @@ class SettingsScreen extends StatelessWidget {
 
     return Scaffold(
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Padding(
             padding: const EdgeInsets.only(left: 8.0, top: 60, bottom: 20).r,
@@ -43,15 +44,13 @@ class SettingsScreen extends StatelessWidget {
             'Hussein Mohamed'.toUpperCase(),
             style: textTheme.titleLarge,
           ),
-          Space(
-            width: 0.w,
-            height: 30.h,
-          ),
+          Space(width: 0.w, height: 30.h),
           Card(
             color: AppColorsDark.greyDarkColor,
             clipBehavior: Clip.antiAlias,
             shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(15).r),
+              borderRadius: BorderRadius.circular(15).r,
+            ),
             elevation: 10,
             child: InkWell(
               onTap: () {
@@ -76,7 +75,7 @@ class SettingsScreen extends StatelessWidget {
                       child: Icon(
                         Icons.info_outline,
                         size: 26.sp,
-                        color: const Color(0xff699BF7),
+                        color: AppColorsDark.primaryGreenColor,
                       ),
                     ),
                     Space(
@@ -104,10 +103,14 @@ class SettingsScreen extends StatelessWidget {
             elevation: 10,
             child: InkWell(
               onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (BuildContext context) {
-                  return const HelpScreen();
-                }));
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (BuildContext context) {
+                      return const HelpScreen();
+                    },
+                  ),
+                );
               },
               child: Container(
                 padding: const EdgeInsets.all(10).r,
@@ -121,13 +124,10 @@ class SettingsScreen extends StatelessWidget {
                       child: Icon(
                         Icons.help_outline,
                         size: 26.sp,
-                        color: const Color(0xff699BF7),
+                        color: AppColorsDark.primaryGreenColor,
                       ),
                     ),
-                    Space(
-                      width: 35.w,
-                      height: 0.h,
-                    ),
+                    Space(width: 35.w, height: 0.h),
                     Text(
                       'Help',
                       style: textTheme.bodyMedium,
