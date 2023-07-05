@@ -8,9 +8,9 @@
 - and try making the code clean code as much as possible.
 
 
-| Splash Screen | Popular Screen                       |
+| Splash Screen | Home Screen                       |
 |------|-------------------------------------------|
-|<img src="assets/screen_shots/1.png" width="400">| <img src="assets/screen_shots/PopularScreen.jpg" width="400"> |
+|<img src="assets/screen_shots/1.png" width="400">| <img src="assets/screen_shots/2.jpg" width="400"> |
 | Top Rated Screen  | Movie Details Screen                       |
 | <img src="assets/screen_shots/TopRatedScreen.jpg" width="400"> | <img src="assets/screen_shots/MovieDetails.jpg" width="400"> |
 | Recommendation Screen  | Similar Screen                       |
