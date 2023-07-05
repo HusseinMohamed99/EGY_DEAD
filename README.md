@@ -15,3 +15,13 @@
 | <img src="assets/screen_shots/3.jpg" width="400"> | <img src="assets/screen_shots/4.jpg" width="400"> |
 | Top Rated Screen  | Movies Details Screen                       |
 | <img src="assets/screen_shots/5.jpg" width="400"> | <img src="assets/screen_shots/6.jpg" width="400"> |
+| Tvs Screen  | Airing Today Screen                       |
+| <img src="assets/screen_shots/7.jpg" width="400"> | <img src="assets/screen_shots/8.jpg" width="400"> |
+| Popular Screen  | Top Rated Screen                       |
+| <img src="assets/screen_shots/9.jpg" width="400"> | <img src="assets/screen_shots/10.jpg" width="400"> |
+| Tvs Details Screen  | Recommendations Screen                       |
+| <img src="assets/screen_shots/11.jpg" width="400"> | <img src="assets/screen_shots/12.jpg" width="400"> |
+| Search Screen  | Setting Screen                       |
+| <img src="assets/screen_shots/13.jpg" width="400"> | <img src="assets/screen_shots/14.jpg" width="400"> |
+| About Us Screen  | Help Screen                       |
+| <img src="assets/screen_shots/15.jpg" width="400"> | <img src="assets/screen_shots/16.jpg" width="400"> |
