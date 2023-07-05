@@ -1,6 +1,6 @@
 # Movies App
 
- It's a flutter app to help show's lovers find proper shows like anime and the film even their best serials ln this app,
+ It's a Flutter App to help show's lovers find proper shows like anime and the film even their best serials ln this app,
 - I used : 
 - Clean Architecture- Bloc as State Management
 - Some useful packages Pattern as
