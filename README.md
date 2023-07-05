@@ -1,4 +1,4 @@
-![13](https://github.com/HusseinMohamed99/Movies_App/assets/84459939/d695c741-ac19-429b-93b7-cb4bd82d191e)# Movies App
+# Movies App
 
  It's a Flutter App to help show's lovers find proper shows like anime and the film even their best serials ln this app,
 - I used : 
