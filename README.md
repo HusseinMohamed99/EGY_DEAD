@@ -1,4 +1,4 @@
-# Movies App
+![13](https://github.com/HusseinMohamed99/Movies_App/assets/84459939/d695c741-ac19-429b-93b7-cb4bd82d191e)# Movies App
 
  It's a Flutter App to help show's lovers find proper shows like anime and the film even their best serials ln this app,
 - I used : 
@@ -8,10 +8,10 @@
 - and try making the code clean code as much as possible.
 
 
-| Splash Screen | Home Screen                       |
+| Splash Screen | Movies Screen                       |
 |------|-------------------------------------------|
 |<img src="assets/screen_shots/1.png" width="400">| <img src="assets/screen_shots/2.jpg" width="400"> |
-| Top Rated Screen  | Movie Details Screen                       |
-| <img src="assets/screen_shots/TopRatedScreen.jpg" width="400"> | <img src="assets/screen_shots/MovieDetails.jpg" width="400"> |
-| Recommendation Screen  | Similar Screen                       |
-| <img src="assets/screen_shots/RecommendationScreen.jpg" width="400"> | <img src="assets/screen_shots/SimilarScreen.jpg" width="400"> |
+| UpComing Screen  | Popular Screen                       |
+| <img src="assets/screen_shots/3.jpg" width="400"> | <img src="assets/screen_shots/4.jpg" width="400"> |
+| Top Rated Screen  | Movies Details Screen                       |
+| <img src="assets/screen_shots/5.jpg" width="400"> | <img src="assets/screen_shots/6.jpg" width="400"> |
