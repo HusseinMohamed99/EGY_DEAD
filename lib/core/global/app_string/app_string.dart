@@ -13,4 +13,7 @@ class AppString {
   static const String cast = "Cast";
   static const String reviews = "Reviews";
   static const String onAir = "On The Air";
+  static const String aboutUs = "About Us";
+  static const String aboutUsBody =
+      "It's a flutter app to help show's lovers find a proper shows like anime and the film even their best serials ln this app I used clean architecture - Bloc as State Management - some useful packages Pattern as (get_it - carousel_slider - dartz - Equatable- Dio - animate_do - cached_network_image - google_font - shimmer)and try making the code clean code as much as possible.";
 }

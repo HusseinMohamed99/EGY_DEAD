@@ -2,11 +2,17 @@
 class Assets {
   Assets._();
 
-  static const String imagesHomeScreen = 'assets/images/HomeScreen.jpg';
-  static const String imagesMovieDetails = 'assets/images/MovieDetails.jpg';
-  static const String imagesPopularScreen = 'assets/images/PopularScreen.jpg';
-  static const String imagesRecommendationScreen =
-      'assets/images/RecommendationScreen.jpg';
-  static const String imagesSimilarScreen = 'assets/images/SimilarScreen.jpg';
-  static const String imagesTopRatedScreen = 'assets/images/TopRatedScreen.jpg';
+  static const String imagesLogo = 'assets/images/logo.png';
+  static const String screenShotsHomeScreen =
+      'assets/screen_shots/HomeScreen.jpg';
+  static const String screenShotsMovieDetails =
+      'assets/screen_shots/MovieDetails.jpg';
+  static const String screenShotsPopularScreen =
+      'assets/screen_shots/PopularScreen.jpg';
+  static const String screenShotsRecommendationScreen =
+      'assets/screen_shots/RecommendationScreen.jpg';
+  static const String screenShotsSimilarScreen =
+      'assets/screen_shots/SimilarScreen.jpg';
+  static const String screenShotsTopRatedScreen =
+      'assets/screen_shots/TopRatedScreen.jpg';
 }

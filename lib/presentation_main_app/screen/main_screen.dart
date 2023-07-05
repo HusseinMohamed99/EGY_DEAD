@@ -45,5 +45,8 @@ BottomNavigationBarItem bottomNavigationBarItem({
   required String label,
 }) {
   return BottomNavigationBarItem(
-      icon: Icon(icon), label: label, backgroundColor: Colors.black);
+    icon: Icon(icon),
+    label: label,
+    backgroundColor: Colors.black,
+  );
 }
