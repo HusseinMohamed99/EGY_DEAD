@@ -17,4 +17,6 @@ class AppString {
       "It's a flutter app to help show's lovers find\na proper shows like anime and the film\neven their best serials ln this app,\nI used :\n- Clean Architecture\n- Bloc as State Management\n -Some useful packages Pattern as\n(get_it - carousel_slider - dartz - Equatable- Dio - animate_do - cached_network_image - google_font - shimmer)\nand try making the code clean code as much as possible.";
   static const String aboutUs = "About Us";
   static const String help = "Help";
+  static const String internetError = "Please check your internet connectivity";
+  static const String connectionFaild = "No Connection";
 }

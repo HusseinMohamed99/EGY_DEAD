@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies_app/core/components/circle_avatar.dart';
 import 'package:movies_app/core/components/review_content.dart';
+import 'package:movies_app/core/global/theme/app_color/app_color_dark.dart';
 import 'package:movies_app/core/global/theme/theme_data/theme_data.dart';
 import 'package:movies_app/core/utils/enum.dart';
 import 'package:movies_app/core/utils/function.dart';
@@ -23,12 +25,12 @@ class ReviewCard extends StatelessWidget {
         showCustomBottomSheet(context, ReviewContent(review: review));
       },
       child: Container(
-        padding: const EdgeInsets.all(12),
-        width: 240,
+        padding: const EdgeInsets.all(12).r,
+        width: 240.w,
         height: double.infinity,
         decoration: BoxDecoration(
-          color: Colors.grey.shade900,
-          borderRadius: BorderRadius.circular(12),
+          color: AppColorsDark.greyDarkColor,
+          borderRadius: BorderRadius.circular(12).r,
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -36,7 +38,7 @@ class ReviewCard extends StatelessWidget {
             Row(
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(right: 6),
+                  padding: const EdgeInsets.only(right: 6).r,
                   child: Avatar(avatarUrl: review.avatarUrl),
                 ),
                 Expanded(
@@ -90,9 +92,10 @@ Widget _getRatingBarIndicator(double rating) {
       itemSize: 16,
       unratedColor: Colors.white54,
       itemBuilder: (_, __) {
-        return const Icon(
+        return Icon(
           Icons.star_rate_rounded,
-          color: Colors.yellow,
+          color: AppColorsDark.iconRateColor,
+          size: 24.sp,
         );
       },
     );

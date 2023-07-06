@@ -4,7 +4,12 @@ enum RequestState {
   error,
 }
 
-enum GetAllRequestStatus { loading, loaded, error, fetchMoreError }
+enum GetAllRequestStatus {
+  loading,
+  loaded,
+  error,
+  fetchMoreError,
+}
 
 enum AppTheme {
   lightTheme,

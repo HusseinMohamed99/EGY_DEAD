@@ -80,7 +80,6 @@ class ServiceLocator {
     sl.registerFactory(() => MoviesDetailsBloc(sl(), sl(), sl()));
 
     /// Movies Use Cases
-
     sl.registerLazySingleton(
         () => GetNowPlayingMoviesUseCase(baseMovieRepository: sl()));
 
@@ -103,20 +102,28 @@ class ServiceLocator {
         () => GetTopRatedMoviesUseCase(baseMovieRepository: sl()));
     sl.registerLazySingleton(
         () => GetAllTopRatedMoviesUseCase(baseMovieRepository: sl()));
-    sl.registerLazySingleton(() => SearchUseCase(baseSearchRepository: sl()));
 
     /// Movies Repository
     sl.registerLazySingleton<BaseMovieRepository>(
         () => MoviesRepository(baseMovieRemoteDataSource: sl()));
-    sl.registerLazySingleton<SearchRepository>(
-        () => SearchRepositoryImpl(baseSearchRemoteDataSource: sl()));
 
     /// Movies Data Source
     sl.registerLazySingleton<BaseMovieRemoteDataSource>(
         () => MovieRemoteDataSource());
+
+    /// Search =>
+    /// Search Bloc
+    sl.registerFactory(() => SearchBloc(sl()));
+
+    /// Search UseCase
+    sl.registerLazySingleton(() => SearchUseCase(baseSearchRepository: sl()));
+
+    /// Search Repository
+    sl.registerLazySingleton<SearchRepository>(
+        () => SearchRepositoryImpl(baseSearchRemoteDataSource: sl()));
+
+    /// Search Data Source
     sl.registerLazySingleton<SearchRemoteDataSource>(
         () => SearchRemoteDataSourceImpl());
-
-    sl.registerFactory(() => SearchBloc(sl()));
   }
 }
