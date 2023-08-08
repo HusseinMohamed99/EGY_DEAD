@@ -4,9 +4,18 @@
 - I used : 
 - Clean Architecture- Bloc as State Management
 - Some useful packages Pattern as
-- ( get_it - carousel_slider - dartz - Equatable- Dio - animate_do - cached_network_image - google_font - shimmer )
+-  ## Packages
+- get_it
+-  carousel_slider
+-  dartz
+- Equatable
+- Dio
+-  animate_do
+- cached_network_image
+- google_font
+- shimmer.
 - and try making the code clean code as much as possible.
-## Download App ![GitHub All Releases](https://img.shields.io/github/downloads/HusseinMohamed99/Movies_App/total?color=green)
+## Download The App![GitHub All Releases](https://img.shields.io/github/downloads/HusseinMohamed99/Movies_App/total?color=green)
 <a href="https://github.com/HusseinMohamed99/Movies_App/releases/download/v2.0.0/Movies.apk"><img src="https://playerzon.com/asset/download.png" width="200"></img></a>
 
 | Splash Screen | Movies Screen                       |
