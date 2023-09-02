@@ -1,12 +1,15 @@
 # Movies App
 
- It's a Flutter App to help show lovers find proper shows like anime and films even their best serials this app,
-- I used : 
-- Clean Architecture- Bloc as State Management
-- Some useful package patterns as
-- and try making the code clean code as much as possible.
 ## Download The App![GitHub All Releases](https://img.shields.io/github/downloads/HusseinMohamed99/Movies_App/total?color=green)
 <a href="https://github.com/HusseinMohamed99/Movies_App/releases/download/v2.0.0/Movies.apk"><img src="https://playerzon.com/asset/download.png" width="200"></img></a>
+
+Developed a Flutter app that helps show lovers find proper shows like anime and films even their best serials
+Provided a search feature to allow users to find shows by title, genre, or actor
+Categorized shows into "Now playing movies", "Popular movies", and "Top rated movies"
+Provided detailed information about each show, including cast, reviews, and similar shows
+Categorized TV shows into "On air TV shows", "Popular TV shows", and "Top rated TV shows"
+Provided detailed information about each TV show, including cast, reviews, and similar shows
+Allowed users to watch trailers and episodes of shows
 
 | Splash Screen | Movies Screen                       |
 |------|-------------------------------------------|
