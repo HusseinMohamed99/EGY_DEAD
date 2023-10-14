@@ -31,7 +31,6 @@ class SeeMoreScreen extends StatelessWidget {
       ),
       body: ListView.builder(
         physics: const BouncingScrollPhysics(),
-        shrinkWrap: true,
         scrollDirection: Axis.vertical,
         padding: const EdgeInsets.symmetric(horizontal: 12).r,
         itemCount: movieList.length,
@@ -64,6 +63,7 @@ class SeeMoreScreen extends StatelessWidget {
                       Radius.circular(8.0),
                     ).r,
                     child: ImageWithShimmer(
+                      boxFit: BoxFit.fitHeight,
                       imageUrl: ApiConstance.imageURL(movie.backdropPath),
                       width: 120.w,
                       height: 140.h,

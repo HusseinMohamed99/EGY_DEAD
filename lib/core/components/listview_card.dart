@@ -35,6 +35,7 @@ class HorizontalListViewCard extends StatelessWidget {
         child: ClipRRect(
           borderRadius: const BorderRadius.all(Radius.circular(8.0)).r,
           child: ImageWithShimmer(
+            boxFit: BoxFit.fitHeight,
             imageUrl: ApiConstance.imageURL(movies.backdropPath),
             width: 120.w,
             height: double.infinity,

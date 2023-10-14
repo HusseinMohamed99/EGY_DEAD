@@ -93,13 +93,14 @@ class NowPlayingWidget extends StatelessWidget {
                                 child: Align(
                                   alignment: Alignment.topLeft,
                                   child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(70).r,
+                                    borderRadius: BorderRadius.circular(60).r,
                                     child: ImageWithShimmer(
                                       boxFit: BoxFit.fill,
                                       imageUrl: ApiConstance.imageURL(
-                                          item.posterPath),
+                                        item.posterPath,
+                                      ),
                                       width: 110.w,
-                                      height: 100.h,
+                                      height: 110.h,
                                     ),
                                   ),
                                 ),

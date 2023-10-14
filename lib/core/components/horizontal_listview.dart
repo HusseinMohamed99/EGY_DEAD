@@ -40,7 +40,6 @@ class _HorizontalListViewState extends State<HorizontalListView> {
     return SizedBox(
       height: 130.h,
       child: ListView.separated(
-        shrinkWrap: true,
         scrollDirection: Axis.horizontal,
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
         controller: _scrollController,
@@ -50,7 +49,7 @@ class _HorizontalListViewState extends State<HorizontalListView> {
         separatorBuilder: (context, index) {
           return Space(
             height: 10.sp,
-            width: 0,
+            width: 16,
           );
         },
       ),

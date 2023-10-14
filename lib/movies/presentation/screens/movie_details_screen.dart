@@ -88,8 +88,9 @@ class MovieDetailContent extends StatelessWidget {
                                       ),
                                     ),
                                     child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(16).r,
+                                      borderRadius: BorderRadius.circular(10).r,
                                       child: ImageWithShimmer(
+                                        boxFit: BoxFit.fill,
                                         imageUrl: ApiConstance.imageURL(
                                           state.moviesDetails!.posterPath,
                                         ),

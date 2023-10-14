@@ -83,14 +83,13 @@ class UpcomingWidget extends StatelessWidget {
                   child: SizedBox(
                     height: 130.h,
                     child: ListView.builder(
-                      shrinkWrap: true,
                       scrollDirection: Axis.horizontal,
                       padding: const EdgeInsets.symmetric(horizontal: 16.0).r,
                       itemCount: state.upcomingMovies.length,
                       itemBuilder: (context, index) {
                         final movie = state.upcomingMovies[index];
                         return Container(
-                          padding: const EdgeInsets.only(right: 8.0).r,
+                          padding: const EdgeInsets.only(right: 16.0).r,
                           child: InkWell(
                             onTap: () {
                               Navigator.push(
@@ -110,6 +109,7 @@ class UpcomingWidget extends StatelessWidget {
                                   const BorderRadius.all(Radius.circular(8.0))
                                       .r,
                               child: ImageWithShimmer(
+                                boxFit: BoxFit.fitHeight,
                                 imageUrl:
                                     ApiConstance.imageURL(movie.backdropPath),
                                 width: 120.w,
