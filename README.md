@@ -1,5 +1,3 @@
-
-https://github.com/HusseinMohamed99/Movies_App/assets/84459939/2504b77a-db6a-49f1-a504-621af5b5255e
 # EGY DEAD
 
 ## Download The App![GitHub All Releases](https://img.shields.io/github/downloads/HusseinMohamed99/Movies_App/total?color=green)
