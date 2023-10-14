@@ -261,27 +261,6 @@ class MovieDetailContent extends StatelessWidget {
                       Space(height: 20.h, width: 0),
                     ],
                   ),
-                  Positioned(
-                    top: 40.h,
-                    left: 10.w,
-                    child: CircleAvatar(
-                      backgroundColor: AppColorsDark.primaryRedColor,
-                      radius: 20.r,
-                      child: IconButton(
-                        alignment: Alignment.center,
-                        onPressed: () {
-                          if (Navigator.canPop(context)) {
-                            Navigator.pop(context);
-                          }
-                        },
-                        icon: Icon(
-                          Icons.arrow_circle_left_rounded,
-                          color: AppColorsDark.iconColor,
-                          size: 24.sp,
-                        ),
-                      ),
-                    ),
-                  ),
                 ],
               ),
             );

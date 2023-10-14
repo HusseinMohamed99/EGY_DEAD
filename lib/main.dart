@@ -35,6 +35,8 @@ class MyApp extends StatelessWidget {
               debugShowCheckedModeBanner: false,
               title: AppString.appTitle,
               theme: getThemeData[AppTheme.darkTheme],
+              darkTheme: getThemeData[AppTheme.darkTheme],
+              themeMode: ThemeMode.dark,
               home: const MainScreen(),
             );
           },

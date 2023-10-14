@@ -21,6 +21,7 @@ class SeeMoreScreen extends StatelessWidget {
     final textTheme = getThemeData[AppTheme.darkTheme]!.textTheme;
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: AppColorsDark.greyDarkColor,
         elevation: 0,
         title: Text(
