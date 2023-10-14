@@ -28,7 +28,6 @@ dependencies:
   google_fonts: ^4.0.3
   shimmer: ^3.0.0
   flutter_screenutil: ^5.7.0
-  wakelock: ^0.6.2
   flutter_rating_bar: ^4.0.1
   url_launcher: ^6.1.11
   stream_transform: ^2.1.0
@@ -56,5 +55,3 @@ flutter:
   assets:
     - assets/
     - assets/images/
-    - assets/screen_shots/
-

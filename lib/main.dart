@@ -6,11 +6,9 @@ import 'package:movies_app/core/global/theme/theme_data/theme_data.dart';
 import 'package:movies_app/core/services/services_locator.dart';
 import 'package:movies_app/core/utils/enum.dart';
 import 'package:movies_app/presentation_main_app/screen/main_screen.dart';
-import 'package:wakelock/wakelock.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  Wakelock.enable();
   ScreenUtil.ensureScreenSize();
   ServiceLocator().init();
   runApp(const MyApp());

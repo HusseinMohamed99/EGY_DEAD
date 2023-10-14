@@ -77,10 +77,10 @@ class _MainScreenState extends State<MainScreen> {
     );
   }
 
-  showDialogBox() => showCupertinoDialog<String>(
+  showDialogBox() => showDialog<String>(
         context: context,
-        builder: (BuildContext context) => CupertinoAlertDialog(
-          title: const Text(AppString.connectionFaild),
+        builder: (BuildContext context) => AlertDialog(
+          title: const Text(AppString.connectionFailed),
           content: const Text(AppString.internetError),
           actions: <Widget>[
             TextButton(

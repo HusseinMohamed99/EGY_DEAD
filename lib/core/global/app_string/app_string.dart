@@ -1,5 +1,5 @@
 class AppString {
-  static const String appTitle = 'Movies App';
+  static const String appTitle = 'EGY DEADS';
   static const String nowPlaying = 'Now Playing';
   static const String popular = "Popular";
   static const String upcoming = "Upcoming";
@@ -18,5 +18,5 @@ class AppString {
   static const String aboutUs = "About Us";
   static const String help = "Help";
   static const String internetError = "Please check your internet connectivity";
-  static const String connectionFaild = "No Connection";
+  static const String connectionFailed = "No Connection";
 }
