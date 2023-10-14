@@ -1,4 +1,6 @@
-# Movies App
+
+https://github.com/HusseinMohamed99/Movies_App/assets/84459939/2504b77a-db6a-49f1-a504-621af5b5255e
+# EGY DEAD
 
 ## Download The App![GitHub All Releases](https://img.shields.io/github/downloads/HusseinMohamed99/Movies_App/total?color=green)
 <a href="https://github.com/HusseinMohamed99/Movies_App/releases/download/v2.0.0/Movies.apk"><img src="https://playerzon.com/asset/download.png" width="200"></img></a>
@@ -11,23 +13,31 @@ Categorized TV shows into "On air TV shows", "Popular TV shows", and "Top rated 
 Provided detailed information about each TV show, including cast, reviews, and similar shows
 Allowed users to watch trailers and episodes of shows
 
-| Splash Screen | Movies Screen                       |
-|------|-------------------------------------------|
-|<img src="assets/screen_shots/1.png" width="400">| <img src="assets/screen_shots/2.jpg" width="400"> |
-| UpComing Screen  | Popular Screen                       |
-| <img src="assets/screen_shots/3.jpg" width="400"> | <img src="assets/screen_shots/4.jpg" width="400"> |
-| Top Rated Screen  | Movies Details Screen                       |
-| <img src="assets/screen_shots/5.jpg" width="400"> | <img src="assets/screen_shots/6.jpg" width="400"> |
-| Tvs Screen  | Airing Today Screen                       |
-| <img src="assets/screen_shots/7.jpg" width="400"> | <img src="assets/screen_shots/8.jpg" width="400"> |
-| Popular Screen  | Top Rated Screen                       |
-| <img src="assets/screen_shots/9.jpg" width="400"> | <img src="assets/screen_shots/10.jpg" width="400"> |
-| Tvs Details Screen  | Recommendations Screen                       |
-| <img src="assets/screen_shots/11.jpg" width="400"> | <img src="assets/screen_shots/12.jpg" width="400"> |
-| Search Screen  | Setting Screen                       |
-| <img src="assets/screen_shots/13.jpg" width="400"> | <img src="assets/screen_shots/14.jpg" width="400"> |
-| About Us Screen  | Help Screen                       |
-| <img src="assets/screen_shots/15.jpg" width="400"> | <img src="assets/screen_shots/16.jpg" width="400"> |
+<p>
+
+<img src="https://github.com/HusseinMohamed99/Movies_App/assets/84459939/cdc42c1c-5c53-46d0-9873-3b0eeafb5ef7" width="250" />
+<img src="https://github.com/HusseinMohamed99/Movies_App/assets/84459939/89d14223-5031-4b00-9490-07fffae91eb2" width="250" />
+<img src="https://github.com/HusseinMohamed99/Movies_App/assets/84459939/18affedc-2eda-4ac9-946d-f36b71bc20d3" width="250" />
+<img src="https://github.com/HusseinMohamed99/Movies_App/assets/84459939/3d5c630a-1c35-4bd1-bfdd-6a9eb9d04aeb" width="250" />
+
+
+
+
+
+<img src="https://github.com/HusseinMohamed99/Movies_App/assets/84459939/b805849d-e0d8-47ac-bb9a-5785a2804bf3" width="250" />
+<img src="https://github.com/HusseinMohamed99/Movies_App/assets/84459939/f69cb8bd-0f7f-4c1b-afd3-d60923f69a6f" width="250" />
+<img src="https://github.com/HusseinMohamed99/Movies_App/assets/84459939/36f4e680-86a6-43a7-a342-ee596d003a5b" width="250" />
+<img src="https://github.com/HusseinMohamed99/Movies_App/assets/84459939/45b1240a-85e6-4a44-91bf-c5da2d2f6838" width="250" />
+<img src="https://github.com/HusseinMohamed99/Movies_App/assets/84459939/89124653-503f-469c-a149-176e4f4bbbfc" width="250" />
+<img src="https://github.com/HusseinMohamed99/Movies_App/assets/84459939/3dc87abf-1b3a-426a-91d9-bdf30b586e78" width="250" />
+<img src="https://github.com/HusseinMohamed99/Movies_App/assets/84459939/488bdeae-f834-4c14-8e12-734383236ab3" width="250" />
+<img src="https://github.com/HusseinMohamed99/Movies_App/assets/84459939/70a2d9b4-1b81-4a7d-b013-e245e99ab1a4" width="250" />
+  </p>
+
+EGY DEAD
+:-:
+<video src='https://github.com/HusseinMohamed99/Movies_App/assets/84459939/d46e5a4e-4c98-407e-8744-a4a13cbc4035' width=250/>|
+
 
 ## Packages
 - [cached_network_image](https://pub.dev/packages/cached_network_image)
