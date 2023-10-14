@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:movies_app/core/global/app_string/app_string.dart';
@@ -50,23 +51,28 @@ class _MainScreenState extends State<MainScreen> {
       create: (context) => MainBloc(),
       child: BlocBuilder<MainBloc, MainState>(
         builder: (context, state) {
-          return Scaffold(
-            bottomNavigationBar: BottomNavigationBar(
-              currentIndex: state.currentIndex,
-              onTap: (index) {
-                MainBloc.get(context).add(ChangeCurrentIndexEvent(index));
-              },
-              showSelectedLabels: true,
-              showUnselectedLabels: false,
-              items: [
-                bottomNavigationBarItem(icon: Icons.movie, label: "Movies"),
-                bottomNavigationBarItem(icon: Icons.tv, label: "Tvs"),
-                bottomNavigationBarItem(icon: Icons.search, label: "Search"),
-                bottomNavigationBarItem(
-                    icon: Icons.settings, label: "Settings"),
-              ],
+          return AnnotatedRegion<SystemUiOverlayStyle>(
+            value: const SystemUiOverlayStyle(
+              statusBarColor: Colors.transparent,
             ),
-            body: state.screens[state.currentIndex],
+            child: Scaffold(
+              bottomNavigationBar: BottomNavigationBar(
+                currentIndex: state.currentIndex,
+                onTap: (index) {
+                  MainBloc.get(context).add(ChangeCurrentIndexEvent(index));
+                },
+                showSelectedLabels: true,
+                showUnselectedLabels: false,
+                items: [
+                  bottomNavigationBarItem(icon: Icons.movie, label: "Movies"),
+                  bottomNavigationBarItem(icon: Icons.tv, label: "Tvs"),
+                  bottomNavigationBarItem(icon: Icons.search, label: "Search"),
+                  bottomNavigationBarItem(
+                      icon: Icons.settings, label: "Settings"),
+                ],
+              ),
+              body: state.screens[state.currentIndex],
+            ),
           );
         },
       ),

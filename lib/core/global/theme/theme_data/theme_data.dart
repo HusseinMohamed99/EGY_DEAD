@@ -30,39 +30,39 @@ final getThemeData = {
       ),
       titleLarge: GoogleFonts.roboto(
         color: AppColorsDark.textColor,
-        fontSize: 24.sp,
+        fontSize: 24,
         fontWeight: FontWeight.w700,
       ),
       titleMedium: GoogleFonts.roboto(
         color: AppColorsDark.textColor,
-        fontSize: 14.sp,
+        fontSize: 14,
       ),
       titleSmall: GoogleFonts.roboto(
         color: AppColorsDark.textColor,
       ),
       labelLarge: GoogleFonts.roboto(
         color: AppColorsDark.textColor,
-        fontSize: 18.sp,
+        fontSize: 18,
       ),
       labelMedium: GoogleFonts.roboto(
         color: AppColorsDark.textColor,
-        fontSize: 16.sp,
+        fontSize: 16,
       ),
       labelSmall: GoogleFonts.roboto(
         color: AppColorsDark.textColor,
-        fontSize: 12.sp,
+        fontSize: 12,
       ),
     ),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       backgroundColor: Colors.black,
       showSelectedLabels: true,
       showUnselectedLabels: false,
-      selectedIconTheme: IconThemeData(
-        size: 30.sp,
+      selectedIconTheme: const IconThemeData(
+        size: 30,
         color: AppColorsDark.primaryGreenColor,
       ),
-      unselectedIconTheme: IconThemeData(
-        size: 24.sp,
+      unselectedIconTheme: const IconThemeData(
+        size: 24,
         color: AppColorsDark.textColor,
       ),
       selectedLabelStyle: GoogleFonts.roboto(
