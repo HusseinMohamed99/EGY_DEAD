@@ -1,7 +1,5 @@
 import 'dart:async';
-
 import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
@@ -60,14 +58,11 @@ class _MainScreenState extends State<MainScreen> {
               showSelectedLabels: true,
               showUnselectedLabels: false,
               items: [
+                bottomNavigationBarItem(icon: Icons.movie, label: "Movies"),
+                bottomNavigationBarItem(icon: Icons.tv, label: "Tvs"),
+                bottomNavigationBarItem(icon: Icons.search, label: "Search"),
                 bottomNavigationBarItem(
-                    icon: Icons.movie, label: "Movies".toUpperCase()),
-                bottomNavigationBarItem(
-                    icon: Icons.tv, label: "Tvs".toUpperCase()),
-                bottomNavigationBarItem(
-                    icon: Icons.search, label: "Search".toUpperCase()),
-                bottomNavigationBarItem(
-                    icon: Icons.settings, label: "settings".toUpperCase()),
+                    icon: Icons.settings, label: "Settings"),
               ],
             ),
             body: state.screens[state.currentIndex],

@@ -17,7 +17,16 @@ class HelpScreen extends StatelessWidget {
     final textTheme = getThemeData[AppTheme.darkTheme]!.textTheme;
 
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        backgroundColor: AppColorsDark.greyDarkColor,
+        elevation: 0,
+        title: Text(
+          AppString.help,
+          style: textTheme.labelLarge,
+        ),
+        centerTitle: true,
+      ),
       body: Padding(
         padding: const EdgeInsets.all(16.0).r,
         child: Column(
@@ -44,11 +53,6 @@ class HelpScreen extends StatelessWidget {
                 ),
               ),
             ),
-            Text(
-              AppString.help,
-              style: textTheme.titleLarge,
-            ),
-            Space(height: 10.h, width: 0),
             cardItem(
                 title: 'Chat Me',
                 url: 'mailto:husseinhtm99@gmail.com',

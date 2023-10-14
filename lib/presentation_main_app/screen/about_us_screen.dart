@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:movies_app/core/components/size_box.dart';
 import 'package:movies_app/core/global/app_string/app_string.dart';
 import 'package:movies_app/core/global/theme/app_color/app_color_dark.dart';
 import 'package:movies_app/core/global/theme/theme_data/theme_data.dart';
@@ -15,7 +14,16 @@ class AboutUsScreen extends StatelessWidget {
     final textTheme = getThemeData[AppTheme.darkTheme]!.textTheme;
 
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        backgroundColor: AppColorsDark.greyDarkColor,
+        elevation: 0,
+        title: Text(
+          AppString.aboutUs,
+          style: textTheme.labelLarge,
+        ),
+        centerTitle: true,
+      ),
       body: Padding(
         padding: const EdgeInsets.all(16.0).r,
         child: Column(
@@ -42,11 +50,6 @@ class AboutUsScreen extends StatelessWidget {
                 ),
               ),
             ),
-            Text(
-              AppString.aboutUs,
-              style: textTheme.titleLarge,
-            ),
-            Space(height: 10.h, width: 0),
             Container(
               padding: const EdgeInsets.all(4).r,
               decoration: BoxDecoration(

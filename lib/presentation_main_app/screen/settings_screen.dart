@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:movies_app/core/components/size_box.dart';
 import 'package:movies_app/core/global/theme/app_color/app_color_dark.dart';
 import 'package:movies_app/core/global/theme/theme_data/theme_data.dart';
@@ -41,8 +42,13 @@ class SettingsScreen extends StatelessWidget {
             ),
           ),
           Text(
-            'Hussein Mohamed'.toUpperCase(),
-            style: textTheme.titleLarge,
+            'Hussein Mohamed',
+            style: GoogleFonts.pacifico(
+              textStyle: TextStyle(
+                color: AppColorsDark.textColor,
+                fontSize: 20.sp,
+              ),
+            ),
           ),
           Space(width: 0.w, height: 30.h),
           Card(
