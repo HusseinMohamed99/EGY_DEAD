@@ -19,11 +19,6 @@ Allowed users to watch trailers and episodes of shows
 <img src="https://github.com/HusseinMohamed99/Movies_App/assets/84459939/89d14223-5031-4b00-9490-07fffae91eb2" width="250" />
 <img src="https://github.com/HusseinMohamed99/Movies_App/assets/84459939/18affedc-2eda-4ac9-946d-f36b71bc20d3" width="250" />
 <img src="https://github.com/HusseinMohamed99/Movies_App/assets/84459939/3d5c630a-1c35-4bd1-bfdd-6a9eb9d04aeb" width="250" />
-
-
-
-
-
 <img src="https://github.com/HusseinMohamed99/Movies_App/assets/84459939/b805849d-e0d8-47ac-bb9a-5785a2804bf3" width="250" />
 <img src="https://github.com/HusseinMohamed99/Movies_App/assets/84459939/f69cb8bd-0f7f-4c1b-afd3-d60923f69a6f" width="250" />
 <img src="https://github.com/HusseinMohamed99/Movies_App/assets/84459939/36f4e680-86a6-43a7-a342-ee596d003a5b" width="250" />
@@ -33,6 +28,7 @@ Allowed users to watch trailers and episodes of shows
 <img src="https://github.com/HusseinMohamed99/Movies_App/assets/84459939/488bdeae-f834-4c14-8e12-734383236ab3" width="250" />
 <img src="https://github.com/HusseinMohamed99/Movies_App/assets/84459939/70a2d9b4-1b81-4a7d-b013-e245e99ab1a4" width="250" />
   </p>
+
 
 EGY DEAD
 :-:
