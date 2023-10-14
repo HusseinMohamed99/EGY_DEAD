@@ -19,36 +19,36 @@ final getThemeData = {
       ),
     ),
     textTheme: TextTheme(
-      bodyLarge: GoogleFonts.openSans(
+      bodyLarge: GoogleFonts.roboto(
         color: AppColorsDark.textColor,
       ),
-      bodyMedium: GoogleFonts.openSans(
+      bodyMedium: GoogleFonts.roboto(
         color: AppColorsDark.textColor,
       ),
-      bodySmall: GoogleFonts.openSans(
+      bodySmall: GoogleFonts.roboto(
         color: AppColorsDark.textColor,
       ),
-      titleLarge: GoogleFonts.openSans(
+      titleLarge: GoogleFonts.roboto(
         color: AppColorsDark.textColor,
         fontSize: 24.sp,
         fontWeight: FontWeight.w700,
       ),
-      titleMedium: GoogleFonts.openSans(
+      titleMedium: GoogleFonts.roboto(
         color: AppColorsDark.textColor,
         fontSize: 14.sp,
       ),
-      titleSmall: GoogleFonts.openSans(
+      titleSmall: GoogleFonts.roboto(
         color: AppColorsDark.textColor,
       ),
-      labelLarge: GoogleFonts.openSans(
+      labelLarge: GoogleFonts.roboto(
         color: AppColorsDark.textColor,
         fontSize: 18.sp,
       ),
-      labelMedium: GoogleFonts.openSans(
+      labelMedium: GoogleFonts.roboto(
         color: AppColorsDark.textColor,
         fontSize: 16.sp,
       ),
-      labelSmall: GoogleFonts.openSans(
+      labelSmall: GoogleFonts.roboto(
         color: AppColorsDark.textColor,
         fontSize: 12.sp,
       ),
@@ -63,9 +63,9 @@ final getThemeData = {
       ),
       unselectedIconTheme: IconThemeData(
         size: 24.sp,
-        color: Colors.white,
+        color: AppColorsDark.textColor,
       ),
-      selectedLabelStyle: GoogleFonts.openSans(
+      selectedLabelStyle: GoogleFonts.roboto(
         color: AppColorsDark.primaryGreenColor,
       ),
       selectedItemColor: AppColorsDark.primaryGreenColor,

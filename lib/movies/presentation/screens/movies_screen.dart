@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies_app/core/components/size_box.dart';
@@ -24,21 +23,15 @@ class MoviesScreen extends StatelessWidget {
           ..add(GetTopRatedMoviesEvent())
           ..add(GetUpcomingMoviesEvent());
       },
-      child: AnnotatedRegion<SystemUiOverlayStyle>(
-        value: const SystemUiOverlayStyle(
-          statusBarColor: Colors.transparent,
-        ),
-        child: Scaffold(
-          body: CustomScrollView(
-              physics: const BouncingScrollPhysics(),
-              slivers: [
-                const SliverToBoxAdapter(child: NowPlayingWidget()),
-                const SliverToBoxAdapter(child: UpcomingWidget()),
-                const SliverToBoxAdapter(child: PopularMoviesWidget()),
-                const SliverToBoxAdapter(child: TopRatedMoviesWidget()),
-                SliverToBoxAdapter(child: Space(height: 10.h, width: 0)),
-              ]),
-        ),
+      child: Scaffold(
+        body:
+            CustomScrollView(physics: const BouncingScrollPhysics(), slivers: [
+          const SliverToBoxAdapter(child: NowPlayingWidget()),
+          const SliverToBoxAdapter(child: UpcomingWidget()),
+          const SliverToBoxAdapter(child: PopularMoviesWidget()),
+          const SliverToBoxAdapter(child: TopRatedMoviesWidget()),
+          SliverToBoxAdapter(child: Space(height: 10.h, width: 0)),
+        ]),
       ),
     );
   }
