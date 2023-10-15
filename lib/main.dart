@@ -5,7 +5,7 @@ import 'package:movies_app/core/global/app_string/app_string.dart';
 import 'package:movies_app/core/global/theme/theme_data/theme_data.dart';
 import 'package:movies_app/core/services/services_locator.dart';
 import 'package:movies_app/core/utils/enum.dart';
-import 'package:movies_app/presentation_main_app/screen/main_screen.dart';
+import 'package:movies_app/presentation_main_app/screen/home_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
               title: AppString.appTitle,
               theme: getThemeData[AppTheme.darkTheme],
               darkTheme: getThemeData[AppTheme.darkTheme],
-              home: const MainScreen(),
+              home: const HomePage(),
             );
           },
         );
