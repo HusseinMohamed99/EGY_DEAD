@@ -15,7 +15,7 @@ import 'package:movies_app/movies/presentation/controller/movies_states.dart';
 import 'package:movies_app/movies/presentation/screens/see_more.dart';
 
 class TopRatedMoviesWidget extends StatelessWidget {
-  const TopRatedMoviesWidget({Key? key}) : super(key: key);
+  const TopRatedMoviesWidget({super.key});
 
   @override
   Widget build(BuildContext context) {

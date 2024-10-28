@@ -16,7 +16,7 @@ import 'package:movies_app/movies/presentation/controller/movies_states.dart';
 import 'package:movies_app/movies/presentation/screens/movie_details_screen.dart';
 
 class NowPlayingWidget extends StatelessWidget {
-  const NowPlayingWidget({Key? key}) : super(key: key);
+  const NowPlayingWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
