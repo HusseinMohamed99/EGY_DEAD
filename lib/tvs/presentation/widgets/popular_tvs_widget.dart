@@ -16,7 +16,7 @@ import 'package:movies_app/tvs/presentation/screens/see_more.dart';
 import 'package:movies_app/tvs/presentation/screens/tvs_details_screen.dart';
 
 class PopularTvsWidget extends StatelessWidget {
-  const PopularTvsWidget({Key? key}) : super(key: key);
+  const PopularTvsWidget({super.key});
 
   @override
   Widget build(BuildContext context) {

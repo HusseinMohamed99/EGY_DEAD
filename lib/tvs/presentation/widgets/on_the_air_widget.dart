@@ -17,7 +17,7 @@ import 'package:movies_app/tvs/presentation/controller/tvs_states.dart';
 import 'package:movies_app/tvs/presentation/screens/tvs_details_screen.dart';
 
 class OnTheAirWidget extends StatelessWidget {
-  const OnTheAirWidget({Key? key}) : super(key: key);
+  const OnTheAirWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
