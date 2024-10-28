@@ -21,7 +21,7 @@ import 'package:movies_app/tvs/presentation/controller/tvs_details_states.dart';
 class TvsDetailsScreen extends StatelessWidget {
   final int tvsID;
 
-  const TvsDetailsScreen({Key? key, required this.tvsID}) : super(key: key);
+  const TvsDetailsScreen({super.key, required this.tvsID});
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +40,7 @@ class TvsDetailsScreen extends StatelessWidget {
 }
 
 class TvsDetailsContent extends StatelessWidget {
-  const TvsDetailsContent({Key? key}) : super(key: key);
+  const TvsDetailsContent({super.key});
 
   @override
   Widget build(BuildContext context) {

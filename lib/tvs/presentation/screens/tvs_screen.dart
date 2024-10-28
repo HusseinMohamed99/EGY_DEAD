@@ -11,7 +11,7 @@ import 'package:movies_app/tvs/presentation/widgets/popular_tvs_widget.dart';
 import 'package:movies_app/tvs/presentation/widgets/top_rated_tvs_widget.dart';
 
 class TvsScreen extends StatelessWidget {
-  const TvsScreen({Key? key}) : super(key: key);
+  const TvsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

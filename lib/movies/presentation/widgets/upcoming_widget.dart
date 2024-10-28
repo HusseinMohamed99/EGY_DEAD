@@ -16,7 +16,7 @@ import 'package:movies_app/movies/presentation/screens/movie_details_screen.dart
 import 'package:movies_app/movies/presentation/screens/see_more.dart';
 
 class UpcomingWidget extends StatelessWidget {
-  const UpcomingWidget({Key? key}) : super(key: key);
+  const UpcomingWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
