@@ -10,8 +10,8 @@ import 'package:movies_app/movies/domain/entities/movie.dart';
 import 'package:movies_app/movies/presentation/screens/movie_details_screen.dart';
 
 class SeeMoreScreen extends StatelessWidget {
-  const SeeMoreScreen({Key? key, required this.movieList, required this.title})
-      : super(key: key);
+  const SeeMoreScreen(
+      {super.key, required this.movieList, required this.title});
 
   final List<Movies> movieList;
   final String title;

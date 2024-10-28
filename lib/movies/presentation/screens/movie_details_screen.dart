@@ -25,7 +25,7 @@ import 'package:movies_app/movies/presentation/controller/movies_details_states.
 class MovieDetailsScreen extends StatelessWidget {
   final int movieID;
 
-  const MovieDetailsScreen({Key? key, required this.movieID}) : super(key: key);
+  const MovieDetailsScreen({super.key, required this.movieID});
 
   @override
   Widget build(BuildContext context) {
@@ -43,8 +43,8 @@ class MovieDetailsScreen extends StatelessWidget {
 
 class MovieDetailContent extends StatelessWidget {
   const MovieDetailContent({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
