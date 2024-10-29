@@ -9,7 +9,7 @@ import 'package:movies_app/core/components/loading_indicator.dart';
 import 'package:movies_app/core/components/review_card.dart';
 import 'package:movies_app/core/components/size_box.dart';
 import 'package:movies_app/core/global/app_string/app_string.dart';
-import 'package:movies_app/core/global/theme/app_color/app_color_dark.dart';
+import 'package:movies_app/core/global/theme/style/color_manger.dart';
 import 'package:movies_app/core/global/theme/theme_data/theme_data.dart';
 import 'package:movies_app/core/network/api_constance.dart';
 import 'package:movies_app/core/services/services_locator.dart';
@@ -84,7 +84,7 @@ class MovieDetailContent extends StatelessWidget {
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(10).r,
                                       border: Border.all(
-                                        color: AppColorsDark.borderColor,
+                                        color: ColorManager.whiteColor,
                                       ),
                                     ),
                                     child: ClipRRect(
@@ -106,7 +106,7 @@ class MovieDetailContent extends StatelessWidget {
                                         CircleAvatar(
                                           radius: 19.r,
                                           backgroundColor:
-                                              AppColorsDark.primaryRedColor,
+                                              ColorManager.primaryRedColor,
                                           child: IconButton(
                                             onPressed: () {
                                               urlLauncher(
@@ -119,7 +119,7 @@ class MovieDetailContent extends StatelessWidget {
                                             },
                                             icon: const Icon(
                                               Icons.play_circle,
-                                              color: AppColorsDark.iconColor,
+                                              color: ColorManager.whiteColor,
                                             ),
                                           ),
                                         ),
@@ -138,7 +138,7 @@ class MovieDetailContent extends StatelessWidget {
                                               ).r,
                                               decoration: BoxDecoration(
                                                 color:
-                                                    AppColorsDark.greyDarkColor,
+                                                    ColorManager.greyDarkColor,
                                                 borderRadius:
                                                     BorderRadius.circular(4.0)
                                                         .r,
@@ -154,7 +154,7 @@ class MovieDetailContent extends StatelessWidget {
                                               children: [
                                                 Icon(
                                                   Icons.star,
-                                                  color: AppColorsDark
+                                                  color: ColorManager
                                                       .iconRateColor,
                                                   size: 20.0.sp,
                                                 ),
@@ -343,7 +343,7 @@ class MovieDetailContent extends StatelessWidget {
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10).r,
                             border: Border.all(
-                              color: AppColorsDark.borderColor,
+                              color: ColorManager.whiteColor,
                             ),
                           ),
                           child: ClipRRect(
@@ -421,7 +421,7 @@ class MovieDetailContent extends StatelessWidget {
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10).r,
                             border: Border.all(
-                              color: AppColorsDark.borderColor,
+                              color: ColorManager.whiteColor,
                             ),
                           ),
                           child: ClipRRect(

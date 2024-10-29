@@ -7,7 +7,7 @@ import 'package:movies_app/core/components/image_shimmer.dart';
 import 'package:movies_app/core/components/loading_indicator.dart';
 import 'package:movies_app/core/components/size_box.dart';
 import 'package:movies_app/core/global/app_string/app_string.dart';
-import 'package:movies_app/core/global/theme/app_color/app_color_dark.dart';
+import 'package:movies_app/core/global/theme/style/color_manger.dart';
 import 'package:movies_app/core/global/theme/theme_data/theme_data.dart';
 import 'package:movies_app/core/network/api_constance.dart';
 import 'package:movies_app/core/services/services_locator.dart';
@@ -84,7 +84,7 @@ class TvsDetailsContent extends StatelessWidget {
                                           borderRadius:
                                               BorderRadius.circular(10).r,
                                           border: Border.all(
-                                            color: AppColorsDark.borderColor,
+                                            color: ColorManager.whiteColor,
                                           ),
                                         ),
                                         child: Stack(
@@ -110,7 +110,7 @@ class TvsDetailsContent extends StatelessWidget {
                                             CircleAvatar(
                                               radius: 19.r,
                                               backgroundColor:
-                                                  AppColorsDark.primaryRedColor,
+                                                  ColorManager.primaryRedColor,
                                               child: IconButton(
                                                 onPressed: () {
                                                   urlLauncher(
@@ -124,7 +124,7 @@ class TvsDetailsContent extends StatelessWidget {
                                                 icon: const Icon(
                                                   Icons.play_circle,
                                                   color:
-                                                      AppColorsDark.iconColor,
+                                                      ColorManager.whiteColor,
                                                 ),
                                               ),
                                             ),
@@ -143,7 +143,7 @@ class TvsDetailsContent extends StatelessWidget {
                                                     horizontal: 8.0,
                                                   ).r,
                                                   decoration: BoxDecoration(
-                                                    color: AppColorsDark
+                                                    color: ColorManager
                                                         .greyDarkColor,
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -162,7 +162,7 @@ class TvsDetailsContent extends StatelessWidget {
                                                   children: [
                                                     Icon(
                                                       Icons.star,
-                                                      color: AppColorsDark
+                                                      color: ColorManager
                                                           .iconRateColor,
                                                       size: 20.sp,
                                                     ),
@@ -368,7 +368,7 @@ class TvsDetailsContent extends StatelessWidget {
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10).r,
                           border: Border.all(
-                            color: AppColorsDark.borderColor,
+                            color: ColorManager.whiteColor,
                           ),
                         ),
                         child: ClipRRect(
@@ -450,7 +450,7 @@ class TvsDetailsContent extends StatelessWidget {
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10).r,
                           border: Border.all(
-                            color: AppColorsDark.borderColor,
+                            color: ColorManager.whiteColor,
                           ),
                         ),
                         child: ClipRRect(
@@ -506,7 +506,7 @@ class TvsDetailsContent extends StatelessWidget {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10).r,
                       border: Border.all(
-                        color: AppColorsDark.borderColor,
+                        color: ColorManager.whiteColor,
                       ),
                     ),
                     child: Row(
@@ -519,7 +519,7 @@ class TvsDetailsContent extends StatelessWidget {
                               bottomLeft: Radius.circular(10),
                             ).r,
                             border: Border.all(
-                              color: AppColorsDark.borderColor,
+                              color: ColorManager.whiteColor,
                             ),
                           ),
                           child: ClipRRect(

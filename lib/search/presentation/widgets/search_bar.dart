@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:movies_app/core/global/theme/app_color/app_color_dark.dart';
-import 'package:movies_app/core/global/theme/app_color/app_color_light.dart';
+import 'package:movies_app/core/global/theme/style/color_manger.dart';
 import 'package:movies_app/core/global/theme/theme_data/theme_data.dart';
 import 'package:movies_app/core/utils/enum.dart';
 import 'package:movies_app/search/presentation/controllers/search_bloc/search_bloc.dart';
@@ -32,7 +31,7 @@ class _SearchBarItemState extends State<SearchBarItem> {
     return TextFormField(
       keyboardType: TextInputType.text,
       controller: textController,
-      cursorColor: AppColorsDark.greyDarkColor,
+      cursorColor: ColorManager.greyDarkColor,
       cursorWidth: 1,
       style: textTheme.bodyLarge,
       onChanged: (title) {
@@ -41,20 +40,20 @@ class _SearchBarItemState extends State<SearchBarItem> {
       decoration: InputDecoration(
         focusedBorder: OutlineInputBorder(
           borderSide: const BorderSide(
-            color: AppColorsDark.greyDarkColor,
+            color: ColorManager.greyDarkColor,
           ),
           borderRadius: BorderRadius.circular(8).r,
         ),
         enabledBorder: OutlineInputBorder(
           borderSide: const BorderSide(
-            color: AppColorsDark.greyDarkColor,
+            color: ColorManager.greyDarkColor,
           ),
           borderRadius: BorderRadius.circular(8).r,
         ),
         prefixIcon: Icon(
           Icons.search_rounded,
           size: 24.sp,
-          color: AppColorsLight.lightPrimary,
+          color: ColorManager.whiteColor,
         ),
         suffixIcon: GestureDetector(
           onTap: () {
@@ -64,7 +63,7 @@ class _SearchBarItemState extends State<SearchBarItem> {
           child: Icon(
             Icons.clear_rounded,
             size: 24.sp,
-            color: AppColorsLight.lightPrimary,
+            color: ColorManager.whiteColor,
           ),
         ),
         hintText: 'Search',

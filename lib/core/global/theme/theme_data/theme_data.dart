@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:movies_app/core/global/theme/app_color/app_color_dark.dart';
+import 'package:movies_app/core/global/theme/style/color_manger.dart';
 import 'package:movies_app/core/utils/enum.dart';
 
 final getThemeData = {
   AppTheme.darkTheme: ThemeData(
-    scaffoldBackgroundColor: AppColorsDark.darkPrimary,
-    primaryColor: AppColorsDark.darkPrimary,
+    scaffoldBackgroundColor: ColorManager.darkPrimary,
+    primaryColor: ColorManager.darkPrimary,
     appBarTheme: const AppBarTheme(backgroundColor: Colors.transparent),
     bottomSheetTheme: BottomSheetThemeData(
-      backgroundColor: AppColorsDark.greyDarkColor,
+      backgroundColor: ColorManager.greyDarkColor,
       shape: RoundedRectangleBorder(
         borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(18),
@@ -20,36 +20,36 @@ final getThemeData = {
     ),
     textTheme: TextTheme(
       bodyLarge: GoogleFonts.roboto(
-        color: AppColorsDark.textColor,
+        color: ColorManager.whiteColor,
       ),
       bodyMedium: GoogleFonts.roboto(
-        color: AppColorsDark.textColor,
+        color: ColorManager.whiteColor,
       ),
       bodySmall: GoogleFonts.roboto(
-        color: AppColorsDark.textColor,
+        color: ColorManager.whiteColor,
       ),
       titleLarge: GoogleFonts.roboto(
-        color: AppColorsDark.textColor,
+        color: ColorManager.whiteColor,
         fontSize: 24,
         fontWeight: FontWeight.w700,
       ),
       titleMedium: GoogleFonts.roboto(
-        color: AppColorsDark.textColor,
+        color: ColorManager.whiteColor,
         fontSize: 14,
       ),
       titleSmall: GoogleFonts.roboto(
-        color: AppColorsDark.textColor,
+        color: ColorManager.whiteColor,
       ),
       labelLarge: GoogleFonts.roboto(
-        color: AppColorsDark.textColor,
+        color: ColorManager.whiteColor,
         fontSize: 18,
       ),
       labelMedium: GoogleFonts.roboto(
-        color: AppColorsDark.textColor,
+        color: ColorManager.whiteColor,
         fontSize: 16,
       ),
       labelSmall: GoogleFonts.roboto(
-        color: AppColorsDark.textColor,
+        color: ColorManager.whiteColor,
         fontSize: 12,
       ),
     ),
@@ -59,16 +59,16 @@ final getThemeData = {
       showUnselectedLabels: false,
       selectedIconTheme: const IconThemeData(
         size: 30,
-        color: AppColorsDark.primaryGreenColor,
+        color: ColorManager.primaryGreenColor,
       ),
       unselectedIconTheme: const IconThemeData(
         size: 24,
-        color: AppColorsDark.textColor,
+        color: ColorManager.whiteColor,
       ),
       selectedLabelStyle: GoogleFonts.roboto(
-        color: AppColorsDark.primaryGreenColor,
+        color: ColorManager.primaryGreenColor,
       ),
-      selectedItemColor: AppColorsDark.primaryGreenColor,
+      selectedItemColor: ColorManager.primaryGreenColor,
     ),
   ),
 };

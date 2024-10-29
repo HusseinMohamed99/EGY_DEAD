@@ -3,7 +3,7 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies_app/core/components/circle_avatar.dart';
 import 'package:movies_app/core/components/review_content.dart';
-import 'package:movies_app/core/global/theme/app_color/app_color_dark.dart';
+import 'package:movies_app/core/global/theme/style/color_manger.dart';
 import 'package:movies_app/core/global/theme/theme_data/theme_data.dart';
 import 'package:movies_app/core/utils/enum.dart';
 import 'package:movies_app/core/utils/function.dart';
@@ -29,7 +29,7 @@ class ReviewCard extends StatelessWidget {
         width: 240.w,
         height: double.infinity,
         decoration: BoxDecoration(
-          color: AppColorsDark.greyDarkColor,
+          color: ColorManager.greyDarkColor,
           borderRadius: BorderRadius.circular(12).r,
         ),
         child: Column(
@@ -94,7 +94,7 @@ Widget _getRatingBarIndicator(double rating) {
       itemBuilder: (_, __) {
         return Icon(
           Icons.star_rate_rounded,
-          color: AppColorsDark.iconRateColor,
+          color: ColorManager.iconRateColor,
           size: 24.sp,
         );
       },

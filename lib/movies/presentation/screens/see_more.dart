@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies_app/core/components/image_shimmer.dart';
 import 'package:movies_app/core/components/size_box.dart';
-import 'package:movies_app/core/global/theme/app_color/app_color_dark.dart';
+import 'package:movies_app/core/global/theme/style/color_manger.dart';
 import 'package:movies_app/core/global/theme/theme_data/theme_data.dart';
 import 'package:movies_app/core/network/api_constance.dart';
 import 'package:movies_app/core/utils/enum.dart';
@@ -22,7 +22,7 @@ class SeeMoreScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        backgroundColor: AppColorsDark.greyDarkColor,
+        backgroundColor: ColorManager.greyDarkColor,
         elevation: 0,
         title: Text(
           "$title Movies".toUpperCase(),
@@ -39,7 +39,7 @@ class SeeMoreScreen extends StatelessWidget {
           final movie = movieList[index];
           return Container(
             decoration: BoxDecoration(
-              color: AppColorsDark.darkPrimary,
+              color: ColorManager.darkPrimary,
               borderRadius: BorderRadius.circular(10).r,
             ),
             padding: const EdgeInsets.all(10).r,
@@ -91,7 +91,7 @@ class SeeMoreScreen extends StatelessWidget {
                                 horizontal: 8.0,
                               ).r,
                               decoration: BoxDecoration(
-                                color: AppColorsDark.primaryRedColor,
+                                color: ColorManager.primaryRedColor,
                                 borderRadius: BorderRadius.circular(4.0).r,
                               ),
                               child: Text(
@@ -104,7 +104,7 @@ class SeeMoreScreen extends StatelessWidget {
                               children: [
                                 Icon(
                                   Icons.star,
-                                  color: AppColorsDark.iconRateColor,
+                                  color: ColorManager.iconRateColor,
                                   size: 20.sp,
                                 ),
                                 Space(height: 0, width: 4.w),

@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:movies_app/core/helpers/export_manager/export_manager.dart';
 import 'package:movies_app/core/services/services_locator.dart';
 import 'package:movies_app/core/utils/enum.dart';
+import 'package:movies_app/image_assets.dart';
 import 'package:movies_app/presentation_main_app/controller/internet_bloc.dart';
 import 'package:movies_app/presentation_main_app/screen/main_screen.dart';
 
@@ -19,34 +21,28 @@ class HomePage extends StatelessWidget {
       child: Scaffold(
         body: BlocProvider(
           create: (context) => sl<InternetCubit>(),
-          child: BlocConsumer<InternetCubit, InternetState>(
-            listener: (context, state) {
-              if (state == InternetState.gained) {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(
-                    content: Text('Connected'),
-                    backgroundColor: Colors.green,
-                  ),
-                );
-              } else if (state == InternetState.lost) {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(
-                    content: Text('Not Connected'),
-                    backgroundColor: Colors.redAccent,
-                  ),
-                );
-              }
-            },
-            builder: (context, state) {
-              if (state == InternetState.gained) {
-                // Show your information when connected
-                return const MainScreen();
-              } else if (state == InternetState.lost) {
-                return SvgPicture.asset('assets/images/error.svg');
-              } else {
-                return const CircularProgressIndicator(); // Loading indicator
-              }
-            },
+          child: Center(
+            child: BlocConsumer<InternetCubit, InternetState>(
+              listener: (context, state) {
+                if (state == InternetState.lost) {
+                  context.showSnackBar(
+                    'Check Internet Connection',
+                    color: Colors.red,
+                  );
+                }
+              },
+              builder: (context, state) {
+                if (state == InternetState.gained) {
+                  // Show your information when connected
+                  return const MainScreen();
+                } else if (state == InternetState.lost) {
+                  return SvgPicture.asset(Assets.imagesError);
+                } else {
+                  return const CircularProgressIndicator
+                      .adaptive(); // Loading indicator
+                }
+              },
+            ),
           ),
         ),
       ),

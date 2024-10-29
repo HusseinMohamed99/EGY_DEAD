@@ -6,7 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies_app/core/components/image_shimmer.dart';
 import 'package:movies_app/core/components/loading_indicator.dart';
 import 'package:movies_app/core/global/app_string/app_string.dart';
-import 'package:movies_app/core/global/theme/app_color/app_color_dark.dart';
+import 'package:movies_app/core/global/theme/style/color_manger.dart';
 import 'package:movies_app/core/global/theme/theme_data/theme_data.dart';
 import 'package:movies_app/core/network/api_constance.dart';
 import 'package:movies_app/core/utils/enum.dart';
@@ -74,7 +74,7 @@ class PopularTvsWidget extends StatelessWidget {
                               Icon(
                                 Icons.arrow_forward_ios,
                                 size: 16.sp,
-                                color: AppColorsDark.iconColor,
+                                color: ColorManager.whiteColor,
                               )
                             ],
                           ),

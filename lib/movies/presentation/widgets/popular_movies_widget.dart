@@ -5,7 +5,7 @@ import 'package:movies_app/core/components/horizontal_listview.dart';
 import 'package:movies_app/core/components/listview_card.dart';
 import 'package:movies_app/core/components/loading_indicator.dart';
 import 'package:movies_app/core/global/app_string/app_string.dart';
-import 'package:movies_app/core/global/theme/app_color/app_color_dark.dart';
+import 'package:movies_app/core/global/theme/style/color_manger.dart';
 import 'package:movies_app/core/global/theme/theme_data/theme_data.dart';
 import 'package:movies_app/core/utils/enum.dart';
 import 'package:movies_app/movies/domain/entities/movie.dart';
@@ -67,7 +67,7 @@ class PopularMoviesWidget extends StatelessWidget {
                               Icon(
                                 Icons.arrow_forward_ios,
                                 size: 16.sp,
-                                color: AppColorsDark.iconColor,
+                                color: ColorManager.whiteColor,
                               )
                             ],
                           ),
@@ -126,7 +126,7 @@ class PopularMoviesWidget extends StatelessWidget {
                               Icon(
                                 Icons.arrow_forward_ios,
                                 size: 16.sp,
-                                color: AppColorsDark.iconColor,
+                                color: ColorManager.whiteColor,
                               )
                             ],
                           ),

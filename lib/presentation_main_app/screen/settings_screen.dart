@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:movies_app/core/components/size_box.dart';
-import 'package:movies_app/core/global/theme/app_color/app_color_dark.dart';
+import 'package:movies_app/core/global/theme/style/color_manger.dart';
 import 'package:movies_app/core/global/theme/theme_data/theme_data.dart';
 import 'package:movies_app/core/utils/enum.dart';
-import 'package:movies_app/generated/assets.dart';
+import 'package:movies_app/image_assets.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
@@ -23,7 +23,7 @@ class SettingsScreen extends StatelessWidget {
             child: CircleAvatar(
               maxRadius: 93.r,
               minRadius: 93.r,
-              backgroundColor: AppColorsDark.primaryGreenColor,
+              backgroundColor: ColorManager.primaryGreenColor,
               child: CircleAvatar(
                 maxRadius: 90.r,
                 minRadius: 90.r,
@@ -43,14 +43,14 @@ class SettingsScreen extends StatelessWidget {
             'Hussein Mohamed',
             style: GoogleFonts.pacifico(
               textStyle: TextStyle(
-                color: AppColorsDark.textColor,
+                color: ColorManager.whiteColor,
                 fontSize: 20.sp,
               ),
             ),
           ),
           Space(width: 0.w, height: 30.h),
           Card(
-            color: AppColorsDark.greyDarkColor,
+            color: ColorManager.greyDarkColor,
             clipBehavior: Clip.antiAlias,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(15).r,
@@ -79,7 +79,7 @@ class SettingsScreen extends StatelessWidget {
                       child: Icon(
                         Icons.info_outline,
                         size: 26.sp,
-                        color: AppColorsDark.primaryGreenColor,
+                        color: ColorManager.primaryGreenColor,
                       ),
                     ),
                     Space(
@@ -100,7 +100,7 @@ class SettingsScreen extends StatelessWidget {
             height: 8.h,
           ),
           Card(
-            color: AppColorsDark.greyDarkColor,
+            color: ColorManager.greyDarkColor,
             clipBehavior: Clip.antiAlias,
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(15).r),
@@ -128,7 +128,7 @@ class SettingsScreen extends StatelessWidget {
                       child: Icon(
                         Icons.help_outline,
                         size: 26.sp,
-                        color: AppColorsDark.primaryGreenColor,
+                        color: ColorManager.primaryGreenColor,
                       ),
                     ),
                     Space(width: 35.w, height: 0.h),
