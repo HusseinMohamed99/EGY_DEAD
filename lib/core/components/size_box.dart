@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+part of './../helpers/export_manager/export_manager.dart';
 
 class Space extends StatelessWidget {
   final double width;
@@ -9,8 +9,8 @@ class Space extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: width,
-      height: height,
+      width: width.w,
+      height: height.h,
     );
   }
 }

@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:movies_app/core/network/api_constance.dart';
-import 'package:url_launcher/url_launcher.dart';
+part of './../helpers/export_manager/export_manager.dart';
 
 String getProfileImageUrl(Map<String, dynamic> json) {
   if (json['profile_path'] != null) {

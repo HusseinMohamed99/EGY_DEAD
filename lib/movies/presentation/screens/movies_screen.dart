@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:movies_app/core/components/size_box.dart';
+import 'package:movies_app/core/helpers/export_manager/export_manager.dart';
 import 'package:movies_app/core/services/services_locator.dart';
 import 'package:movies_app/movies/presentation/controller/movies_bloc.dart';
 import 'package:movies_app/movies/presentation/controller/movies_events.dart';
@@ -30,7 +29,7 @@ class MoviesScreen extends StatelessWidget {
           const SliverToBoxAdapter(child: UpcomingWidget()),
           const SliverToBoxAdapter(child: PopularMoviesWidget()),
           const SliverToBoxAdapter(child: TopRatedMoviesWidget()),
-          SliverToBoxAdapter(child: Space(height: 10.h, width: 0)),
+          SliverToBoxAdapter(child: Space(height: 10, width: 0)),
         ]),
       ),
     );

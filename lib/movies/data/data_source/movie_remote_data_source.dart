@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:movies_app/core/error/exceptions.dart';
+import 'package:movies_app/core/helpers/export_manager/export_manager.dart';
 import 'package:movies_app/core/network/api_constance.dart';
 import 'package:movies_app/core/network/error_message_model.dart';
 import 'package:movies_app/movies/data/models/movie_details_model.dart';

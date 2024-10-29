@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies_app/core/components/image_shimmer.dart';
-import 'package:movies_app/core/components/size_box.dart';
 import 'package:movies_app/core/global/theme/style/color_manger.dart';
 import 'package:movies_app/core/global/theme/theme_data/theme_data.dart';
+import 'package:movies_app/core/helpers/export_manager/export_manager.dart';
 import 'package:movies_app/core/network/api_constance.dart';
 import 'package:movies_app/core/utils/enum.dart';
 import 'package:movies_app/movies/domain/entities/movie.dart';
@@ -70,7 +70,7 @@ class SeeMoreScreen extends StatelessWidget {
                       height: 140.h,
                     ),
                   ),
-                  Space(height: 0, width: 10.w),
+                  Space(height: 0, width: 10),
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -82,7 +82,7 @@ class SeeMoreScreen extends StatelessWidget {
                           textAlign: TextAlign.start,
                           style: textTheme.labelLarge,
                         ),
-                        Space(height: 5.h, width: 0),
+                        Space(height: 5, width: 0),
                         Row(
                           children: [
                             Container(

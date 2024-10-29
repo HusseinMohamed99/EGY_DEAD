@@ -1,4 +1,4 @@
-import 'package:movies_app/core/utils/function.dart';
+import 'package:movies_app/core/helpers/export_manager/export_manager.dart';
 import 'package:movies_app/movies/domain/entities/movie.dart';
 
 class MovieModel extends Movies {

@@ -1,11 +1,11 @@
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import 'package:movies_app/core/error/failure.dart';
-import 'package:movies_app/core/use_case/base_use_case.dart';
+import 'package:movies_app/core/generic_use_case/generic_use_case.dart';
 import 'package:movies_app/movies/domain/entities/movie_recommendation.dart';
 import 'package:movies_app/movies/domain/repository/base_movies_repository.dart';
 
-class GetMovieRecommendationUseCase extends BaseUseCase<
+class GetMovieRecommendationUseCase extends GenericUseCase<
     List<MoviesRecommendation>, MovieRecommendationParameters> {
   final BaseMovieRepository baseMovieRepository;
 

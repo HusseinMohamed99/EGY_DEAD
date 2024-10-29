@@ -5,10 +5,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies_app/core/components/image_shimmer.dart';
 import 'package:movies_app/core/components/loading_indicator.dart';
-import 'package:movies_app/core/components/size_box.dart';
 import 'package:movies_app/core/global/app_string/app_string.dart';
 import 'package:movies_app/core/global/theme/style/color_manger.dart';
 import 'package:movies_app/core/global/theme/theme_data/theme_data.dart';
+import 'package:movies_app/core/helpers/export_manager/export_manager.dart';
 import 'package:movies_app/core/network/api_constance.dart';
 import 'package:movies_app/core/utils/enum.dart';
 import 'package:movies_app/movies/presentation/controller/movies_bloc.dart';
@@ -123,7 +123,7 @@ class NowPlayingWidget extends StatelessWidget {
                                             color: ColorManager.primaryRedColor,
                                             size: 16.sp,
                                           ),
-                                          Space(height: 0, width: 4.w),
+                                          Space(height: 0, width: 4),
                                           Text(
                                             AppString.nowPlaying.toUpperCase(),
                                             style: textTheme.bodyLarge,

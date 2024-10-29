@@ -1,4 +1,4 @@
-import 'package:shared_preferences/shared_preferences.dart';
+part of './../helpers/export_manager/export_manager.dart';
 
 class CacheHelper {
   static late SharedPreferences sharedPreferences;

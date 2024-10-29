@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:movies_app/core/components/horizontal_listview.dart';
-import 'package:movies_app/core/components/listview_card.dart';
+import 'package:movies_app/core/components/horizontal_list_view.dart';
+import 'package:movies_app/core/components/list_view_card.dart';
 import 'package:movies_app/core/components/loading_indicator.dart';
 import 'package:movies_app/core/global/app_string/app_string.dart';
 import 'package:movies_app/core/global/theme/style/color_manger.dart';

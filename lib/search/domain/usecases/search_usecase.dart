@@ -1,10 +1,10 @@
 import 'package:dartz/dartz.dart';
 import 'package:movies_app/core/error/failure.dart';
-import 'package:movies_app/core/use_case/base_use_case.dart';
+import 'package:movies_app/core/generic_use_case/generic_use_case.dart';
 import 'package:movies_app/search/domain/entities/search_result_item.dart';
 import 'package:movies_app/search/domain/repository/search_repository.dart';
 
-class SearchUseCase extends BaseUseCase<List<SearchResultItem>, String> {
+class SearchUseCase extends GenericUseCase<List<SearchResultItem>, String> {
   final SearchRepository baseSearchRepository;
 
   SearchUseCase({required this.baseSearchRepository});

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:movies_app/core/components/size_box.dart';
+import 'package:movies_app/core/helpers/export_manager/export_manager.dart';
 
 class HorizontalListView extends StatefulWidget {
   final int itemCount;
@@ -48,7 +48,7 @@ class _HorizontalListViewState extends State<HorizontalListView> {
         itemBuilder: widget.itemBuilder,
         separatorBuilder: (context, index) {
           return Space(
-            height: 10.sp,
+            height: 10,
             width: 16,
           );
         },

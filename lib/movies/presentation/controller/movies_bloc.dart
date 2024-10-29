@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movies_app/core/use_case/base_use_case.dart';
+import 'package:movies_app/core/generic_use_case/generic_use_case.dart';
 import 'package:movies_app/core/utils/enum.dart';
 import 'package:movies_app/movies/domain/usecases/get_all_popular_movies_usecase.dart';
 import 'package:movies_app/movies/domain/usecases/get_all_top_rated_movies_usecase.dart';

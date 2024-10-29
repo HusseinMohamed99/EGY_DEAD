@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies_app/core/components/image_shimmer.dart';
-import 'package:movies_app/core/components/size_box.dart';
+import 'package:movies_app/core/helpers/export_manager/export_manager.dart';
 import 'package:movies_app/movies/domain/entities/cast.dart';
 
 class CastCard extends StatelessWidget {
@@ -28,7 +28,7 @@ class CastCard extends StatelessWidget {
               height: 100.h,
             ),
           ),
-          Space(height: 8.h, width: 0),
+          Space(height: 8, width: 0),
           Text(
             cast.name,
             style: textTheme.bodyLarge,

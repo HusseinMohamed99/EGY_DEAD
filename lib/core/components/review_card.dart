@@ -5,8 +5,8 @@ import 'package:movies_app/core/components/circle_avatar.dart';
 import 'package:movies_app/core/components/review_content.dart';
 import 'package:movies_app/core/global/theme/style/color_manger.dart';
 import 'package:movies_app/core/global/theme/theme_data/theme_data.dart';
+import 'package:movies_app/core/helpers/export_manager/export_manager.dart';
 import 'package:movies_app/core/utils/enum.dart';
-import 'package:movies_app/core/utils/function.dart';
 import 'package:movies_app/movies/domain/entities/review.dart';
 
 class ReviewCard extends StatelessWidget {

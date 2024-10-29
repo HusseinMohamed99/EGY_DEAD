@@ -1,11 +1,11 @@
+import 'package:dartz/dartz.dart';
 import 'package:movies_app/core/error/failure.dart';
-import 'package:movies_app/core/use_case/base_use_case.dart';
+import 'package:movies_app/core/generic_use_case/generic_use_case.dart';
 import 'package:movies_app/movies/domain/entities/movie.dart';
 import 'package:movies_app/movies/domain/repository/base_movies_repository.dart';
-import 'package:dartz/dartz.dart';
 
 class GetNowPlayingMoviesUseCase
-    extends BaseUseCase<List<Movies>, NoParameters> {
+    extends GenericUseCase<List<Movies>, NoParameters> {
   final BaseMovieRepository baseMovieRepository;
 
   GetNowPlayingMoviesUseCase({required this.baseMovieRepository});
