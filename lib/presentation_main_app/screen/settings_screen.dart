@@ -6,8 +6,6 @@ import 'package:movies_app/core/global/theme/app_color/app_color_dark.dart';
 import 'package:movies_app/core/global/theme/theme_data/theme_data.dart';
 import 'package:movies_app/core/utils/enum.dart';
 import 'package:movies_app/generated/assets.dart';
-import 'package:movies_app/presentation_main_app/screen/about_us_screen.dart';
-import 'package:movies_app/presentation_main_app/screen/help_screen.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
@@ -60,14 +58,14 @@ class SettingsScreen extends StatelessWidget {
             elevation: 10,
             child: InkWell(
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (BuildContext context) {
-                      return const AboutUsScreen();
-                    },
-                  ),
-                );
+                // Navigator.push(
+                //   context,
+                //   MaterialPageRoute(
+                //     builder: (BuildContext context) {
+                //       return const AboutUsScreen();
+                //     },
+                //   ),
+                // );
               },
               child: Container(
                 padding: const EdgeInsets.all(10).r,
@@ -109,14 +107,14 @@ class SettingsScreen extends StatelessWidget {
             elevation: 10,
             child: InkWell(
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (BuildContext context) {
-                      return const HelpScreen();
-                    },
-                  ),
-                );
+                // Navigator.push(
+                //   context,
+                //   MaterialPageRoute(
+                //     builder: (BuildContext context) {
+                //       return const HelpScreen();
+                //     },
+                //   ),
+                // );
               },
               child: Container(
                 padding: const EdgeInsets.all(10).r,

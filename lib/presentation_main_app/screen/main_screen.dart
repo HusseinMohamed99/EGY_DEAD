@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movies_app/core/services/services_locator.dart';
 import 'package:movies_app/presentation_main_app/controller/main_bloc.dart';
 import 'package:movies_app/presentation_main_app/controller/main_event.dart';
 import 'package:movies_app/presentation_main_app/controller/main_state.dart';
@@ -11,7 +12,7 @@ class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => MainBloc(),
+      create: (context) => sl<MainBloc>(),
       child: BlocBuilder<MainBloc, MainState>(
         builder: (context, state) {
           return AnnotatedRegion<SystemUiOverlayStyle>(

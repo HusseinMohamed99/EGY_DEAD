@@ -13,6 +13,7 @@ import 'package:movies_app/movies/domain/usecases/get_top_rated_movies_usecases.
 import 'package:movies_app/movies/domain/usecases/get_up_coming_movies_usecases.dart';
 import 'package:movies_app/movies/presentation/controller/movies_bloc.dart';
 import 'package:movies_app/movies/presentation/controller/movies_details_bloc.dart';
+import 'package:movies_app/presentation_main_app/controller/internet_bloc.dart';
 import 'package:movies_app/presentation_main_app/controller/main_bloc.dart';
 import 'package:movies_app/search/data/datasource/search_remote_data_source.dart';
 import 'package:movies_app/search/data/repository/search_repository.dart';
@@ -35,9 +36,9 @@ import 'package:movies_app/tvs/presentation/controller/tvs_details_bloc.dart';
 final sl = GetIt.instance;
 
 class ServiceLocator {
-  void init() {
-    /// Main Application
-    sl.registerFactory(() => MainBloc());
+  Future<void> init() async {
+    sl.registerLazySingleton(() => InternetCubit());
+    sl.registerLazySingleton(() => MainBloc());
 
     /// TVS =>
     /// TVS Bloc

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:movies_app/core/services/services_locator.dart';
 import 'package:movies_app/core/utils/enum.dart';
 import 'package:movies_app/presentation_main_app/controller/internet_bloc.dart';
 import 'package:movies_app/presentation_main_app/screen/main_screen.dart';
@@ -16,7 +17,8 @@ class HomePage extends StatelessWidget {
         statusBarColor: Colors.transparent,
       ),
       child: Scaffold(
-        body: Center(
+        body: BlocProvider(
+          create: (context) => sl<InternetCubit>(),
           child: BlocConsumer<InternetCubit, InternetState>(
             listener: (context, state) {
               if (state == InternetState.gained) {
