@@ -7,7 +7,7 @@ import 'package:movies_app/movies/domain/repository/base_movies_repository.dart'
 
 class GetMovieDetailsUseCase
     extends GenericUseCase<MovieDetails, MovieDetailsParameters> {
-  final BaseMovieRepository baseMovieRepository;
+  final MovieDataRepository baseMovieRepository;
 
   GetMovieDetailsUseCase({required this.baseMovieRepository});
 

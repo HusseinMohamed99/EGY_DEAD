@@ -6,11 +6,11 @@ import 'package:movies_app/movies/data/models/movie_details_model.dart';
 import 'package:movies_app/movies/data/models/movie_recommendation.dart';
 import 'package:movies_app/movies/data/models/movie_similar.dart';
 import 'package:movies_app/movies/data/models/movies_model.dart';
-import 'package:movies_app/movies/domain/usecases/get_movie_details_usecases.dart';
-import 'package:movies_app/movies/domain/usecases/get_movies_recommendation_usecases.dart';
-import 'package:movies_app/movies/domain/usecases/get_movies_similar_usecases.dart';
+import 'package:movies_app/movies/domain/movie_use_cases/get_movie_details_use_cases.dart';
+import 'package:movies_app/movies/domain/movie_use_cases/get_movies_recommendation_use_cases.dart';
+import 'package:movies_app/movies/domain/movie_use_cases/get_movies_similar_use_cases.dart';
 
-abstract class BaseMovieRemoteDataSource {
+abstract class RemoteMovieDataSource {
   Future<List<MovieModel>> getAllPopularMovies(int page);
 
   Future<List<MovieModel>> getAllTopRatedMovies(int page);
@@ -34,7 +34,7 @@ abstract class BaseMovieRemoteDataSource {
       MovieSimilarParameters parameters);
 }
 
-class MovieRemoteDataSource extends BaseMovieRemoteDataSource {
+class MovieRemoteDataSource extends RemoteMovieDataSource {
   @override
   Future<List<MovieModel>> getNowPlayingMovies() async {
     final response = await Dio().get(ApiConstance.nowPlayingMoviesPath);

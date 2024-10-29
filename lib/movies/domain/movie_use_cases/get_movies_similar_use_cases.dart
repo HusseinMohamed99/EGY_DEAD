@@ -7,7 +7,7 @@ import 'package:movies_app/movies/domain/repository/base_movies_repository.dart'
 
 class GetMovieSimilarUseCase
     extends GenericUseCase<List<MoviesSimilar>, MovieSimilarParameters> {
-  final BaseMovieRepository baseMovieRepository;
+  final MovieDataRepository baseMovieRepository;
 
   GetMovieSimilarUseCase({required this.baseMovieRepository});
 

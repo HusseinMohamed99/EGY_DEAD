@@ -4,11 +4,11 @@ import 'package:movies_app/movies/domain/entities/movie.dart';
 import 'package:movies_app/movies/domain/entities/movie_details.dart';
 import 'package:movies_app/movies/domain/entities/movie_recommendation.dart';
 import 'package:movies_app/movies/domain/entities/movie_similar.dart';
-import 'package:movies_app/movies/domain/usecases/get_movie_details_usecases.dart';
-import 'package:movies_app/movies/domain/usecases/get_movies_recommendation_usecases.dart';
-import 'package:movies_app/movies/domain/usecases/get_movies_similar_usecases.dart';
+import 'package:movies_app/movies/domain/movie_use_cases/get_movie_details_use_cases.dart';
+import 'package:movies_app/movies/domain/movie_use_cases/get_movies_recommendation_use_cases.dart';
+import 'package:movies_app/movies/domain/movie_use_cases/get_movies_similar_use_cases.dart';
 
-abstract class BaseMovieRepository {
+abstract class MovieDataRepository {
   Future<Either<Failure, List<Movies>>> getNowPlayingMovies();
 
   Future<Either<Failure, List<Movies>>> getPopularMovies();

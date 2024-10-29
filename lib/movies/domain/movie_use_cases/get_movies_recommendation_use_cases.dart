@@ -7,7 +7,7 @@ import 'package:movies_app/movies/domain/repository/base_movies_repository.dart'
 
 class GetMovieRecommendationUseCase extends GenericUseCase<
     List<MoviesRecommendation>, MovieRecommendationParameters> {
-  final BaseMovieRepository baseMovieRepository;
+  final MovieDataRepository baseMovieRepository;
 
   GetMovieRecommendationUseCase({required this.baseMovieRepository});
 

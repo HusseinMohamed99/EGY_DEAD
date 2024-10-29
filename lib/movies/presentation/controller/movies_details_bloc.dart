@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'package:movies_app/core/utils/enum.dart';
-import 'package:movies_app/movies/domain/usecases/get_movie_details_usecases.dart';
-import 'package:movies_app/movies/domain/usecases/get_movies_recommendation_usecases.dart';
-import 'package:movies_app/movies/domain/usecases/get_movies_similar_usecases.dart';
+import 'package:movies_app/movies/domain/movie_use_cases/get_movie_details_use_cases.dart';
+import 'package:movies_app/movies/domain/movie_use_cases/get_movies_recommendation_use_cases.dart';
+import 'package:movies_app/movies/domain/movie_use_cases/get_movies_similar_use_cases.dart';
 import 'package:movies_app/movies/presentation/controller/movies_details_events.dart';
 import 'package:movies_app/movies/presentation/controller/movies_details_states.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

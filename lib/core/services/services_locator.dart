@@ -1,16 +1,16 @@
 import 'package:get_it/get_it.dart';
 import 'package:movies_app/movies/data/data_source/movie_remote_data_source.dart';
 import 'package:movies_app/movies/data/repository/movies_repository.dart';
+import 'package:movies_app/movies/domain/movie_use_cases/get_all_popular_movies_use_case.dart';
+import 'package:movies_app/movies/domain/movie_use_cases/get_all_top_rated_movies_use_case.dart';
+import 'package:movies_app/movies/domain/movie_use_cases/get_movie_details_use_cases.dart';
+import 'package:movies_app/movies/domain/movie_use_cases/get_movies_recommendation_use_cases.dart';
+import 'package:movies_app/movies/domain/movie_use_cases/get_movies_similar_use_cases.dart';
+import 'package:movies_app/movies/domain/movie_use_cases/get_now_playing_movies_use_cases.dart';
+import 'package:movies_app/movies/domain/movie_use_cases/get_popular_movies_use_cases.dart';
+import 'package:movies_app/movies/domain/movie_use_cases/get_top_rated_movies_use_cases.dart';
+import 'package:movies_app/movies/domain/movie_use_cases/get_up_coming_movies_use_cases.dart';
 import 'package:movies_app/movies/domain/repository/base_movies_repository.dart';
-import 'package:movies_app/movies/domain/usecases/get_all_popular_movies_usecase.dart';
-import 'package:movies_app/movies/domain/usecases/get_all_top_rated_movies_usecase.dart';
-import 'package:movies_app/movies/domain/usecases/get_movie_details_usecases.dart';
-import 'package:movies_app/movies/domain/usecases/get_movies_recommendation_usecases.dart';
-import 'package:movies_app/movies/domain/usecases/get_movies_similar_usecases.dart';
-import 'package:movies_app/movies/domain/usecases/get_now_playing_movies_usecases.dart';
-import 'package:movies_app/movies/domain/usecases/get_popular_movies_usecases.dart';
-import 'package:movies_app/movies/domain/usecases/get_top_rated_movies_usecases.dart';
-import 'package:movies_app/movies/domain/usecases/get_up_coming_movies_usecases.dart';
 import 'package:movies_app/movies/presentation/controller/movies_bloc.dart';
 import 'package:movies_app/movies/presentation/controller/movies_details_bloc.dart';
 import 'package:movies_app/presentation_main_app/controller/internet_bloc.dart';
@@ -105,11 +105,11 @@ class ServiceLocator {
         () => GetAllTopRatedMoviesUseCase(baseMovieRepository: sl()));
 
     /// Movies Repository
-    sl.registerLazySingleton<BaseMovieRepository>(
-        () => MoviesRepository(baseMovieRemoteDataSource: sl()));
+    sl.registerLazySingleton<MovieDataRepository>(
+        () => MoviesRepository(remoteMovieDataSource: sl()));
 
     /// Movies Data Source
-    sl.registerLazySingleton<BaseMovieRemoteDataSource>(
+    sl.registerLazySingleton<RemoteMovieDataSource>(
         () => MovieRemoteDataSource());
 
     /// Search =>

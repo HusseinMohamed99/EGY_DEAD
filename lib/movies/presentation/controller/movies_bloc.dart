@@ -3,10 +3,10 @@ import 'dart:async';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies_app/core/generic_use_case/generic_use_case.dart';
 import 'package:movies_app/core/utils/enum.dart';
-import 'package:movies_app/movies/domain/usecases/get_all_popular_movies_usecase.dart';
-import 'package:movies_app/movies/domain/usecases/get_all_top_rated_movies_usecase.dart';
-import 'package:movies_app/movies/domain/usecases/get_now_playing_movies_usecases.dart';
-import 'package:movies_app/movies/domain/usecases/get_up_coming_movies_usecases.dart';
+import 'package:movies_app/movies/domain/movie_use_cases/get_all_popular_movies_use_case.dart';
+import 'package:movies_app/movies/domain/movie_use_cases/get_all_top_rated_movies_use_case.dart';
+import 'package:movies_app/movies/domain/movie_use_cases/get_now_playing_movies_use_cases.dart';
+import 'package:movies_app/movies/domain/movie_use_cases/get_up_coming_movies_use_cases.dart';
 import 'package:movies_app/movies/presentation/controller/movies_events.dart';
 import 'package:movies_app/movies/presentation/controller/movies_states.dart';
 
