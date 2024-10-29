@@ -4,9 +4,9 @@ import 'package:movies_app/tvs/domain/entities/tv_details.dart';
 import 'package:movies_app/tvs/domain/entities/tv_recommendation.dart';
 import 'package:movies_app/tvs/domain/entities/tv_similar.dart';
 import 'package:movies_app/tvs/domain/entities/tvs.dart';
-import 'package:movies_app/tvs/domain/usecases/get_tv_details_usecases.dart';
-import 'package:movies_app/tvs/domain/usecases/get_tvs_recommendation_usecases.dart';
-import 'package:movies_app/tvs/domain/usecases/get_tvs_similar_usecases.dart';
+import 'package:movies_app/tvs/domain/tv_use_cases/get_tv_details_use_cases.dart';
+import 'package:movies_app/tvs/domain/tv_use_cases/get_tvs_recommendation_use_cases.dart';
+import 'package:movies_app/tvs/domain/tv_use_cases/get_tvs_similar_use_cases.dart';
 
 abstract class BaseTvRepository {
   Future<Either<Failure, List<Tvs>>> getOnTheAirTv();

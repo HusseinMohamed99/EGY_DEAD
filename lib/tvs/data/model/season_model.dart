@@ -1,7 +1,7 @@
 import 'package:movies_app/tvs/domain/entities/season.dart';
 
-class SeasonModel extends Season {
-  const SeasonModel({
+class TvSeasonModel extends Season {
+  const TvSeasonModel({
     required super.id,
     required super.name,
     required super.overview,
@@ -11,8 +11,8 @@ class SeasonModel extends Season {
     required super.episodeCount,
   });
 
-  factory SeasonModel.fromJson(Map<String, dynamic> json) {
-    return SeasonModel(
+  factory TvSeasonModel.fromJson(Map<String, dynamic> json) {
+    return TvSeasonModel(
       id: json["id"],
       name: json["name"],
       airDate: json["air_date"] ?? '',

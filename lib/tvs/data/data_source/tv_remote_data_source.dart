@@ -6,9 +6,9 @@ import 'package:movies_app/tvs/data/model/tv_recommendation.dart';
 import 'package:movies_app/tvs/data/model/tv_similar.dart';
 import 'package:movies_app/tvs/data/model/tvs_details_model.dart';
 import 'package:movies_app/tvs/data/model/tvs_model.dart';
-import 'package:movies_app/tvs/domain/usecases/get_tv_details_usecases.dart';
-import 'package:movies_app/tvs/domain/usecases/get_tvs_recommendation_usecases.dart';
-import 'package:movies_app/tvs/domain/usecases/get_tvs_similar_usecases.dart';
+import 'package:movies_app/tvs/domain/tv_use_cases/get_tv_details_use_cases.dart';
+import 'package:movies_app/tvs/domain/tv_use_cases/get_tvs_recommendation_use_cases.dart';
+import 'package:movies_app/tvs/domain/tv_use_cases/get_tvs_similar_use_cases.dart';
 
 abstract class BaseTvRemoteDataSource {
   Future<List<TvModel>> getOnTheAirTvs();

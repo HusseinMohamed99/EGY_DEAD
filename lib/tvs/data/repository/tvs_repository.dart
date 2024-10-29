@@ -1,15 +1,15 @@
 import 'package:dartz/dartz.dart';
 import 'package:movies_app/core/error/failure.dart';
 import 'package:movies_app/core/helpers/export_manager/export_manager.dart';
-import 'package:movies_app/tvs/data/datasource/tv_remote_data_source.dart';
+import 'package:movies_app/tvs/data/data_source/tv_remote_data_source.dart';
 import 'package:movies_app/tvs/domain/entities/tv_details.dart';
 import 'package:movies_app/tvs/domain/entities/tv_recommendation.dart';
 import 'package:movies_app/tvs/domain/entities/tv_similar.dart';
 import 'package:movies_app/tvs/domain/entities/tvs.dart';
 import 'package:movies_app/tvs/domain/repository/base_tvs_repository.dart';
-import 'package:movies_app/tvs/domain/usecases/get_tv_details_usecases.dart';
-import 'package:movies_app/tvs/domain/usecases/get_tvs_recommendation_usecases.dart';
-import 'package:movies_app/tvs/domain/usecases/get_tvs_similar_usecases.dart';
+import 'package:movies_app/tvs/domain/tv_use_cases/get_tv_details_use_cases.dart';
+import 'package:movies_app/tvs/domain/tv_use_cases/get_tvs_recommendation_use_cases.dart';
+import 'package:movies_app/tvs/domain/tv_use_cases/get_tvs_similar_use_cases.dart';
 
 class TvsRepository extends BaseTvRepository {
   final BaseTvRemoteDataSource baseTvRemoteDataSource;

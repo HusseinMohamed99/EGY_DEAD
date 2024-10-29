@@ -1,5 +1,5 @@
 import 'package:movies_app/core/helpers/export_manager/export_manager.dart';
-import 'package:movies_app/tvs/data/model/genres_model.dart';
+import 'package:movies_app/tvs/data/model/tv_genres_model.dart';
 import 'package:movies_app/tvs/data/model/season_model.dart';
 import 'package:movies_app/tvs/domain/entities/tv_details.dart';
 
@@ -33,10 +33,10 @@ class TvsDetailsModel extends TvDetails {
       posterPath: json["poster_path"] ?? '',
       adult: json['adult'],
       numberOfSeason: json['number_of_seasons'],
-      genres: List<GenresModel>.from(
-          json["genres"].map((e) => GenresModel.fromJson(e))),
-      season: List<SeasonModel>.from(
-          json["seasons"].map((e) => SeasonModel.fromJson(e))),
+      genres: List<TvGenresModel>.from(
+          json["genres"].map((e) => TvGenresModel.fromJson(e))),
+      season: List<TvSeasonModel>.from(
+          json["seasons"].map((e) => TvSeasonModel.fromJson(e))),
       trailerUrl: getTrailerUrl(json),
       runtime: json["episode_run_time"],
     );

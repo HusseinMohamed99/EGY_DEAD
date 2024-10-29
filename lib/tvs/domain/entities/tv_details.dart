@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:movies_app/tvs/domain/entities/genres.dart';
+import 'package:movies_app/core/domain/entities/genres.dart';
 import 'package:movies_app/tvs/domain/entities/season.dart';
 
 class TvDetails extends Equatable {
