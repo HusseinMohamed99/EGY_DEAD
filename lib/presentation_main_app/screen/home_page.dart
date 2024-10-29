@@ -34,7 +34,7 @@ class HomePage extends StatelessWidget {
               builder: (context, state) {
                 if (state == InternetState.gained) {
                   // Show your information when connected
-                  return const MainScreen();
+                  return UpgradeWrapper(child: const MainScreen());
                 } else if (state == InternetState.lost) {
                   return SvgPicture.asset(Assets.imagesError);
                 } else {
