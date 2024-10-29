@@ -12,7 +12,7 @@ import 'package:movies_app/movies/domain/entities/movie.dart';
 import 'package:movies_app/movies/presentation/controller/movies_bloc.dart';
 import 'package:movies_app/movies/presentation/controller/movies_events.dart';
 import 'package:movies_app/movies/presentation/controller/movies_states.dart';
-import 'package:movies_app/movies/presentation/screens/see_more.dart';
+import 'package:movies_app/movies/presentation/screens/movie_see_more.dart';
 
 class TopRatedMoviesWidget extends StatelessWidget {
   const TopRatedMoviesWidget({super.key});
@@ -48,7 +48,7 @@ class TopRatedMoviesWidget extends StatelessWidget {
                             context,
                             MaterialPageRoute(
                               builder: (BuildContext context) {
-                                return SeeMoreScreen(
+                                return MovieSeeMoreScreen(
                                   movieList: state.topRatedMovies,
                                   title: AppString.topRated,
                                 );
@@ -107,7 +107,7 @@ class TopRatedMoviesWidget extends StatelessWidget {
                             context,
                             MaterialPageRoute(
                               builder: (BuildContext context) {
-                                return SeeMoreScreen(
+                                return MovieSeeMoreScreen(
                                   movieList: state.topRatedMovies,
                                   title: AppString.topRated,
                                 );

@@ -12,7 +12,7 @@ import 'package:movies_app/movies/domain/entities/movie.dart';
 import 'package:movies_app/movies/presentation/controller/movies_bloc.dart';
 import 'package:movies_app/movies/presentation/controller/movies_events.dart';
 import 'package:movies_app/movies/presentation/controller/movies_states.dart';
-import 'package:movies_app/movies/presentation/screens/see_more.dart';
+import 'package:movies_app/movies/presentation/screens/movie_see_more.dart';
 
 class PopularMoviesWidget extends StatelessWidget {
   const PopularMoviesWidget({super.key});
@@ -48,7 +48,7 @@ class PopularMoviesWidget extends StatelessWidget {
                             context,
                             MaterialPageRoute(
                               builder: (BuildContext context) {
-                                return SeeMoreScreen(
+                                return MovieSeeMoreScreen(
                                   movieList: state.popularMovies,
                                   title: AppString.popular,
                                 );
@@ -107,7 +107,7 @@ class PopularMoviesWidget extends StatelessWidget {
                             context,
                             MaterialPageRoute(
                               builder: (BuildContext context) {
-                                return SeeMoreScreen(
+                                return MovieSeeMoreScreen(
                                   movieList: state.popularMovies,
                                   title: AppString.popular,
                                 );

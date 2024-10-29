@@ -13,7 +13,7 @@ import 'package:movies_app/core/utils/enum.dart';
 import 'package:movies_app/movies/presentation/controller/movies_bloc.dart';
 import 'package:movies_app/movies/presentation/controller/movies_states.dart';
 import 'package:movies_app/movies/presentation/screens/movie_details_screen.dart';
-import 'package:movies_app/movies/presentation/screens/see_more.dart';
+import 'package:movies_app/movies/presentation/screens/movie_see_more.dart';
 
 class UpcomingWidget extends StatelessWidget {
   const UpcomingWidget({super.key});
@@ -50,7 +50,7 @@ class UpcomingWidget extends StatelessWidget {
                             context,
                             MaterialPageRoute(
                               builder: (BuildContext context) {
-                                return SeeMoreScreen(
+                                return MovieSeeMoreScreen(
                                   movieList: state.upcomingMovies,
                                   title: AppString.upcoming,
                                 );

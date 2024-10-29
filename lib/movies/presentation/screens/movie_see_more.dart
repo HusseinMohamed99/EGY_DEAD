@@ -9,8 +9,8 @@ import 'package:movies_app/core/utils/enum.dart';
 import 'package:movies_app/movies/domain/entities/movie.dart';
 import 'package:movies_app/movies/presentation/screens/movie_details_screen.dart';
 
-class SeeMoreScreen extends StatelessWidget {
-  const SeeMoreScreen(
+class MovieSeeMoreScreen extends StatelessWidget {
+  const MovieSeeMoreScreen(
       {super.key, required this.movieList, required this.title});
 
   final List<Movies> movieList;
