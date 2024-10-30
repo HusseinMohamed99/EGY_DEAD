@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:movies_app/core/global/theme/style/color_manger.dart';
 
 class CachedImage extends StatelessWidget {
   const CachedImage({
@@ -25,7 +26,7 @@ class CachedImage extends StatelessWidget {
       fit: boxFit ?? BoxFit.cover,
       errorWidget: (_, __, ___) => Icon(
         Icons.error,
-        color: Colors.red,
+        color: ColorManager.primaryRedColor,
         size: 24.sp,
       ),
     );

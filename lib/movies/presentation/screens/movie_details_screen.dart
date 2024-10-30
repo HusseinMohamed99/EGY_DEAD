@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies_app/core/components/cast_card.dart';
-import 'package:movies_app/core/components/image_shimmer.dart';
+import 'package:movies_app/core/components/cached_image.dart';
 import 'package:movies_app/core/components/loading_indicator.dart';
 import 'package:movies_app/core/components/review_card.dart';
 import 'package:movies_app/core/domain/entities/genres.dart';
