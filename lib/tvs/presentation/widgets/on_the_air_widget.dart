@@ -80,7 +80,7 @@ class OnTheAirWidget extends StatelessWidget {
                               );
                             },
                             blendMode: BlendMode.dstIn,
-                            child: ImageWithShimmer(
+                            child: CachedImage(
                               boxFit: BoxFit.fill,
                               imageUrl:
                                   ApiConstance.imageURL(item.backdropPath),
@@ -97,7 +97,7 @@ class OnTheAirWidget extends StatelessWidget {
                                   alignment: Alignment.topLeft,
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.circular(80).r,
-                                    child: ImageWithShimmer(
+                                    child: CachedImage(
                                       boxFit: BoxFit.fill,
                                       imageUrl: ApiConstance.imageURL(
                                         item.posterPath,

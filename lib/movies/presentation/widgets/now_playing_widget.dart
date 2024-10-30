@@ -62,7 +62,6 @@ class NowPlayingWidget extends StatelessWidget {
                               begin: Alignment.topCenter,
                               end: Alignment.bottomCenter,
                               colors: [
-                                // fromLTRB
                                 Colors.transparent,
                                 Colors.black,
                                 Colors.black,
@@ -74,7 +73,7 @@ class NowPlayingWidget extends StatelessWidget {
                             );
                           },
                           blendMode: BlendMode.dstIn,
-                          child: ImageWithShimmer(
+                          child: CachedImage(
                             boxFit: BoxFit.fill,
                             imageUrl: ApiConstance.imageURL(item.backdropPath),
                             width: double.infinity,
@@ -90,7 +89,7 @@ class NowPlayingWidget extends StatelessWidget {
                                 alignment: Alignment.topLeft,
                                 child: ClipRRect(
                                   borderRadius: BorderRadius.circular(80).r,
-                                  child: ImageWithShimmer(
+                                  child: CachedImage(
                                     boxFit: BoxFit.fill,
                                     imageUrl: ApiConstance.imageURL(
                                       item.posterPath,
@@ -159,7 +158,7 @@ class NowPlayingWidget extends StatelessWidget {
                 onPageChanged: (index, reason) {},
               ),
               items: [
-                ImageWithShimmer(
+                CachedImage(
                   boxFit: BoxFit.fill,
                   imageUrl: '',
                   width: double.infinity,

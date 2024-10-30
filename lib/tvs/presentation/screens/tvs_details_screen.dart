@@ -62,7 +62,7 @@ class TvsDetailsContent extends StatelessWidget {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
-                          ImageWithShimmer(
+                          CachedImage(
                             imageUrl: ApiConstance.imageURL(
                                 state.tvsDetails!.backdropPath),
                             width: double.infinity,
@@ -91,7 +91,7 @@ class TvsDetailsContent extends StatelessWidget {
                                             ClipRRect(
                                               borderRadius:
                                                   BorderRadius.circular(16).r,
-                                              child: ImageWithShimmer(
+                                              child: CachedImage(
                                                 imageUrl: ApiConstance.imageURL(
                                                   state.tvsDetails!.posterPath,
                                                 ),
@@ -374,7 +374,7 @@ class TvsDetailsContent extends StatelessWidget {
                           borderRadius: const BorderRadius.all(
                             Radius.circular(8.0),
                           ).r,
-                          child: ImageWithShimmer(
+                          child: CachedImage(
                             imageUrl: ApiConstance.imageURL(
                               recommendation.backdropPath!,
                             ),
@@ -456,7 +456,7 @@ class TvsDetailsContent extends StatelessWidget {
                           borderRadius: const BorderRadius.all(
                             Radius.circular(8.0),
                           ).r,
-                          child: ImageWithShimmer(
+                          child: CachedImage(
                             imageUrl: ApiConstance.imageURL(
                               similar.backdropPath!,
                             ),
@@ -526,7 +526,7 @@ class TvsDetailsContent extends StatelessWidget {
                               topLeft: Radius.circular(7),
                               bottomLeft: Radius.circular(7),
                             ).r,
-                            child: ImageWithShimmer(
+                            child: CachedImage(
                               imageUrl: ApiConstance.imageURL(
                                 season.posterPath,
                               ),

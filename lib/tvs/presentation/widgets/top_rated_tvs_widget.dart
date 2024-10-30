@@ -113,7 +113,7 @@ class TopRatedTvsWidget extends StatelessWidget {
                               borderRadius:
                                   const BorderRadius.all(Radius.circular(8.0))
                                       .r,
-                              child: ImageWithShimmer(
+                              child: CachedImage(
                                 imageUrl:
                                     ApiConstance.imageURL(tvs.backdropPath),
                                 width: 120.w,

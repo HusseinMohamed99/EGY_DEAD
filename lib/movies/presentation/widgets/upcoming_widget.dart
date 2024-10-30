@@ -108,7 +108,7 @@ class UpcomingWidget extends StatelessWidget {
                               borderRadius:
                                   const BorderRadius.all(Radius.circular(8.0))
                                       .r,
-                              child: ImageWithShimmer(
+                              child: CachedImage(
                                 boxFit: BoxFit.fitHeight,
                                 imageUrl:
                                     ApiConstance.imageURL(movie.backdropPath),

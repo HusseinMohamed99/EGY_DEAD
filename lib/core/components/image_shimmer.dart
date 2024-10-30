@@ -1,11 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:movies_app/core/global/theme/style/color_manger.dart';
-import 'package:shimmer/shimmer.dart';
 
-class ImageWithShimmer extends StatelessWidget {
-  const ImageWithShimmer({
+class CachedImage extends StatelessWidget {
+  const CachedImage({
     super.key,
     required this.imageUrl,
     required this.width,
@@ -25,14 +23,6 @@ class ImageWithShimmer extends StatelessWidget {
       height: height,
       width: width,
       fit: boxFit ?? BoxFit.cover,
-      placeholder: (_, __) => Shimmer.fromColors(
-        baseColor: Colors.grey[850]!,
-        highlightColor: Colors.grey[800]!,
-        child: Container(
-          height: height,
-          color: ColorManager.primaryGreenColor,
-        ),
-      ),
       errorWidget: (_, __, ___) => Icon(
         Icons.error,
         color: Colors.red,

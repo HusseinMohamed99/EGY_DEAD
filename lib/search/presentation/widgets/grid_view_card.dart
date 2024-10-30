@@ -45,7 +45,7 @@ class GridViewCard extends StatelessWidget {
             aspectRatio: 2 / 3,
             child: ClipRRect(
               borderRadius: BorderRadius.circular(8).r,
-              child: ImageWithShimmer(
+              child: CachedImage(
                 imageUrl: ApiConstance.imageURL(item.posterUrl),
                 width: double.infinity,
                 height: 150.h,

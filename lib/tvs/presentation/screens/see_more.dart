@@ -63,7 +63,7 @@ class SeeMoreScreen extends StatelessWidget {
                     borderRadius: const BorderRadius.all(
                       Radius.circular(8.0),
                     ).r,
-                    child: ImageWithShimmer(
+                    child: CachedImage(
                       imageUrl: ApiConstance.imageURL(tv.backdropPath),
                       width: 120.w,
                       height: 140.h,

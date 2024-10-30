@@ -109,7 +109,7 @@ class AiringTodayWidget extends StatelessWidget {
                               borderRadius:
                                   const BorderRadius.all(Radius.circular(8.0))
                                       .r,
-                              child: ImageWithShimmer(
+                              child: CachedImage(
                                 height: double.infinity,
                                 width: 120.w,
                                 imageUrl:

@@ -22,7 +22,7 @@ class CastCard extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(8).r,
-            child: ImageWithShimmer(
+            child: CachedImage(
               imageUrl: cast.profileUrl,
               width: double.infinity,
               height: 100.h,

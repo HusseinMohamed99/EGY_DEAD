@@ -66,7 +66,7 @@ class MovieDetailContent extends StatelessWidget {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
-                        ImageWithShimmer(
+                        CachedImage(
                           imageUrl: ApiConstance.imageURL(
                               state.moviesDetails!.backdropPath),
                           width: double.infinity,
@@ -93,7 +93,7 @@ class MovieDetailContent extends StatelessWidget {
                                       child: ClipRRect(
                                         borderRadius:
                                             BorderRadius.circular(10).r,
-                                        child: ImageWithShimmer(
+                                        child: CachedImage(
                                           boxFit: BoxFit.fill,
                                           imageUrl: ApiConstance.imageURL(
                                             state.moviesDetails!.posterPath,
@@ -358,7 +358,7 @@ class MovieDetailContent extends StatelessWidget {
                             borderRadius: const BorderRadius.all(
                               Radius.circular(8.0),
                             ).r,
-                            child: ImageWithShimmer(
+                            child: CachedImage(
                               imageUrl: ApiConstance.imageURL(
                                   recommendation.backdropPath!),
                               width: 120.w,
@@ -436,7 +436,7 @@ class MovieDetailContent extends StatelessWidget {
                             borderRadius: const BorderRadius.all(
                               Radius.circular(8.0),
                             ).r,
-                            child: ImageWithShimmer(
+                            child: CachedImage(
                               imageUrl:
                                   ApiConstance.imageURL(similar.backdropPath!),
                               width: 120.w,
