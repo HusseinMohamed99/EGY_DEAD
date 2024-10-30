@@ -1,4 +1,4 @@
-import 'package:movies_app/movies/domain/entities/movie_similar.dart';
+part of './../../../core/helpers/export_manager/export_manager.dart';
 
 class MoviesSimilarModel extends MoviesSimilar {
   const MoviesSimilarModel(
