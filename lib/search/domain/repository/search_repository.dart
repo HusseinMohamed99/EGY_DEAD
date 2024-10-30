@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:movies_app/core/error/failure.dart';
+import 'package:movies_app/core/helpers/export_manager/export_manager.dart';
 import 'package:movies_app/search/domain/entities/search_result_item.dart';
 
 abstract class SearchRepository {

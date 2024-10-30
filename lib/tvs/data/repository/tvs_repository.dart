@@ -1,5 +1,4 @@
 import 'package:dartz/dartz.dart';
-import 'package:movies_app/core/error/failure.dart';
 import 'package:movies_app/core/helpers/export_manager/export_manager.dart';
 import 'package:movies_app/tvs/data/data_source/tv_remote_data_source.dart';
 import 'package:movies_app/tvs/domain/entities/tv_details.dart';

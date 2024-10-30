@@ -2,6 +2,7 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -25,6 +26,7 @@ part '../logs/app_logs.dart';
 part '../theme/style/responsive_font_size.dart';
 part '../theme/style/text_style.dart';
 part './../../../movies/data/models/genres_model.dart';
+part './../../../tvs/data/model/tv_genres_model.dart';
 part './../../components/cached_image.dart';
 part './../../components/cast_card.dart';
 part './../../components/circle_avatar.dart';
@@ -36,9 +38,9 @@ part './../../components/size_box.dart';
 part './../../components/upgrade_wrapper.dart';
 part './../../domain/entities/genres.dart';
 part './../../error/exceptions.dart';
+part './../../error/failure.dart';
 part './../../extensions/snack_bar.dart';
+part './../../generic_use_case/generic_use_case.dart';
 part './../../network/cache_helper.dart';
 part './../function/function.dart';
 part './../theme/theme_data/theme_data.dart';
-
-part './../../../tvs/data/model/tv_genres_model.dart';

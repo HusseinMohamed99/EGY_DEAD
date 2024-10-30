@@ -1,5 +1,4 @@
 import 'package:dartz/dartz.dart';
-import 'package:movies_app/core/error/failure.dart';
 import 'package:movies_app/core/helpers/export_manager/export_manager.dart';
 import 'package:movies_app/search/data/data_source/search_remote_data_source.dart';
 import 'package:movies_app/search/domain/entities/search_result_item.dart';

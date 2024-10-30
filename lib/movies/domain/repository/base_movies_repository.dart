@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:movies_app/core/error/failure.dart';
+import 'package:movies_app/core/helpers/export_manager/export_manager.dart';
 import 'package:movies_app/movies/domain/entities/movie.dart';
 import 'package:movies_app/movies/domain/entities/movie_details.dart';
 import 'package:movies_app/movies/domain/entities/movie_recommendation.dart';
