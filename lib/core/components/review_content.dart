@@ -1,7 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:movies_app/core/helpers/export_manager/export_manager.dart';
-import 'package:movies_app/movies/domain/entities/review.dart';
+part of './../helpers/export_manager/export_manager.dart';
 
 class ReviewContent extends StatelessWidget {
   const ReviewContent({
@@ -14,42 +11,41 @@ class ReviewContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
-    return SingleChildScrollView(
-      physics: const BouncingScrollPhysics(),
-      child: Padding(
-        padding: const EdgeInsets.all(16).r,
-        child: Column(
-          children: [
-            Row(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(right: 6).r,
-                  child: Avatar(avatarUrl: review.avatarUrl),
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      review.authorName,
-                      style: textTheme.bodyMedium,
-                    ),
-                    Text(
-                      review.authorUserName,
-                      style: textTheme.bodyLarge,
-                    ),
-                  ],
-                )
-              ],
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 10).r,
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
+      child: Column(
+        children: [
+          Row(
+            children: [
+              Padding(
+                padding: EdgeInsets.only(right: 6.w),
+                child: Avatar(avatarUrl: review.avatarUrl),
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    review.authorName,
+                    style: textTheme.titleSmall,
+                  ),
+                  Text(
+                    review.authorUserName,
+                    style: textTheme.bodySmall,
+                  ),
+                ],
+              )
+            ],
+          ),
+          Expanded(
+            child: Padding(
+              padding: EdgeInsets.only(top: 10.h),
               child: Text(
                 review.content,
-                style: textTheme.bodyLarge,
+                style: textTheme.labelSmall,
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

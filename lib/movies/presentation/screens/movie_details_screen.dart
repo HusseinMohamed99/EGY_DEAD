@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies_app/core/components/loading_indicator.dart';
-import 'package:movies_app/core/components/review_card.dart';
 import 'package:movies_app/core/domain/entities/genres.dart';
 import 'package:movies_app/core/helpers/app_string/app_string.dart';
 import 'package:movies_app/core/helpers/enum/enum.dart';

@@ -11,7 +11,7 @@ class HorizontalListViewCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(right: 8.0).r,
+      padding: EdgeInsets.only(right: 8.w),
       child: InkWell(
         onTap: () {
           Navigator.push(

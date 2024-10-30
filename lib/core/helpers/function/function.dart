@@ -48,8 +48,9 @@ String getElapsedTime(String date) {
 }
 
 void showCustomBottomSheet(BuildContext context, Widget child) {
-  final size = MediaQuery.of(context).size.height;
   showModalBottomSheet(
+    backgroundColor: ColorManager.charCoolColor,
+    isScrollControlled: true,
     context: context,
     shape: const RoundedRectangleBorder(
       borderRadius: BorderRadius.vertical(
@@ -57,10 +58,7 @@ void showCustomBottomSheet(BuildContext context, Widget child) {
       ),
     ),
     builder: (context) {
-      return SizedBox(
-        height: size * 0.5,
-        child: child,
-      );
+      return child;
     },
   );
 }

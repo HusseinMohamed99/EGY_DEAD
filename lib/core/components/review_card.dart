@@ -1,11 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:movies_app/core/components/review_content.dart';
-import 'package:movies_app/core/helpers/enum/enum.dart';
-import 'package:movies_app/core/helpers/export_manager/export_manager.dart';
-import 'package:movies_app/core/helpers/theme/style/color_manger.dart';
-import 'package:movies_app/movies/domain/entities/review.dart';
+part of './../helpers/export_manager/export_manager.dart';
 
 class ReviewCard extends StatelessWidget {
   final Review review;
@@ -27,7 +20,7 @@ class ReviewCard extends StatelessWidget {
         width: 240.w,
         height: double.infinity,
         decoration: BoxDecoration(
-          color: ColorManager.greyDarkColor,
+          color: ColorManager.charCoolColor,
           borderRadius: BorderRadius.circular(12).r,
         ),
         child: Column(
@@ -36,7 +29,7 @@ class ReviewCard extends StatelessWidget {
             Row(
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(right: 6).r,
+                  padding: EdgeInsets.only(right: 6.w),
                   child: Avatar(avatarUrl: review.avatarUrl),
                 ),
                 Expanded(
@@ -45,13 +38,13 @@ class ReviewCard extends StatelessWidget {
                     children: [
                       Text(
                         review.authorName,
-                        style: textTheme.bodyMedium,
+                        style: textTheme.labelMedium,
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                       ),
                       Text(
                         review.authorUserName,
-                        style: textTheme.bodyLarge,
+                        style: textTheme.bodySmall,
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                       ),
@@ -62,7 +55,7 @@ class ReviewCard extends StatelessWidget {
             ),
             Text(
               review.content,
-              style: textTheme.bodyLarge,
+              style: textTheme.labelSmall,
               maxLines: 3,
               overflow: TextOverflow.ellipsis,
             ),
@@ -87,8 +80,8 @@ Widget _getRatingBarIndicator(double rating) {
   if (rating != -1) {
     return RatingBarIndicator(
       rating: rating,
-      itemSize: 16,
-      unratedColor: Colors.white54,
+      itemSize: 16.sp,
+      unratedColor: ColorManager.greyColor,
       itemBuilder: (_, __) {
         return Icon(
           Icons.star_rate_rounded,

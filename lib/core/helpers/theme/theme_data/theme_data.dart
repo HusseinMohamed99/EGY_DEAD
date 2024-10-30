@@ -47,6 +47,11 @@ Map<AppTheme, ThemeData> getThemeData(BuildContext context) => {
             fontSize: 11.sp,
             color: ColorManager.whiteColor,
           ),
+          bodySmall: buildTextStyle(
+            context: context,
+            fontSize: 8.sp,
+            color: ColorManager.greyColor,
+          ),
         ),
         bottomNavigationBarTheme: BottomNavigationBarThemeData(
           backgroundColor: Colors.black,
