@@ -1,14 +1,4 @@
-import 'package:dartz/dartz.dart';
-import 'package:movies_app/core/helpers/export_manager/export_manager.dart';
-import 'package:movies_app/movies/data/data_source/movie_remote_data_source.dart';
-import 'package:movies_app/movies/domain/entities/movie.dart';
-import 'package:movies_app/movies/domain/entities/movie_details.dart';
-import 'package:movies_app/movies/domain/entities/movie_recommendation.dart';
-import 'package:movies_app/movies/domain/entities/movie_similar.dart';
-import 'package:movies_app/movies/domain/movie_use_cases/get_movie_details_use_cases.dart';
-import 'package:movies_app/movies/domain/movie_use_cases/get_movies_recommendation_use_cases.dart';
-import 'package:movies_app/movies/domain/movie_use_cases/get_movies_similar_use_cases.dart';
-import 'package:movies_app/movies/domain/repository/base_movies_repository.dart';
+part of './../../../core/helpers/export_manager/export_manager.dart';
 
 class MoviesRepository extends MovieDataRepository {
   final RemoteMovieDataSource remoteMovieDataSource;

@@ -1,13 +1,4 @@
-import 'package:dio/dio.dart';
-import 'package:movies_app/core/helpers/export_manager/export_manager.dart';
-import 'package:movies_app/core/network/api_constance.dart';
-import 'package:movies_app/movies/data/models/movie_details_model.dart';
-import 'package:movies_app/movies/data/models/movie_recommendation.dart';
-import 'package:movies_app/movies/data/models/movie_similar.dart';
-import 'package:movies_app/movies/data/models/movies_model.dart';
-import 'package:movies_app/movies/domain/movie_use_cases/get_movie_details_use_cases.dart';
-import 'package:movies_app/movies/domain/movie_use_cases/get_movies_recommendation_use_cases.dart';
-import 'package:movies_app/movies/domain/movie_use_cases/get_movies_similar_use_cases.dart';
+part of './../../../core/helpers/export_manager/export_manager.dart';
 
 abstract class RemoteMovieDataSource {
   Future<List<MovieModel>> getAllPopularMovies(int page);
