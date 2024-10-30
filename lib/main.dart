@@ -12,7 +12,6 @@ import 'package:url_launcher/url_launcher.dart';
 
 import 'core/helpers/app_string/app_string.dart';
 import 'core/helpers/enum/enum.dart';
-import 'core/services/services_locator.dart';
 import 'presentation_main_app/screen/home_page.dart';
 
 void main() async {

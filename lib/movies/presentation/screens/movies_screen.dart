@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies_app/core/helpers/export_manager/export_manager.dart';
-import 'package:movies_app/core/services/services_locator.dart';
 import 'package:movies_app/movies/presentation/controller/movies_bloc.dart';
 import 'package:movies_app/movies/presentation/controller/movies_events.dart';
 import 'package:movies_app/movies/presentation/widgets/now_playing_widget.dart';

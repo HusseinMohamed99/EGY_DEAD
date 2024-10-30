@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies_app/core/helpers/export_manager/export_manager.dart';
-import 'package:movies_app/core/services/services_locator.dart';
 import 'package:movies_app/tvs/presentation/controller/tvs_bloc.dart';
 import 'package:movies_app/tvs/presentation/controller/tvs_events.dart';
 import 'package:movies_app/tvs/presentation/widgets/airing_today_widget.dart';
