@@ -1,8 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:movies_app/core/components/cached_image.dart';
-import 'package:movies_app/core/helpers/export_manager/export_manager.dart';
-import 'package:movies_app/movies/domain/entities/cast.dart';
+part of './../helpers/export_manager/export_manager.dart';
 
 class CastCard extends StatelessWidget {
   final Cast cast;

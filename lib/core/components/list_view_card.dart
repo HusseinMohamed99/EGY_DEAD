@@ -1,10 +1,4 @@
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:movies_app/core/components/cached_image.dart';
-import 'package:movies_app/core/network/api_constance.dart';
-import 'package:movies_app/movies/domain/entities/movie.dart';
-import 'package:movies_app/movies/presentation/screens/movie_details_screen.dart';
+part of './../helpers/export_manager/export_manager.dart';
 
 class HorizontalListViewCard extends StatelessWidget {
   const HorizontalListViewCard({
@@ -28,9 +22,7 @@ class HorizontalListViewCard extends StatelessWidget {
               ),
             ),
           );
-          if (kDebugMode) {
-            print(movies.id);
-          }
+          log('Movie ID: ${movies.id}');
         },
         child: ClipRRect(
           borderRadius: const BorderRadius.all(Radius.circular(8.0)).r,
