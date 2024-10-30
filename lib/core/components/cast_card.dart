@@ -12,8 +12,7 @@ class CastCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     return SizedBox(
-      height: 100.h,
-      width: 100.w,
+      width: 110.w,
       child: Column(
         children: [
           ClipRRect(
@@ -21,15 +20,17 @@ class CastCard extends StatelessWidget {
             child: CachedImage(
               imageUrl: cast.profileUrl,
               width: double.infinity,
-              height: 100.h,
+              height: 85.h,
+              boxFit: BoxFit.fill,
             ),
           ),
           Space(height: 8, width: 0),
           Text(
             cast.name,
-            style: textTheme.bodyLarge,
-            maxLines: 2,
+            style: textTheme.labelSmall,
+            maxLines: 1,
             textAlign: TextAlign.center,
+            overflow: TextOverflow.ellipsis,
           )
         ],
       ),

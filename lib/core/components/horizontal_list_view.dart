@@ -41,7 +41,7 @@ class _HorizontalListViewState extends State<HorizontalListView> {
       height: 130.h,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
-        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+        padding: EdgeInsets.symmetric(horizontal: 16.0.w),
         controller: _scrollController,
         physics: const BouncingScrollPhysics(),
         itemCount: widget.itemCount,

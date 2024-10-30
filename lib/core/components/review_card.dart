@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:movies_app/core/components/circle_avatar.dart';
 import 'package:movies_app/core/components/review_content.dart';
 import 'package:movies_app/core/helpers/enum/enum.dart';
 import 'package:movies_app/core/helpers/export_manager/export_manager.dart';
@@ -24,7 +23,7 @@ class ReviewCard extends StatelessWidget {
         showCustomBottomSheet(context, ReviewContent(review: review));
       },
       child: Container(
-        padding: const EdgeInsets.all(12).r,
+        padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 12.h),
         width: 240.w,
         height: double.infinity,
         decoration: BoxDecoration(

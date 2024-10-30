@@ -21,10 +21,11 @@ class CachedImage extends StatelessWidget {
       height: height.h,
       width: width.w,
       fit: boxFit ?? BoxFit.cover,
-      errorWidget: (_, __, ___) => Icon(
-        Icons.error,
-        color: ColorManager.primaryRedColor,
-        size: 24.sp,
+      errorWidget: (_, __, ___) => Image.asset(
+        Assets.imagesAvatar,
+        fit: BoxFit.fill,
+        width: width.w,
+        height: height.h,
       ),
     );
   }
