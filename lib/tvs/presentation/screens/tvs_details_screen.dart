@@ -4,14 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies_app/core/components/loading_indicator.dart';
+import 'package:movies_app/core/domain/entities/genres.dart';
 import 'package:movies_app/core/helpers/app_string/app_string.dart';
-import 'package:movies_app/core/helpers/theme/style/color_manger.dart';
-import 'package:movies_app/core/helpers/theme/theme_data/theme_data.dart';
+import 'package:movies_app/core/helpers/enum/enum.dart';
 import 'package:movies_app/core/helpers/export_manager/export_manager.dart';
+import 'package:movies_app/core/helpers/theme/style/color_manger.dart';
 import 'package:movies_app/core/network/api_constance.dart';
 import 'package:movies_app/core/services/services_locator.dart';
-import 'package:movies_app/core/helpers/enum/enum.dart';
-import 'package:movies_app/core/domain/entities/genres.dart';
 import 'package:movies_app/tvs/presentation/controller/tvs_details_bloc.dart';
 import 'package:movies_app/tvs/presentation/controller/tvs_details_events.dart';
 import 'package:movies_app/tvs/presentation/controller/tvs_details_states.dart';
@@ -42,7 +41,7 @@ class TvsDetailsContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = getThemeData[AppTheme.darkTheme]!.textTheme;
+    final textTheme = getThemeData(context)[AppTheme.darkTheme]!.textTheme;
     return BlocBuilder<TvsDetailsBloc, TvsDetailsStates>(
       builder: (context, state) {
         switch (state.tvsDetailsStates) {
@@ -277,8 +276,8 @@ class TvsDetailsContent extends StatelessWidget {
                             child: TabBarView(
                               children: [
                                 _showSeasons(),
-                                _showRecommendations(),
-                                _showSimilar(),
+                                _showRecommendations(context),
+                                _showSimilar(context),
                               ],
                             ),
                           ),
@@ -328,9 +327,8 @@ class TvsDetailsContent extends StatelessWidget {
     }
   }
 
-  Widget _showRecommendations() {
-    final textTheme = getThemeData[AppTheme.darkTheme]!.textTheme;
-
+  Widget _showRecommendations(BuildContext context) {
+    final textTheme = getThemeData(context)[AppTheme.darkTheme]!.textTheme;
     return BlocBuilder<TvsDetailsBloc, TvsDetailsStates>(
       builder: (context, state) {
         switch (state.tvsRecommendationStates) {
@@ -407,8 +405,8 @@ class TvsDetailsContent extends StatelessWidget {
     );
   }
 
-  Widget _showSimilar() {
-    final textTheme = getThemeData[AppTheme.darkTheme]!.textTheme;
+  Widget _showSimilar(BuildContext context) {
+    final textTheme = getThemeData(context)[AppTheme.darkTheme]!.textTheme;
     return BlocBuilder<TvsDetailsBloc, TvsDetailsStates>(
       builder: (context, state) {
         switch (state.tvsSimilarStates) {
@@ -492,7 +490,7 @@ class TvsDetailsContent extends StatelessWidget {
   Widget _showSeasons() {
     return BlocBuilder<TvsDetailsBloc, TvsDetailsStates>(
       builder: (context, state) {
-        final textTheme = getThemeData[AppTheme.darkTheme]!.textTheme;
+        final textTheme = getThemeData(context)[AppTheme.darkTheme]!.textTheme;
         return state.tvsDetails!.season.isEmpty
             ? const LoadingIndicator()
             : ListView.separated(

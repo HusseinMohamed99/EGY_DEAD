@@ -5,14 +5,14 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:in_app_review/in_app_review.dart';
+import 'package:movies_app/core/helpers/export_manager/export_manager.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:upgrader/upgrader.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'core/helpers/app_string/app_string.dart';
-import 'core/helpers/theme/theme_data/theme_data.dart';
-import 'core/services/services_locator.dart';
 import 'core/helpers/enum/enum.dart';
+import 'core/services/services_locator.dart';
 import 'presentation_main_app/screen/home_page.dart';
 
 void main() async {
@@ -46,8 +46,8 @@ class EgyDeadApp extends StatelessWidget {
       builder: (_, __) => MaterialApp(
         debugShowCheckedModeBanner: false,
         title: AppString.appTitle,
-        theme: getThemeData[AppTheme.darkTheme],
-        darkTheme: getThemeData[AppTheme.darkTheme],
+        theme: getThemeData(context)[AppTheme.darkTheme],
+        darkTheme: getThemeData(context)[AppTheme.darkTheme],
         home: const HomePage(),
       ),
     );

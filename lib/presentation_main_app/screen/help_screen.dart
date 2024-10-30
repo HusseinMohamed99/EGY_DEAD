@@ -14,7 +14,7 @@
 
 //   @override
 //   Widget build(BuildContext context) {
-//     final textTheme = getThemeData[AppTheme.darkTheme]!.textTheme;
+//     final textTheme = getThemeData(context)[AppTheme.darkTheme]!.textTheme;
 
 //     return Scaffold(
 //       appBar: AppBar(
@@ -86,7 +86,7 @@
 //     required String url,
 //     required String imageSvg,
 //   }) {
-//     final textTheme = getThemeData[AppTheme.darkTheme]!.textTheme;
+//    final textTheme = getThemeData(context)[AppTheme.darkTheme]!.textTheme;
 
 //     return Card(
 //       color: AppColorsDark.greyDarkColor,

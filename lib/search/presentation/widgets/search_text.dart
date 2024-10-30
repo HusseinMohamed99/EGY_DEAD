@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:movies_app/core/helpers/theme/theme_data/theme_data.dart';
 import 'package:movies_app/core/helpers/enum/enum.dart';
+import 'package:movies_app/core/helpers/export_manager/export_manager.dart';
 
 class SearchText extends StatelessWidget {
   const SearchText({
@@ -9,8 +9,7 @@ class SearchText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = getThemeData[AppTheme.darkTheme]!.textTheme;
-
+    final textTheme = getThemeData(context)[AppTheme.darkTheme]!.textTheme;
     return Expanded(
       child: Center(
         child: Text(

@@ -1,74 +1,69 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:movies_app/core/helpers/theme/style/color_manger.dart';
-import 'package:movies_app/core/helpers/enum/enum.dart';
+part of './../../export_manager/export_manager.dart';
 
-final getThemeData = {
-  AppTheme.darkTheme: ThemeData(
-    scaffoldBackgroundColor: ColorManager.darkPrimary,
-    primaryColor: ColorManager.darkPrimary,
-    appBarTheme: const AppBarTheme(backgroundColor: Colors.transparent),
-    bottomSheetTheme: BottomSheetThemeData(
-      backgroundColor: ColorManager.greyDarkColor,
-      shape: RoundedRectangleBorder(
-        borderRadius: const BorderRadius.only(
-          topLeft: Radius.circular(18),
-          topRight: Radius.circular(18),
-        ).r,
+Map<AppTheme, ThemeData> getThemeData(BuildContext context) => {
+      AppTheme.darkTheme: ThemeData(
+        scaffoldBackgroundColor: ColorManager.darkPrimary,
+        primaryColor: ColorManager.darkPrimary,
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Colors.transparent,
+        ),
+        bottomSheetTheme: BottomSheetThemeData(
+          backgroundColor: ColorManager.greyDarkColor,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(18),
+              topRight: Radius.circular(18),
+            ).r,
+          ),
+        ),
+        textTheme: GoogleFonts.robotoTextTheme().copyWith(
+          headlineSmall: buildTextStyle(
+            context: context,
+            fontSize: 24,
+            color: ColorManager.whiteColor,
+          ),
+          titleLarge: buildTextStyle(
+            context: context,
+            fontSize: 22,
+            color: ColorManager.whiteColor,
+          ),
+          titleMedium: buildTextStyle(
+            context: context,
+            fontSize: 16,
+            color: ColorManager.whiteColor,
+          ),
+          titleSmall: buildTextStyle(
+            context: context,
+            color: ColorManager.whiteColor,
+            fontSize: 14,
+          ),
+          labelMedium: buildTextStyle(
+            context: context,
+            fontSize: 12.sp,
+            color: ColorManager.whiteColor,
+          ),
+          labelSmall: buildTextStyle(
+            context: context,
+            fontSize: 11.sp,
+            color: ColorManager.whiteColor,
+          ),
+        ),
+        bottomNavigationBarTheme: BottomNavigationBarThemeData(
+          backgroundColor: Colors.black,
+          showSelectedLabels: true,
+          showUnselectedLabels: false,
+          selectedIconTheme: IconThemeData(
+            size: 30.sp,
+            color: ColorManager.primaryGreenColor,
+          ),
+          unselectedIconTheme: IconThemeData(
+            size: 24.sp,
+            color: ColorManager.whiteColor,
+          ),
+          selectedLabelStyle: GoogleFonts.roboto(
+            color: ColorManager.primaryGreenColor,
+          ),
+          selectedItemColor: ColorManager.primaryGreenColor,
+        ),
       ),
-    ),
-    textTheme: TextTheme(
-      bodyLarge: GoogleFonts.roboto(
-        color: ColorManager.whiteColor,
-      ),
-      bodyMedium: GoogleFonts.roboto(
-        color: ColorManager.whiteColor,
-      ),
-      bodySmall: GoogleFonts.roboto(
-        color: ColorManager.whiteColor,
-      ),
-      titleLarge: GoogleFonts.roboto(
-        color: ColorManager.whiteColor,
-        fontSize: 24,
-        fontWeight: FontWeight.w700,
-      ),
-      titleMedium: GoogleFonts.roboto(
-        color: ColorManager.whiteColor,
-        fontSize: 14,
-      ),
-      titleSmall: GoogleFonts.roboto(
-        color: ColorManager.whiteColor,
-      ),
-      labelLarge: GoogleFonts.roboto(
-        color: ColorManager.whiteColor,
-        fontSize: 18,
-      ),
-      labelMedium: GoogleFonts.roboto(
-        color: ColorManager.whiteColor,
-        fontSize: 16,
-      ),
-      labelSmall: GoogleFonts.roboto(
-        color: ColorManager.whiteColor,
-        fontSize: 12,
-      ),
-    ),
-    bottomNavigationBarTheme: BottomNavigationBarThemeData(
-      backgroundColor: Colors.black,
-      showSelectedLabels: true,
-      showUnselectedLabels: false,
-      selectedIconTheme: const IconThemeData(
-        size: 30,
-        color: ColorManager.primaryGreenColor,
-      ),
-      unselectedIconTheme: const IconThemeData(
-        size: 24,
-        color: ColorManager.whiteColor,
-      ),
-      selectedLabelStyle: GoogleFonts.roboto(
-        color: ColorManager.primaryGreenColor,
-      ),
-      selectedItemColor: ColorManager.primaryGreenColor,
-    ),
-  ),
-};
+    };

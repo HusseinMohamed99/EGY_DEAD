@@ -7,12 +7,11 @@ import 'package:movies_app/core/components/loading_indicator.dart';
 import 'package:movies_app/core/components/review_card.dart';
 import 'package:movies_app/core/domain/entities/genres.dart';
 import 'package:movies_app/core/helpers/app_string/app_string.dart';
-import 'package:movies_app/core/helpers/theme/style/color_manger.dart';
-import 'package:movies_app/core/helpers/theme/theme_data/theme_data.dart';
+import 'package:movies_app/core/helpers/enum/enum.dart';
 import 'package:movies_app/core/helpers/export_manager/export_manager.dart';
+import 'package:movies_app/core/helpers/theme/style/color_manger.dart';
 import 'package:movies_app/core/network/api_constance.dart';
 import 'package:movies_app/core/services/services_locator.dart';
-import 'package:movies_app/core/helpers/enum/enum.dart';
 import 'package:movies_app/movies/domain/entities/cast.dart';
 import 'package:movies_app/movies/domain/entities/review.dart';
 import 'package:movies_app/movies/presentation/controller/movies_details_bloc.dart';
@@ -46,7 +45,7 @@ class MovieDetailContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = getThemeData[AppTheme.darkTheme]!.textTheme;
+    final textTheme = getThemeData(context)[AppTheme.darkTheme]!.textTheme;
 
     return BlocBuilder<MoviesDetailsBloc, MoviesDetailsStates>(
       builder: (context, state) {
@@ -249,7 +248,7 @@ class MovieDetailContent extends StatelessWidget {
                             ),
                           ),
                         ),
-                        _showRecommendations(),
+                        _showRecommendations(context),
                         Space(height: 18.h, width: 0),
                         FadeInUp(
                           from: 20,
@@ -262,7 +261,7 @@ class MovieDetailContent extends StatelessWidget {
                             ),
                           ),
                         ),
-                        _showSimilar(),
+                        _showSimilar(context),
                         Space(height: 20.h, width: 0),
                       ],
                     ),
@@ -309,8 +308,8 @@ class MovieDetailContent extends StatelessWidget {
     }
   }
 
-  Widget _showRecommendations() {
-    final textTheme = getThemeData[AppTheme.darkTheme]!.textTheme;
+  Widget _showRecommendations(BuildContext context) {
+    final textTheme = getThemeData(context)[AppTheme.darkTheme]!.textTheme;
 
     return BlocBuilder<MoviesDetailsBloc, MoviesDetailsStates>(
       builder: (context, state) {
@@ -385,8 +384,8 @@ class MovieDetailContent extends StatelessWidget {
     );
   }
 
-  Widget _showSimilar() {
-    final textTheme = getThemeData[AppTheme.darkTheme]!.textTheme;
+  Widget _showSimilar(BuildContext context) {
+    final textTheme = getThemeData(context)[AppTheme.darkTheme]!.textTheme;
     return BlocBuilder<MoviesDetailsBloc, MoviesDetailsStates>(
       builder: (context, state) {
         switch (state.moviesSimilarStates) {

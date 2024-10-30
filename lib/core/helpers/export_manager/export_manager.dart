@@ -5,6 +5,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:movies_app/core/helpers/enum/enum.dart';
 import 'package:movies_app/core/helpers/theme/style/color_manger.dart';
 import 'package:movies_app/core/network/api_constance.dart';
 import 'package:movies_app/core/network/error_message_model.dart';
@@ -27,3 +29,5 @@ part '../theme/style/responsive_font_size.dart';
 part '../theme/style/text_style.dart';
 part './../../network/cache_helper.dart';
 part './../function/function.dart';
+
+part './../theme/theme_data/theme_data.dart';
