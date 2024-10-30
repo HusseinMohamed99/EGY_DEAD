@@ -4,7 +4,7 @@ import 'package:movies_app/core/global/theme/style/color_manger.dart';
 import 'package:movies_app/core/global/theme/theme_data/theme_data.dart';
 import 'package:movies_app/core/helpers/export_manager/export_manager.dart';
 import 'package:movies_app/core/network/api_constance.dart';
-import 'package:movies_app/core/utils/enum.dart';
+import 'package:movies_app/core/helpers/enum/enum.dart';
 import 'package:movies_app/tvs/domain/entities/tvs.dart';
 import 'package:movies_app/tvs/presentation/screens/tvs_details_screen.dart';
 

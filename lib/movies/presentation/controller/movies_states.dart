@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:movies_app/core/utils/enum.dart';
+import 'package:movies_app/core/helpers/enum/enum.dart';
 import 'package:movies_app/movies/domain/entities/movie.dart';
 import 'package:movies_app/movies/domain/entities/movie_details.dart';
 

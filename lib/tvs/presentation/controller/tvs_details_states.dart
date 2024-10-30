@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:movies_app/core/utils/enum.dart';
+import 'package:movies_app/core/helpers/enum/enum.dart';
 import 'package:movies_app/tvs/domain/entities/tv_details.dart';
 import 'package:movies_app/tvs/domain/entities/tv_recommendation.dart';
 import 'package:movies_app/tvs/domain/entities/tv_similar.dart';
@@ -56,8 +56,7 @@ class TvsDetailsStates extends Equatable {
   }
 
   @override
-  List<Object?> get props =>
-      [
+  List<Object?> get props => [
         tvsDetails,
         tvsDetailsMessage,
         tvsDetailsStates,

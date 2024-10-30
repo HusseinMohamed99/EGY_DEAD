@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:movies_app/core/utils/enum.dart';
+import 'package:movies_app/core/helpers/enum/enum.dart';
 import 'package:movies_app/movies/domain/movie_use_cases/get_movie_details_use_cases.dart';
 import 'package:movies_app/movies/domain/movie_use_cases/get_movies_recommendation_use_cases.dart';
 import 'package:movies_app/movies/domain/movie_use_cases/get_movies_similar_use_cases.dart';

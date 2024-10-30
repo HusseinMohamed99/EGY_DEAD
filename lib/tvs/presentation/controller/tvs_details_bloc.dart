@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movies_app/core/utils/enum.dart';
+import 'package:movies_app/core/helpers/enum/enum.dart';
 import 'package:movies_app/tvs/domain/tv_use_cases/get_tv_details_use_cases.dart';
 import 'package:movies_app/tvs/domain/tv_use_cases/get_tvs_recommendation_use_cases.dart';
 import 'package:movies_app/tvs/domain/tv_use_cases/get_tvs_similar_use_cases.dart';

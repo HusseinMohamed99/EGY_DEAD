@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies_app/core/global/theme/theme_data/theme_data.dart';
 import 'package:movies_app/core/helpers/export_manager/export_manager.dart';
 import 'package:movies_app/core/network/api_constance.dart';
-import 'package:movies_app/core/utils/enum.dart';
+import 'package:movies_app/core/helpers/enum/enum.dart';
 import 'package:movies_app/movies/presentation/screens/movie_details_screen.dart';
 import 'package:movies_app/search/domain/entities/search_result_item.dart';
 import 'package:movies_app/tvs/presentation/screens/tvs_details_screen.dart';

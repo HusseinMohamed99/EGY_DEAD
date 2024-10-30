@@ -12,7 +12,7 @@ import 'package:movies_app/core/global/theme/theme_data/theme_data.dart';
 import 'package:movies_app/core/helpers/export_manager/export_manager.dart';
 import 'package:movies_app/core/network/api_constance.dart';
 import 'package:movies_app/core/services/services_locator.dart';
-import 'package:movies_app/core/utils/enum.dart';
+import 'package:movies_app/core/helpers/enum/enum.dart';
 import 'package:movies_app/movies/domain/entities/cast.dart';
 import 'package:movies_app/movies/domain/entities/review.dart';
 import 'package:movies_app/movies/presentation/controller/movies_details_bloc.dart';

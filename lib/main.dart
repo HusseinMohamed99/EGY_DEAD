@@ -12,7 +12,7 @@ import 'package:url_launcher/url_launcher.dart';
 import 'core/global/app_string/app_string.dart';
 import 'core/global/theme/theme_data/theme_data.dart';
 import 'core/services/services_locator.dart';
-import 'core/utils/enum.dart';
+import 'core/helpers/enum/enum.dart';
 import 'presentation_main_app/screen/home_page.dart';
 
 void main() async {

@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:movies_app/core/global/theme/style/color_manger.dart';
 import 'package:movies_app/core/global/theme/theme_data/theme_data.dart';
 import 'package:movies_app/core/helpers/export_manager/export_manager.dart';
-import 'package:movies_app/core/utils/enum.dart';
+import 'package:movies_app/core/helpers/enum/enum.dart';
 import 'package:movies_app/image_assets.dart';
 
 class SettingsScreen extends StatelessWidget {

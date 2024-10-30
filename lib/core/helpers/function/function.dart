@@ -1,4 +1,4 @@
-part of './../helpers/export_manager/export_manager.dart';
+part of './../export_manager/export_manager.dart';
 
 String getProfileImageUrl(Map<String, dynamic> json) {
   if (json['profile_path'] != null) {
