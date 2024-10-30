@@ -1,4 +1,4 @@
-import 'package:movies_app/core/domain/entities/genres.dart';
+part of './../../../core/helpers/export_manager/export_manager.dart';
 
 class TvGenresModel extends Genres {
   const TvGenresModel({

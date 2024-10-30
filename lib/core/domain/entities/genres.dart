@@ -1,4 +1,4 @@
-import 'package:equatable/equatable.dart';
+part of './../../helpers/export_manager/export_manager.dart';
 
 class Genres extends Equatable {
   final int id;

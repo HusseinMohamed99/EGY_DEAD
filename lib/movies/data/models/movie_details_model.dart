@@ -1,6 +1,5 @@
 import 'package:movies_app/core/helpers/export_manager/export_manager.dart';
 import 'package:movies_app/movies/data/models/cast_model.dart';
-import 'package:movies_app/movies/data/models/genres_model.dart';
 import 'package:movies_app/movies/data/models/review_model.dart';
 import 'package:movies_app/movies/domain/entities/movie_details.dart';
 

@@ -1,5 +1,4 @@
 import 'package:movies_app/core/helpers/export_manager/export_manager.dart';
-import 'package:movies_app/tvs/data/model/tv_genres_model.dart';
 import 'package:movies_app/tvs/data/model/season_model.dart';
 import 'package:movies_app/tvs/domain/entities/tv_details.dart';
 
