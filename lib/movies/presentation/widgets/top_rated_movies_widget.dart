@@ -5,7 +5,6 @@ import 'package:movies_app/core/components/horizontal_list_view.dart';
 import 'package:movies_app/core/helpers/app_string/app_string.dart';
 import 'package:movies_app/core/helpers/enum/enum.dart';
 import 'package:movies_app/core/helpers/export_manager/export_manager.dart';
-import 'package:movies_app/core/helpers/theme/style/color_manger.dart';
 import 'package:movies_app/movies/domain/entities/movie.dart';
 import 'package:movies_app/movies/presentation/controller/movies_bloc.dart';
 import 'package:movies_app/movies/presentation/controller/movies_events.dart';
