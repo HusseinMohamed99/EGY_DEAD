@@ -13,7 +13,7 @@ class ReviewContent extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
-      child: Column(
+      child: ListView(
         children: [
           Row(
             children: [
@@ -36,13 +36,39 @@ class ReviewContent extends StatelessWidget {
               )
             ],
           ),
-          Expanded(
-            child: Padding(
-              padding: EdgeInsets.only(top: 10.h),
-              child: Text(
-                review.content,
-                style: textTheme.labelSmall,
-              ),
+          Padding(
+            padding: EdgeInsets.only(top: 10.h),
+            child: Text(
+              '''Key Adjustments
+    Return Type Clarification: The getThemeData method now returns a Map<AppTheme, ThemeData>, which matches your usage intent and provides better type safety.
+    
+    textTheme Modification: Used .copyWith on GoogleFonts.robotoTextTheme() to set your custom TextTheme. This ensures that any additional properties set by RobotoTextTheme are retained.
+    
+    ScreenUtil Adaptation: Added .sp to all fontSize and size properties to support responsiveness based on screen size, ensuring that fonts and icons scale properly across different devices.
+    
+    Consistency Check: The ColorManager properties are consistent across all elements, which looks correct as you’ve used ColorManager to maintain a uniform color scheme.Key Adjustments
+    Return Type Clarification: The getThemeData method now returns a Map<AppTheme, ThemeData>, which matches your usage intent and provides better type safety.
+    
+    textTheme Modification: Used .copyWith on GoogleFonts.robotoTextTheme() to set your custom TextTheme. This ensures that any additional properties set by RobotoTextTheme are retained.
+    
+    ScreenUtil Adaptation: Added .sp to all fontSize and size properties to support responsiveness based on screen size, ensuring that fonts and icons scale properly across different devices.
+    
+    Consistency Check: The ColorManager properties are consistent across all elements, which looks correct as you’ve used ColorManager to maintain a uniform color scheme.Key Adjustments
+    Return Type Clarification: The getThemeData method now returns a Map<AppTheme, ThemeData>, which matches your usage intent and provides better type safety.
+    
+    textTheme Modification: Used .copyWith on GoogleFonts.robotoTextTheme() to set your custom TextTheme. This ensures that any additional properties set by RobotoTextTheme are retained.
+    
+    ScreenUtil Adaptation: Added .sp to all fontSize and size properties to support responsiveness based on screen size, ensuring that fonts and icons scale properly across different devices.
+    
+    Consistency Check: The ColorManager properties are consistent across all elements, which looks correct as you’ve used ColorManager to maintain a uniform color scheme.Key Adjustments
+    Return Type Clarification: The getThemeData method now returns a Map<AppTheme, ThemeData>, which matches your usage intent and provides better type safety.
+    
+    textTheme Modification: Used .copyWith on GoogleFonts.robotoTextTheme() to set your custom TextTheme. This ensures that any additional properties set by RobotoTextTheme are retained.
+    
+    ScreenUtil Adaptation: Added .sp to all fontSize and size properties to support responsiveness based on screen size, ensuring that fonts and icons scale properly across different devices.
+    
+    Consistency Check: The ColorManager properties are consistent across all elements, which looks correct as you’ve used ColorManager to maintain a uniform color scheme.''',
+              style: textTheme.labelSmall,
             ),
           ),
         ],

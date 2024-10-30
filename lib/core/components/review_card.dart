@@ -11,7 +11,7 @@ class ReviewCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textTheme = getThemeData(context)[AppTheme.darkTheme]!.textTheme;
-    return InkWell(
+    return GestureDetector(
       onTap: () {
         showCustomBottomSheet(context, ReviewContent(review: review));
       },

@@ -48,6 +48,7 @@ String getElapsedTime(String date) {
 }
 
 void showCustomBottomSheet(BuildContext context, Widget child) {
+  final size = MediaQuery.of(context).size.height;
   showModalBottomSheet(
     backgroundColor: ColorManager.charCoolColor,
     isScrollControlled: true,
@@ -58,7 +59,10 @@ void showCustomBottomSheet(BuildContext context, Widget child) {
       ),
     ),
     builder: (context) {
-      return child;
+      return SizedBox(
+        height: size * 0.7,
+        child: child,
+      );
     },
   );
 }
