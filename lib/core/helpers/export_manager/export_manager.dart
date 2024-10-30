@@ -11,7 +11,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:movies_app/core/helpers/enum/enum.dart';
 import 'package:movies_app/core/network/api_constance.dart';
-import 'package:movies_app/core/network/error_message_model.dart';
 import 'package:movies_app/image_assets.dart';
 import 'package:movies_app/movies/domain/entities/cast.dart';
 import 'package:movies_app/movies/domain/entities/movie.dart';
@@ -41,7 +40,7 @@ part './../../error/failure.dart';
 part './../../extensions/snack_bar.dart';
 part './../../generic_use_case/generic_use_case.dart';
 part './../../network/cache_helper.dart';
+part './../../network/error_message_model.dart';
 part './../function/function.dart';
-part './../theme/theme_data/theme_data.dart';
-
 part './../theme/style/color_manger.dart';
+part './../theme/theme_data/theme_data.dart';

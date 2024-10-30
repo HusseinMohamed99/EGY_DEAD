@@ -1,4 +1,4 @@
-import 'package:equatable/equatable.dart';
+part of './../helpers/export_manager/export_manager.dart';
 
 class ErrorMessageModel extends Equatable {
   final int statusCode;
@@ -21,8 +21,8 @@ class ErrorMessageModel extends Equatable {
 
   @override
   List<Object?> get props => [
-    statusCode,
-    statusMessage,
-    success,
-  ];
+        statusCode,
+        statusMessage,
+        success,
+      ];
 }
