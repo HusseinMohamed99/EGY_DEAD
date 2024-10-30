@@ -1,4 +1,4 @@
-part of './../../../helpers/export_manager/export_manager.dart';
+part of '../../export_manager/export_manager.dart';
 // Scale Factor
 // Responsive Font Size
 // (min , max) Font Size

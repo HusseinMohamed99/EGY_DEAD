@@ -9,8 +9,8 @@ import 'package:package_info_plus/package_info_plus.dart';
 import 'package:upgrader/upgrader.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import 'core/global/app_string/app_string.dart';
-import 'core/global/theme/theme_data/theme_data.dart';
+import 'core/helpers/app_string/app_string.dart';
+import 'core/helpers/theme/theme_data/theme_data.dart';
 import 'core/services/services_locator.dart';
 import 'core/helpers/enum/enum.dart';
 import 'presentation_main_app/screen/home_page.dart';

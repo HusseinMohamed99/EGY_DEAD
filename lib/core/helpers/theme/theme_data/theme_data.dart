@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:movies_app/core/global/theme/style/color_manger.dart';
+import 'package:movies_app/core/helpers/theme/style/color_manger.dart';
 import 'package:movies_app/core/helpers/enum/enum.dart';
 
 final getThemeData = {

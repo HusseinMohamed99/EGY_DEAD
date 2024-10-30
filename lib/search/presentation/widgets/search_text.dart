@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:movies_app/core/global/theme/theme_data/theme_data.dart';
+import 'package:movies_app/core/helpers/theme/theme_data/theme_data.dart';
 import 'package:movies_app/core/helpers/enum/enum.dart';
 
 class SearchText extends StatelessWidget {
