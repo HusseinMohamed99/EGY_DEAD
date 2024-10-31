@@ -1,15 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:movies_app/core/components/horizontal_list_view.dart';
-import 'package:movies_app/core/helpers/app_string/app_string.dart';
-import 'package:movies_app/core/helpers/enum/enum.dart';
-import 'package:movies_app/core/helpers/export_manager/export_manager.dart';
-import 'package:movies_app/movies/domain/entities/movie.dart';
-import 'package:movies_app/movies/presentation/controller/movies_bloc.dart';
-import 'package:movies_app/movies/presentation/controller/movies_events.dart';
-import 'package:movies_app/movies/presentation/controller/movies_states.dart';
-import 'package:movies_app/movies/presentation/screens/movie_see_more.dart';
+part of './../../../core/helpers/export_manager/export_manager.dart';
 
 class TopRatedMoviesWidget extends StatelessWidget {
   const TopRatedMoviesWidget({super.key});

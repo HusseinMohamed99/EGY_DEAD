@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
-import 'package:movies_app/movies/presentation/screens/movies_screen.dart';
+import 'package:movies_app/core/helpers/export_manager/export_manager.dart';
 import 'package:movies_app/presentation_main_app/screen/settings_screen.dart';
 import 'package:movies_app/search/presentation/views/search_view.dart';
 import 'package:movies_app/tvs/presentation/screens/tvs_screen.dart';
