@@ -1,8 +1,4 @@
-import 'package:dartz/dartz.dart';
-import 'package:equatable/equatable.dart';
-import 'package:movies_app/core/helpers/export_manager/export_manager.dart';
-import 'package:movies_app/tvs/domain/entities/tv_recommendation.dart';
-import 'package:movies_app/tvs/domain/repository/base_tvs_repository.dart';
+part of './../../../core/helpers/export_manager/export_manager.dart';
 
 class GetTvRecommendationUseCase extends GenericUseCase<List<TvsRecommendation>,
     TvRecommendationParameters> {
