@@ -1,11 +1,4 @@
-import 'dart:async';
-import 'package:movies_app/core/helpers/enum/enum.dart';
-import 'package:movies_app/movies/domain/movie_use_cases/get_movie_details_use_cases.dart';
-import 'package:movies_app/movies/domain/movie_use_cases/get_movies_recommendation_use_cases.dart';
-import 'package:movies_app/movies/domain/movie_use_cases/get_movies_similar_use_cases.dart';
-import 'package:movies_app/movies/presentation/controller/movies_details_events.dart';
-import 'package:movies_app/movies/presentation/controller/movies_details_states.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+part of './../../../core/helpers/export_manager/export_manager.dart';
 
 class MoviesDetailsBloc extends Bloc<MoviesDetailsEvent, MoviesDetailsStates> {
   final GetMovieDetailsUseCase getMovieDetailsUseCase;
@@ -30,6 +23,7 @@ class MoviesDetailsBloc extends Bloc<MoviesDetailsEvent, MoviesDetailsStates> {
             moviesDetailsMessage: l.message)),
         (r) => emit(state.copyWith(
             moviesDetailsStates: RequestState.loaded, moviesDetails: r)));
+    return null;
   }
 
   FutureOr<void> _getMovieRecommendations(GetMoviesRecommendationEvent event,
@@ -45,6 +39,7 @@ class MoviesDetailsBloc extends Bloc<MoviesDetailsEvent, MoviesDetailsStates> {
               moviesRecommendationStates: RequestState.loaded,
               moviesRecommendation: r,
             )));
+    return null;
   }
 
   FutureOr<void> _getMovieSimilar(
@@ -60,5 +55,6 @@ class MoviesDetailsBloc extends Bloc<MoviesDetailsEvent, MoviesDetailsStates> {
               moviesSimilarStates: RequestState.loaded,
               moviesSimilar: r,
             )));
+    return null;
   }
 }

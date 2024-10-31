@@ -1,18 +1,4 @@
-import 'package:animate_do/animate_do.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:movies_app/core/helpers/app_string/app_string.dart';
-import 'package:movies_app/core/helpers/enum/enum.dart';
-import 'package:movies_app/core/helpers/export_manager/export_manager.dart';
-import 'package:movies_app/core/network/api_constance.dart';
-import 'package:movies_app/movies/domain/entities/cast.dart';
-import 'package:movies_app/movies/domain/entities/review.dart';
-import 'package:movies_app/movies/presentation/controller/movies_details_bloc.dart';
-import 'package:movies_app/movies/presentation/controller/movies_details_events.dart';
-import 'package:movies_app/movies/presentation/controller/movies_details_states.dart';
-import 'package:skeletonizer/skeletonizer.dart';
+part of './../../../core/helpers/export_manager/export_manager.dart';
 
 class MovieDetailsScreen extends StatelessWidget {
   final int movieID;

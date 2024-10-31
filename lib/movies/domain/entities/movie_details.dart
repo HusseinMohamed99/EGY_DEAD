@@ -1,7 +1,4 @@
-import 'package:equatable/equatable.dart';
-import 'package:movies_app/core/helpers/export_manager/export_manager.dart';
-import 'package:movies_app/movies/domain/entities/cast.dart';
-import 'package:movies_app/movies/domain/entities/review.dart';
+part of './../../../core/helpers/export_manager/export_manager.dart';
 
 class MovieDetails extends Equatable {
   final int? id;
