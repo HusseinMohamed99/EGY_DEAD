@@ -1,13 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:movies_app/core/helpers/export_manager/export_manager.dart';
-import 'package:movies_app/tvs/presentation/controller/tvs_bloc.dart';
-import 'package:movies_app/tvs/presentation/controller/tvs_events.dart';
-import 'package:movies_app/tvs/presentation/widgets/airing_today_widget.dart';
-import 'package:movies_app/tvs/presentation/widgets/on_the_air_widget.dart';
-import 'package:movies_app/tvs/presentation/widgets/popular_tvs_widget.dart';
-import 'package:movies_app/tvs/presentation/widgets/top_rated_tvs_widget.dart';
+part of './../../../core/helpers/export_manager/export_manager.dart';
 
 class TvsScreen extends StatelessWidget {
   const TvsScreen({super.key});

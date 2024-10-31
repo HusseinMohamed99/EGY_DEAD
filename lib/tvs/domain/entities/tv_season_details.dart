@@ -1,5 +1,4 @@
-import 'package:equatable/equatable.dart';
-import 'package:movies_app/core/helpers/export_manager/export_manager.dart';
+part of './../../../core/helpers/export_manager/export_manager.dart';
 
 class TvSeasonDetails extends Equatable {
   final int id;

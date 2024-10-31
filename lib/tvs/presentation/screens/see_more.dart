@@ -1,10 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:movies_app/core/helpers/enum/enum.dart';
-import 'package:movies_app/core/helpers/export_manager/export_manager.dart';
-import 'package:movies_app/core/network/api_constance.dart';
-import 'package:movies_app/tvs/domain/entities/tvs.dart';
-import 'package:movies_app/tvs/presentation/screens/tvs_details_screen.dart';
+part of './../../../core/helpers/export_manager/export_manager.dart';
 
 class SeeMoreScreen extends StatelessWidget {
   const SeeMoreScreen({super.key, required this.tvsList, required this.name});
