@@ -1,4 +1,4 @@
-import 'package:movies_app/tvs/domain/entities/tvs.dart';
+part of './../../../core/helpers/export_manager/export_manager.dart';
 
 class TvModel extends Tvs {
   const TvModel({

@@ -1,4 +1,4 @@
-import 'package:movies_app/tvs/domain/entities/tv_recommendation.dart';
+part of './../../../core/helpers/export_manager/export_manager.dart';
 
 class TvsRecommendationModel extends TvsRecommendation {
   const TvsRecommendationModel(

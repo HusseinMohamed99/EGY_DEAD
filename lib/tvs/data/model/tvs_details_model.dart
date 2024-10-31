@@ -1,6 +1,4 @@
-import 'package:movies_app/core/helpers/export_manager/export_manager.dart';
-import 'package:movies_app/tvs/data/model/season_model.dart';
-import 'package:movies_app/tvs/domain/entities/tv_details.dart';
+part of './../../../core/helpers/export_manager/export_manager.dart';
 
 class TvsDetailsModel extends TvDetails {
   const TvsDetailsModel({

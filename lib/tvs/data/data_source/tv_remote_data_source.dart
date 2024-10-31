@@ -1,13 +1,4 @@
-import 'package:dio/dio.dart';
-import 'package:movies_app/core/helpers/export_manager/export_manager.dart';
-import 'package:movies_app/core/network/api_constance.dart';
-import 'package:movies_app/tvs/data/model/tv_recommendation.dart';
-import 'package:movies_app/tvs/data/model/tv_similar.dart';
-import 'package:movies_app/tvs/data/model/tvs_details_model.dart';
-import 'package:movies_app/tvs/data/model/tvs_model.dart';
-import 'package:movies_app/tvs/domain/tv_use_cases/get_tv_details_use_cases.dart';
-import 'package:movies_app/tvs/domain/tv_use_cases/get_tvs_recommendation_use_cases.dart';
-import 'package:movies_app/tvs/domain/tv_use_cases/get_tvs_similar_use_cases.dart';
+part of './../../../core/helpers/export_manager/export_manager.dart';
 
 abstract class BaseTvRemoteDataSource {
   Future<List<TvModel>> getOnTheAirTvs();
