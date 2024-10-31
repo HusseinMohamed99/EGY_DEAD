@@ -1,14 +1,4 @@
-import 'dart:async';
-
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movies_app/core/helpers/enum/enum.dart';
-import 'package:movies_app/core/helpers/export_manager/export_manager.dart';
-import 'package:movies_app/tvs/domain/tv_use_cases/get_airing_today_tvs_use_cases.dart';
-import 'package:movies_app/tvs/domain/tv_use_cases/get_on_air_tvs_use_cases.dart';
-import 'package:movies_app/tvs/domain/tv_use_cases/get_popular_tvs_use_cases.dart';
-import 'package:movies_app/tvs/domain/tv_use_cases/get_top_rated_tvs_use_cases.dart';
-import 'package:movies_app/tvs/presentation/controller/tvs_events.dart';
-import 'package:movies_app/tvs/presentation/controller/tvs_states.dart';
+part of './../../../core/helpers/export_manager/export_manager.dart';
 
 class TvsBloc extends Bloc<TvsEvent, TvsStates> {
   final GetOnTheAirTvsUseCase getOnTheAirTvsUseCase;

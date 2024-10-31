@@ -1,6 +1,4 @@
-import 'package:movies_app/core/helpers/enum/enum.dart';
-import 'package:equatable/equatable.dart';
-import 'package:movies_app/tvs/domain/entities/tvs.dart';
+part of './../../../core/helpers/export_manager/export_manager.dart';
 
 class TvsStates extends Equatable {
   final List<Tvs> onTheAirTvs;

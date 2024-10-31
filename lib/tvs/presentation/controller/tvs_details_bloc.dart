@@ -1,12 +1,4 @@
-import 'dart:async';
-
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movies_app/core/helpers/enum/enum.dart';
-import 'package:movies_app/tvs/domain/tv_use_cases/get_tv_details_use_cases.dart';
-import 'package:movies_app/tvs/domain/tv_use_cases/get_tvs_recommendation_use_cases.dart';
-import 'package:movies_app/tvs/domain/tv_use_cases/get_tvs_similar_use_cases.dart';
-import 'package:movies_app/tvs/presentation/controller/tvs_details_events.dart';
-import 'package:movies_app/tvs/presentation/controller/tvs_details_states.dart';
+part of './../../../core/helpers/export_manager/export_manager.dart';
 
 class TvsDetailsBloc extends Bloc<TvsDetailsEvent, TvsDetailsStates> {
   final GetTvsDetailsUseCase getTvsDetailsUseCase;
@@ -32,6 +24,7 @@ class TvsDetailsBloc extends Bloc<TvsDetailsEvent, TvsDetailsStates> {
             tvsDetailsMessage: l.message)),
         (r) => emit(state.copyWith(
             tvsDetailsStates: RequestState.loaded, tvsDetails: r)));
+    return null;
   }
 
   FutureOr<void> _getTvsRecommendations(
@@ -47,6 +40,7 @@ class TvsDetailsBloc extends Bloc<TvsDetailsEvent, TvsDetailsStates> {
               tvsRecommendationStates: RequestState.loaded,
               tvsRecommendation: r,
             )));
+    return null;
   }
 
   FutureOr<void> _getTvsSimilar(
@@ -62,5 +56,6 @@ class TvsDetailsBloc extends Bloc<TvsDetailsEvent, TvsDetailsStates> {
               tvsSimilarStates: RequestState.loaded,
               tvsSimilar: r,
             )));
+    return null;
   }
 }

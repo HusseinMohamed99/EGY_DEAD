@@ -1,4 +1,4 @@
-import 'package:equatable/equatable.dart';
+part of './../../../core/helpers/export_manager/export_manager.dart';
 
 abstract class TvsDetailsEvent extends Equatable {
   const TvsDetailsEvent();
