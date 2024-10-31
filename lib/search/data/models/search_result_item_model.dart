@@ -1,4 +1,4 @@
-import 'package:movies_app/search/domain/entities/search_result_item.dart';
+part of './../../../core/helpers/export_manager/export_manager.dart';
 
 class SearchResultItemModel extends SearchResultItem {
   const SearchResultItemModel({

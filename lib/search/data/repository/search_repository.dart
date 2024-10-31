@@ -1,8 +1,4 @@
-import 'package:dartz/dartz.dart';
-import 'package:movies_app/core/helpers/export_manager/export_manager.dart';
-import 'package:movies_app/search/data/data_source/search_remote_data_source.dart';
-import 'package:movies_app/search/domain/entities/search_result_item.dart';
-import 'package:movies_app/search/domain/repository/search_repository.dart';
+part of './../../../core/helpers/export_manager/export_manager.dart';
 
 class SearchRepositoryImpl extends SearchRepository {
   final SearchRemoteDataSource baseSearchRemoteDataSource;

@@ -1,6 +1,4 @@
-import 'package:dartz/dartz.dart';
-import 'package:movies_app/core/helpers/export_manager/export_manager.dart';
-import 'package:movies_app/search/domain/entities/search_result_item.dart';
+part of './../../../core/helpers/export_manager/export_manager.dart';
 
 abstract class SearchRepository {
   Future<Either<Failure, List<SearchResultItem>>> search(String title);

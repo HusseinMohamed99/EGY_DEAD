@@ -1,7 +1,4 @@
-import 'package:dio/dio.dart';
-import 'package:movies_app/core/helpers/export_manager/export_manager.dart';
-import 'package:movies_app/core/network/api_constance.dart';
-import 'package:movies_app/search/data/models/search_result_item_model.dart';
+part of './../../../core/helpers/export_manager/export_manager.dart';
 
 abstract class SearchRemoteDataSource {
   Future<List<SearchResultItemModel>> search(String title);
