@@ -1,4 +1,4 @@
-import 'package:equatable/equatable.dart';
+part of './../../../core/helpers/export_manager/export_manager.dart';
 
 class Review extends Equatable {
   final String authorName;
