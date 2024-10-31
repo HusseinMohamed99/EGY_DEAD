@@ -1,14 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:movies_app/core/helpers/enum/enum.dart';
-import 'package:movies_app/core/helpers/export_manager/export_manager.dart';
-import 'package:movies_app/search/presentation/controllers/search_bloc/search_bloc.dart';
-import 'package:movies_app/search/presentation/controllers/search_bloc/search_state.dart';
-import 'package:movies_app/search/presentation/widgets/no_results.dart';
-import 'package:movies_app/search/presentation/widgets/search_bar.dart';
-import 'package:movies_app/search/presentation/widgets/search_grid_view.dart';
-import 'package:movies_app/search/presentation/widgets/search_text.dart';
+part of './../../../core/helpers/export_manager/export_manager.dart';
 
 class SearchScreen extends StatelessWidget {
   const SearchScreen({super.key});
