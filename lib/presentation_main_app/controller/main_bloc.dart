@@ -1,8 +1,4 @@
-import 'dart:async';
-
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movies_app/presentation_main_app/controller/main_event.dart';
-import 'package:movies_app/presentation_main_app/controller/main_state.dart';
+part of './../../core/helpers/export_manager/export_manager.dart';
 
 class MainBloc extends Bloc<MainEvent, MainState> {
   MainBloc() : super(MainState()) {

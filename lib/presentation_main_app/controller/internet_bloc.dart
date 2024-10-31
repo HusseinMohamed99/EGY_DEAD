@@ -1,8 +1,4 @@
-import 'dart:async';
-
-import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movies_app/core/helpers/enum/enum.dart';
+part of './../../core/helpers/export_manager/export_manager.dart';
 
 // A Cubit (a state management class) to manage internet connectivity.
 class InternetCubit extends Cubit<InternetState> {

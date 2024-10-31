@@ -2,9 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies_app/core/helpers/export_manager/export_manager.dart';
-import 'package:movies_app/presentation_main_app/controller/main_bloc.dart';
-import 'package:movies_app/presentation_main_app/controller/main_event.dart';
-import 'package:movies_app/presentation_main_app/controller/main_state.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({super.key});
