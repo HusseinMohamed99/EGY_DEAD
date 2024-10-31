@@ -1,4 +1,4 @@
-import 'package:equatable/equatable.dart';
+part of './../../../core/helpers/export_manager/export_manager.dart';
 
 class MoviesRecommendation extends Equatable {
   final int id;
