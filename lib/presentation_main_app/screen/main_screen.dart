@@ -1,7 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movies_app/core/helpers/export_manager/export_manager.dart';
+part of './../../core/helpers/export_manager/export_manager.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({super.key});
