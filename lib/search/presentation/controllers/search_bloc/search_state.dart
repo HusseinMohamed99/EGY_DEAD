@@ -1,7 +1,4 @@
-import 'package:equatable/equatable.dart';
-import 'package:movies_app/search/domain/entities/search_result_item.dart';
-
-enum SearchRequestStatus { empty, loading, loaded, error, noResults }
+part of './../../../../core/helpers/export_manager/export_manager.dart';
 
 class SearchState extends Equatable {
   const SearchState({

@@ -1,10 +1,4 @@
-import 'dart:async';
-
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movies_app/search/domain/use_cases/search_use_case.dart';
-import 'package:movies_app/search/presentation/controllers/search_bloc/search_event.dart';
-import 'package:movies_app/search/presentation/controllers/search_bloc/search_state.dart';
-import 'package:stream_transform/stream_transform.dart';
+part of './../../../../core/helpers/export_manager/export_manager.dart';
 
 const _duration = Duration(milliseconds: 400);
 
