@@ -1,14 +1,4 @@
-import 'dart:async';
-
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movies_app/core/helpers/enum/enum.dart';
-import 'package:movies_app/core/helpers/export_manager/export_manager.dart';
-import 'package:movies_app/movies/domain/movie_use_cases/get_all_popular_movies_use_case.dart';
-import 'package:movies_app/movies/domain/movie_use_cases/get_all_top_rated_movies_use_case.dart';
-import 'package:movies_app/movies/domain/movie_use_cases/get_now_playing_movies_use_cases.dart';
-import 'package:movies_app/movies/domain/movie_use_cases/get_up_coming_movies_use_cases.dart';
-import 'package:movies_app/movies/presentation/controller/movies_events.dart';
-import 'package:movies_app/movies/presentation/controller/movies_states.dart';
+part of './../../../core/helpers/export_manager/export_manager.dart';
 
 class MoviesBloc extends Bloc<MoviesEvent, MoviesStates> {
   final GetNowPlayingMoviesUseCase getNowPlayingMoviesUseCase;
@@ -42,6 +32,7 @@ class MoviesBloc extends Bloc<MoviesEvent, MoviesStates> {
             nowPlayingState: RequestState.error, nowPlayingMessage: l.message)),
         (r) => emit(state.copyWith(
             nowPlayingState: RequestState.loaded, nowPlayingMovies: r)));
+    return null;
   }
 
   FutureOr<void> _getUpcomingMovies(
@@ -53,6 +44,7 @@ class MoviesBloc extends Bloc<MoviesEvent, MoviesStates> {
             upcomingState: RequestState.error, upcomingMessage: l.message)),
         (r) => emit(state.copyWith(
             upcomingState: RequestState.loaded, upcomingMovies: r)));
+    return null;
   }
 
   // FutureOr<void> _getPopularMovies(

@@ -1,4 +1,4 @@
-import 'package:equatable/equatable.dart';
+part of './../../../core/helpers/export_manager/export_manager.dart';
 
 abstract class MoviesEvent extends Equatable {
   const MoviesEvent();
@@ -15,7 +15,7 @@ class GetPopularMoviesEvent extends MoviesEvent {}
 
 class GetTopRatedMoviesEvent extends MoviesEvent {}
 
-class GetMoviesDetailsEvent extends MoviesEvent {}
+class GetMovieDetailsEvent extends MoviesEvent {}
 
 class FetchMoreTopRatedMoviesEvent extends MoviesEvent {}
 
