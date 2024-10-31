@@ -39,7 +39,7 @@ class ServiceLocator {
 
     /// MOVIES =>
     /// Movies Bloc
-    sl.registerFactory(() => MoviesBloc(
+    sl.registerFactory<MoviesBloc>(() => MoviesBloc(
           sl(),
           sl(),
           sl(),

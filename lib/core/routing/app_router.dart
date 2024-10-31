@@ -9,7 +9,11 @@ class AppRouters {
       case Routes.moviesScreen:
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
-            create: (context) => sl<MoviesBloc>(),
+            create: (context) => sl<MoviesBloc>()
+              ..add(GetNowPlayingMoviesEvent())
+              ..add(GetPopularMoviesEvent())
+              ..add(GetTopRatedMoviesEvent())
+              ..add(GetUpcomingMoviesEvent()),
             child: const MoviesScreen(),
           ),
         );

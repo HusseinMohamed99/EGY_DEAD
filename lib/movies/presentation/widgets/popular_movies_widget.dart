@@ -141,8 +141,8 @@ class PopularWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<MoviesBloc, MoviesStates>(
-    bloc:context.read<MoviesBloc>()
-       ..add(GetPopularMoviesEvent()),
+      buildWhen: (previous, current) =>
+          previous.popularState != current.popularState,
       builder: (context, state) {
         return HorizontalListView(
           itemCount: movies.length + 1,

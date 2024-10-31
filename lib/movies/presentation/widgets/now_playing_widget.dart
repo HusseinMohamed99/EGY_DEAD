@@ -8,8 +8,6 @@ class NowPlayingWidget extends StatelessWidget {
     final textTheme = getThemeData(context)[AppTheme.darkTheme]!.textTheme;
 
     return BlocBuilder<MoviesBloc, MoviesStates>(
-      bloc:context.read<MoviesBloc>()
-        ..add(GetNowPlayingMoviesEvent()),
       buildWhen: (previous, current) =>
           previous.nowPlayingState != current.nowPlayingState,
       builder: (context, state) {

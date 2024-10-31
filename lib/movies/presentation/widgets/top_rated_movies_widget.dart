@@ -7,8 +7,8 @@ class TopRatedMoviesWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final textTheme = getThemeData(context)[AppTheme.darkTheme]!.textTheme;
     return BlocBuilder<MoviesBloc, MoviesStates>(
- bloc:context.read<MoviesBloc>()
-      ..add(GetPopularMoviesEvent()),
+//  bloc:context.read<MoviesBloc>()
+//       ..add(GetPopularMoviesEvent()),
       buildWhen: (previous, current) =>
           previous.topRatedStates != current.topRatedStates,
       builder: (context, state) {
