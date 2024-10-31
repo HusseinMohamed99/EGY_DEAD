@@ -8,6 +8,8 @@ class UpcomingWidget extends StatelessWidget {
     final textTheme = getThemeData(context)[AppTheme.darkTheme]!.textTheme;
 
     return BlocBuilder<MoviesBloc, MoviesStates>(
+       bloc:context.read<MoviesBloc>()
+        ..add(GetUpcomingMoviesEvent()) ,
       buildWhen: (previous, current) =>
           previous.upcomingState != current.upcomingState,
       builder: (context, state) {

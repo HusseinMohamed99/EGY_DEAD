@@ -22,6 +22,7 @@ import 'package:movies_app/core/components/horizontal_list_view.dart';
 import 'package:movies_app/core/helpers/app_string/app_string.dart';
 import 'package:movies_app/core/helpers/enum/enum.dart';
 import 'package:movies_app/core/network/api_constance.dart';
+import 'package:movies_app/core/routing/routes.dart';
 import 'package:movies_app/image_assets.dart';
 import 'package:movies_app/search/presentation/widgets/search_bar.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -147,3 +148,8 @@ part './../../services/services_locator.dart';
 part './../function/function.dart';
 part './../theme/style/color_manger.dart';
 part './../theme/theme_data/theme_data.dart';
+
+part './../../extensions/navigation_extensions.dart';
+part './../../routing/app_router.dart';
+
+part './../../../bloc_observer.dart';

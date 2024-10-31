@@ -3,9 +3,12 @@ import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:in_app_review/in_app_review.dart';
 import 'package:movies_app/core/helpers/export_manager/export_manager.dart';
+import 'package:movies_app/core/routing/routes.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:upgrader/upgrader.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -16,6 +19,7 @@ import 'core/helpers/enum/enum.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   ScreenUtil.ensureScreenSize();
+  Bloc.observer = MyBlocObserver();
 
   // Initialize all services including BlocProviders
   await ServiceLocator().init();
@@ -41,13 +45,23 @@ class EgyDeadApp extends StatelessWidget {
       designSize: const Size(360, 690),
       minTextAdapt: true,
       splitScreenMode: true,
-      builder: (_, __) => MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: AppString.appTitle,
-        theme: getThemeData(context)[AppTheme.darkTheme],
-        darkTheme: getThemeData(context)[AppTheme.darkTheme],
-        home: const HomePage(),
-      ),
+      builder: (_, __) {
+        SystemChrome.setPreferredOrientations(
+          [
+            DeviceOrientation.portraitUp,
+            DeviceOrientation.portraitDown,
+          ],
+        );
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          initialRoute: Routes.moviesScreen,
+          onGenerateRoute: AppRouters().generateRoute,
+          title: AppString.appTitle,
+          theme: getThemeData(context)[AppTheme.darkTheme],
+          darkTheme: getThemeData(context)[AppTheme.darkTheme],
+          home: const HomePage(),
+        );
+      },
     );
   }
 }
