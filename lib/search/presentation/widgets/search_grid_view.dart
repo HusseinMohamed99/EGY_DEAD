@@ -1,7 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:movies_app/search/domain/entities/search_result_item.dart';
-import 'package:movies_app/search/presentation/widgets/grid_view_card.dart';
+part of './../../../core/helpers/export_manager/export_manager.dart';
 
 class SearchGridView extends StatelessWidget {
   const SearchGridView({
