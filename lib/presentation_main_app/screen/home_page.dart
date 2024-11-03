@@ -10,30 +10,31 @@ class HomePage extends StatelessWidget {
         statusBarColor: Colors.transparent,
       ),
       child: Scaffold(
-        body: BlocProvider(
-          create: (context) => sl<InternetCubit>(),
-          child: Center(
-            child: BlocConsumer<InternetCubit, InternetState>(
-              listener: (context, state) {
-                if (state == InternetState.lost) {
-                  context.showSnackBar(
-                    'Check Internet Connection',
-                    color: Colors.red,
-                  );
-                }
-              },
-              builder: (context, state) {
-                if (state == InternetState.gained) {
-                  // Show your information when connected
-                  return UpgradeWrapper(child: const MainScreen());
-                } else if (state == InternetState.lost) {
-                  return SvgPicture.asset(Assets.imagesError);
-                } else {
-                  return const CircularProgressIndicator
-                      .adaptive(); // Loading indicator
-                }
-              },
-            ),
+        body: Center(
+          child: BlocConsumer<InternetCubit, InternetState>(
+            listener: (context, state) {
+              if (state == InternetState.lost) {
+                context.showSnackBar(
+                  AppString.checkInternetConnection,
+                  color: ColorManager.primaryRedColor,
+                );
+              }
+            },
+            builder: (context, state) {
+              if (state == InternetState.gained) {
+                // Navigate to MainScreen once connected
+                Future.microtask(() {
+                  context.pushNamed(Routes.mainScreen);
+                });
+                return const CircularProgressIndicator
+                    .adaptive(); // Temporary loading indicator while navigating
+              } else if (state == InternetState.lost) {
+                return SvgPicture.asset(Assets.imagesError);
+              } else {
+                return const CircularProgressIndicator
+                    .adaptive(); // Loading indicator
+              }
+            },
           ),
         ),
       ),

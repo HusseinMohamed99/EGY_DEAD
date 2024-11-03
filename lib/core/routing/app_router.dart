@@ -6,6 +6,21 @@ class AppRouters {
     final arguments = settings.arguments;
 
     switch (settings.name) {
+      case Routes.homePage:
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) => sl<InternetCubit>(),
+            child: const HomePage(),
+          ),
+        );
+      case Routes.mainScreen:
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) => sl<MainBloc>(),
+            child: const MainScreen(),
+          ),
+        );
+
       case Routes.moviesScreen:
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
@@ -16,6 +31,28 @@ class AppRouters {
               ..add(GetUpcomingMoviesEvent()),
             child: const MoviesScreen(),
           ),
+        );
+      case Routes.tvsScreen:
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) => sl<TvsBloc>()
+              ..add(GetOnTheAirTvsEvent())
+              ..add(GetAiringTodayTvsEvent())
+              ..add(GetPopularTvsEvent())
+              ..add(GetTopRatedTvsEvent()),
+            child: const TvsScreen(),
+          ),
+        );
+      case Routes.searchScreen:
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) => sl<SearchBloc>(),
+            child: const SearchScreen(),
+          ),
+        );
+      case Routes.settingsScreen:
+        return MaterialPageRoute(
+          builder: (_) => const SettingsScreen(),
         );
     }
     return null;

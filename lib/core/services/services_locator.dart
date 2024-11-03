@@ -4,8 +4,8 @@ final sl = GetIt.instance;
 
 class ServiceLocator {
   Future<void> init() async {
-    sl.registerLazySingleton(() => InternetCubit());
-    sl.registerLazySingleton(() => MainBloc());
+    sl.registerFactory(() => InternetCubit());
+    sl.registerFactory(() => MainBloc());
 
     /// TVS =>
     /// TVS Bloc
