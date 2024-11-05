@@ -16,7 +16,7 @@ void main() async {
   Bloc.observer = MyBlocObserver();
 
   // Initialize all services including BlocProviders
-  await ServiceLocator().init();
+  await serviceLocator();
   // if (kReleaseMode) {
   //   try {
   //     await requestReview();

@@ -28,7 +28,8 @@ class MainScreen extends StatelessWidget {
                     icon: Icons.settings, label: "Settings"),
               ],
             ),
-            body: state.screens[state.currentIndex],
+            body: MoviesScreen(),
+            // body: state.screens[state.currentIndex],
           ),
         );
       },

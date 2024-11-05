@@ -23,9 +23,9 @@ class HomePage extends StatelessWidget {
             builder: (context, state) {
               if (state == InternetState.gained) {
                 // Navigate to MainScreen once connected
-                Future.microtask(() {
-                  context.pushNamed(Routes.mainScreen);
-                });
+
+                context.pushNamed(Routes.mainScreen);
+
                 return const CircularProgressIndicator
                     .adaptive(); // Temporary loading indicator while navigating
               } else if (state == InternetState.lost) {
