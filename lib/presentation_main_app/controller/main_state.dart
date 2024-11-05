@@ -5,7 +5,14 @@ class MainState extends Equatable {
 
   final int currentIndex;
   final List<Widget> screens = [
-    const MoviesScreen(),
+    BlocProvider(
+      create: (context) => sl<MoviesBloc>()
+        ..add(GetNowPlayingMoviesEvent())
+        ..add(GetPopularMoviesEvent())
+        ..add(GetTopRatedMoviesEvent())
+        ..add(GetUpcomingMoviesEvent()),
+      child: const MoviesScreen(),
+    ),
     const TvsScreen(),
     const SearchScreen(),
     const SettingsScreen(),

@@ -23,8 +23,7 @@ class HomePage extends StatelessWidget {
             builder: (context, state) {
               if (state == InternetState.gained) {
                 // Navigate to MainScreen once connected
-
-                context.pushNamed(Routes.mainScreen);
+                return BaseScreen();
 
                 return const CircularProgressIndicator
                     .adaptive(); // Temporary loading indicator while navigating
@@ -36,6 +35,25 @@ class HomePage extends StatelessWidget {
               }
             },
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class BaseScreen extends StatelessWidget {
+  const BaseScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: Center(
+        child: TextButton(
+          child: Text('Base Screen'),
+          onPressed: () {
+            context.pushNamed(Routes.mainScreen);
+          },
         ),
       ),
     );

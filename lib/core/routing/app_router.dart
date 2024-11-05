@@ -13,6 +13,10 @@ class AppRouters {
             child: const HomePage(),
           ),
         );
+      case Routes.baseScreen:
+        return MaterialPageRoute(
+          builder: (_) => const BaseScreen(),
+        );
       case Routes.mainScreen:
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
@@ -23,14 +27,7 @@ class AppRouters {
 
       case Routes.moviesScreen:
         return MaterialPageRoute(
-          builder: (_) => BlocProvider(
-            create: (context) => sl<MoviesBloc>()
-              ..add(GetNowPlayingMoviesEvent())
-              ..add(GetPopularMoviesEvent())
-              ..add(GetTopRatedMoviesEvent())
-              ..add(GetUpcomingMoviesEvent()),
-            child: const MoviesScreen(),
-          ),
+          builder: (_) => const MoviesScreen(),
         );
       case Routes.tvsScreen:
         return MaterialPageRoute(
