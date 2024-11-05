@@ -1,14 +1,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies_app/core/helpers/export_manager/export_manager.dart';
-import 'package:movies_app/core/routing/routes.dart';
 import 'package:upgrader/upgrader.dart';
-
-import 'core/helpers/app_string/app_string.dart';
-import 'core/helpers/enum/enum.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -27,39 +22,14 @@ void main() async {
   if (kDebugMode) {
     await Upgrader.clearSavedSettings();
   }
-  runApp(EgyDeadApp(
-    appRouter: AppRouters(),
-  ));
+  runApp(
+    EgyDeadApp(
+      appRouter: AppRouters(),
+    ),
+  );
 }
 
-class EgyDeadApp extends StatelessWidget {
-  const EgyDeadApp({super.key, required this.appRouter});
-  final AppRouters appRouter;
-  @override
-  Widget build(BuildContext context) {
-    return ScreenUtilInit(
-      designSize: const Size(360, 690),
-      minTextAdapt: true,
-      splitScreenMode: true,
-      builder: (_, __) {
-        SystemChrome.setPreferredOrientations(
-          [
-            DeviceOrientation.portraitUp,
-            DeviceOrientation.portraitDown,
-          ],
-        );
-        return MaterialApp(
-          debugShowCheckedModeBanner: false,
-          initialRoute: Routes.homePage,
-          onGenerateRoute: appRouter.generateRoute,
-          title: AppString.appTitle,
-          theme: getThemeData(context)[AppTheme.darkTheme],
-          darkTheme: getThemeData(context)[AppTheme.darkTheme],
-        );
-      },
-    );
-  }
-}
+
 
 // Future<void> requestReview() async {
 //   final InAppReview inAppReview = InAppReview.instance;

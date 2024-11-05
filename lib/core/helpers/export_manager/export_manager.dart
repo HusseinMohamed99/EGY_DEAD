@@ -153,3 +153,4 @@ part './../../extensions/navigation_extensions.dart';
 part './../../routing/app_router.dart';
 
 part './../../../bloc_observer.dart';
+part './../../../egy_dead_app.dart';
