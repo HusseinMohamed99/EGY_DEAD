@@ -5,24 +5,15 @@ class BuildCarousel extends StatelessWidget {
   final List<Movies> movies;
   @override
   Widget build(BuildContext context) {
-    return Skeletonizer(
-      effect: ShimmerEffect(
-        baseColor: ColorManager.charCoolColor,
-        highlightColor: ColorManager.charCoolColor,
-        duration: const Duration(seconds: 1),
+    return CarouselSlider(
+      options: CarouselOptions(
+        autoPlay: true,
+        height: 300.h,
+        viewportFraction: 1.0,
+        onPageChanged: (index, reason) {},
       ),
-      enabled: false,
-      child: CarouselSlider(
-        options: CarouselOptions(
-          autoPlay: true,
-          height: 300.h,
-          viewportFraction: 1.0,
-          onPageChanged: (index, reason) {},
-        ),
-        items:
-            movies.map((movie) => _buildCarouselItem(movie, context)).toList(),
-      ),
-    );
+      items: movies.map((movie) => _buildCarouselItem(movie, context)).toList(),
+    ).skeletonize(enabled: movies.isEmpty);
   }
 
   Widget _buildCarouselItem(Movies movie, BuildContext context) {
