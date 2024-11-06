@@ -9,9 +9,9 @@ class MoviesScreen extends StatelessWidget {
       slivers: [
         const SliverToBoxAdapter(child: NowPlayingWidget()),
         const SliverToBoxAdapter(child: PopularMoviesWidget()),
-        const SliverToBoxAdapter(child: UpcomingWidget()),
+        const SliverToBoxAdapter(child: UpcomingMoviesWidget()),
         const SliverToBoxAdapter(child: TopRatedMoviesWidget()),
-        SliverToBoxAdapter(child: Space(height: 10, width: 0)),
+        SliverToBoxAdapter(child: Space(height: 24, width: 0)),
       ],
     );
   }

@@ -1,7 +1,7 @@
 part of './../../../core/helpers/export_manager/export_manager.dart';
 
-class UpcomingWidget extends StatelessWidget {
-  const UpcomingWidget({super.key});
+class UpcomingMoviesWidget extends StatelessWidget {
+  const UpcomingMoviesWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
