@@ -4,13 +4,19 @@ void navigateToSeeMore({
   required BuildContext context,
   required List<Movies> movies,
   required String title,
+  required Function addEvent,
+  required bool showFetchError,
 }) {
   Navigator.push(
     context,
     MaterialPageRoute(
       builder: (context) => MovieSeeMoreScreen(
+        showFetchError: showFetchError,
         movieList: movies,
         title: title,
+        addEvent: () {
+          addEvent();
+        },
       ),
     ),
   );

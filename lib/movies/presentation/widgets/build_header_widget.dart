@@ -1,10 +1,18 @@
 part of './../../../core/helpers/export_manager/export_manager.dart';
 
 class BuildHeaderWidget extends StatelessWidget {
-  const BuildHeaderWidget(
-      {super.key, required this.title, required this.movies});
+  const BuildHeaderWidget({
+    super.key,
+    required this.title,
+    required this.movies,
+    required this.addEvent,
+    required this.showFetchError,
+  });
   final String title;
   final List<Movies> movies;
+  final Function addEvent;
+  final bool showFetchError;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -19,9 +27,13 @@ class BuildHeaderWidget extends StatelessWidget {
           GestureDetector(
             onTap: () {
               navigateToSeeMore(
+                showFetchError: showFetchError,
                 context: context,
                 movies: movies,
                 title: title,
+                addEvent: () {
+                  addEvent();
+                },
               );
             },
             child: Padding(

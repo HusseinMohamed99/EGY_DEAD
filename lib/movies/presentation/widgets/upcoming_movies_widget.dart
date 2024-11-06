@@ -12,9 +12,13 @@ class UpcomingMoviesWidget extends StatelessWidget {
         if (state.upcomingState == RequestState.loaded) {
           state.upcomingMovies.shuffle(Random());
           return BuildContentMovies(
+            showFetchError: state.upcomingState == RequestState.fetchMoreError,
             movies: state.upcomingMovies,
             title: AppString.upcoming,
             isLoading: state.upcomingState == RequestState.loading,
+            addEvent: () {
+              context.read<MoviesBloc>().add(GetUpcomingMoviesEvent());
+            },
           );
         } else {
           return BuildErrorMessage(errorMessage: state.upcomingMessage);

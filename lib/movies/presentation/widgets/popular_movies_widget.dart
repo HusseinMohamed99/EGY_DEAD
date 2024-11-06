@@ -12,9 +12,21 @@ class PopularMoviesWidget extends StatelessWidget {
         if (state.popularState == RequestState.loaded) {
           state.popularMovies.shuffle(Random());
           return BuildContentMovies(
+            showFetchError: false,
             movies: state.popularMovies,
             title: AppString.popular,
             isLoading: state.popularState == RequestState.loading,
+            addEvent: () {},
+          );
+        } else if (state.popularState == RequestState.fetchMoreError) {
+          return BuildContentMovies(
+            showFetchError: true,
+            movies: state.popularMovies,
+            title: AppString.popular,
+            isLoading: state.popularState == RequestState.loading,
+            addEvent: () {
+              context.read<MoviesBloc>().add(GetPopularMoviesEvent());
+            },
           );
         } else {
           return BuildErrorMessage(errorMessage: state.popularMessage);

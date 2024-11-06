@@ -19,8 +19,8 @@ class MoviesBloc extends Bloc<MoviesEvent, MoviesStates> {
     // on<GetPopularMoviesEvent>(_getPopularMovies);
     on<GetPopularMoviesEvent>(_getAllPopularMovies);
     on<GetTopRatedMoviesEvent>(_getAllTopRatedMovies);
-    // on<FetchMorePopularMoviesEvent>(_fetchMoreMovies);
-    // on<FetchMoreTopRatedMoviesEvent>(_fetchMoreTopRatedMovies);
+    on<FetchMorePopularMoviesEvent>(_fetchMoreMovies);
+    on<FetchMoreTopRatedMoviesEvent>(_fetchMoreTopRatedMovies);
   }
 
   FutureOr<void> _getNowPlayingMovies(
@@ -96,26 +96,26 @@ class MoviesBloc extends Bloc<MoviesEvent, MoviesStates> {
     );
   }
 
-  // Future<void> _fetchMoreMovies(
-  //     FetchMorePopularMoviesEvent event, Emitter<MoviesStates> emit) async {
-  //   final result = await allPopularMoviesUseCase(page);
-  //   result.fold(
-  //     (l) => emit(
-  //       state.copyWith(
-  //         popularState: GetAllRequestStatus.fetchMoreError,
-  //       ),
-  //     ),
-  //     (r) {
-  //       page++;
-  //       return emit(
-  //         state.copyWith(
-  //           popularState: GetAllRequestStatus.fetchMoreError,
-  //           popularMovies: state.popularMovies + r,
-  //         ),
-  //       );
-  //     },
-  //   );
-  // }
+  Future<void> _fetchMoreMovies(
+      FetchMorePopularMoviesEvent event, Emitter<MoviesStates> emit) async {
+    final result = await allPopularMoviesUseCase(page);
+    result.fold(
+      (l) => emit(
+        state.copyWith(
+          popularState: RequestState.fetchMoreError,
+        ),
+      ),
+      (r) {
+        page++;
+        return emit(
+          state.copyWith(
+            popularState: RequestState.fetchMoreError,
+            popularMovies: state.popularMovies + r,
+          ),
+        );
+      },
+    );
+  }
 
   // FutureOr<void> _getTopRatedMovies(
   //     GetTopRatedMoviesEvent event, Emitter<MoviesStates> emit) async {
