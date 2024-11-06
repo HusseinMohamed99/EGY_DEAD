@@ -118,6 +118,16 @@ class AiringTodayWidget extends StatelessWidget {
                 ),
               ),
             );
+          case RequestState.fetchMoreError:
+            return SizedBox(
+              height: 300.h,
+              child: Center(
+                child: Text(
+                  'loading',
+                  style: textTheme.titleLarge,
+                ),
+              ),
+            );
         }
       },
     );

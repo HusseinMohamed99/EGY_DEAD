@@ -16,12 +16,14 @@ class BuildHeaderWidget extends StatelessWidget {
             title,
             style: context.textTheme.titleSmall,
           ),
-          InkWell(
-            onTap: () => navigateToSeeMore(
-              context: context,
-              movies: movies,
-              title: title,
-            ),
+          GestureDetector(
+            onTap: () {
+              navigateToSeeMore(
+                context: context,
+                movies: movies,
+                title: title,
+              );
+            },
             child: Padding(
               padding: const EdgeInsets.all(8.0).r,
               child: Row(

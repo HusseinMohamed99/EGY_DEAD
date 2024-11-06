@@ -164,24 +164,24 @@ class MoviesBloc extends Bloc<MoviesEvent, MoviesStates> {
     );
   }
 
-  // Future<void> _fetchMoreTopRatedMovies(
-  //     FetchMoreTopRatedMoviesEvent event, Emitter<MoviesStates> emit) async {
-  //   final result = await allTopRatedMoviesUseCase(page);
-  //   result.fold(
-  //     (l) => emit(
-  //       state.copyWith(
-  //         topRatedStates: GetAllRequestStatus.fetchMoreError,
-  //       ),
-  //     ),
-  //     (r) {
-  //       page++;
-  //       return emit(
-  //         state.copyWith(
-  //           topRatedStates: GetAllRequestStatus.fetchMoreError,
-  //           topRatedMovies: state.topRatedMovies + r,
-  //         ),
-  //       );
-  //     },
-  //   );
-  // }
+  Future<void> _fetchMoreTopRatedMovies(
+      FetchMoreTopRatedMoviesEvent event, Emitter<MoviesStates> emit) async {
+    final result = await allTopRatedMoviesUseCase(page);
+    result.fold(
+      (l) => emit(
+        state.copyWith(
+          topRatedStates: RequestState.fetchMoreError,
+        ),
+      ),
+      (r) {
+        page++;
+        return emit(
+          state.copyWith(
+            topRatedStates: RequestState.fetchMoreError,
+            topRatedMovies: state.topRatedMovies + r,
+          ),
+        );
+      },
+    );
+  }
 }

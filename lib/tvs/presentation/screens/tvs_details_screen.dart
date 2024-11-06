@@ -283,6 +283,16 @@ class TvsDetailsContent extends StatelessWidget {
                 ),
               ),
             );
+          case RequestState.fetchMoreError:
+            return SizedBox(
+              height: 300.h,
+              child: Center(
+                child: Text(
+                  'loading',
+                  style: textTheme.titleLarge,
+                ),
+              ),
+            );
         }
       },
     );
@@ -385,6 +395,16 @@ class TvsDetailsContent extends StatelessWidget {
                 ),
               ),
             );
+          case RequestState.fetchMoreError:
+            return SizedBox(
+              height: 300.h,
+              child: Center(
+                child: Text(
+                  'loading',
+                  style: textTheme.titleLarge,
+                ),
+              ),
+            );
         }
       },
     );
@@ -463,6 +483,16 @@ class TvsDetailsContent extends StatelessWidget {
               child: Center(
                 child: Text(
                   state.tvsSimilarMessage,
+                  style: textTheme.titleLarge,
+                ),
+              ),
+            );
+          case RequestState.fetchMoreError:
+            return SizedBox(
+              height: 300.h,
+              child: Center(
+                child: Text(
+                  'loading',
                   style: textTheme.titleLarge,
                 ),
               ),

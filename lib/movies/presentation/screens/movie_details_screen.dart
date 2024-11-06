@@ -260,6 +260,17 @@ class MovieDetailContent extends StatelessWidget {
                 ),
               ),
             );
+
+          case RequestState.fetchMoreError:
+            return SizedBox(
+              height: 300.h,
+              child: Center(
+                child: Text(
+                  state.moviesDetailsMessage,
+                  style: textTheme.titleLarge,
+                ),
+              ),
+            );
         }
       },
     );
@@ -360,6 +371,16 @@ class MovieDetailContent extends StatelessWidget {
                 ),
               ),
             );
+          case RequestState.fetchMoreError:
+            return SizedBox(
+              height: 300.h,
+              child: Center(
+                child: Text(
+                  state.moviesDetailsMessage,
+                  style: textTheme.titleLarge,
+                ),
+              ),
+            );
         }
       },
     );
@@ -434,6 +455,16 @@ class MovieDetailContent extends StatelessWidget {
               child: Center(
                 child: Text(
                   state.moviesSimilarMessage,
+                  style: textTheme.titleLarge,
+                ),
+              ),
+            );
+          case RequestState.fetchMoreError:
+            return SizedBox(
+              height: 300.h,
+              child: Center(
+                child: Text(
+                  state.moviesDetailsMessage,
                   style: textTheme.titleLarge,
                 ),
               ),
