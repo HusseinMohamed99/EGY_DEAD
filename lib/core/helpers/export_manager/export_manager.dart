@@ -32,6 +32,7 @@ import 'package:upgrader/upgrader.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 part '../../../movies/presentation/widgets/build_content_movies.dart';
+part '../../../movies/presentation/widgets/now_playing_movies_widget.dart';
 part '../../../movies/presentation/widgets/upcoming_movies_widget.dart';
 part '../theme/style/responsive_font_size.dart';
 part '../theme/style/text_style.dart';
@@ -76,7 +77,6 @@ part './../../../movies/presentation/widgets/build_header_widget.dart';
 part './../../../movies/presentation/widgets/build_skeleton_carousel_now_playing.dart';
 part './../../../movies/presentation/widgets/error_widget.dart';
 part './../../../movies/presentation/widgets/navigate_to_see_more_screen.dart';
-part './../../../movies/presentation/widgets/now_playing_widget.dart';
 part './../../../movies/presentation/widgets/popular_movies_widget.dart';
 part './../../../movies/presentation/widgets/top_rated_movies_widget.dart';
 part './../../../presentation_main_app/controller/internet_bloc.dart';
