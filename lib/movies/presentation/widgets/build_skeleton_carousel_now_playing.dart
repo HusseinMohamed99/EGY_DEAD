@@ -16,7 +16,7 @@ class BuildSkeletonCarousel extends StatelessWidget {
       child: CarouselSlider(
         options: CarouselOptions(
           autoPlay: true,
-          height: 300,
+          height: 300.h,
           viewportFraction: 1.0,
           onPageChanged: (index, reason) {},
         ),
@@ -25,7 +25,7 @@ class BuildSkeletonCarousel extends StatelessWidget {
             boxFit: BoxFit.fill,
             imageUrl: '',
             width: double.infinity,
-            height: 560,
+            height: 560.h,
           ),
         ],
       ),
