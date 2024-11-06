@@ -11,7 +11,7 @@ TextStyle buildTextStyle({
       context,
       fontSize: fontSize.sp,
     ),
-    fontWeight: fontWeight ?? FontWeight.w600,
+    fontWeight: fontWeight ?? FontWeight.w500,
     color: color ?? ColorManager.whiteColor,
   );
 }

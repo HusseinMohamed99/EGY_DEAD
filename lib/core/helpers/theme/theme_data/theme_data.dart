@@ -16,7 +16,7 @@ Map<AppTheme, ThemeData> getThemeData(BuildContext context) => {
             ).r,
           ),
         ),
-        textTheme: GoogleFonts.robotoTextTheme().copyWith(
+        textTheme: GoogleFonts.poppinsTextTheme().copyWith(
           headlineSmall: buildTextStyle(
             context: context,
             fontSize: 24,

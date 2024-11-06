@@ -65,10 +65,19 @@ class BuildCarousel extends StatelessWidget {
   }
 
   Widget _buildPosterImage(String posterPath) {
-    return Padding(
-      padding: EdgeInsets.only(left: 8.w, top: 40.h),
-      child: Align(
-        alignment: Alignment.topLeft,
+    return Align(
+      alignment: Alignment.topLeft,
+      child: Container(
+        margin: EdgeInsets.only(left: 8.w, top: 40.h),
+        padding: EdgeInsets.symmetric(horizontal: 2.w, vertical: 2.h),
+        width: 70.w,
+        height: 60.h,
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [ColorManager.whiteColor, ColorManager.primaryGreenColor],
+          ),
+          borderRadius: BorderRadius.circular(50).r,
+        ),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(50).r,
           child: CachedImage(
@@ -109,7 +118,9 @@ class BuildCarousel extends StatelessWidget {
           Space(height: 0, width: 4),
           Text(
             AppString.nowPlaying.toUpperCase(),
-            style: context.textTheme.labelSmall,
+            style: context.textTheme.bodySmall!.copyWith(
+              color: ColorManager.whiteColor,
+            ),
           ),
         ],
       ),
