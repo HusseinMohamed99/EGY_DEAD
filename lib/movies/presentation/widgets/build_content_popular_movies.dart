@@ -1,19 +1,19 @@
 part of './../../../core/helpers/export_manager/export_manager.dart';
 
 class BuildContentPopularMovies extends StatelessWidget {
-  const BuildContentPopularMovies(
-      {super.key, required this.state, this.showFetchError = false});
+  const BuildContentPopularMovies({
+    super.key,
+    required this.state,
+  });
   final MoviesStates state;
-  final bool showFetchError;
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         _buildHeader(context, state),
-        PopularWidget(
-            movies: state.popularMovies, showFetchError: showFetchError),
+        PopularWidget(movies: state.popularMovies),
       ],
-    ).skeletonize(enabled: state.popularState == GetAllRequestStatus.loading);
+    ).skeletonize(enabled: state.popularState == RequestState.loading);
   }
 
   Widget _buildHeader(BuildContext context, MoviesStates state) {
@@ -80,16 +80,9 @@ class PopularWidget extends StatelessWidget {
           previous.popularState != current.popularState,
       builder: (context, state) {
         return HorizontalListView(
-          itemCount: movies.length + (showFetchError ? 0 : 1),
+          itemCount: movies.length,
           itemBuilder: (context, index) {
-            if (index < movies.length) {
-              return HorizontalListViewCard(movies: movies[index]);
-            } else {
-              return HorizontalListViewCard(movies: movies[0]).skeletonize();
-            }
-          },
-          addEvent: () {
-            context.read<MoviesBloc>().add(FetchMorePopularMoviesEvent());
+            return HorizontalListViewCard(movies: movies[index]);
           },
         );
       },

@@ -10,7 +10,7 @@ class MoviesStates extends Equatable {
   final String upcomingMessage;
 
   final List<Movies> popularMovies;
-  final GetAllRequestStatus popularState;
+  final RequestState popularState;
   final String popularMessage;
 
   final List<Movies> topRatedMovies;
@@ -29,7 +29,7 @@ class MoviesStates extends Equatable {
     this.upcomingState = RequestState.loading,
     this.upcomingMessage = "",
     this.popularMovies = const [],
-    this.popularState = GetAllRequestStatus.loading,
+    this.popularState = RequestState.loading,
     this.popularMessage = "",
     this.topRatedStates = GetAllRequestStatus.loading,
     this.topRatedMovies = const [],
@@ -47,7 +47,7 @@ class MoviesStates extends Equatable {
     RequestState? upcomingState,
     String? upcomingMessage,
     List<Movies>? popularMovies,
-    GetAllRequestStatus? popularState,
+    RequestState? popularState,
     String? popularMessage,
     List<Movies>? topRatedMovies,
     GetAllRequestStatus? topRatedStates,

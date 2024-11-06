@@ -9,13 +9,8 @@ class PopularMoviesWidget extends StatelessWidget {
       buildWhen: (previous, current) =>
           previous.popularState != current.popularState,
       builder: (context, state) {
-        if (state.popularState == GetAllRequestStatus.loaded) {
+        if (state.popularState == RequestState.loaded) {
           return BuildContentPopularMovies(state: state);
-        } else if (state.popularState == GetAllRequestStatus.fetchMoreError) {
-          return BuildContentPopularMovies(
-            state: state,
-            showFetchError: true,
-          );
         } else {
           return _buildErrorMessage(context, state.popularMessage);
         }

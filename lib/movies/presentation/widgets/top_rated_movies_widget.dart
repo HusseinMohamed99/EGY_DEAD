@@ -153,9 +153,6 @@ class TopRatedWidget extends StatelessWidget {
               return const LoadingIndicator();
             }
           },
-          addEvent: () {
-            context.read<MoviesBloc>().add(FetchMoreTopRatedMoviesEvent());
-          },
         );
       },
     );
