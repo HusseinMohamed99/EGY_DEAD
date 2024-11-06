@@ -5,7 +5,6 @@ class PopularMoviesWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = getThemeData(context)[AppTheme.darkTheme]!.textTheme;
     return BlocBuilder<MoviesBloc, MoviesStates>(
       buildWhen: (previous, current) =>
           previous.popularState != current.popularState,
@@ -26,7 +25,7 @@ class PopularMoviesWidget extends StatelessWidget {
                     children: [
                       Text(
                         AppString.popular,
-                        style: textTheme.labelLarge,
+                        style: context.textTheme.titleSmall,
                       ),
                       InkWell(
                         onTap: () {
@@ -48,7 +47,7 @@ class PopularMoviesWidget extends StatelessWidget {
                             children: [
                               Text(
                                 AppString.seeMore,
-                                style: textTheme.labelSmall,
+                                style: context.textTheme.labelSmall,
                               ),
                               Icon(
                                 Icons.arrow_forward_ios,
@@ -71,7 +70,7 @@ class PopularMoviesWidget extends StatelessWidget {
               child: Center(
                 child: Text(
                   state.popularMessage,
-                  style: textTheme.labelLarge,
+                  style: context.textTheme.labelLarge,
                 ),
               ),
             );
@@ -85,7 +84,7 @@ class PopularMoviesWidget extends StatelessWidget {
                     children: [
                       Text(
                         AppString.popular,
-                        style: textTheme.labelLarge,
+                        style: context.textTheme.labelLarge,
                       ),
                       InkWell(
                         onTap: () {
@@ -107,7 +106,7 @@ class PopularMoviesWidget extends StatelessWidget {
                             children: [
                               Text(
                                 AppString.seeMore,
-                                style: textTheme.labelSmall,
+                                style: context.textTheme.labelSmall,
                               ),
                               Icon(
                                 Icons.arrow_forward_ios,
