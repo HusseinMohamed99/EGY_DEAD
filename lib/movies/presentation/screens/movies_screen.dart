@@ -6,7 +6,6 @@ class MoviesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
-      physics: const BouncingScrollPhysics(),
       slivers: [
         const SliverToBoxAdapter(child: NowPlayingWidget()),
         const SliverToBoxAdapter(child: UpcomingWidget()),
@@ -16,13 +15,3 @@ class MoviesScreen extends StatelessWidget {
     );
   }
 }
-
-
-//  BlocProvider(
-//       create: (context) {
-//         return sl<MoviesBloc>()
-//           ..add(GetNowPlayingMoviesEvent())
-//           ..add(GetPopularMoviesEvent())
-//           ..add(GetTopRatedMoviesEvent())
-//           ..add(GetUpcomingMoviesEvent());
-//       },
