@@ -10,23 +10,16 @@ class PopularMoviesWidget extends StatelessWidget {
           previous.popularState != current.popularState,
       builder: (context, state) {
         if (state.popularState == RequestState.loaded) {
-          return BuildContentPopularMovies(state: state);
+          state.popularMovies.shuffle(Random());
+          return BuildContentMovies(
+            movies: state.popularMovies,
+            title: AppString.popular,
+            isLoading: state.popularState == RequestState.loading,
+          );
         } else {
-          return _buildErrorMessage(context, state.popularMessage);
+          return BuildErrorMessage(errorMessage: state.popularMessage);
         }
       },
-    );
-  }
-
-  Widget _buildErrorMessage(BuildContext context, String errorMessage) {
-    return SizedBox(
-      height: 300.h,
-      child: Center(
-        child: Text(
-          errorMessage,
-          style: context.textTheme.labelLarge,
-        ),
-      ),
     );
   }
 }

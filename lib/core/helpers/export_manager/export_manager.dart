@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:developer';
 import 'dart:io';
+import 'dart:math';
 
 import 'package:animate_do/animate_do.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -31,8 +32,7 @@ import 'package:stream_transform/stream_transform.dart';
 import 'package:upgrader/upgrader.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-part '../../../movies/presentation/widgets/build_content_popular_movies.dart';
-part '../logs/app_logs.dart';
+part '../../../movies/presentation/widgets/build_content_movies.dart';
 part '../theme/style/responsive_font_size.dart';
 part '../theme/style/text_style.dart';
 part './../../../bloc_observer.dart';
@@ -72,7 +72,10 @@ part './../../../movies/presentation/screens/movie_details_screen.dart';
 part './../../../movies/presentation/screens/movie_see_more.dart';
 part './../../../movies/presentation/screens/movies_screen.dart';
 part './../../../movies/presentation/widgets/build_carousel_now_playing.dart';
+part './../../../movies/presentation/widgets/build_header_widget.dart';
 part './../../../movies/presentation/widgets/build_skeleton_carousel_now_playing.dart';
+part './../../../movies/presentation/widgets/error_widget.dart';
+part './../../../movies/presentation/widgets/navigate_to_see_more_screen.dart';
 part './../../../movies/presentation/widgets/now_playing_widget.dart';
 part './../../../movies/presentation/widgets/popular_movies_widget.dart';
 part './../../../movies/presentation/widgets/top_rated_movies_widget.dart';

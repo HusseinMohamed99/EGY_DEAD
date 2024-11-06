@@ -22,7 +22,7 @@ class HorizontalListViewCard extends StatelessWidget {
               ),
             ),
           );
-          log('Movie ID: ${movies.id}');
+          // log('Movie ID: ${movies.id}');
         },
         child: ClipRRect(
           borderRadius: const BorderRadius.all(Radius.circular(8.0)).r,
