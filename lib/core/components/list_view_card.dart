@@ -14,15 +14,7 @@ class HorizontalListViewCard extends StatelessWidget {
       padding: EdgeInsets.only(right: 8.w),
       child: InkWell(
         onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => MovieDetailsScreen(
-                movieID: movies.id,
-              ),
-            ),
-          );
-          // log('Movie ID: ${movies.id}');
+          navigateToMovieDetails(context, movies.id);
         },
         child: ClipRRect(
           borderRadius: const BorderRadius.all(Radius.circular(8.0)).r,

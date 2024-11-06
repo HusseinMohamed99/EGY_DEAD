@@ -1,128 +1,109 @@
 part of './../../../core/helpers/export_manager/export_manager.dart';
 
 class MovieSeeMoreScreen extends StatelessWidget {
-  const MovieSeeMoreScreen(
-      {super.key, required this.movieList, required this.title});
+  const MovieSeeMoreScreen({
+    super.key,
+    required this.movieList,
+    required this.title,
+  });
 
   final List<Movies> movieList;
   final String title;
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = getThemeData(context)[AppTheme.darkTheme]!.textTheme;
     return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        backgroundColor: ColorManager.greyDarkColor,
-        elevation: 0,
-        title: Text(
-          "$title Movies".toUpperCase(),
-          style: textTheme.labelLarge,
+      appBar: _buildAppBar(context),
+      body: _buildMovieList(context),
+    );
+  }
+
+  AppBar _buildAppBar(BuildContext context) {
+    return AppBar(
+      automaticallyImplyLeading: false,
+      backgroundColor: ColorManager.charCoolColor,
+      elevation: 0,
+      title: Text(
+        "$title Movies".toUpperCase(),
+        style: context.textTheme.labelMedium,
+      ),
+      centerTitle: true,
+    );
+  }
+
+  Widget _buildMovieList(BuildContext context) {
+    return ListView.builder(
+      physics: const BouncingScrollPhysics(),
+      padding: EdgeInsets.symmetric(horizontal: 12.w),
+      itemCount: movieList.length,
+      itemBuilder: (context, index) {
+        final movie = movieList[index];
+        return _buildMovieCard(context, movie);
+      },
+    );
+  }
+
+  Widget _buildMovieCard(BuildContext context, Movies movie) {
+    return Container(
+      decoration: BoxDecoration(
+        color: ColorManager.charCoolColor,
+        borderRadius: BorderRadius.circular(10).r,
+      ),
+      padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 10.w),
+      margin: EdgeInsets.symmetric(vertical: 10.h),
+      child: InkWell(
+        onTap: () => navigateToMovieDetails(context, movie.id),
+        child: Row(
+          children: [
+            _buildMovieImage(movie),
+            Space(height: 0, width: 10),
+            Expanded(
+              child: _buildMovieInfo(context, movie),
+            ),
+          ],
         ),
-        centerTitle: true,
       ),
-      body: ListView.builder(
-        physics: const BouncingScrollPhysics(),
-        scrollDirection: Axis.vertical,
-        padding: const EdgeInsets.symmetric(horizontal: 12).r,
-        itemCount: movieList.length,
-        itemBuilder: (context, index) {
-          final movie = movieList[index];
-          return Container(
-            decoration: BoxDecoration(
-              color: ColorManager.darkPrimary,
-              borderRadius: BorderRadius.circular(10).r,
-            ),
-            padding: const EdgeInsets.all(10).r,
-            margin: const EdgeInsets.symmetric(vertical: 10).r,
-            child: InkWell(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return MovieDetailsScreen(
-                        movieID: movie.id,
-                      );
-                    },
-                  ),
-                );
-              },
-              child: Row(
-                children: [
-                  ClipRRect(
-                    borderRadius: const BorderRadius.all(
-                      Radius.circular(8.0),
-                    ).r,
-                    child: CachedImage(
-                      boxFit: BoxFit.fitHeight,
-                      imageUrl: ApiConstance.imageURL(movie.backdropPath),
-                      width: 120.w,
-                      height: 140.h,
-                    ),
-                  ),
-                  Space(height: 0, width: 10),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          movie.title,
-                          overflow: TextOverflow.ellipsis,
-                          maxLines: 1,
-                          textAlign: TextAlign.start,
-                          style: textTheme.labelLarge,
-                        ),
-                        Space(height: 5, width: 0),
-                        Row(
-                          children: [
-                            Container(
-                              padding: const EdgeInsets.symmetric(
-                                vertical: 2.0,
-                                horizontal: 8.0,
-                              ).r,
-                              decoration: BoxDecoration(
-                                color: ColorManager.primaryRedColor,
-                                borderRadius: BorderRadius.circular(4.0).r,
-                              ),
-                              child: Text(
-                                movie.releaseDate.split('-')[0],
-                                style: textTheme.titleSmall,
-                              ),
-                            ),
-                            Space(height: 0, width: 16.w),
-                            Row(
-                              children: [
-                                Icon(
-                                  Icons.star,
-                                  color: ColorManager.iconRateColor,
-                                  size: 20.sp,
-                                ),
-                                Space(height: 0, width: 4.w),
-                                Text(
-                                  (movie.voteAverage).toStringAsFixed(1),
-                                  style: textTheme.titleMedium,
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                        Space(height: 10.h, width: 0),
-                        Text(
-                          movieList[index].overview,
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
-                          style: textTheme.titleMedium,
-                        ),
-                      ],
-                    ),
-                  )
-                ],
-              ),
-            ),
-          );
-        },
+    );
+  }
+
+  Widget _buildMovieImage(Movies movie) {
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(8.0).r,
+      child: CachedImage(
+        boxFit: BoxFit.fitHeight,
+        imageUrl: ApiConstance.imageURL(movie.backdropPath),
+        width: 120.w,
+        height: 140.h,
       ),
+    );
+  }
+
+  Widget _buildMovieInfo(BuildContext context, Movies movie) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          movie.title,
+          overflow: TextOverflow.ellipsis,
+          maxLines: 1,
+          style: context.textTheme.titleMedium,
+        ),
+        Space(height: 5, width: 0),
+        Row(
+          children: [
+            BuildReleaseDateChip(releaseDate: movie.releaseDate),
+            Space(width: 16, height: 0),
+            BuildRating(rating: movie.voteAverage),
+          ],
+        ),
+        Space(height: 10, width: 0),
+        Text(
+          movie.overview,
+          maxLines: 2,
+          overflow: TextOverflow.ellipsis,
+          style: context.textTheme.labelSmall,
+        ),
+      ],
     );
   }
 }

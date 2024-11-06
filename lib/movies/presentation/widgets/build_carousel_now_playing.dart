@@ -19,7 +19,7 @@ class BuildCarousel extends StatelessWidget {
   Widget _buildCarouselItem(Movies movie, BuildContext context) {
     return GestureDetector(
       key: const Key('openMovieMinimalDetail'),
-      onTap: () => _navigateToMovieDetails(context, movie.id),
+      onTap: () => navigateToMovieDetails(context, movie.id),
       child: Stack(
         children: [
           _buildBackgroundImage(movie.backdropPath),
@@ -137,13 +137,4 @@ class BuildCarousel extends StatelessWidget {
       ),
     );
   }
-}
-
-void _navigateToMovieDetails(BuildContext context, int movieId) {
-  Navigator.push(
-    context,
-    MaterialPageRoute(
-      builder: (context) => MovieDetailsScreen(movieID: movieId),
-    ),
-  );
 }
