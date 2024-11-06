@@ -154,3 +154,6 @@ part './../../routing/app_router.dart';
 
 part './../../../bloc_observer.dart';
 part './../../../egy_dead_app.dart';
+part './../../extensions/text_style_extension.dart';
+part './../../../movies/presentation/widgets/build_skeleton_carousel.dart';
+part './../../../movies/presentation/widgets/build_carousel.dart';
