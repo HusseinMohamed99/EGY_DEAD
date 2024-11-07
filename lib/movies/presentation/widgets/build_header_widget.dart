@@ -10,7 +10,7 @@ class BuildHeaderWidget extends StatelessWidget {
   });
   final String title;
   final List<Movies> movies;
-  final Function addEvent;
+  final VoidCallback addEvent;
   final bool fetchData;
 
   @override

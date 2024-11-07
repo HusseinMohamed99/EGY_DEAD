@@ -8,15 +8,18 @@ class SeeMoreAllMovies extends StatefulWidget {
     required this.itemBuilder,
     required this.addEvent,
   });
+
   final int itemCount;
   final Widget Function(BuildContext context, int index) itemBuilder;
-  final Function addEvent;
+  final VoidCallback addEvent;
+
   @override
   State<SeeMoreAllMovies> createState() => _SeeMoreAllMoviesState();
 }
 
 class _SeeMoreAllMoviesState extends State<SeeMoreAllMovies> {
-  final _scrollController = ScrollController();
+  final ScrollController _scrollController = ScrollController();
+
   @override
   void initState() {
     super.initState();
@@ -31,6 +34,16 @@ class _SeeMoreAllMoviesState extends State<SeeMoreAllMovies> {
     super.dispose();
   }
 
+  void _onScroll() {
+    // Check if we've reached the bottom of the list
+    if (_scrollController.position.atEdge) {
+      bool isBottom = _scrollController.position.pixels != 0;
+      if (isBottom) {
+        widget.addEvent(); // Trigger fetching more data
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
@@ -40,13 +53,5 @@ class _SeeMoreAllMoviesState extends State<SeeMoreAllMovies> {
       itemCount: widget.itemCount,
       itemBuilder: widget.itemBuilder,
     );
-  }
-
-  void _onScroll() {
-    if (_scrollController.position.atEdge) {
-      if (_scrollController.position.pixels != 0) {
-        widget.addEvent();
-      }
-    }
   }
 }

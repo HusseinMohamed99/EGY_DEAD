@@ -12,7 +12,7 @@ class BuildContentMovies extends StatelessWidget {
   final List<Movies> movies;
   final String title;
   final bool isLoading;
-  final Function addEvent;
+  final VoidCallback addEvent;
   final bool fetchData;
 
   @override

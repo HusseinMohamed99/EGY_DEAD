@@ -4,7 +4,7 @@ void navigateToSeeMore({
   required BuildContext context,
   required List<Movies> movies,
   required String title,
-  required Function addEvent,
+  required VoidCallback addEvent,
   required bool fetchData,
 }) {
   Navigator.push(

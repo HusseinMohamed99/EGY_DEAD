@@ -23,20 +23,16 @@ class MovieSeeMoreScreen extends StatelessWidget {
         itemBuilder: (context, index) {
           if (index < movieList.length) {
             final movie = movieList[index];
-            return _buildMovieCard(context, movie).skeletonize(
-              enabled: movieList.isEmpty,
-            );
-          } else if (fetchData) {
-            return BuildErrorMessage(
-                errorMessage:
-                    "An error occurred while fetching data. Please try again later.");
+            return _buildMovieCard(context, movie);
           } else {
+            // Trigger addEvent to fetch more data when reaching the end of the list
             addEvent();
-
             return const LoadingIndicator();
           }
         },
-        addEvent: addEvent,
+        addEvent: () {
+          addEvent();
+        },
       ),
     );
   }
@@ -52,15 +48,6 @@ class MovieSeeMoreScreen extends StatelessWidget {
       ),
       centerTitle: true,
     );
-  }
-}
-
-class FetchErrorWidget extends StatelessWidget {
-  const FetchErrorWidget({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    throw UnimplementedError();
   }
 }
 
