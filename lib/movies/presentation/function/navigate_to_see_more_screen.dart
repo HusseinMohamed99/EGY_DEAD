@@ -10,13 +10,20 @@ void navigateToSeeMore({
   Navigator.push(
     context,
     MaterialPageRoute(
-      builder: (context) => MovieSeeMoreScreen(
-        showFetchError: showFetchError,
-        movieList: movies,
-        title: title,
-        addEvent: () {
-          addEvent();
-        },
+      builder: (context) => BlocProvider(
+        create: (context) => sl<MoviesBloc>(),
+        child: BlocBuilder<MoviesBloc, MoviesStates>(
+          builder: (context, state) {
+            return MovieSeeMoreScreen(
+              showFetchError: showFetchError,
+              movieList: movies,
+              title: title,
+              addEvent: () {
+                addEvent();
+              },
+            );
+          },
+        ),
       ),
     ),
   );

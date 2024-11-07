@@ -23,9 +23,7 @@ class BuildContentMovies extends StatelessWidget {
           showFetchError: showFetchError,
           movies: movies,
           title: title,
-          addEvent: () {
-            addEvent();
-          },
+          addEvent: addEvent,
         ),
         ContentMoviesWidget(movies: movies),
       ],
@@ -42,7 +40,6 @@ class ContentMoviesWidget extends StatelessWidget {
   });
 
   final List<Movies> movies;
-
   @override
   Widget build(BuildContext context) {
     return HorizontalListView(

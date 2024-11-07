@@ -16,7 +16,9 @@ class PopularMoviesWidget extends StatelessWidget {
             movies: state.popularMovies,
             title: AppString.popular,
             isLoading: state.popularState == RequestState.loading,
-            addEvent: () {},
+            addEvent: () {
+              context.read<MoviesBloc>().add(FetchMorePopularMoviesEvent());
+            },
           );
         } else if (state.popularState == RequestState.fetchMoreError) {
           return BuildContentMovies(
@@ -25,7 +27,7 @@ class PopularMoviesWidget extends StatelessWidget {
             title: AppString.popular,
             isLoading: state.popularState == RequestState.loading,
             addEvent: () {
-              context.read<MoviesBloc>().add(GetPopularMoviesEvent());
+              context.read<MoviesBloc>().add(FetchMorePopularMoviesEvent());
             },
           );
         } else {

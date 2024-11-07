@@ -19,12 +19,14 @@ class MovieSeeMoreScreen extends StatelessWidget {
     return Scaffold(
       appBar: _buildAppBar(context),
       body: SeeMoreAllMovies(
-        itemCount: movieList.length + 1,
+        itemCount: movieList.length + (showFetchError ? 0 : 1),
         itemBuilder: (context, index) {
           if (index < movieList.length) {
             final movie = movieList[index];
             return _buildMovieCard(context, movie);
           } else {
+            // Trigger addEvent to fetch more data when reaching the end of the list
+            addEvent();
             return const LoadingIndicator();
           }
         },
