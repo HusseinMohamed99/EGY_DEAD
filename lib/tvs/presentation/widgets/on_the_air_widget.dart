@@ -150,7 +150,7 @@ class OnTheAirWidget extends StatelessWidget {
                 ),
               ),
             );
-          case RequestState.fetchMoreError:
+          case RequestState.fetchData:
             return SizedBox(
               height: 300.h,
               child: Center(

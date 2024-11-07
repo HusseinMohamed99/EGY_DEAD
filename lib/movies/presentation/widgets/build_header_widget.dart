@@ -6,12 +6,12 @@ class BuildHeaderWidget extends StatelessWidget {
     required this.title,
     required this.movies,
     required this.addEvent,
-    required this.showFetchError,
+    required this.fetchData,
   });
   final String title;
   final List<Movies> movies;
   final Function addEvent;
-  final bool showFetchError;
+  final bool fetchData;
 
   @override
   Widget build(BuildContext context) {
@@ -27,13 +27,11 @@ class BuildHeaderWidget extends StatelessWidget {
           GestureDetector(
             onTap: () {
               navigateToSeeMore(
-                showFetchError: showFetchError,
+                fetchData: fetchData,
                 context: context,
                 movies: movies,
                 title: title,
-                addEvent: () {
-                  addEvent();
-                },
+                addEvent: addEvent,
               );
             },
             child: Padding(

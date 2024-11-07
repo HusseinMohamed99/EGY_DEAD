@@ -12,7 +12,7 @@ class PopularMoviesWidget extends StatelessWidget {
         if (state.popularState == RequestState.loaded) {
           state.popularMovies.shuffle(Random());
           return BuildContentMovies(
-            showFetchError: false,
+            fetchData: false,
             movies: state.popularMovies,
             title: AppString.popular,
             isLoading: state.popularState == RequestState.loading,
@@ -20,9 +20,9 @@ class PopularMoviesWidget extends StatelessWidget {
               context.read<MoviesBloc>().add(FetchMorePopularMoviesEvent());
             },
           );
-        } else if (state.popularState == RequestState.fetchMoreError) {
+        } else if (state.popularState == RequestState.fetchData) {
           return BuildContentMovies(
-            showFetchError: true,
+            fetchData: true,
             movies: state.popularMovies,
             title: AppString.popular,
             isLoading: state.popularState == RequestState.loading,

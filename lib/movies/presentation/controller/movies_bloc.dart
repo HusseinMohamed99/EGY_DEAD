@@ -102,14 +102,14 @@ class MoviesBloc extends Bloc<MoviesEvent, MoviesStates> {
     result.fold(
       (l) => emit(
         state.copyWith(
-          popularState: RequestState.fetchMoreError,
+          popularState: RequestState.fetchData,
         ),
       ),
       (r) {
         page++;
         return emit(
           state.copyWith(
-            popularState: RequestState.fetchMoreError,
+            popularState: RequestState.fetchData,
             popularMovies: state.popularMovies + r,
           ),
         );
@@ -170,14 +170,14 @@ class MoviesBloc extends Bloc<MoviesEvent, MoviesStates> {
     result.fold(
       (l) => emit(
         state.copyWith(
-          topRatedStates: RequestState.fetchMoreError,
+          topRatedStates: RequestState.fetchData,
         ),
       ),
       (r) {
         page++;
         return emit(
           state.copyWith(
-            topRatedStates: RequestState.fetchMoreError,
+            topRatedStates: RequestState.fetchData,
             topRatedMovies: state.topRatedMovies + r,
           ),
         );

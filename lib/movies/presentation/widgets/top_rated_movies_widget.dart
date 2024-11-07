@@ -12,7 +12,7 @@ class TopRatedMoviesWidget extends StatelessWidget {
         if (state.topRatedStates == RequestState.loaded) {
           state.topRatedMovies.shuffle(Random());
           return BuildContentMovies(
-            showFetchError: state.topRatedStates == RequestState.fetchMoreError,
+            fetchData: state.topRatedStates == RequestState.fetchData,
             movies: state.topRatedMovies,
             title: AppString.topRated,
             isLoading: state.topRatedStates == RequestState.loading,

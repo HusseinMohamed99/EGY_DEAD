@@ -7,20 +7,20 @@ class BuildContentMovies extends StatelessWidget {
     required this.title,
     required this.isLoading,
     required this.addEvent,
-    required this.showFetchError,
+    required this.fetchData,
   });
   final List<Movies> movies;
   final String title;
   final bool isLoading;
   final Function addEvent;
-  final bool showFetchError;
+  final bool fetchData;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         BuildHeaderWidget(
-          showFetchError: showFetchError,
+          fetchData: fetchData,
           movies: movies,
           title: title,
           addEvent: addEvent,

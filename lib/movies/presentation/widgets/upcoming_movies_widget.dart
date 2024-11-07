@@ -12,7 +12,7 @@ class UpcomingMoviesWidget extends StatelessWidget {
         if (state.upcomingState == RequestState.loaded) {
           state.upcomingMovies.shuffle(Random());
           return BuildContentMovies(
-            showFetchError: state.upcomingState == RequestState.fetchMoreError,
+            fetchData: state.upcomingState == RequestState.fetchData,
             movies: state.upcomingMovies,
             title: AppString.upcoming,
             isLoading: state.upcomingState == RequestState.loading,
