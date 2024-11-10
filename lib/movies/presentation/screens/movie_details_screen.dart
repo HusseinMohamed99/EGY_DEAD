@@ -378,8 +378,6 @@ Widget _showRecommendations(BuildContext context) {
 }
 
 Widget _showSimilar(BuildContext context) {
-  final textTheme = getThemeData(context)[AppTheme.darkTheme]!.textTheme;
-
   return BlocBuilder<MoviesDetailsBloc, MoviesDetailsStates>(
     builder: (context, state) {
       if (state.moviesSimilarStates == RequestState.loading) {
@@ -532,8 +530,8 @@ class NoDataFoundWidget extends StatelessWidget {
     super.key,
     this.message = 'No data found.',
     this.imagePath,
-    this.backgroundColor = Colors.white,
-    this.messageColor = Colors.black,
+    this.backgroundColor = ColorManager.darkPrimary,
+    this.messageColor = ColorManager.whiteColor,
     this.fontSize = 16.0,
   });
 
@@ -559,8 +557,9 @@ class NoDataFoundWidget extends StatelessWidget {
             if (imagePath != null)
               Image.asset(
                 imagePath!,
-                width: 80.0,
-                height: 80.0,
+                width: 150,
+                height: 100,
+                fit: BoxFit.fitWidth,
               ),
             const SizedBox(height: 16.0),
             Text(
