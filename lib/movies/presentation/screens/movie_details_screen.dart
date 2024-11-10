@@ -466,31 +466,33 @@ Widget _showSimilar(BuildContext context) {
 }
 
 Widget _getCast(List<Cast>? cast) {
-  if (cast != null && cast.isNotEmpty) {
-    return SectionListView(
-      height: 140.h,
-      itemCount: cast.length,
-      itemBuilder: (context, index) => CastCard(
-        cast: cast[index],
-      ),
-    );
-  } else {
-    return const SizedBox();
-  }
+  return (cast?.isNotEmpty ?? false)
+      ? SectionListView(
+          height: 140.h,
+          itemCount: cast!.length,
+          itemBuilder: (context, index) => CastCard(
+            cast: cast[index],
+          ),
+        )
+      : NoDataFoundWidget(
+          message: 'No cast found.',
+          imagePath: Assets.imagesNoData,
+        );
 }
 
 Widget _getReviews(List<Review>? reviews) {
-  if (reviews != null && reviews.isNotEmpty) {
-    return SectionListView(
-      height: 150.h,
-      itemCount: reviews.length,
-      itemBuilder: (context, index) => ReviewCard(
-        review: reviews[index],
-      ),
-    );
-  } else {
-    return const SizedBox();
-  }
+  return (reviews?.isNotEmpty ?? false)
+      ? SectionListView(
+          height: 150.h,
+          itemCount: reviews!.length,
+          itemBuilder: (context, index) => ReviewCard(
+            review: reviews[index],
+          ),
+        )
+      : NoDataFoundWidget(
+          message: 'No reviews found.',
+          imagePath: Assets.imagesNoData,
+        );
 }
 
 class SectionListView extends StatelessWidget {
@@ -511,11 +513,72 @@ class SectionListView extends StatelessWidget {
       height: height,
       child: ListView.separated(
         shrinkWrap: true,
-        padding: const EdgeInsets.symmetric(horizontal: 16).r,
+        padding: EdgeInsets.symmetric(horizontal: 16.w),
         itemCount: itemCount,
         scrollDirection: Axis.horizontal,
         itemBuilder: itemBuilder,
-        separatorBuilder: (context, index) => SizedBox(width: 10.w),
+        separatorBuilder: (_, __) => Space(
+          width: 10.w,
+          height: 0,
+        ),
+      ),
+    );
+  }
+}
+
+class NoDataFoundWidget extends StatelessWidget {
+  final String message;
+  final String? imagePath;
+  final Color backgroundColor;
+  final Color messageColor;
+  final double fontSize;
+
+  const NoDataFoundWidget({
+    super.key,
+    this.message = 'No data found.',
+    this.imagePath,
+    this.backgroundColor = Colors.white,
+    this.messageColor = Colors.black,
+    this.fontSize = 16.0,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Container(
+        padding: const EdgeInsets.all(20.0),
+        decoration: BoxDecoration(
+          color: backgroundColor,
+          borderRadius: BorderRadius.circular(12.0),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.2),
+              blurRadius: 8,
+              offset: const Offset(0, 4),
+            ),
+          ],
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            if (imagePath != null)
+              Image.asset(
+                imagePath!,
+                width: 80.0,
+                height: 80.0,
+              ),
+            const SizedBox(height: 16.0),
+            Text(
+              message,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: fontSize,
+                color: messageColor,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
