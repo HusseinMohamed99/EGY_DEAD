@@ -4,6 +4,7 @@ abstract class RemoteMovieDataSource {
   Future<List<MovieModel>> getAllPopularMovies(int page);
 
   Future<List<MovieModel>> getAllTopRatedMovies(int page);
+  Future<List<MovieModel>> getAllUpcomingMovies(int page);
 
   Future<List<List<MovieModel>>> getMovies();
 
@@ -160,6 +161,20 @@ class MovieRemoteDataSource extends RemoteMovieDataSource {
   Future<List<MovieModel>> getAllTopRatedMovies(int page) async {
     final response =
         await Dio().get(ApiConstance.getAllTopRatedMoviesPath(page));
+    if (response.statusCode == 200) {
+      return List<MovieModel>.from((response.data['results'] as List)
+          .map((e) => MovieModel.fromJson(e)));
+    } else {
+      throw ServerException(
+        errorMessageModel: ErrorMessageModel.fromJson(response.data),
+      );
+    }
+  }
+
+  @override
+  Future<List<MovieModel>> getAllUpcomingMovies(int page) async {
+    final response =
+        await Dio().get(ApiConstance.getAllUpcomingMoviesPath(page));
     if (response.statusCode == 200) {
       return List<MovieModel>.from((response.data['results'] as List)
           .map((e) => MovieModel.fromJson(e)));

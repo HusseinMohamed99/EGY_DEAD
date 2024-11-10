@@ -38,6 +38,7 @@ Future<void> serviceLocator() async {
         sl(),
         sl(),
         sl(),
+        sl(),
       ));
   sl.registerFactory(() => MoviesDetailsBloc(sl(), sl(), sl()));
 
@@ -52,6 +53,8 @@ Future<void> serviceLocator() async {
       () => GetPopularMoviesUseCase(baseMovieRepository: sl()));
   sl.registerLazySingleton(
       () => GetAllPopularMoviesUseCase(baseMovieRepository: sl()));
+  sl.registerLazySingleton(
+      () => GetAllUpcomingMoviesUseCase(baseMovieRepository: sl()));
 
   sl.registerLazySingleton(
       () => GetMovieDetailsUseCase(baseMovieRepository: sl()));

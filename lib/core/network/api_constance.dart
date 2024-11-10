@@ -43,6 +43,10 @@ class ApiConstance {
     return '$baseUrl/movie/top_rated?api_key=$appKey&page=$page';
   }
 
+  static String getAllUpcomingMoviesPath(int page) {
+    return '$baseUrl/movie/upcoming?api_key=$appKey&page=$page';
+  }
+
   /// API Constance For Base Image URL
   static String imageURL(String imagePath) => '$baseImageURL$imagePath';
 

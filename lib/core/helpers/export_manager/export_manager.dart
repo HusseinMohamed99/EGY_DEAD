@@ -57,6 +57,7 @@ part './../../../movies/domain/entities/movie_similar.dart';
 part './../../../movies/domain/entities/review.dart';
 part './../../../movies/domain/movie_use_cases/get_all_popular_movies_use_case.dart';
 part './../../../movies/domain/movie_use_cases/get_all_top_rated_movies_use_case.dart';
+part './../../../movies/domain/movie_use_cases/get_all_upcoming_movies_use_case.dart';
 part './../../../movies/domain/movie_use_cases/get_movie_details_use_cases.dart';
 part './../../../movies/domain/movie_use_cases/get_movies_recommendation_use_cases.dart';
 part './../../../movies/domain/movie_use_cases/get_movies_similar_use_cases.dart';
