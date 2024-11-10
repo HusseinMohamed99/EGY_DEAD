@@ -379,88 +379,83 @@ Widget _showRecommendations(BuildContext context) {
 
 Widget _showSimilar(BuildContext context) {
   final textTheme = getThemeData(context)[AppTheme.darkTheme]!.textTheme;
+
   return BlocBuilder<MoviesDetailsBloc, MoviesDetailsStates>(
     builder: (context, state) {
-      switch (state.moviesSimilarStates) {
-        case RequestState.loading:
-          return SizedBox(
-            height: 300.h,
-            child: const LoadingIndicator(),
-          );
-        case RequestState.loaded:
-          return FadeIn(
-            duration: const Duration(milliseconds: 500),
-            child: SizedBox(
-              height: 170.h,
-              child: ListView.builder(
-                shrinkWrap: true,
-                scrollDirection: Axis.horizontal,
-                padding: const EdgeInsets.symmetric(horizontal: 16).r,
-                itemCount: state.moviesSimilar.length,
-                itemBuilder: (context, index) {
-                  final similar = state.moviesSimilar[index];
-                  return Container(
-                    padding: const EdgeInsets.only(right: 8).r,
-                    child: InkWell(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => MovieDetailsScreen(
-                              movieID: similar.id,
-                            ),
-                          ),
-                        );
-                        if (kDebugMode) {
-                          print(similar.id);
-                        }
-                      },
-                      child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10).r,
-                          border: Border.all(
-                            color: ColorManager.whiteColor,
+      if (state.moviesSimilarStates == RequestState.loading) {
+        return SizedBox(
+          height: 300.h,
+          child: const LoadingIndicator(),
+        );
+      }
+
+      if (state.moviesSimilarStates == RequestState.loaded) {
+        return FadeIn(
+          duration: const Duration(milliseconds: 500),
+          child: SizedBox(
+            height: 170.h,
+            child: ListView.builder(
+              shrinkWrap: true,
+              scrollDirection: Axis.horizontal,
+              padding: const EdgeInsets.symmetric(horizontal: 16).r,
+              itemCount: state.moviesSimilar.length,
+              itemBuilder: (context, index) {
+                final similar = state.moviesSimilar[index];
+                return Container(
+                  padding: const EdgeInsets.only(right: 8).r,
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => MovieDetailsScreen(
+                            movieID: similar.id,
                           ),
                         ),
-                        child: ClipRRect(
-                          borderRadius: const BorderRadius.all(
-                            Radius.circular(8.0),
-                          ).r,
-                          child: CachedImage(
-                            imageUrl:
-                                ApiConstance.imageURL(similar.backdropPath!),
-                            width: 120.w,
-                            height: double.infinity,
-                          ),
+                      );
+                      if (kDebugMode) {
+                        print(similar.id);
+                      }
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10).r,
+                        border: Border.all(
+                          color: ColorManager.whiteColor,
+                        ),
+                      ),
+                      child: ClipRRect(
+                        borderRadius: const BorderRadius.all(
+                          Radius.circular(8.0),
+                        ).r,
+                        child: CachedImage(
+                          imageUrl:
+                              ApiConstance.imageURL(similar.backdropPath!),
+                          width: 120.w,
+                          height: double.infinity,
                         ),
                       ),
                     ),
-                  );
-                },
-              ),
+                  ),
+                );
+              },
             ),
-          );
-        case RequestState.error:
-          return SizedBox(
-            height: 300.h,
-            child: Center(
-              child: Text(
-                state.moviesSimilarMessage,
-                style: textTheme.titleLarge,
-              ),
-            ),
-          );
-        case RequestState.fetchData:
-          return SizedBox(
-            height: 300.h,
-            child: Center(
-              child: Text(
-                state.moviesDetailsMessage,
-                style: textTheme.titleLarge,
-              ),
-            ),
-          );
+          ),
+        );
       }
+
+      // Display error or fetch data messages
+      final message = state.moviesSimilarStates == RequestState.error
+          ? state.moviesSimilarMessage
+          : state.moviesDetailsMessage;
+
+      return SizedBox(
+        height: 300.h,
+        child: NoDataFoundWidget(
+          message: message,
+          imagePath: Assets.imagesNoData,
+        ),
+      );
     },
   );
 }
