@@ -176,3 +176,8 @@ part './../../../movies/presentation/widgets/film_descriptions.dart';
 part './../../../movies/presentation/widgets/button_trailer_film.dart';
 part './../../../movies/presentation/widgets/poster_path_widget.dart';
 part './../../../movies/presentation/widgets/cinema_backdrop_widget.dart';
+part './../../../movies/presentation/widgets/film_overview_and_genres.dart';
+part './../../../movies/presentation/widgets/film_rating.dart';
+part './../../../movies/presentation/widgets/film_duration.dart';
+part './../../../movies/presentation/widgets/film_release_date.dart';
+part './../../../movies/presentation/widgets/film_attributes.dart';
