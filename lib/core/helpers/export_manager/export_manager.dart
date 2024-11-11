@@ -35,6 +35,7 @@ import 'package:url_launcher/url_launcher.dart';
 part '../../../movies/presentation/function/navigate_to_see_more_screen.dart';
 part '../../../movies/presentation/widgets/build_content_movies.dart';
 part '../../../movies/presentation/widgets/movie_description_panel.dart';
+part '../../../movies/presentation/widgets/movie_recommendations_display.dart';
 part '../../../movies/presentation/widgets/now_playing_movies_widget.dart';
 part '../../../movies/presentation/widgets/upcoming_movies_widget.dart';
 part '../theme/style/responsive_font_size.dart';
@@ -85,9 +86,7 @@ part './../../../movies/presentation/widgets/build_skeleton_carousel_now_playing
 part './../../../movies/presentation/widgets/error_widget.dart';
 part './../../../movies/presentation/widgets/no_data_found_widget.dart';
 part './../../../movies/presentation/widgets/popular_movies_widget.dart';
-part './../../../movies/presentation/widgets/section_cast_or_reviwes_list_view.dart';
 part './../../../movies/presentation/widgets/show_cast_for_movies.dart';
-part './../../../movies/presentation/widgets/show_recomendations_movies.dart';
 part './../../../movies/presentation/widgets/show_reviews_for_movies.dart';
 part './../../../movies/presentation/widgets/show_similar_movies.dart';
 part './../../../movies/presentation/widgets/top_rated_movies_widget.dart';
@@ -171,3 +170,5 @@ part './../../services/services_locator.dart';
 part './../function/function.dart';
 part './../theme/style/color_manger.dart';
 part './../theme/theme_data/theme_data.dart';
+
+part './../../../movies/presentation/widgets/section_cast_or_reviews_list_view.dart';
