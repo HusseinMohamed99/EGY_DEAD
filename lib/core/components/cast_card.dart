@@ -10,7 +10,6 @@ class CastCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
     return SizedBox(
       width: 110.w,
       child: Column(
@@ -27,7 +26,7 @@ class CastCard extends StatelessWidget {
           Space(height: 8, width: 0),
           Text(
             cast.name,
-            style: textTheme.labelSmall,
+            style: context.textTheme.labelSmall,
             maxLines: 1,
             textAlign: TextAlign.center,
             overflow: TextOverflow.ellipsis,

@@ -22,7 +22,7 @@ class SectionCastOrReviewsListView extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         itemBuilder: itemBuilder,
         separatorBuilder: (_, __) => Space(
-          width: 10.w,
+          width: 10,
           height: 0,
         ),
       ),

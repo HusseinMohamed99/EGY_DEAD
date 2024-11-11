@@ -32,7 +32,7 @@ class ShowCastForMovies extends StatelessWidget {
     return (cast?.isNotEmpty ?? false)
         ? SectionCastOrReviewsListView(
             height: 140.h,
-            itemCount: cast!.length,
+            itemCount: cast?.length ?? 0,
             itemBuilder: (context, index) => CastCard(
               cast: cast?[index] ??
                   Cast(
