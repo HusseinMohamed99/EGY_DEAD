@@ -1,5 +1,29 @@
 part of './../../../core/helpers/export_manager/export_manager.dart';
 
+class ShowReviews extends StatelessWidget {
+  const ShowReviews({
+    super.key,
+    required this.moviesDetailsStates,
+  });
+
+  final MoviesDetailsStates moviesDetailsStates;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          AppString.reviews,
+          style: context.textTheme.titleMedium,
+        ),
+        Space(height: 8, width: 0),
+        ShowReviewsForMovies(moviesDetailsStates.moviesDetails?.reviews),
+      ],
+    );
+  }
+}
+
 class ShowReviewsForMovies extends StatelessWidget {
   const ShowReviewsForMovies(
     this.reviews, {

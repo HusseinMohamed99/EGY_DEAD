@@ -172,3 +172,7 @@ part './../theme/style/color_manger.dart';
 part './../theme/theme_data/theme_data.dart';
 
 part './../../../movies/presentation/widgets/section_cast_or_reviews_list_view.dart';
+part './../../../movies/presentation/widgets/film_descriptions.dart';
+part './../../../movies/presentation/widgets/button_trailer_film.dart';
+part './../../../movies/presentation/widgets/poster_path_widget.dart';
+part './../../../movies/presentation/widgets/cinema_backdrop_widget.dart';

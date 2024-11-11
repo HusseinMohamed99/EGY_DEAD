@@ -1,5 +1,29 @@
 part of './../../../core/helpers/export_manager/export_manager.dart';
 
+class ShowRecommendations extends StatelessWidget {
+  const ShowRecommendations({
+    super.key,
+    required this.moviesDetailsStates,
+  });
+
+  final MoviesDetailsStates moviesDetailsStates;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          AppString.recommendations,
+          style: context.textTheme.titleMedium,
+        ),
+        Space(height: 8, width: 0),
+        MovieRecommendationsDisplay(),
+      ],
+    );
+  }
+}
+
 class MovieRecommendationsDisplay extends StatelessWidget {
   const MovieRecommendationsDisplay({super.key});
 

@@ -1,5 +1,29 @@
 part of './../../../core/helpers/export_manager/export_manager.dart';
 
+class ShowSimilar extends StatelessWidget {
+  const ShowSimilar({
+    super.key,
+    required this.moviesDetailsStates,
+  });
+
+  final MoviesDetailsStates moviesDetailsStates;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          AppString.moreLikeThis,
+          style: context.textTheme.titleMedium,
+        ),
+        Space(height: 8, width: 0),
+        ShowSimilarMovies(),
+      ],
+    );
+  }
+}
+
 class ShowSimilarMovies extends StatelessWidget {
   const ShowSimilarMovies({super.key});
 
