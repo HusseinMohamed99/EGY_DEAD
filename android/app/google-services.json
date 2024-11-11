@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "58162803729",
+    "project_id": "egydead-df0d2",
+    "storage_bucket": "egydead-df0d2.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:58162803729:android:abef183be9e7678d572db0",
+        "android_client_info": {
+          "package_name": "com.Dev.egyDead"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCdx9Y7MsXx8wQjxaVPlRICyilBmR8lnVU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
