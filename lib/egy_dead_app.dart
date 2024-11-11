@@ -16,13 +16,18 @@ class EgyDeadApp extends StatelessWidget {
             DeviceOrientation.portraitDown,
           ],
         );
-        return MaterialApp(
-          debugShowCheckedModeBanner: false,
-          initialRoute: Routes.homePage,
-          onGenerateRoute: appRouter.generateRoute,
-          title: AppString.appTitle,
-          theme: getThemeData(context)[AppTheme.darkTheme],
-          darkTheme: getThemeData(context)[AppTheme.darkTheme],
+        return MediaQuery(
+          data: MediaQuery.of(context).copyWith(
+            textScaler: const TextScaler.linear(1.0),
+          ),
+          child: MaterialApp(
+            debugShowCheckedModeBanner: false,
+            initialRoute: Routes.homePage,
+            onGenerateRoute: appRouter.generateRoute,
+            title: AppString.appTitle,
+            theme: getThemeData(context)[AppTheme.darkTheme],
+            darkTheme: getThemeData(context)[AppTheme.darkTheme],
+          ),
         );
       },
     );
