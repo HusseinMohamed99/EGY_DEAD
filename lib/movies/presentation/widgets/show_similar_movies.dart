@@ -31,80 +31,79 @@ class ShowSimilarMovies extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<MoviesDetailsBloc, MoviesDetailsStates>(
       builder: (context, state) {
-        if (state.moviesSimilarStates == RequestState.loading) {
-          return SizedBox(
-            height: 300.h,
-            child: const LoadingIndicator(),
-          );
+        if (_isLoaded(state)) {
+          return _buildMoviesList(state);
         }
 
-        if (state.moviesSimilarStates == RequestState.loaded) {
-          return FadeIn(
-            duration: const Duration(milliseconds: 500),
-            child: SizedBox(
-              height: 170.h,
-              child: ListView.builder(
-                shrinkWrap: true,
-                scrollDirection: Axis.horizontal,
-                itemCount: state.moviesSimilar.length,
-                itemBuilder: (context, index) {
-                  final similar = state.moviesSimilar[index];
-                  return Container(
-                    padding: const EdgeInsets.only(right: 8).r,
-                    child: InkWell(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => MovieDetailsScreen(
-                              movieID: similar.id,
-                            ),
-                          ),
-                        );
-                        if (kDebugMode) {
-                          print(similar.id);
-                        }
-                      },
-                      child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10).r,
-                          border: Border.all(
-                            color: ColorManager.whiteColor,
-                          ),
-                        ),
-                        child: ClipRRect(
-                          borderRadius: const BorderRadius.all(
-                            Radius.circular(8.0),
-                          ).r,
-                          child: CachedImage(
-                            imageUrl:
-                                ApiConstance.imageURL(similar.backdropPath!),
-                            width: 120.w,
-                            height: double.infinity,
-                          ),
-                        ),
-                      ),
-                    ),
-                  );
-                },
-              ),
-            ),
-          );
-        }
-
-        // Display error or fetch data messages
-        final message = state.moviesSimilarStates == RequestState.error
-            ? state.moviesSimilarMessage
-            : state.moviesDetailsMessage;
-
-        return SizedBox(
-          height: 300.h,
-          child: NoDataFoundWidget(
-            message: message,
-            imagePath: Assets.imagesNoData,
-          ),
-        );
+        return _buildNoDataFound(state);
       },
+    );
+  }
+
+  bool _isLoaded(MoviesDetailsStates state) {
+    return state.moviesSimilarStates == RequestState.loaded;
+  }
+
+  Widget _buildMoviesList(MoviesDetailsStates state) {
+    return SizedBox(
+      height: 170.h,
+      child: ListView.builder(
+        shrinkWrap: true,
+        scrollDirection: Axis.horizontal,
+        itemCount: state.moviesSimilar.length,
+        itemBuilder: (context, index) {
+          final similar = state.moviesSimilar[index];
+          return _buildMovieItem(context, similar);
+        },
+      ),
+    );
+  }
+
+  Widget _buildMovieItem(BuildContext context, MoviesSimilar similar) {
+    return Container(
+      padding: EdgeInsets.only(right: 8.w),
+      child: GestureDetector(
+        onTap: () => _navigateToMovieDetails(context, similar.id),
+        child: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10).r,
+            border: Border.all(color: ColorManager.whiteColor),
+          ),
+          child: ClipRRect(
+            borderRadius: const BorderRadius.all(
+              Radius.circular(8.0),
+            ).r,
+            child: CachedImage(
+              imageUrl: ApiConstance.imageURL(similar.backdropPath!),
+              width: 120.w,
+              height: double.infinity,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  void _navigateToMovieDetails(BuildContext context, int movieID) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => MovieDetailsScreen(movieID: movieID),
+      ),
+    );
+    if (kDebugMode) {
+      print(movieID);
+    }
+  }
+
+  Widget _buildNoDataFound(MoviesDetailsStates state) {
+    final message = state.moviesSimilarStates == RequestState.error
+        ? state.moviesSimilarMessage
+        : state.moviesDetailsMessage;
+
+    return NoDataFoundWidget(
+      message: message,
+      imagePath: Assets.imagesNoData,
     );
   }
 }
