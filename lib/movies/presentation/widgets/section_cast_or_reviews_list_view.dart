@@ -18,7 +18,6 @@ class SectionCastOrReviewsListView extends StatelessWidget {
       height: height,
       child: ListView.separated(
         shrinkWrap: true,
-        padding: EdgeInsets.symmetric(horizontal: 16.w),
         itemCount: itemCount,
         scrollDirection: Axis.horizontal,
         itemBuilder: itemBuilder,

@@ -18,7 +18,6 @@ class MovieRecommendationsDisplay extends StatelessWidget {
                 child: ListView.builder(
                   shrinkWrap: true,
                   scrollDirection: Axis.horizontal,
-                  padding: const EdgeInsets.symmetric(horizontal: 16).r,
                   itemCount: state.moviesRecommendation.length,
                   itemBuilder: (context, index) {
                     final recommendation = state.moviesRecommendation[index];

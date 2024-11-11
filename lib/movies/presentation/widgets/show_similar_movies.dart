@@ -22,7 +22,6 @@ class ShowSimilarMovies extends StatelessWidget {
               child: ListView.builder(
                 shrinkWrap: true,
                 scrollDirection: Axis.horizontal,
-                padding: const EdgeInsets.symmetric(horizontal: 16).r,
                 itemCount: state.moviesSimilar.length,
                 itemBuilder: (context, index) {
                   final similar = state.moviesSimilar[index];
