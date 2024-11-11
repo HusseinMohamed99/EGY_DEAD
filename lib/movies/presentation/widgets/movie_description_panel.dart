@@ -7,31 +7,35 @@ class MovieDescriptionPanel extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<MoviesDetailsBloc, MoviesDetailsStates>(
       builder: (context, state) {
-        // Loading state
         if (state.moviesDetailsStates == RequestState.loading) {
           return Skeletonizer(
             child: MovieDetailsDisplay(moviesDetailsStates: state),
           );
-        }
-
-        // Loaded state
-        if (state.moviesDetailsStates == RequestState.loaded) {
+        } else if (state.moviesDetailsStates == RequestState.loaded) {
           return MovieDetailsDisplay(moviesDetailsStates: state);
-        }
-
-        // Error or FetchData state
-        else {
-          return SizedBox(
-            height: 300.h,
-            child: Center(
-              child: Text(
-                state.moviesDetailsMessage,
-                style: context.textTheme.titleLarge,
-              ),
-            ),
-          );
+        } else {
+          return _ErrorOrFetchDataMessage(message: state.moviesDetailsMessage);
         }
       },
+    );
+  }
+}
+
+class _ErrorOrFetchDataMessage extends StatelessWidget {
+  final String message;
+
+  const _ErrorOrFetchDataMessage({required this.message});
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 300.h,
+      child: Center(
+        child: Text(
+          message,
+          style: context.textTheme.titleLarge,
+        ),
+      ),
     );
   }
 }
@@ -62,7 +66,9 @@ class MovieDetailsDisplay extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: sections
-                .map((section) => _PaddedSection(child: section))
+                .map(
+                  (section) => _PaddedSection(child: section),
+                )
                 .toList(),
           ),
         ],
