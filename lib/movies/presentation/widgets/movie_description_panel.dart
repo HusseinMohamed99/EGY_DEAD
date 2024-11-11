@@ -9,6 +9,10 @@ class MovieDescriptionPanel extends StatelessWidget {
       builder: (context, state) {
         if (state.moviesDetailsStates == RequestState.loading) {
           return Skeletonizer(
+            switchAnimationConfig: SwitchAnimationConfig(
+              duration: Duration(milliseconds: 800),
+              reverseDuration: Duration(milliseconds: 800),
+            ),
             child: MovieDetailsDisplay(moviesDetailsStates: state),
           );
         } else if (state.moviesDetailsStates == RequestState.loaded) {
@@ -51,7 +55,6 @@ class MovieDetailsDisplay extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final sections = [
-      CinemaBackdropWidget(moviesDetailsStates: moviesDetailsStates),
       FilmDescription(moviesDetailsStates: moviesDetailsStates),
       ShowCast(moviesDetailsStates: moviesDetailsStates),
       ShowReviews(moviesDetailsStates: moviesDetailsStates),
@@ -64,12 +67,17 @@ class MovieDetailsDisplay extends StatelessWidget {
       child: Stack(
         children: [
           Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: sections
-                .map(
-                  (section) => _PaddedSection(child: section),
-                )
-                .toList(),
+            children: [
+              CinemaBackdropWidget(moviesDetailsStates: moviesDetailsStates),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: sections
+                    .map(
+                      (section) => _PaddedSection(child: section),
+                    )
+                    .toList(),
+              ),
+            ],
           ),
         ],
       ),
