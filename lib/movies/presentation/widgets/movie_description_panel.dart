@@ -46,58 +46,40 @@ class MovieDetailsDisplay extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final sections = [
+      CinemaBackdropWidget(moviesDetailsStates: moviesDetailsStates),
+      FilmDescription(moviesDetailsStates: moviesDetailsStates),
+      ShowCast(moviesDetailsStates: moviesDetailsStates),
+      ShowReviews(moviesDetailsStates: moviesDetailsStates),
+      ShowRecommendations(moviesDetailsStates: moviesDetailsStates),
+      ShowSimilar(moviesDetailsStates: moviesDetailsStates),
+    ];
+
     return SingleChildScrollView(
       key: const Key('movieDetailScrollView'),
       child: Stack(
         children: [
           Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              CinemaBackdropWidget(moviesDetailsStates: moviesDetailsStates),
-              Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: 12.w,
-                  vertical: 12.h,
-                ),
-                child:
-                    FilmDescription(moviesDetailsStates: moviesDetailsStates),
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: 12.w,
-                  vertical: 12.h,
-                ),
-                child: ShowCast(moviesDetailsStates: moviesDetailsStates),
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: 12.w,
-                  vertical: 12.h,
-                ),
-                child: ShowReviews(moviesDetailsStates: moviesDetailsStates),
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: 12.w,
-                  vertical: 12.h,
-                ),
-                child: ShowRecommendations(
-                  moviesDetailsStates: moviesDetailsStates,
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: 12.w,
-                  vertical: 12.h,
-                ),
-                child: ShowSimilar(
-                  moviesDetailsStates: moviesDetailsStates,
-                ),
-              ),
-            ],
+            children: sections
+                .map((section) => _PaddedSection(child: section))
+                .toList(),
           ),
         ],
       ),
+    );
+  }
+}
+
+class _PaddedSection extends StatelessWidget {
+  final Widget child;
+  const _PaddedSection({required this.child});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 12.h),
+      child: child,
     );
   }
 }
