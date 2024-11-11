@@ -10,10 +10,12 @@ class ReviewCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = getThemeData(context)[AppTheme.darkTheme]!.textTheme;
     return GestureDetector(
       onTap: () {
-        showCustomBottomSheet(context, ReviewContent(review: review));
+        showCustomBottomSheet(
+          context,
+          ReviewContent(review: review),
+        );
       },
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 12.h),
@@ -38,13 +40,13 @@ class ReviewCard extends StatelessWidget {
                     children: [
                       Text(
                         review.authorName,
-                        style: textTheme.labelMedium,
+                        style: context.textTheme.labelMedium,
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                       ),
                       Text(
                         review.authorUserName,
-                        style: textTheme.bodySmall,
+                        style: context.textTheme.bodySmall,
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                       ),
@@ -55,7 +57,7 @@ class ReviewCard extends StatelessWidget {
             ),
             Text(
               review.content,
-              style: textTheme.labelSmall,
+              style: context.textTheme.labelSmall,
               maxLines: 3,
               overflow: TextOverflow.ellipsis,
             ),
@@ -65,7 +67,7 @@ class ReviewCard extends StatelessWidget {
                 _getRatingBarIndicator(review.rating),
                 Text(
                   review.elapsedTime,
-                  style: textTheme.bodySmall,
+                  style: context.textTheme.bodySmall,
                 ),
               ],
             )
