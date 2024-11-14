@@ -6,7 +6,7 @@ class HorizontalListViewCard extends StatelessWidget {
     required this.movies,
   });
 
-  final Movies movies;
+  final Movies? movies;
 
   @override
   Widget build(BuildContext context) {
@@ -14,13 +14,13 @@ class HorizontalListViewCard extends StatelessWidget {
       padding: EdgeInsets.only(right: 8.w),
       child: InkWell(
         onTap: () {
-          navigateToMovieDetails(context, movies.id);
+          navigateToMovieDetails(context, movies?.id ?? 0);
         },
         child: ClipRRect(
           borderRadius: const BorderRadius.all(Radius.circular(8.0)).r,
           child: CachedImage(
             boxFit: BoxFit.fitHeight,
-            imageUrl: ApiConstance.imageURL(movies.backdropPath),
+            imageUrl: ApiConstance.imageURL(movies?.backdropPath ?? ''),
             width: 120.w,
             height: double.infinity,
           ),

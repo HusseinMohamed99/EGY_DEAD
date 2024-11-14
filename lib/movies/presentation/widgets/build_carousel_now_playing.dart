@@ -13,7 +13,7 @@ class BuildCarousel extends StatelessWidget {
         onPageChanged: (index, reason) {},
       ),
       items: movies.map((movie) => _buildCarouselItem(movie, context)).toList(),
-    ).skeletonize(enabled: movies.isEmpty);
+    );
   }
 
   Widget _buildCarouselItem(Movies movie, BuildContext context) {

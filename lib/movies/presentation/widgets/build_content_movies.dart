@@ -27,8 +27,6 @@ class BuildContentMovies extends StatelessWidget {
         ),
         ContentMoviesWidget(movies: movies),
       ],
-    ).skeletonize(
-      enabled: isLoading,
     );
   }
 }

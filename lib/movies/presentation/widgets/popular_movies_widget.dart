@@ -9,7 +9,9 @@ class PopularMoviesWidget extends StatelessWidget {
       buildWhen: (previous, current) =>
           previous.popularState != current.popularState,
       builder: (context, state) {
-        if (state.popularState == RequestState.loaded) {
+        if (state.popularState == RequestState.loading) {
+          return IsFilmsListLoading();
+        } else if (state.popularState == RequestState.loaded) {
           state.popularMovies.shuffle(Random());
           return BuildContentMovies(
             fetchData: false,
@@ -21,6 +23,7 @@ class PopularMoviesWidget extends StatelessWidget {
             },
           );
         } else if (state.popularState == RequestState.fetchData) {
+          state.popularMovies.shuffle(Random());
           return BuildContentMovies(
             fetchData: true,
             movies: state.popularMovies,

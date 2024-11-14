@@ -179,3 +179,5 @@ part './../../services/services_locator.dart';
 part './../function/function.dart';
 part './../theme/style/color_manger.dart';
 part './../theme/theme_data/theme_data.dart';
+
+part './../../../movies/presentation/widgets/is_films_list_loading.dart';
