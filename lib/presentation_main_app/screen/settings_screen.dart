@@ -133,9 +133,9 @@ class SettingsScreen extends StatelessWidget {
               ),
             ),
           ),
-          Space(width: 0.w, height: 8.h),
+          Spacer(),
           Text(
-            'lkjl',
+            'Version: $appVersion',
             style: context.textTheme.bodySmall,
           ),
         ],
