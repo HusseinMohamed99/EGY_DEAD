@@ -6,7 +6,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies_app/core/helpers/export_manager/export_manager.dart';
 import 'package:movies_app/firebase_options.dart';
-import 'package:upgrader/upgrader.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,9 +16,6 @@ void main() async {
   // Initialize all services including BlocProviders
   await serviceLocator();
 
-  if (kDebugMode) {
-    await Upgrader.clearSavedSettings();
-  }
   runApp(
     EgyDeadApp(
       appRouter: AppRouters(),
