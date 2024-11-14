@@ -4,8 +4,10 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:movies_app/core/helpers/constant/constant.dart';
 import 'package:movies_app/core/helpers/export_manager/export_manager.dart';
 import 'package:movies_app/firebase_options.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -15,6 +17,11 @@ void main() async {
 
   // Initialize all services including BlocProviders
   await serviceLocator();
+  PackageInfo packageInfo = await PackageInfo.fromPlatform();
+  appName = packageInfo.appName;
+  appPackageName = packageInfo.packageName;
+  appVersion = packageInfo.version;
+  appBuildNumber = packageInfo.buildNumber;
 
   runApp(
     EgyDeadApp(

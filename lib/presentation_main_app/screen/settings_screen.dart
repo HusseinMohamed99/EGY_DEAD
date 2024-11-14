@@ -5,8 +5,6 @@ class SettingsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = getThemeData(context)[AppTheme.darkTheme]!.textTheme;
-
     return Scaffold(
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -81,7 +79,7 @@ class SettingsScreen extends StatelessWidget {
                     ),
                     Text(
                       'About us',
-                      style: textTheme.bodyMedium,
+                      style: context.textTheme.bodyMedium,
                     ),
                   ],
                 ),
@@ -96,7 +94,8 @@ class SettingsScreen extends StatelessWidget {
             color: ColorManager.greyDarkColor,
             clipBehavior: Clip.antiAlias,
             shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(15).r),
+              borderRadius: BorderRadius.circular(15).r,
+            ),
             elevation: 10,
             child: InkWell(
               onTap: () {
@@ -127,12 +126,17 @@ class SettingsScreen extends StatelessWidget {
                     Space(width: 35.w, height: 0.h),
                     Text(
                       'Help',
-                      style: textTheme.bodyMedium,
+                      style: context.textTheme.bodyMedium,
                     ),
                   ],
                 ),
               ),
             ),
+          ),
+          Space(width: 0.w, height: 8.h),
+          Text(
+            'lkjl',
+            style: context.textTheme.bodySmall,
           ),
         ],
       ),
