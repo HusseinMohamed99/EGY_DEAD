@@ -13,7 +13,14 @@ class MainState extends Equatable {
         ..add(GetUpcomingMoviesEvent()),
       child: const MoviesScreen(),
     ),
-    const TvsScreen(),
+    BlocProvider(
+      create: (context) => sl<TvsBloc>()
+        ..add(GetOnTheAirTvsEvent())
+        ..add(GetAiringTodayTvsEvent())
+        ..add(GetPopularTvsEvent())
+        ..add(GetTopRatedTvsEvent()),
+      child: const TvsScreen(),
+    ),
     const SearchScreen(),
     const SettingsScreen(),
   ];

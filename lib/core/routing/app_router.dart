@@ -26,14 +26,7 @@ class AppRouters {
         );
       case Routes.tvsScreen:
         return MaterialPageRoute(
-          builder: (_) => BlocProvider(
-            create: (context) => sl<TvsBloc>()
-              ..add(GetOnTheAirTvsEvent())
-              ..add(GetAiringTodayTvsEvent())
-              ..add(GetPopularTvsEvent())
-              ..add(GetTopRatedTvsEvent()),
-            child: const TvsScreen(),
-          ),
+          builder: (_) => const TvsScreen(),
         );
       case Routes.searchScreen:
         return MaterialPageRoute(
