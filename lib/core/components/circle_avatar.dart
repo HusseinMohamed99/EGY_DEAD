@@ -18,7 +18,7 @@ class Avatar extends StatelessWidget {
         backgroundImage: imageProvider,
       ),
       errorWidget: (_, __, ___) => Image.asset(
-        Assets.imagesAvatar,
+        Assets.imagesOopsError,
         fit: BoxFit.fill,
       ),
     );

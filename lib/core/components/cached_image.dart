@@ -29,7 +29,7 @@ class CachedImage extends StatelessWidget {
           borderRadius: BorderRadius.circular(10).r,
         ),
         child: Image.asset(
-          Assets.imagesAvatar,
+          Assets.imagesOopsError,
           fit: BoxFit.fitWidth,
         ),
       ),
