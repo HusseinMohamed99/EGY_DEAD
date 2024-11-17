@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:movies_app/core/helpers/enum/enum.dart';
 import 'package:movies_app/core/helpers/export_manager/export_manager.dart';
 
 class SearchBarItem extends StatefulWidget {
@@ -24,26 +23,25 @@ class _SearchBarItemState extends State<SearchBarItem> {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = getThemeData(context)[AppTheme.darkTheme]!.textTheme;
     return TextFormField(
       keyboardType: TextInputType.text,
       controller: textController,
-      cursorColor: ColorManager.greyDarkColor,
+      cursorColor: ColorManager.whiteColor,
       cursorWidth: 1,
-      style: textTheme.bodyLarge,
+      style: context.textTheme.labelMedium,
       onChanged: (title) {
         context.read<SearchBloc>().add(GetSearchResultsEvent(title));
       },
       decoration: InputDecoration(
         focusedBorder: OutlineInputBorder(
           borderSide: const BorderSide(
-            color: ColorManager.greyDarkColor,
+            color: ColorManager.whiteColor,
           ),
           borderRadius: BorderRadius.circular(8).r,
         ),
         enabledBorder: OutlineInputBorder(
           borderSide: const BorderSide(
-            color: ColorManager.greyDarkColor,
+            color: ColorManager.whiteColor,
           ),
           borderRadius: BorderRadius.circular(8).r,
         ),
@@ -64,7 +62,7 @@ class _SearchBarItemState extends State<SearchBarItem> {
           ),
         ),
         hintText: 'Search',
-        hintStyle: textTheme.bodyLarge,
+        hintStyle: context.textTheme.labelMedium,
       ),
     );
   }

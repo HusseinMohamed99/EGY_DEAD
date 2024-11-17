@@ -7,12 +7,11 @@ class NoResults extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = getThemeData(context)[AppTheme.darkTheme]!.textTheme;
     return Expanded(
       child: Center(
         child: Text(
           'No Results',
-          style: textTheme.bodyLarge,
+          style: context.textTheme.labelMedium,
         ),
       ),
     );

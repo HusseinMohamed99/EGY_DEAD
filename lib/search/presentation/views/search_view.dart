@@ -17,16 +17,14 @@ class SearchWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = getThemeData(context)[AppTheme.darkTheme]!.textTheme;
-
     return SafeArea(
       child: Scaffold(
         body: Padding(
-          padding: const EdgeInsets.only(
-            top: 12,
-            left: 16,
-            right: 16,
-          ).r,
+          padding: EdgeInsets.only(
+            top: 12.h,
+            left: 16.w,
+            right: 16.w,
+          ),
           child: Column(
             children: [
               const SearchBarItem(),
@@ -43,7 +41,7 @@ class SearchWidget extends StatelessWidget {
                       return Expanded(
                         child: Text(
                           'Please try again later',
-                          style: textTheme.titleMedium,
+                          style: context.textTheme.titleMedium,
                         ),
                       );
                     case SearchRequestStatus.noResults:

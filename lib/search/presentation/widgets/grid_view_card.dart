@@ -10,7 +10,6 @@ class GridViewCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = getThemeData(context)[AppTheme.darkTheme]!.textTheme;
     return Column(
       children: [
         GestureDetector(
@@ -50,7 +49,7 @@ class GridViewCard extends StatelessWidget {
             item.title,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
-            style: textTheme.bodyMedium,
+            style: context.textTheme.labelMedium,
           ),
         ),
       ],

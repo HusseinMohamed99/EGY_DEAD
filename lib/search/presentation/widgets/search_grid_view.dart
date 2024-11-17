@@ -12,7 +12,7 @@ class SearchGridView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: GridView.builder(
-        padding: const EdgeInsets.symmetric(vertical: 12).r,
+        padding: EdgeInsets.symmetric(vertical: 12.h),
         itemCount: results.length,
         physics: const BouncingScrollPhysics(),
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
