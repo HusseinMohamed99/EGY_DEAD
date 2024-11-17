@@ -10,7 +10,7 @@ class PopularMoviesWidget extends StatelessWidget {
           previous.popularState != current.popularState,
       builder: (context, state) {
         if (state.popularState == RequestState.loading) {
-          return IsFilmsListLoading();
+          return IsListLoading();
         } else if (state.popularState == RequestState.loaded) {
           state.popularMovies.shuffle(Random());
           return BuildContentMovies(

@@ -1,7 +1,7 @@
-part of './../../../core/helpers/export_manager/export_manager.dart';
+part of '../helpers/export_manager/export_manager.dart';
 
-class IsFilmsListLoading extends StatelessWidget {
-  const IsFilmsListLoading({super.key});
+class IsListLoading extends StatelessWidget {
+  const IsListLoading({super.key});
 
   @override
   Widget build(BuildContext context) {

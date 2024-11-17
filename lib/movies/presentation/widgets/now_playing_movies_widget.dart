@@ -10,7 +10,7 @@ class NowPlayingWidget extends StatelessWidget {
           previous.nowPlayingState != current.nowPlayingState,
       builder: (context, state) {
         if (state.nowPlayingState == RequestState.loaded) {
-          return BuildCarousel(movies: state.nowPlayingMovies);
+          return NowPlayingCarousel(movies: state.nowPlayingMovies);
         } else {
           return BuildSkeletonCarousel();
         }

@@ -1,8 +1,8 @@
 part of './../../../core/helpers/export_manager/export_manager.dart';
 
-class NowPlayingCarousel extends StatelessWidget {
-  const NowPlayingCarousel({super.key, required this.movies});
-  final List<Movies> movies;
+class OnTheAirCarousel extends StatelessWidget {
+  const OnTheAirCarousel({super.key, required this.tvModel});
+  final List<Tvs> tvModel;
   @override
   Widget build(BuildContext context) {
     return CarouselSlider(
@@ -12,18 +12,20 @@ class NowPlayingCarousel extends StatelessWidget {
         viewportFraction: 1.0,
         onPageChanged: (index, reason) {},
       ),
-      items: movies.map((movie) => _buildCarouselItem(movie, context)).toList(),
+      items: tvModel
+          .map((tvModel) => _buildCarouselItem(tvModel, context))
+          .toList(),
     );
   }
 
-  Widget _buildCarouselItem(Movies movie, BuildContext context) {
+  Widget _buildCarouselItem(Tvs tvModel, BuildContext context) {
     return GestureDetector(
       key: const Key('openMovieMinimalDetail'),
-      onTap: () => navigateToMovieDetails(context, movie.id),
+      onTap: () => navigateToMovieDetails(context, tvModel.id),
       child: Stack(
         children: [
-          _buildBackgroundImage(movie.backdropPath),
-          _buildMovieDetailsOverlay(context, movie),
+          _buildBackgroundImage(tvModel.backdropPath),
+          _buildMovieDetailsOverlay(context, tvModel),
         ],
       ),
     );
@@ -54,12 +56,12 @@ class NowPlayingCarousel extends StatelessWidget {
     );
   }
 
-  Widget _buildMovieDetailsOverlay(BuildContext context, Movies movie) {
+  Widget _buildMovieDetailsOverlay(BuildContext context, Tvs tvModel) {
     return Column(
       children: [
-        _buildPosterImage(movie.posterPath),
+        _buildPosterImage(tvModel.posterPath),
         const Spacer(),
-        _buildMovieInfo(context, movie),
+        _buildMovieInfo(context, tvModel),
       ],
     );
   }
@@ -91,14 +93,14 @@ class NowPlayingCarousel extends StatelessWidget {
     );
   }
 
-  Widget _buildMovieInfo(BuildContext context, Movies movie) {
+  Widget _buildMovieInfo(BuildContext context, Tvs tvModel) {
     return Align(
       alignment: Alignment.bottomCenter,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           _buildNowPlayingLabel(context),
-          _buildMovieTitle(context, movie.title),
+          _buildMovieTitle(context, tvModel.name),
         ],
       ),
     );
