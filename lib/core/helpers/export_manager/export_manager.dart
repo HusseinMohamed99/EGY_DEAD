@@ -201,3 +201,6 @@ part './../../../tvs/presentation/widgets/taps_widget.dart';
 part './../../../tvs/presentation/widgets/show_recommendation_series.dart';
 part './../../../tvs/presentation/widgets/recommendation_loaded_list_view.dart';
 part './../../../tvs/presentation/widgets/recommendation_loaded_item.dart';
+part './../../../tvs/presentation/widgets/similar_loaded_list_view.dart';
+part './../../../tvs/presentation/widgets/show_similar_series.dart';
+part './../../../tvs/presentation/widgets/loading_tap_series_skeletonizer_widget.dart';
