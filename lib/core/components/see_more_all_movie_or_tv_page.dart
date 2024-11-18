@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class SeeMoreAllMovies extends StatefulWidget {
-  const SeeMoreAllMovies({
+class ExploreAllMoviesOrTvsPage extends StatefulWidget {
+  const ExploreAllMoviesOrTvsPage({
     super.key,
     required this.itemCount,
     required this.itemBuilder,
@@ -14,10 +14,11 @@ class SeeMoreAllMovies extends StatefulWidget {
   final VoidCallback addEvent;
 
   @override
-  State<SeeMoreAllMovies> createState() => _SeeMoreAllMoviesState();
+  State<ExploreAllMoviesOrTvsPage> createState() =>
+      _ExploreAllMoviesOrTvsPageState();
 }
 
-class _SeeMoreAllMoviesState extends State<SeeMoreAllMovies> {
+class _ExploreAllMoviesOrTvsPageState extends State<ExploreAllMoviesOrTvsPage> {
   final ScrollController _scrollController = ScrollController();
 
   @override

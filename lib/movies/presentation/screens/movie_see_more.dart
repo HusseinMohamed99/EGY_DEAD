@@ -18,7 +18,7 @@ class MovieSeeMoreScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: _buildAppBar(context),
-      body: SeeMoreAllMovies(
+      body: ExploreAllMoviesOrTvsPage(
         itemCount: movieList.length + (fetchData ? 0 : 1),
         itemBuilder: (context, index) {
           if (index < movieList.length) {
