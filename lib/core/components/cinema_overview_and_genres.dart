@@ -1,9 +1,11 @@
-part of './../../../core/helpers/export_manager/export_manager.dart';
+part of '../helpers/export_manager/export_manager.dart';
 
-class FilmOverviewAndGenres extends StatelessWidget {
-  const FilmOverviewAndGenres({super.key, required this.moviesDetailsStates});
+class CinemaOverviewAndGenres extends StatelessWidget {
+  const CinemaOverviewAndGenres(
+      {super.key, required this.overview, required this.genres});
 
-  final MoviesDetailsStates moviesDetailsStates;
+  final String overview;
+  final List<Genres> genres;
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +13,7 @@ class FilmOverviewAndGenres extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          moviesDetailsStates.moviesDetails?.overview ?? "",
+          overview,
           style: context.textTheme.titleSmall,
         ),
         Space(height: 8, width: 0),
@@ -21,8 +23,7 @@ class FilmOverviewAndGenres extends StatelessWidget {
             style: context.textTheme.titleMedium,
             children: [
               TextSpan(
-                text: _showGenres(
-                    moviesDetailsStates.moviesDetails?.genres ?? []),
+                text: _showGenres(genres),
                 style: context.textTheme.labelSmall!.copyWith(
                   color: ColorManager.primaryRedColor,
                 ),

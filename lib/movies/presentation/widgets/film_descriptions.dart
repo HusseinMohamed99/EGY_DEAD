@@ -14,7 +14,10 @@ class FilmDescription extends StatelessWidget {
       children: [
         FilmInfoRow(moviesDetailsStates: moviesDetailsStates),
         Space(height: 16, width: 0),
-        FilmOverviewAndGenres(moviesDetailsStates: moviesDetailsStates),
+        CinemaOverviewAndGenres(
+          overview: moviesDetailsStates.moviesDetails?.overview ?? "",
+          genres: moviesDetailsStates.moviesDetails?.genres ?? [],
+        ),
       ],
     );
   }

@@ -50,6 +50,10 @@ class TvsDetailsContentLoaded extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final sections = [
+      SeriesDescription(state: state),
+      BuildTabBarSection(),
+    ];
     return DefaultTabController(
       length: 3,
       initialIndex: 0,
@@ -57,57 +61,30 @@ class TvsDetailsContentLoaded extends StatelessWidget {
         key: const Key('tvDetailScrollView'),
         physics: const BouncingScrollPhysics(),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             CinemaBackdropWidget(
-                backdropPath: state.tvsDetails?.backdropPath ?? ''),
-            _buildDetailsSection(context, state),
-            _buildTabBarSection(),
+              backdropPath: state.tvsDetails?.backdropPath ?? '',
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: sections
+                  .map(
+                    (section) => PaddedSection(child: section),
+                  )
+                  .toList(),
+            ),
           ],
         ),
       ),
     );
   }
+}
 
-  Widget _buildDetailsSection(BuildContext context, TvsDetailsStates state) {
-    return FadeInUp(
-      from: 20,
-      duration: const Duration(milliseconds: 500),
-      child: Padding(
-        padding: const EdgeInsets.all(12.0).r,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SeriesInfoRow(state: state),
-            Space(height: 8, width: 0),
-            _buildOverviewSection(context, state),
-          ],
-        ),
-      ),
-    );
-  }
+class BuildTabBarSection extends StatelessWidget {
+  const BuildTabBarSection({super.key});
 
-  Widget _buildOverviewSection(BuildContext context, TvsDetailsStates state) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0).r,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            state.tvsDetails!.overview,
-            style: context.textTheme.titleMedium,
-          ),
-          Space(height: 8, width: 0),
-          Text(
-            'Genres: ${_showGenres(state.tvsDetails!.genres)}',
-            style: context.textTheme.labelSmall!.copyWith(color: Colors.grey),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildTabBarSection() {
+  @override
+  Widget build(BuildContext context) {
     return Column(
       children: [
         TabBar(
@@ -138,6 +115,30 @@ class TvsDetailsContentLoaded extends StatelessWidget {
   }
 }
 
+class SeriesDescription extends StatelessWidget {
+  const SeriesDescription({
+    super.key,
+    required this.state,
+  });
+
+  final TvsDetailsStates state;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        SeriesInfoRow(state: state),
+        Space(height: 16, width: 0),
+        CinemaOverviewAndGenres(
+          overview: state.tvsDetails!.overview,
+          genres: state.tvsDetails!.genres,
+        ),
+      ],
+    );
+  }
+}
+
 class SeriesInfoRow extends StatelessWidget {
   const SeriesInfoRow({
     super.key,
@@ -155,7 +156,7 @@ class SeriesInfoRow extends StatelessWidget {
         Space(width: 16, height: 0),
         Expanded(
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               WatchTrailerButton(
                 trailerUrl: state.tvsDetails?.trailerUrl ?? '',

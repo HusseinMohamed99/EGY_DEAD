@@ -56,7 +56,7 @@ class MovieDetailsDisplay extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: sections
                     .map(
-                      (section) => _PaddedSection(child: section),
+                      (section) => PaddedSection(child: section),
                     )
                     .toList(),
               ),
@@ -64,19 +64,6 @@ class MovieDetailsDisplay extends StatelessWidget {
           ),
         ],
       ),
-    );
-  }
-}
-
-class _PaddedSection extends StatelessWidget {
-  final Widget child;
-  const _PaddedSection({required this.child});
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 12.h),
-      child: child,
     );
   }
 }
