@@ -197,3 +197,7 @@ part './../../../tvs/presentation/widgets/series_info_row.dart';
 part './../../../tvs/presentation/widgets/loading_tvs_details_content.dart';
 part './../../../tvs/presentation/widgets/show_season_series.dart';
 part './../../../tvs/presentation/widgets/seasons_loaded_item.dart';
+part './../../../tvs/presentation/widgets/taps_widget.dart';
+part './../../../tvs/presentation/widgets/show_recommendation_series.dart';
+part './../../../tvs/presentation/widgets/recommendation_loaded_list_view.dart';
+part './../../../tvs/presentation/widgets/recommendation_loaded_item.dart';

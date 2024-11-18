@@ -21,119 +21,6 @@ class TvsDetailsScreen extends StatelessWidget {
   }
 }
 
-class TapsWidget extends StatelessWidget {
-  const TapsWidget({
-    super.key,
-    required this.title,
-  });
-  final String title;
-  @override
-  Widget build(BuildContext context) {
-    return Tab(
-      child: FadeInUp(
-        from: 20,
-        duration: const Duration(milliseconds: 500),
-        child: Text(
-          title,
-          style: context.textTheme.labelSmall,
-        ),
-      ),
-    );
-  }
-}
-
-class ShowRecommendationSeries extends StatelessWidget {
-  const ShowRecommendationSeries({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<TvsDetailsBloc, TvsDetailsStates>(
-      builder: (context, state) {
-        if (state.tvsRecommendationStates == RequestState.loading) {
-          return LoadingTapSeriesSkeletonWidget();
-        } else if (state.tvsRecommendationStates == RequestState.loaded) {
-          return RecommendationLoadedListView(state: state);
-        } else {
-          return BuildErrorMessage(
-            errorMessage: state.tvsRecommendationMessage,
-          );
-        }
-      },
-    );
-  }
-}
-
-class RecommendationLoadedListView extends StatelessWidget {
-  const RecommendationLoadedListView({
-    super.key,
-    required this.state,
-  });
-  final TvsDetailsStates state;
-  @override
-  Widget build(BuildContext context) {
-    return ListView.separated(
-      scrollDirection: Axis.vertical,
-      padding: EdgeInsets.symmetric(
-        horizontal: 16.w,
-        vertical: 16.h,
-      ),
-      itemCount: state.tvsRecommendation.length,
-      itemBuilder: (context, index) {
-        final recommendation = state.tvsRecommendation[index];
-        return LoadedItem(
-          iD: recommendation.id,
-          backdropPath: recommendation.backdropPath ?? '',
-        );
-      },
-      separatorBuilder: (context, index) {
-        return Space(height: 20.h, width: 0);
-      },
-    );
-  }
-}
-
-class LoadedItem extends StatelessWidget {
-  const LoadedItem({
-    super.key,
-    required this.iD,
-    required this.backdropPath,
-  });
-
-  final int iD;
-  final String backdropPath;
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => TvsDetailsScreen(tvsID: iD),
-          ),
-        );
-      },
-      child: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10).r,
-          border: Border.all(
-            color: ColorManager.whiteColor,
-          ),
-        ),
-        child: ClipRRect(
-          borderRadius: const BorderRadius.all(Radius.circular(8.0)).r,
-          child: CachedImage(
-            imageUrl: ApiConstance.imageURL(backdropPath),
-            width: 100.w,
-            height: 100.h,
-            boxFit: BoxFit.cover,
-          ),
-        ),
-      ),
-    );
-  }
-}
-
 class SimilarLoadedListView extends StatelessWidget {
   const SimilarLoadedListView({
     super.key,
@@ -151,7 +38,7 @@ class SimilarLoadedListView extends StatelessWidget {
       itemCount: state.tvsSimilar.length,
       itemBuilder: (context, index) {
         final similar = state.tvsSimilar[index];
-        return LoadedItem(
+        return RecommendationLoadedItem(
           iD: similar.id,
           backdropPath: similar.backdropPath ?? '',
         );
