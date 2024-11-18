@@ -192,3 +192,5 @@ part './../../components/padded_section.dart';
 part './../../../tvs/presentation/widgets/tvs_details_content.dart';
 part './../../../tvs/presentation/widgets/tvs_details_content_loaded.dart';
 part './../../../tvs/presentation/widgets/build_tab_bar_section.dart';
+part './../../../tvs/presentation/widgets/series_description.dart';
+part './../../../tvs/presentation/widgets/series_info_row.dart';

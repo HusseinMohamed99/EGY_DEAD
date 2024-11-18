@@ -9,9 +9,9 @@ class BuildTabBarSection extends StatelessWidget {
       children: [
         TabBar(
           labelPadding: EdgeInsets.zero,
-          labelColor: Colors.white,
-          unselectedLabelColor: Colors.grey.shade700,
-          indicatorColor: Colors.redAccent,
+          labelColor: ColorManager.whiteColor,
+          unselectedLabelColor: ColorManager.greyColor,
+          indicatorColor: ColorManager.primaryRedColor,
           indicatorSize: TabBarIndicatorSize.label,
           tabs: [
             TapsWidget(title: AppString.seasons),
