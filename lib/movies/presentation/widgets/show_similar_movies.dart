@@ -31,17 +31,15 @@ class ShowSimilarMovies extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<MoviesDetailsBloc, MoviesDetailsStates>(
       builder: (context, state) {
-        if (_isLoaded(state)) {
+        if (state.moviesDetailsStates == RequestState.loading) {
+          return SizedBox(height: 170.h, child: const LoadingIndicator());
+        } else if (state.moviesDetailsStates == RequestState.loaded) {
           return _buildMoviesList(state);
+        } else {
+          return _buildNoDataFound(state);
         }
-
-        return _buildNoDataFound(state);
       },
     );
-  }
-
-  bool _isLoaded(MoviesDetailsStates state) {
-    return state.moviesSimilarStates == RequestState.loaded;
   }
 
   Widget _buildMoviesList(MoviesDetailsStates state) {
@@ -53,33 +51,30 @@ class ShowSimilarMovies extends StatelessWidget {
         itemCount: state.moviesSimilar.length,
         itemBuilder: (context, index) {
           final similar = state.moviesSimilar[index];
-          return _buildMovieItem(context, similar);
-        },
-      ),
-    );
-  }
 
-  Widget _buildMovieItem(BuildContext context, MoviesSimilar similar) {
-    return Container(
-      padding: EdgeInsets.only(right: 8.w),
-      child: GestureDetector(
-        onTap: () => _navigateToMovieDetails(context, similar.id),
-        child: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10).r,
-            border: Border.all(color: ColorManager.whiteColor),
-          ),
-          child: ClipRRect(
-            borderRadius: const BorderRadius.all(
-              Radius.circular(8.0),
-            ).r,
-            child: CachedImage(
-              imageUrl: ApiConstance.imageURL(similar.backdropPath!),
-              width: 120.w,
-              height: double.infinity,
+          return Padding(
+            padding: EdgeInsets.only(right: 8.w),
+            child: GestureDetector(
+              onTap: () => _navigateToMovieDetails(context, similar.id),
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10).r,
+                  border: Border.all(color: ColorManager.whiteColor),
+                ),
+                child: ClipRRect(
+                  borderRadius: const BorderRadius.all(
+                    Radius.circular(8.0),
+                  ).r,
+                  child: CachedImage(
+                    imageUrl: ApiConstance.imageURL(similar.backdropPath ?? ''),
+                    width: 120.w,
+                    height: double.infinity,
+                  ),
+                ),
+              ),
             ),
-          ),
-        ),
+          );
+        },
       ),
     );
   }
