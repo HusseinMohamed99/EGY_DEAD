@@ -8,13 +8,7 @@ class MovieDescriptionPanel extends StatelessWidget {
     return BlocBuilder<MoviesDetailsBloc, MoviesDetailsStates>(
       builder: (context, state) {
         if (state.moviesDetailsStates == RequestState.loading) {
-          return Skeletonizer(
-            switchAnimationConfig: SwitchAnimationConfig(
-              duration: Duration(milliseconds: 800),
-              reverseDuration: Duration(milliseconds: 800),
-            ),
-            child: MovieDetailsDisplay(moviesDetailsStates: state),
-          );
+          return MovieDetailsDisplay(moviesDetailsStates: state).skeletonize();
         } else if (state.moviesDetailsStates == RequestState.loaded) {
           return MovieDetailsDisplay(moviesDetailsStates: state);
         } else {

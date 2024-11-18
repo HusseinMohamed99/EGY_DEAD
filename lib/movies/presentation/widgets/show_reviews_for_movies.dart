@@ -35,7 +35,7 @@ class ShowReviewsForMovies extends StatelessWidget {
     return (reviews?.isNotEmpty ?? false)
         ? SectionCastOrReviewsListView(
             height: 150.h,
-            itemCount: reviews!.length,
+            itemCount: reviews?.length ?? 0,
             itemBuilder: (context, index) => ReviewCard(
               review: reviews?[index] ??
                   Review(
