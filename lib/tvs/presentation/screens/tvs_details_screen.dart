@@ -21,25 +21,6 @@ class TvsDetailsScreen extends StatelessWidget {
   }
 }
 
-class TvsDetailsContent extends StatelessWidget {
-  const TvsDetailsContent({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<TvsDetailsBloc, TvsDetailsStates>(
-      builder: (context, state) {
-        if (state.tvsDetailsStates == RequestState.loading) {
-          return LoadingTvsDetailsContent();
-        } else if (state.tvsDetailsStates == RequestState.loaded) {
-          return TvsDetailsContentLoaded(state: state);
-        } else {
-          return BuildErrorMessage(errorMessage: state.tvsDetailsMessage);
-        }
-      },
-    );
-  }
-}
-
 class TvsDetailsContentLoaded extends StatelessWidget {
   const TvsDetailsContentLoaded({
     super.key,

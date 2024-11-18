@@ -188,3 +188,5 @@ part './../theme/style/color_manger.dart';
 part './../theme/theme_data/theme_data.dart';
 
 part './../../components/padded_section.dart';
+
+part './../../../tvs/presentation/widgets/tvs_details_content.dart';
