@@ -18,28 +18,9 @@ class MovieDescriptionPanel extends StatelessWidget {
         } else if (state.moviesDetailsStates == RequestState.loaded) {
           return MovieDetailsDisplay(moviesDetailsStates: state);
         } else {
-          return _ErrorOrFetchDataMessage(message: state.moviesDetailsMessage);
+          return BuildErrorMessage(errorMessage: state.moviesDetailsMessage);
         }
       },
-    );
-  }
-}
-
-class _ErrorOrFetchDataMessage extends StatelessWidget {
-  final String message;
-
-  const _ErrorOrFetchDataMessage({required this.message});
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: 300.h,
-      child: Center(
-        child: Text(
-          message,
-          style: context.textTheme.titleLarge,
-        ),
-      ),
     );
   }
 }
@@ -68,7 +49,9 @@ class MovieDetailsDisplay extends StatelessWidget {
         children: [
           Column(
             children: [
-              CinemaBackdropWidget(moviesDetailsStates: moviesDetailsStates),
+              CinemaBackdropWidget(
+                  backdropPath:
+                      moviesDetailsStates.moviesDetails?.backdropPath ?? ''),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: sections

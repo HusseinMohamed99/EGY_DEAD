@@ -43,7 +43,7 @@ class ContentTvWidget extends StatelessWidget {
     return HorizontalListView(
       itemCount: tvModel.length,
       itemBuilder: (context, index) {
-        return HorizontalListViewCardTv(tvModel: tvModel[index]);
+        return HorizontalTvCardView(tvModel: tvModel[index]);
       },
     );
   }
@@ -104,8 +104,8 @@ class BuildHeaderTvWidget extends StatelessWidget {
   }
 }
 
-class HorizontalListViewCardTv extends StatelessWidget {
-  const HorizontalListViewCardTv({
+class HorizontalTvCardView extends StatelessWidget {
+  const HorizontalTvCardView({
     super.key,
     required this.tvModel,
   });

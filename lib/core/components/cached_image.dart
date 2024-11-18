@@ -30,7 +30,7 @@ class CachedImage extends StatelessWidget {
         ),
         child: Image.asset(
           Assets.imagesOopsError,
-          fit: BoxFit.fitWidth,
+          fit: BoxFit.fitHeight,
         ),
       ),
     );

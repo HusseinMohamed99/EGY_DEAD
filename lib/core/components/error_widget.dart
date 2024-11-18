@@ -1,4 +1,4 @@
-part of './../../../core/helpers/export_manager/export_manager.dart';
+part of '../helpers/export_manager/export_manager.dart';
 
 class BuildErrorMessage extends StatelessWidget {
   const BuildErrorMessage({super.key, required this.errorMessage});

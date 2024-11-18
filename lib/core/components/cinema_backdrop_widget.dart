@@ -1,18 +1,17 @@
-part of './../../../core/helpers/export_manager/export_manager.dart';
+part of '../helpers/export_manager/export_manager.dart';
 
 class CinemaBackdropWidget extends StatelessWidget {
   const CinemaBackdropWidget({
     super.key,
-    required this.moviesDetailsStates,
+    required this.backdropPath,
   });
 
-  final MoviesDetailsStates moviesDetailsStates;
+  final String backdropPath;
 
   @override
   Widget build(BuildContext context) {
     return CachedImage(
-      imageUrl: ApiConstance.imageURL(
-          moviesDetailsStates.moviesDetails?.backdropPath ?? ''),
+      imageUrl: ApiConstance.imageURL(backdropPath),
       width: double.infinity,
       height: 200.h,
       boxFit: BoxFit.fitHeight,

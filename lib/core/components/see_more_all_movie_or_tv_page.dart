@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -43,7 +45,7 @@ class _ExploreAllMoviesOrTvsPageState extends State<ExploreAllMoviesOrTvsPage> {
         if (widget.addEvent != null) {
           widget.addEvent!(); // Trigger fetching more data
         } else {
-          print("No more data to fetch");
+          log("No more data to fetch");
         }
       }
     }
