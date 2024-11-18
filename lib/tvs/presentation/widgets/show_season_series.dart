@@ -8,26 +8,38 @@ class ShowSeasonSeries extends StatelessWidget {
     return BlocBuilder<TvsDetailsBloc, TvsDetailsStates>(
       builder: (context, state) {
         if (state.tvsDetailsStates == RequestState.loading) {
-          return LoadingTapSeriesSkeletonWidget();
+          return SeasonSeriesLoaded(state: state).skeletonize();
         } else if (state.tvsDetailsStates == RequestState.loaded) {
-          return ListView.separated(
-            padding: EdgeInsets.symmetric(
-              horizontal: 16.w,
-              vertical: 16.h,
-            ),
-            itemCount: state.tvsDetails!.season.length,
-            itemBuilder: (context, index) {
-              final season = state.tvsDetails!.season[index];
-              return SeasonsLoadedItem(season: season);
-            },
-            separatorBuilder: (context, index) => Space(height: 20, width: 0),
-          );
+          return SeasonSeriesLoaded(state: state);
         } else {
           return BuildErrorMessage(
             errorMessage: state.tvsDetailsMessage,
           );
         }
       },
+    );
+  }
+}
+
+class SeasonSeriesLoaded extends StatelessWidget {
+  const SeasonSeriesLoaded({
+    super.key,
+    required this.state,
+  });
+  final TvsDetailsStates state;
+  @override
+  Widget build(BuildContext context) {
+    return ListView.separated(
+      padding: EdgeInsets.symmetric(
+        horizontal: 16.w,
+        vertical: 16.h,
+      ),
+      itemCount: state.tvsDetails?.season.length ?? 0,
+      itemBuilder: (context, index) {
+        final season = state.tvsDetails!.season[index];
+        return SeasonsLoadedItem(season: season);
+      },
+      separatorBuilder: (context, index) => Space(height: 20, width: 0),
     );
   }
 }

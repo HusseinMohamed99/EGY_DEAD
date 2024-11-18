@@ -10,24 +10,15 @@ class TopRatedTvsWidget extends StatelessWidget {
           previous.topRatedStates != current.topRatedStates,
       builder: (context, state) {
         if (state.topRatedStates == RequestState.loading) {
-          return IsListLoading();
+          return BuildContentTv(
+            tvModel: state.topRatedTvs,
+            title: AppString.topRated,
+          ).skeletonize();
         } else if (state.topRatedStates == RequestState.loaded) {
           state.topRatedTvs.shuffle(Random());
           return BuildContentTv(
-            fetchData: false,
             tvModel: state.topRatedTvs,
             title: AppString.topRated,
-            isLoading: state.topRatedStates == RequestState.loading,
-            addEvent: () {},
-          );
-        } else if (state.topRatedStates == RequestState.fetchData) {
-          state.topRatedTvs.shuffle(Random());
-          return BuildContentTv(
-            fetchData: true,
-            tvModel: state.topRatedTvs,
-            title: AppString.topRated,
-            isLoading: state.topRatedStates == RequestState.loading,
-            addEvent: () {},
           );
         } else {
           return BuildErrorMessage(errorMessage: state.topRatedMessage);

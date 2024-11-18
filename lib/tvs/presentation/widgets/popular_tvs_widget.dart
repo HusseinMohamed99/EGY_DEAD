@@ -10,24 +10,15 @@ class PopularTvsWidget extends StatelessWidget {
           previous.popularState != current.popularState,
       builder: (context, state) {
         if (state.popularState == RequestState.loading) {
-          return IsListLoading();
+          return BuildContentTv(
+            tvModel: state.popularTvs,
+            title: AppString.popular,
+          ).skeletonize();
         } else if (state.popularState == RequestState.loaded) {
           state.popularTvs.shuffle(Random());
           return BuildContentTv(
-            fetchData: false,
             tvModel: state.popularTvs,
             title: AppString.popular,
-            isLoading: state.popularState == RequestState.loading,
-            addEvent: () {},
-          );
-        } else if (state.popularState == RequestState.fetchData) {
-          state.popularTvs.shuffle(Random());
-          return BuildContentTv(
-            fetchData: true,
-            tvModel: state.popularTvs,
-            title: AppString.popular,
-            isLoading: state.popularState == RequestState.loading,
-            addEvent: () {},
           );
         } else {
           return BuildErrorMessage(errorMessage: state.popularMessage);

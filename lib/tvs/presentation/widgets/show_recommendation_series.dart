@@ -8,7 +8,7 @@ class ShowRecommendationSeries extends StatelessWidget {
     return BlocBuilder<TvsDetailsBloc, TvsDetailsStates>(
       builder: (context, state) {
         if (state.tvsRecommendationStates == RequestState.loading) {
-          return LoadingTapSeriesSkeletonWidget();
+          return RecommendationLoadedListView(state: state).skeletonize();
         } else if (state.tvsRecommendationStates == RequestState.loaded) {
           return RecommendationLoadedListView(state: state);
         } else {

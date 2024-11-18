@@ -8,7 +8,7 @@ class ShowSimilarSeries extends StatelessWidget {
     return BlocBuilder<TvsDetailsBloc, TvsDetailsStates>(
       builder: (context, state) {
         if (state.tvsSimilarStates == RequestState.loading) {
-          return LoadingTapSeriesSkeletonWidget();
+          return SimilarLoadedListView(state: state).skeletonize();
         } else if (state.tvsSimilarStates == RequestState.loaded) {
           return SimilarLoadedListView(state: state);
         } else {

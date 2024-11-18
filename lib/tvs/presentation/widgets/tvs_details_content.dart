@@ -8,13 +8,7 @@ class TvsDetailsContent extends StatelessWidget {
     return BlocBuilder<TvsDetailsBloc, TvsDetailsStates>(
       builder: (context, state) {
         if (state.tvsDetailsStates == RequestState.loading) {
-          return Skeletonizer(
-            switchAnimationConfig: SwitchAnimationConfig(
-              duration: Duration(milliseconds: 800),
-              reverseDuration: Duration(milliseconds: 800),
-            ),
-            child: TvsDetailsContentLoaded(state: state),
-          );
+          return TvsDetailsContentLoaded(state: state).skeletonize();
         } else if (state.tvsDetailsStates == RequestState.loaded) {
           return TvsDetailsContentLoaded(state: state);
         } else {

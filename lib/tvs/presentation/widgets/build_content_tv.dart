@@ -5,25 +5,17 @@ class BuildContentTv extends StatelessWidget {
     super.key,
     required this.tvModel,
     required this.title,
-    required this.isLoading,
-    required this.addEvent,
-    required this.fetchData,
   });
   final List<Tvs> tvModel;
   final String title;
-  final bool isLoading;
-  final VoidCallback addEvent;
-  final bool fetchData;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         BuildHeaderTvWidget(
-          fetchData: fetchData,
           tvModel: tvModel,
           title: title,
-          addEvent: addEvent,
         ),
         ContentTvWidget(tvModel: tvModel),
       ],
@@ -54,13 +46,9 @@ class BuildHeaderTvWidget extends StatelessWidget {
     super.key,
     required this.title,
     required this.tvModel,
-    required this.addEvent,
-    required this.fetchData,
   });
   final String title;
   final List<Tvs> tvModel;
-  final VoidCallback addEvent;
-  final bool fetchData;
 
   @override
   Widget build(BuildContext context) {

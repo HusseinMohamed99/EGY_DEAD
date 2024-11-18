@@ -10,7 +10,15 @@ class UpcomingMoviesWidget extends StatelessWidget {
           previous.upcomingState != current.upcomingState,
       builder: (context, state) {
         if (state.upcomingState == RequestState.loading) {
-          return IsListLoading();
+          return BuildContentMovies(
+            fetchData: false,
+            movies: state.upcomingMovies,
+            title: AppString.upcoming,
+            isLoading: state.upcomingState == RequestState.loading,
+            addEvent: () {
+              context.read<MoviesBloc>().add(FetchMoreUpcomingMoviesEvent());
+            },
+          ).skeletonize();
         } else if (state.upcomingState == RequestState.loaded) {
           state.upcomingMovies.shuffle(Random());
           return BuildContentMovies(

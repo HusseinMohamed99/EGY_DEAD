@@ -9,24 +9,15 @@ class AiringTodayWidget extends StatelessWidget {
           previous.airingTodayState != current.airingTodayState,
       builder: (context, state) {
         if (state.airingTodayState == RequestState.loading) {
-          return IsListLoading();
+          return BuildContentTv(
+            tvModel: state.airingTodayTvs,
+            title: AppString.airingToday,
+          ).skeletonize();
         } else if (state.airingTodayState == RequestState.loaded) {
           state.airingTodayTvs.shuffle(Random());
           return BuildContentTv(
-            fetchData: false,
             tvModel: state.airingTodayTvs,
             title: AppString.airingToday,
-            isLoading: state.airingTodayState == RequestState.loading,
-            addEvent: () {},
-          );
-        } else if (state.airingTodayState == RequestState.fetchData) {
-          state.airingTodayTvs.shuffle(Random());
-          return BuildContentTv(
-            fetchData: true,
-            tvModel: state.airingTodayTvs,
-            title: AppString.airingToday,
-            isLoading: state.airingTodayState == RequestState.loading,
-            addEvent: () {},
           );
         } else {
           return BuildErrorMessage(errorMessage: state.airingTodayMessage);
