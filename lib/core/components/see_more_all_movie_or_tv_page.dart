@@ -6,12 +6,12 @@ class ExploreAllMoviesOrTvsPage extends StatefulWidget {
     super.key,
     required this.itemCount,
     required this.itemBuilder,
-    required this.addEvent,
+    this.addEvent,
   });
 
   final int itemCount;
   final Widget Function(BuildContext context, int index) itemBuilder;
-  final VoidCallback addEvent;
+  final VoidCallback? addEvent;
 
   @override
   State<ExploreAllMoviesOrTvsPage> createState() =>
@@ -40,7 +40,11 @@ class _ExploreAllMoviesOrTvsPageState extends State<ExploreAllMoviesOrTvsPage> {
     if (_scrollController.position.atEdge) {
       bool isBottom = _scrollController.position.pixels != 0;
       if (isBottom) {
-        widget.addEvent(); // Trigger fetching more data
+        if (widget.addEvent != null) {
+          widget.addEvent!(); // Trigger fetching more data
+        } else {
+          print("No more data to fetch");
+        }
       }
     }
   }
