@@ -16,8 +16,11 @@ class SeriesDescription extends StatelessWidget {
         SeriesInfoRow(state: state),
         Space(height: 16, width: 0),
         CinemaOverviewAndGenres(
-          overview: state.tvsDetails!.overview,
-          genres: state.tvsDetails!.genres,
+          overview: state.tvsDetails?.overview ?? '',
+          genres: state.tvsDetails?.genres ??
+              [
+                Genres(id: 0, name: ''),
+              ],
         ),
       ],
     );

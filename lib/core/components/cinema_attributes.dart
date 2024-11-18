@@ -8,8 +8,8 @@ class CinemaAttributes extends StatelessWidget {
     required this.duration,
   });
 
-  final String releaseDate, rate;
-  final int duration;
+  final String? releaseDate, rate;
+  final int? duration;
 
   @override
   Widget build(BuildContext context) {
@@ -17,19 +17,19 @@ class CinemaAttributes extends StatelessWidget {
       children: [
         Expanded(
           child: CinemaReleaseDate(
-            releaseDate: releaseDate,
+            releaseDate: releaseDate ?? '',
           ),
         ),
         Space(height: 0, width: 8),
         Expanded(
           child: CinemaRating(
-            rate: rate,
+            rate: rate ?? '',
           ),
         ),
         Space(height: 0, width: 8),
         Expanded(
           child: CinemaDuration(
-            duration: duration,
+            duration: duration ?? 0,
           ),
         ),
       ],

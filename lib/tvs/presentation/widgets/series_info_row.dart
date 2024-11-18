@@ -23,14 +23,16 @@ class SeriesInfoRow extends StatelessWidget {
                 trailerUrl: state.tvsDetails?.trailerUrl ?? '',
               ),
               Space(height: 16, width: 0),
-              CinemaTitle(title: state.tvsDetails!.name),
+              CinemaTitle(title: state.tvsDetails?.name ?? ''),
               Space(height: 16, width: 0),
               CinemaAttributes(
-                releaseDate: state.tvsDetails!.firstDate.split('-')[0],
-                rate: state.tvsDetails!.voteAverage.toStringAsFixed(1),
-                duration: state.tvsDetails!.runtime.isNotEmpty
-                    ? state.tvsDetails!.runtime[0]
-                    : 0,
+                releaseDate: state.tvsDetails?.firstDate.split('-')[0] ?? '',
+                rate: state.tvsDetails?.voteAverage.toStringAsFixed(1) ?? '',
+                duration: state.tvsDetails?.runtime is List
+                    ? (state.tvsDetails?.runtime.isNotEmpty == true
+                        ? state.tvsDetails?.runtime[0]
+                        : 0)
+                    : (state.tvsDetails?.runtime ?? 0),
               ),
             ],
           ),

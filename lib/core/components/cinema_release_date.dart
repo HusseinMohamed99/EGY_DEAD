@@ -3,7 +3,7 @@ part of '../helpers/export_manager/export_manager.dart';
 class CinemaReleaseDate extends StatelessWidget {
   const CinemaReleaseDate({super.key, required this.releaseDate});
 
-  final String releaseDate;
+  final String? releaseDate;
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +14,7 @@ class CinemaReleaseDate extends StatelessWidget {
         borderRadius: BorderRadius.circular(4.0).r,
       ),
       child: Text(
-        releaseDate,
+        releaseDate ?? '',
         style: context.textTheme.labelMedium,
         maxLines: 1,
         overflow: TextOverflow.ellipsis,
