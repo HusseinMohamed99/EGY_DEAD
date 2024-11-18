@@ -1,13 +1,12 @@
 part of './../../../core/helpers/export_manager/export_manager.dart';
 
-class ButtonTrailerFilms extends StatelessWidget {
-  const ButtonTrailerFilms({
+class WatchTrailerButton extends StatelessWidget {
+  const WatchTrailerButton({
     super.key,
-    required this.moviesDetailsStates,
+    required this.trailerUrl,
   });
 
-  final MoviesDetailsStates moviesDetailsStates;
-
+  final String trailerUrl;
   @override
   Widget build(BuildContext context) {
     return CircleAvatar(
@@ -17,7 +16,7 @@ class ButtonTrailerFilms extends StatelessWidget {
         onPressed: () {
           urlLauncher(
             Uri.parse(
-              moviesDetailsStates.moviesDetails?.trailerUrl ?? '',
+              trailerUrl,
             ),
           );
         },

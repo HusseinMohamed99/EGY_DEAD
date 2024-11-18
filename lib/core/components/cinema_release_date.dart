@@ -1,9 +1,9 @@
-part of './../../../core/helpers/export_manager/export_manager.dart';
+part of '../helpers/export_manager/export_manager.dart';
 
-class FilmReleaseDate extends StatelessWidget {
-  const FilmReleaseDate({super.key, required this.moviesDetailsStates});
+class CinemaReleaseDate extends StatelessWidget {
+  const CinemaReleaseDate({super.key, required this.releaseDate});
 
-  final MoviesDetailsStates moviesDetailsStates;
+  final String releaseDate;
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +14,7 @@ class FilmReleaseDate extends StatelessWidget {
         borderRadius: BorderRadius.circular(4.0).r,
       ),
       child: Text(
-        moviesDetailsStates.moviesDetails?.releaseDate.split('-')[0] ?? "",
+        releaseDate,
         style: context.textTheme.labelMedium,
         maxLines: 1,
         overflow: TextOverflow.ellipsis,

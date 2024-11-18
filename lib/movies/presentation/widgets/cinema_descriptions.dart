@@ -33,36 +33,33 @@ class FilmInfoRow extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        PosterPathWidget(moviesDetailsStates: moviesDetailsStates),
+        PosterPathWidget(
+            posterImage: moviesDetailsStates.moviesDetails?.posterPath ?? ''),
         Space(height: 0, width: 16),
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              ButtonTrailerFilms(moviesDetailsStates: moviesDetailsStates),
+              WatchTrailerButton(
+                trailerUrl: moviesDetailsStates.moviesDetails?.trailerUrl ?? '',
+              ),
               Space(height: 16, width: 0),
-              FilmTitle(moviesDetailsStates: moviesDetailsStates),
+              CinemaTitle(
+                  title: moviesDetailsStates.moviesDetails?.title ?? ''),
               Space(height: 16, width: 0),
-              FilmAttributes(moviesDetailsStates: moviesDetailsStates),
+              CinemaAttributes(
+                releaseDate: moviesDetailsStates.moviesDetails?.releaseDate
+                        .split('-')[0] ??
+                    "",
+                rate: moviesDetailsStates.moviesDetails?.voteAverage
+                        .toStringAsFixed(1) ??
+                    '',
+                duration: moviesDetailsStates.moviesDetails?.runtime ?? 0,
+              ),
             ],
           ),
         ),
       ],
-    );
-  }
-}
-
-class FilmTitle extends StatelessWidget {
-  const FilmTitle({super.key, required this.moviesDetailsStates});
-
-  final MoviesDetailsStates moviesDetailsStates;
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      moviesDetailsStates.moviesDetails?.title ?? '',
-      textAlign: TextAlign.center,
-      style: context.textTheme.titleLarge,
     );
   }
 }

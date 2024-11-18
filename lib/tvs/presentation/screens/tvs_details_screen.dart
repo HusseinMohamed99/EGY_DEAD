@@ -78,117 +78,12 @@ class TvsDetailsContentLoaded extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _buildHeaderSection(context, state),
+            SeriesInfoRow(state: state),
             Space(height: 8, width: 0),
             _buildOverviewSection(context, state),
           ],
         ),
       ),
-    );
-  }
-
-  Widget _buildHeaderSection(BuildContext context, TvsDetailsStates state) {
-    return Row(
-      children: [
-        _buildPosterImage(state),
-        Space(width: 16, height: 0),
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              _buildPlayButton(state),
-              Space(height: 10, width: 0),
-              Text(
-                state.tvsDetails!.name,
-                style: context.textTheme.titleLarge,
-              ),
-              Space(height: 8, width: 0),
-              _buildMetadataRow(context, state),
-            ],
-          ),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildPosterImage(TvsDetailsStates state) {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10).r,
-        border: Border.all(color: ColorManager.whiteColor),
-      ),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(16).r,
-        child: CachedImage(
-          imageUrl: ApiConstance.imageURL(state.tvsDetails!.posterPath),
-          width: 120.w,
-          height: 150.h,
-        ),
-      ),
-    );
-  }
-
-  Widget _buildPlayButton(TvsDetailsStates state) {
-    return CircleAvatar(
-      radius: 19.r,
-      backgroundColor: ColorManager.primaryRedColor,
-      child: IconButton(
-        onPressed: () {
-          urlLauncher(
-            Uri.parse(state.tvsDetails?.trailerUrl ?? ''),
-          );
-        },
-        icon: const Icon(
-          Icons.play_circle,
-          color: ColorManager.whiteColor,
-        ),
-      ),
-    );
-  }
-
-  Widget _buildMetadataRow(BuildContext context, TvsDetailsStates state) {
-    return Row(
-      children: [
-        _buildYearBadge(state),
-        Space(width: 16, height: 0),
-        _buildRating(context, state),
-        Space(width: 16, height: 0),
-        Expanded(
-          child: Text(
-            _showDuration(state.tvsDetails!.runtime.isNotEmpty
-                ? state.tvsDetails!.runtime[0]
-                : 0),
-            style: context.textTheme.labelMedium!.copyWith(color: Colors.grey),
-          ),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildYearBadge(TvsDetailsStates state) {
-    return Container(
-      padding: const EdgeInsets.symmetric(vertical: 2.0, horizontal: 8.0).r,
-      decoration: BoxDecoration(
-        color: ColorManager.greyDarkColor,
-        borderRadius: BorderRadius.circular(4.0).r,
-      ),
-      child: Text(
-        state.tvsDetails!.firstDate.split('-')[0],
-        style: TextStyle(color: Colors.white),
-      ),
-    );
-  }
-
-  Widget _buildRating(BuildContext context, TvsDetailsStates state) {
-    return Row(
-      children: [
-        Icon(Icons.star, color: ColorManager.iconRateColor, size: 20.sp),
-        Space(width: 4, height: 0),
-        Text(
-          state.tvsDetails!.voteAverage.toStringAsFixed(1),
-          style: context.textTheme.labelMedium,
-        ),
-      ],
     );
   }
 
@@ -243,6 +138,46 @@ class TvsDetailsContentLoaded extends StatelessWidget {
   }
 }
 
+class SeriesInfoRow extends StatelessWidget {
+  const SeriesInfoRow({
+    super.key,
+    required this.state,
+  });
+
+  final TvsDetailsStates state;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        PosterPathWidget(posterImage: state.tvsDetails?.posterPath ?? ''),
+        Space(width: 16, height: 0),
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              WatchTrailerButton(
+                trailerUrl: state.tvsDetails?.trailerUrl ?? '',
+              ),
+              Space(height: 16, width: 0),
+              CinemaTitle(title: state.tvsDetails!.name),
+              Space(height: 16, width: 0),
+              CinemaAttributes(
+                releaseDate: state.tvsDetails!.firstDate.split('-')[0],
+                rate: state.tvsDetails!.voteAverage.toStringAsFixed(1),
+                duration: state.tvsDetails!.runtime.isNotEmpty
+                    ? state.tvsDetails!.runtime[0]
+                    : 0,
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+}
+
 class LoadingTvsDetailsContent extends StatelessWidget {
   const LoadingTvsDetailsContent({
     super.key,
@@ -253,175 +188,178 @@ class LoadingTvsDetailsContent extends StatelessWidget {
     return DefaultTabController(
       length: 3,
       initialIndex: 0,
-      child: Stack(
-        children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              CachedImage(
-                imageUrl: ApiConstance.imageURL(''),
-                width: double.infinity,
-                height: 250.h,
-                boxFit: BoxFit.fill,
-              ),
-              Padding(
-                padding: const EdgeInsets.all(12.0).r,
-                child: Column(
-                  children: [
-                    Row(
-                      children: [
-                        Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10).r,
-                            border: Border.all(
-                              color: ColorManager.whiteColor,
+      child: SingleChildScrollView(
+        key: const Key('tvDetailScrollView'),
+        child: Stack(
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                CachedImage(
+                  imageUrl: ApiConstance.imageURL(''),
+                  width: double.infinity,
+                  height: 250.h,
+                  boxFit: BoxFit.fill,
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(12.0).r,
+                  child: Column(
+                    children: [
+                      Row(
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10).r,
+                              border: Border.all(
+                                color: ColorManager.whiteColor,
+                              ),
+                            ),
+                            child: Stack(
+                              children: [
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(16).r,
+                                  child: CachedImage(
+                                    imageUrl: ApiConstance.imageURL(
+                                      '',
+                                    ),
+                                    width: 120.w,
+                                    height: 150.h,
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
-                          child: Stack(
-                            children: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(16).r,
-                                child: CachedImage(
-                                  imageUrl: ApiConstance.imageURL(
-                                    '',
-                                  ),
-                                  width: 120.w,
-                                  height: 150.h,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Space(height: 0, width: 16.w),
-                        Expanded(
-                          child: Column(
-                            children: [
-                              CircleAvatar(
-                                radius: 19.r,
-                                backgroundColor: ColorManager.primaryRedColor,
-                                child: IconButton(
-                                  onPressed: () {},
-                                  icon: const Icon(
-                                    Icons.play_circle,
-                                    color: ColorManager.whiteColor,
+                          Space(height: 0, width: 16.w),
+                          Expanded(
+                            child: Column(
+                              children: [
+                                CircleAvatar(
+                                  radius: 19.r,
+                                  backgroundColor: ColorManager.primaryRedColor,
+                                  child: IconButton(
+                                    onPressed: () {},
+                                    icon: const Icon(
+                                      Icons.play_circle,
+                                      color: ColorManager.whiteColor,
+                                    ),
                                   ),
                                 ),
-                              ),
-                              Space(height: 10, width: 0),
-                              Text(
-                                'Series Name',
-                                style: context.textTheme.titleLarge,
-                              ),
-                              Space(height: 8.h, width: 0),
-                              Row(
-                                children: [
-                                  Container(
-                                    padding: EdgeInsets.symmetric(
-                                      vertical: 2.h,
-                                      horizontal: 8.w,
-                                    ),
-                                    decoration: BoxDecoration(
-                                      color: ColorManager.greyDarkColor,
-                                      borderRadius:
-                                          BorderRadius.circular(4.0).r,
-                                    ),
-                                    child: Text(
-                                      '2021',
-                                      style: context.textTheme.labelMedium,
-                                    ),
-                                  ),
-                                  Space(height: 0, width: 16.w),
-                                  Row(
-                                    children: [
-                                      Icon(
-                                        Icons.star,
-                                        color: ColorManager.iconRateColor,
-                                        size: 20.sp,
+                                Space(height: 10, width: 0),
+                                Text(
+                                  'Series Name',
+                                  style: context.textTheme.titleLarge,
+                                ),
+                                Space(height: 8.h, width: 0),
+                                Row(
+                                  children: [
+                                    Container(
+                                      padding: EdgeInsets.symmetric(
+                                        vertical: 2.h,
+                                        horizontal: 8.w,
                                       ),
-                                      Space(height: 0, width: 4.w),
-                                      Text(
-                                        '9.0',
+                                      decoration: BoxDecoration(
+                                        color: ColorManager.greyDarkColor,
+                                        borderRadius:
+                                            BorderRadius.circular(4.0).r,
+                                      ),
+                                      child: Text(
+                                        '2021',
                                         style: context.textTheme.labelMedium,
                                       ),
-                                    ],
-                                  ),
-                                  Space(height: 0, width: 16.w),
-                                  Expanded(
-                                    child: Text(
-                                      _showDuration(
-                                        120,
-                                      ),
-                                      style: context.textTheme.labelMedium!
-                                          .copyWith(
-                                        color: Colors.grey,
+                                    ),
+                                    Space(height: 0, width: 16.w),
+                                    Row(
+                                      children: [
+                                        Icon(
+                                          Icons.star,
+                                          color: ColorManager.iconRateColor,
+                                          size: 20.sp,
+                                        ),
+                                        Space(height: 0, width: 4.w),
+                                        Text(
+                                          '9.0',
+                                          style: context.textTheme.labelMedium,
+                                        ),
+                                      ],
+                                    ),
+                                    Space(height: 0, width: 16.w),
+                                    Expanded(
+                                      child: Text(
+                                        _showDuration(
+                                          120,
+                                        ),
+                                        style: context.textTheme.labelMedium!
+                                            .copyWith(
+                                          color: Colors.grey,
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0).r,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Overview',
-                            style: context.textTheme.titleMedium,
-                          ),
-                          Space(height: 8.h, width: 0),
-                          Text(
-                            'Genres: ${_showGenres([
-                                  Genres(
-                                    id: 1,
-                                    name: 'Action',
-                                  ),
-                                  Genres(
-                                    id: 2,
-                                    name: 'Adventure',
-                                  ),
-                                ])}',
-                            style: context.textTheme.labelSmall!.copyWith(
-                              color: ColorManager.greyColor,
+                                  ],
+                                ),
+                              ],
                             ),
                           ),
                         ],
                       ),
-                    ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0).r,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Overview',
+                              style: context.textTheme.titleMedium,
+                            ),
+                            Space(height: 8.h, width: 0),
+                            Text(
+                              'Genres: ${_showGenres([
+                                    Genres(
+                                      id: 1,
+                                      name: 'Action',
+                                    ),
+                                    Genres(
+                                      id: 2,
+                                      name: 'Adventure',
+                                    ),
+                                  ])}',
+                              style: context.textTheme.labelSmall!.copyWith(
+                                color: ColorManager.greyColor,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Space(height: 5, width: 0),
+                TabBar(
+                  labelPadding: EdgeInsets.zero,
+                  labelColor: ColorManager.whiteColor,
+                  unselectedLabelColor: ColorManager.greyColor,
+                  indicatorColor: ColorManager.primaryRedColor,
+                  indicatorSize: TabBarIndicatorSize.label,
+                  tabs: [
+                    TapsWidget(title: AppString.seasons),
+                    TapsWidget(title: AppString.recommendations),
+                    TapsWidget(title: AppString.moreLikeThis),
                   ],
                 ),
-              ),
-              Space(height: 5, width: 0),
-              TabBar(
-                labelPadding: EdgeInsets.zero,
-                labelColor: ColorManager.whiteColor,
-                unselectedLabelColor: ColorManager.greyColor,
-                indicatorColor: ColorManager.primaryRedColor,
-                indicatorSize: TabBarIndicatorSize.label,
-                tabs: [
-                  TapsWidget(title: AppString.seasons),
-                  TapsWidget(title: AppString.recommendations),
-                  TapsWidget(title: AppString.moreLikeThis),
-                ],
-              ),
-              SizedBox(
-                width: double.maxFinite,
-                height: 500.h,
-                child: TabBarView(
-                  children: [
-                    ShowSeasonSeries(),
-                    ShowRecommendationSeries(),
-                    ShowSimilarSeries(),
-                  ],
+                SizedBox(
+                  width: double.maxFinite,
+                  height: 500.h,
+                  child: TabBarView(
+                    children: [
+                      ShowSeasonSeries(),
+                      ShowRecommendationSeries(),
+                      ShowSimilarSeries(),
+                    ],
+                  ),
                 ),
-              ),
-            ],
-          ),
-        ],
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

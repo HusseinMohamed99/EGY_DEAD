@@ -1,12 +1,12 @@
-part of './../../../core/helpers/export_manager/export_manager.dart';
+part of '../helpers/export_manager/export_manager.dart';
 
 class PosterPathWidget extends StatelessWidget {
   const PosterPathWidget({
     super.key,
-    required this.moviesDetailsStates,
+    required this.posterImage,
   });
 
-  final MoviesDetailsStates moviesDetailsStates;
+  final String posterImage;
 
   @override
   Widget build(BuildContext context) {
@@ -21,9 +21,7 @@ class PosterPathWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(10).r,
         child: CachedImage(
           boxFit: BoxFit.fill,
-          imageUrl: ApiConstance.imageURL(
-            moviesDetailsStates.moviesDetails?.posterPath ?? '',
-          ),
+          imageUrl: ApiConstance.imageURL(posterImage),
           width: 120.w,
           height: 150.h,
         ),
