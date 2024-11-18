@@ -7,7 +7,6 @@ class MoviesBloc extends Bloc<MoviesEvent, MoviesStates> {
   final GetAllTopRatedMoviesUseCase allTopRatedMoviesUseCase;
   final GetAllUpcomingMoviesUseCase allUpcomingMoviesUseCase;
 
-  // final GetPopularMoviesUseCase getPopularMoviesUseCase;
   MoviesBloc(
       this.getNowPlayingMoviesUseCase,
       this.getUpcomingMoviesUseCase,
@@ -16,7 +15,6 @@ class MoviesBloc extends Bloc<MoviesEvent, MoviesStates> {
       this.allPopularMoviesUseCase)
       : super(const MoviesStates()) {
     on<GetNowPlayingMoviesEvent>(_getNowPlayingMovies);
-    // on<GetPopularMoviesEvent>(_getPopularMovies);
     on<GetPopularMoviesEvent>(_getAllPopularMovies);
     on<GetTopRatedMoviesEvent>(_getAllTopRatedMovies);
     on<GetUpcomingMoviesEvent>(_getAllUpcomingMovies);
@@ -36,17 +34,6 @@ class MoviesBloc extends Bloc<MoviesEvent, MoviesStates> {
             nowPlayingState: RequestState.loaded, nowPlayingMovies: r)));
     return null;
   }
-
-  // FutureOr<void> _getPopularMovies(
-  //     GetPopularMoviesEvent event, Emitter<MoviesStates> emit) async {
-  //   final result = await getPopularMoviesUseCase(const NoParameters());
-  //   result.fold(
-  //       (l) => emit(state.copyWith(
-  //           popularState: GetAllRequestStatus.error,
-  //           popularMessage: l.message)),
-  //       (r) => emit(state.copyWith(
-  //           popularState: GetAllRequestStatus.loaded, popularMovies: r)));
-  // }
 
   int page = 1;
 
@@ -106,17 +93,6 @@ class MoviesBloc extends Bloc<MoviesEvent, MoviesStates> {
       },
     );
   }
-
-  // FutureOr<void> _getTopRatedMovies(
-  //     GetTopRatedMoviesEvent event, Emitter<MoviesStates> emit) async {
-  //   final result = await getTopRatedMoviesUseCase(const NoParameters());
-  //   result.fold(
-  //       (l) => emit(state.copyWith(
-  //           topRatedStates: GetAllRequestStatus.error,
-  //           topRatedMessage: l.message)),
-  //       (r) => emit(state.copyWith(
-  //           topRatedStates: GetAllRequestStatus.loaded, topRatedMovies: r)));
-  // }
 
   Future<void> _getAllTopRatedMovies(
       GetTopRatedMoviesEvent event, Emitter<MoviesStates> emit) async {
