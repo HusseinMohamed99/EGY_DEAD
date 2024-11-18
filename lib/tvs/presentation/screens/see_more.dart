@@ -21,7 +21,6 @@ class SeeMoreScreen extends StatelessWidget {
             final tvs = tvsList[index];
             return _buildTvsCard(context, tvs);
           } else {
-            // Trigger addEvent to fetch more data when reaching the end of the list
             return const LoadingIndicator();
           }
         },
