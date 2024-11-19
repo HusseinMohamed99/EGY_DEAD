@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:io';
 import 'dart:math';
 
 import 'package:cached_network_image/cached_network_image.dart';
@@ -26,10 +25,8 @@ import 'package:movies_app/core/routing/routes.dart';
 import 'package:movies_app/image_assets.dart';
 import 'package:movies_app/presentation_main_app/screen/home_page.dart';
 import 'package:movies_app/search/presentation/widgets/search_bar.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 import 'package:stream_transform/stream_transform.dart';
-import 'package:upgrader/upgrader.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 part '../../../movies/presentation/function/navigate_to_see_more_screen.dart';
@@ -182,7 +179,6 @@ part './../../components/padded_section.dart';
 part './../../components/review_card.dart';
 part './../../components/review_content.dart';
 part './../../components/size_box.dart';
-part './../../components/upgrade_wrapper.dart';
 part './../../domain/entities/genres.dart';
 part './../../error/exceptions.dart';
 part './../../error/failure.dart';
@@ -191,7 +187,6 @@ part './../../extensions/skeletonizer_extension.dart';
 part './../../extensions/snack_bar.dart';
 part './../../extensions/text_style_extension.dart';
 part './../../generic_use_case/generic_use_case.dart';
-part './../../network/cache_helper.dart';
 part './../../network/error_message_model.dart';
 part './../../routing/app_router.dart';
 part './../../services/services_locator.dart';
