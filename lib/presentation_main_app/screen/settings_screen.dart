@@ -46,17 +46,17 @@ class SettingsScreen extends StatelessWidget {
           ),
           Space(width: 0, height: 30),
           SettingCardItem(
-            title: AppString.aboutUs,
+            title: AppString.appPolicy,
             icon: Icons.info_outline,
             onTap: () {
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(
-              //     builder: (BuildContext context) {
-              //       return const AboutUsScreen();
-              //     },
-              //   ),
-              // );
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (BuildContext context) {
+                    return const AboutUsScreen();
+                  },
+                ),
+              );
             },
           ),
           Space(width: 0, height: 8),

@@ -17,15 +17,12 @@ class SupportScreen extends StatelessWidget {
         centerTitle: true,
       ),
       body: Padding(
-        padding: EdgeInsets.symmetric(
-          horizontal: 16.w,
-          vertical: 16.h,
-        ),
+        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Padding(
-              padding: const EdgeInsets.only(left: 8.0, top: 20, bottom: 20).r,
+              padding: EdgeInsets.only(left: 8.w, top: 20.h, bottom: 20.h),
               child: CircleAvatar(
                 maxRadius: 93.r,
                 minRadius: 93.r,
