@@ -1,27 +1,79 @@
-# Privacy Policy
+# EGY DEAD App Policy
 
-**Egy Dead** takes your privacy seriously. This Privacy Policy outlines the data practices for **Egy Dead**, which is designed solely to provide movie and series information without collecting or tracking any personal data from users.
+## Introduction  
+Welcome to **EGY DEAD**, a Flutter-based entertainment app for movie, TV show, and anime enthusiasts! By using EGY DEAD, you acknowledge and agree to the following terms and conditions. Please read carefully for a seamless experience.
 
-## Data Collection
+---
 
-**Egy Dead** does not collect, store, or share any personal information. The app is strictly informational, displaying movie and series details without gathering user data of any kind.
+## 1. User Responsibilities  
+### 1.1. Eligibility  
+- Users must be at least 13 years old to use the app.  
+- Parental guidance is advised for younger audiences due to the nature of some content.  
 
-## Cookies and Tracking
+### 1.2. Personal Use Only  
+- EGY DEAD is designed for personal, non-commercial use.  
 
-**Egy Dead** does not use cookies, tracking scripts, or any analytics services. There are no advertisements or third-party tracking integrated into the app.
+---
 
-## External Links
+## 2. Content Usage  
+### 2.1. Information Accuracy  
+- EGY DEAD provides detailed information on movies, TV shows, and anime.  
+- Content is sourced from third-party databases and may be subject to updates or inaccuracies.  
 
-The app may contain links to external sites for further information. Please be aware that these external sites have their own privacy policies, and **Egy Dead** is not responsible for their practices. Users are encouraged to review the privacy policies of any third-party sites they visit.
+### 2.2. Copyright Compliance  
+- All images, trailers, and show information are for informational and entertainment purposes only.  
+- Users must not redistribute or modify content without proper authorization from its respective owners.  
 
-## Security
+---
 
-While **Egy Dead** does not collect or store any user data, we are committed to maintaining a secure app environment. However, no digital service can guarantee absolute security.
+## 3. App Features  
+### 3.1. Show Information  
+- Access detailed insights into movies, anime, and TV shows, including cast details, trailers, and recommendations.  
 
-## Policy Updates
+### 3.2. Categorization  
+- Content is organized for easy navigation:  
+  - **Movies:** Now Playing, Popular, Top Rated  
+  - **TV Shows:** On Air, Popular, Top Rated  
 
-This Privacy Policy is effective as of [Insert Date] and will remain in effect unless updated. Any changes to this policy will be posted here and become effective immediately.
+### 3.3. Search Functionality  
+- Search by title, genre, or actor for a tailored browsing experience.  
 
-## Contact Information
+### 3.4. Trailers and Episodes  
+- Watch trailers and episodes directly within the app, subject to availability.  
 
-If you have any questions or concerns regarding this Privacy Policy, please contact us at: **[husseinhtm99@gmail.com](mailto:husseinhtm99@gmail.com)**.
+---
+
+## 4. Privacy Policy  
+### 4.1. No Data Collection  
+- EGY DEAD does not collect, store, or process any personal data from its users.  
+- No user account, login, or authorization is required to access the app’s features.  
+
+### 4.2. Third-Party Content  
+- The app integrates third-party APIs for content display (e.g., trailers, show information). Interactions with third-party services are governed by their respective terms and policies.  
+
+---
+
+## 5. Prohibited Activities  
+### 5.1. Users may not:  
+- Exploit the app for illegal or unauthorized purposes.  
+- Reverse-engineer, tamper with, or disrupt the app’s functionality.  
+
+---
+
+## 6. Limitation of Liability  
+EGY DEAD is not responsible for:  
+- Errors or inaccuracies in show information.  
+- Unavailability or removal of third-party content or services.  
+- Any issues resulting from misuse of the app.  
+
+---
+
+## 7. Updates and Modifications  
+EGY DEAD reserves the right to update app features or this policy without prior notice. Changes will be effective upon release in the app store.  
+
+---
+
+## 8. Contact Us  
+For questions, suggestions, or support, please contact us at **hussein.mohmed1907@gmail.com**.  
+
+By using EGY DEAD, you agree to this policy. Enjoy your journey into the world of entertainment!  
