@@ -1,13 +1,14 @@
 # EGY DEAD
 
-![GitHub All Releases](https://img.shields.io/github/downloads/HusseinMohamed99/EGY_DEAD/total?color=green)
+## ![GitHub All Releases](https://img.shields.io/github/downloads/HusseinMohamed99/EGY_DEAD/total?color=green)
+
 
 ## Download The App
 <a href="https://github.com/HusseinMohamed99/EGY_DEAD/releases/download/v2.0.0/EGY.DEAD.apk">
     <img src="https://playerzon.com/asset/download.png" width="200" alt="Download APK">
 </a>
 
-**EGY DEAD** is a Flutter application designed for movie and series enthusiasts. The app provides detailed information on films, anime, and TV shows with features for easy browsing, categorization, and exploring details about each show.
+**EGY DEAD** is a Flutter application for movie and series enthusiasts. The app provides detailed information on films, anime, and TV shows with features for easy browsing, categorization, and exploring details about each show.
 
 ---
 
@@ -16,7 +17,7 @@
 - **Show Information:** Find comprehensive details about movies, TV series, and anime.
 - **Categorization:** Shows are categorized as:
   - Movies: *Now Playing*, *Popular*, *Top Rated*
-  - TV Shows: *On Air*, *Popular*, *Top Rated*
+  - TV Shows: *On-Air*, *Popular*, *Top Rated*
 - **Search Functionality:** Easily search for shows by title, genre, or actor.
 - **Detailed Show Information:** View cast, reviews, trailers, and similar show recommendations.
 - **Trailers & Episodes:** Watch trailers and episodes for shows directly within the app.
