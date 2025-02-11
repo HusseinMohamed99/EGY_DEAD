@@ -5,13 +5,19 @@ class MoviesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const CustomScrollView(
-      slivers: [
-        SliverToBoxAdapter(child: NowPlayingWidget()),
-        SliverToBoxAdapter(child: PopularMoviesWidget()),
-        SliverToBoxAdapter(child: UpcomingMoviesWidget()),
-        SliverToBoxAdapter(child: TopRatedMoviesWidget()),
-        SliverToBoxAdapter(child: Space(height: 24, width: 0)),
+    return const Column(
+      children: [
+        NowPlayingWidget(),
+        Expanded(
+          child: CustomScrollView(
+            slivers: [
+              SliverToBoxAdapter(child: PopularMoviesWidget()),
+              SliverToBoxAdapter(child: UpcomingMoviesWidget()),
+              SliverToBoxAdapter(child: TopRatedMoviesWidget()),
+              SliverToBoxAdapter(child: Space(height: 24, width: 0)),
+            ],
+          ),
+        ),
       ],
     );
   }
