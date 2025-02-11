@@ -27,31 +27,36 @@ class SupportScreen extends StatelessWidget {
                 title: 'Mail',
                 imageWidget: Assets.imagesGoogle,
                 onTap: () {
-                  urlLauncher(Uri.parse('mailto:hussein.mohmed1907@gmail.com'));
+                  if (dotenv.env['email'] != null) {
+                    urlLauncher(Uri.parse(dotenv.env['email']!));
+                  }
                 },
               ),
               OptionCard(
                 title: 'GitHub',
                 imageWidget: Assets.imagesGithub,
                 onTap: () {
-                  urlLauncher(Uri.parse('https://github.com/HusseinMohamed99'));
+                  if (dotenv.env['github'] != null) {
+                    urlLauncher(Uri.parse(dotenv.env['github']!));
+                  }
                 },
               ),
               OptionCard(
                 title: 'LinkedIn',
                 imageWidget: Assets.imagesLinkedin,
                 onTap: () {
-                  urlLauncher(
-                      Uri.parse('https://www.linkedin.com/in/hussein99'));
+                  if (dotenv.env['linkedin'] != null) {
+                    urlLauncher(Uri.parse(dotenv.env['linkedin']!));
+                  }
                 },
               ),
               OptionCard(
                 title: 'Google play',
                 imageWidget: Assets.imagesGooglePlay,
                 onTap: () {
-                  urlLauncher(Uri.parse(
-                    'https://play.google.com/store/apps/dev?id=5842045484913788359',
-                  ));
+                  if (dotenv.env['googlePlay'] != null) {
+                    urlLauncher(Uri.parse(dotenv.env['googlePlay']!));
+                  }
                 },
               ),
             ],
