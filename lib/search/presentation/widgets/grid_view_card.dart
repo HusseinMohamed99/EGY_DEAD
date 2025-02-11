@@ -15,21 +15,13 @@ class GridViewCard extends StatelessWidget {
         GestureDetector(
           onTap: () {
             item.isMovie
-                ? Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => MovieDetailsScreen(
-                        movieID: item.id,
-                      ),
-                    ),
+                ? context.pushNamed(
+                    Routes.movieDetailsScreen,
+                    arguments: item.id,
                   )
-                : Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => TvsDetailsScreen(
-                        tvsID: item.id,
-                      ),
-                    ),
+                : context.pushNamed(
+                    Routes.tvsDetailsScreen,
+                    arguments: item.id,
                   );
           },
           child: AspectRatio(
