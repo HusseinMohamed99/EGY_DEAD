@@ -59,6 +59,12 @@ class AppRouters {
             tvSeeMoreModel: arguments as TvSeeMoreModel,
           ),
         );
+      case Routes.tvsDetailsScreen:
+        return MaterialPageRoute(
+          builder: (_) => TvsDetailsScreen(
+            tvsID: arguments as int,
+          ),
+        );
     }
     return null;
   }

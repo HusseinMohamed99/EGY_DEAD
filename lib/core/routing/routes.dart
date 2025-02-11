@@ -9,4 +9,5 @@ class Routes {
   static const movieDetailsScreen = '/MovieDetailsScreen';
   static const movieSeeMoreScreen = '/MovieSeeMoreScreen';
   static const tvSeeMoreScreen = '/TvSeeMoreScreen';
+  static const tvsDetailsScreen = '/TvsDetailsScreen';
 }
