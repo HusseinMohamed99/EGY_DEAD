@@ -11,20 +11,19 @@ class SeriesInfoRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      spacing: 16.w,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         PosterPathWidget(posterImage: state.tvsDetails?.posterPath ?? ''),
-        const Space(width: 16, height: 0),
         Expanded(
           child: Column(
+            spacing: 16.h,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               WatchTrailerButton(
                 trailerUrl: state.tvsDetails?.trailerUrl ?? '',
               ),
-              const Space(height: 16, width: 0),
               CinemaTitle(title: state.tvsDetails?.name ?? ''),
-              const Space(height: 16, width: 0),
               CinemaAttributes(
                 releaseDate: state.tvsDetails?.firstDate.split('-')[0] ?? '',
                 rate: state.tvsDetails?.voteAverage.toStringAsFixed(1) ?? '',
