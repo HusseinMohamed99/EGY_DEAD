@@ -11,35 +11,41 @@ class UpcomingMoviesWidget extends StatelessWidget {
       builder: (context, state) {
         if (state.upcomingState == RequestState.loading) {
           return BuildContentMovies(
-            fetchData: false,
-            movies: state.upcomingMovies,
-            title: AppString.upcoming,
             isLoading: state.upcomingState == RequestState.loading,
-            addEvent: () {
-              context.read<MoviesBloc>().add(FetchMoreUpcomingMoviesEvent());
-            },
+            movieItems: MovieSeeMoreModel(
+              fetchData: false,
+              movies: state.upcomingMovies,
+              title: AppString.upcoming,
+              addEvent: () {
+                context.read<MoviesBloc>().add(FetchMoreUpcomingMoviesEvent());
+              },
+            ),
           ).skeletonize();
         } else if (state.upcomingState == RequestState.loaded) {
           state.upcomingMovies.shuffle(Random());
           return BuildContentMovies(
-            fetchData: false,
-            movies: state.upcomingMovies,
-            title: AppString.upcoming,
             isLoading: state.upcomingState == RequestState.loading,
-            addEvent: () {
-              context.read<MoviesBloc>().add(FetchMoreUpcomingMoviesEvent());
-            },
+            movieItems: MovieSeeMoreModel(
+              fetchData: false,
+              movies: state.upcomingMovies,
+              title: AppString.upcoming,
+              addEvent: () {
+                context.read<MoviesBloc>().add(FetchMoreUpcomingMoviesEvent());
+              },
+            ),
           );
         } else if (state.upcomingState == RequestState.fetchData) {
           state.upcomingMovies.shuffle(Random());
           return BuildContentMovies(
-            fetchData: true,
-            movies: state.upcomingMovies,
-            title: AppString.upcoming,
             isLoading: state.upcomingState == RequestState.loading,
-            addEvent: () {
-              context.read<MoviesBloc>().add(FetchMoreUpcomingMoviesEvent());
-            },
+            movieItems: MovieSeeMoreModel(
+              fetchData: true,
+              movies: state.upcomingMovies,
+              title: AppString.upcoming,
+              addEvent: () {
+                context.read<MoviesBloc>().add(FetchMoreUpcomingMoviesEvent());
+              },
+            ),
           );
         } else {
           return BuildErrorMessage(errorMessage: state.upcomingMessage);

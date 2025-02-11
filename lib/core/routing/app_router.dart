@@ -2,6 +2,7 @@ part of './../helpers/export_manager/export_manager.dart';
 
 class AppRouters {
   Route? generateRoute(RouteSettings settings) {
+    final arguments = settings.arguments;
     switch (settings.name) {
       case Routes.homePage:
         return MaterialPageRoute(
@@ -39,6 +40,18 @@ class AppRouters {
       case Routes.supportScreen:
         return MaterialPageRoute(
           builder: (_) => const SupportScreen(),
+        );
+      case Routes.movieDetailsScreen:
+        return MaterialPageRoute(
+          builder: (_) => MovieDetailsScreen(
+            movieID: arguments as int,
+          ),
+        );
+      case Routes.movieSeeMoreScreen:
+        return MaterialPageRoute(
+          builder: (_) => MovieSeeMoreScreen(
+            movieItems: arguments as MovieSeeMoreModel,
+          ),
         );
     }
     return null;

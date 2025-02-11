@@ -3,15 +3,9 @@ part of './../../../core/helpers/export_manager/export_manager.dart';
 class BuildHeaderWidget extends StatelessWidget {
   const BuildHeaderWidget({
     super.key,
-    required this.title,
-    required this.movies,
-    required this.addEvent,
-    required this.fetchData,
+    required this.movieItems,
   });
-  final String title;
-  final List<Movies> movies;
-  final VoidCallback addEvent;
-  final bool fetchData;
+  final MovieSeeMoreModel movieItems;
 
   @override
   Widget build(BuildContext context) {
@@ -21,17 +15,14 @@ class BuildHeaderWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
-            title,
+            movieItems.title,
             style: TextStyleManager.titleSmall(context: context),
           ),
           GestureDetector(
             onTap: () {
               navigateToSeeMore(
-                fetchData: fetchData,
                 context: context,
-                movies: movies,
-                title: title,
-                addEvent: addEvent,
+                model: movieItems,
               );
             },
             child: Row(

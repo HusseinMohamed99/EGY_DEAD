@@ -3,33 +3,27 @@ part of './../../../core/helpers/export_manager/export_manager.dart';
 class MovieSeeMoreScreen extends StatelessWidget {
   const MovieSeeMoreScreen({
     super.key,
-    required this.movieList,
-    required this.title,
-    required this.addEvent,
-    required this.fetchData,
+    required this.movieItems,
   });
 
-  final List<Movies> movieList;
-  final String title;
-  final Function addEvent;
-  final bool fetchData;
+  final MovieSeeMoreModel movieItems;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: _buildAppBar(context, title: '$title Movies'),
+      appBar: _buildAppBar(context, title: '${movieItems.title} Movies'),
       body: ExploreAllMoviesOrTvsPage(
-        itemCount: movieList.length + (fetchData ? 0 : 1),
+        itemCount: movieItems.movies.length + (movieItems.fetchData ? 0 : 1),
         itemBuilder: (context, index) {
-          if (index < movieList.length) {
-            final movie = movieList[index];
+          if (index < movieItems.movies.length) {
+            final movie = movieItems.movies[index];
             return BuildMovieCard(movie: movie);
           } else {
-            addEvent();
+            movieItems.addEvent();
             return const LoadingIndicator();
           }
         },
-        addEvent: addEvent(),
+        addEvent: movieItems.addEvent,
       ),
     );
   }

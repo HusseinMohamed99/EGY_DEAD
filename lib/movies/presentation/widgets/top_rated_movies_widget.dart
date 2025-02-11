@@ -11,35 +11,41 @@ class TopRatedMoviesWidget extends StatelessWidget {
       builder: (context, state) {
         if (state.topRatedStates == RequestState.loading) {
           return BuildContentMovies(
-            fetchData: false,
-            movies: state.topRatedMovies,
-            title: AppString.topRated,
             isLoading: state.topRatedStates == RequestState.loading,
-            addEvent: () {
-              context.read<MoviesBloc>().add(FetchMoreTopRatedMoviesEvent());
-            },
+            movieItems: MovieSeeMoreModel(
+              fetchData: false,
+              movies: state.topRatedMovies,
+              title: AppString.topRated,
+              addEvent: () {
+                context.read<MoviesBloc>().add(FetchMoreTopRatedMoviesEvent());
+              },
+            ),
           ).skeletonize();
         } else if (state.topRatedStates == RequestState.loaded) {
           state.topRatedMovies.shuffle(Random());
           return BuildContentMovies(
-            fetchData: false,
-            movies: state.topRatedMovies,
-            title: AppString.topRated,
             isLoading: state.topRatedStates == RequestState.loading,
-            addEvent: () {
-              context.read<MoviesBloc>().add(FetchMoreTopRatedMoviesEvent());
-            },
+            movieItems: MovieSeeMoreModel(
+              fetchData: false,
+              movies: state.topRatedMovies,
+              title: AppString.topRated,
+              addEvent: () {
+                context.read<MoviesBloc>().add(FetchMoreTopRatedMoviesEvent());
+              },
+            ),
           );
         } else if (state.topRatedStates == RequestState.fetchData) {
           state.topRatedMovies.shuffle(Random());
           return BuildContentMovies(
-            fetchData: true,
-            movies: state.topRatedMovies,
-            title: AppString.topRated,
             isLoading: state.topRatedStates == RequestState.loading,
-            addEvent: () {
-              context.read<MoviesBloc>().add(FetchMoreTopRatedMoviesEvent());
-            },
+            movieItems: MovieSeeMoreModel(
+              fetchData: true,
+              movies: state.topRatedMovies,
+              title: AppString.topRated,
+              addEvent: () {
+                context.read<MoviesBloc>().add(FetchMoreTopRatedMoviesEvent());
+              },
+            ),
           );
         } else {
           return BuildErrorMessage(errorMessage: state.topRatedMessage);
