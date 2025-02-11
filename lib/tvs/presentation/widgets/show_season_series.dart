@@ -29,14 +29,20 @@ class SeasonSeriesLoaded extends StatelessWidget {
   final TvsDetailsStates state;
   @override
   Widget build(BuildContext context) {
-    return ListView.separated(
-      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
-      itemCount: state.tvsDetails?.season.length ?? 0,
-      itemBuilder: (context, index) {
-        final season = state.tvsDetails!.season[index];
-        return SeasonsLoadedItem(season: season);
-      },
-      separatorBuilder: (context, index) => const Space(height: 20, width: 0),
-    );
+    if (state.tvsDetails!.season.isEmpty) {
+      return Image.asset(
+        Assets.imagesNoData,
+        height: 100.h,
+        width: 100.w,
+      );
+    } else {
+      return SeriesListView(
+        itemCount: state.tvsDetails!.season.length,
+        itemBuilder: (context, index) {
+          final season = state.tvsDetails!.season[index];
+          return SeasonsLoadedItem(season: season);
+        },
+      );
+    }
   }
 }

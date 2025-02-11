@@ -1,7 +1,7 @@
 part of './../../../core/helpers/export_manager/export_manager.dart';
 
-class RecommendationLoadedListView extends StatelessWidget {
-  const RecommendationLoadedListView({
+class RecommendationLoaded extends StatelessWidget {
+  const RecommendationLoaded({
     super.key,
     required this.state,
   });
@@ -15,9 +15,7 @@ class RecommendationLoadedListView extends StatelessWidget {
         width: 100.w,
       );
     } else {
-      return ListView.separated(
-        scrollDirection: Axis.vertical,
-        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
+      return SeriesListView(
         itemCount: state.tvsRecommendation.length,
         itemBuilder: (context, index) {
           return RecommendationLoadedItem(
@@ -25,9 +23,6 @@ class RecommendationLoadedListView extends StatelessWidget {
             id: state.tvsRecommendation[index].id,
             name: state.tvsRecommendation[index].name,
           );
-        },
-        separatorBuilder: (context, index) {
-          return const Space(height: 20, width: 0);
         },
       );
     }
