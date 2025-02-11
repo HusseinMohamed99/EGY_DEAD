@@ -213,3 +213,5 @@ part './../functions/show_genres.dart';
 part './../responsive/spacing.dart';
 part './../theme/style/color_manger.dart';
 part './../theme/theme_data/theme_data.dart';
+
+part './../../widgets/content_display_card.dart';
