@@ -17,7 +17,7 @@ class MovieSeeMoreScreen extends StatelessWidget {
         itemBuilder: (context, index) {
           if (index < movieItems.movies.length) {
             final movie = movieItems.movies[index];
-            return BuildMovieCard(movie: movie);
+            return SeeMoreMovieCard(movie: movie);
           } else {
             movieItems.addEvent();
             return const LoadingIndicator();

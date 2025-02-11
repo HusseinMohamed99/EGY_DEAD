@@ -1,7 +1,7 @@
 part of './../../../core/helpers/export_manager/export_manager.dart';
 
-class BuildMovieCard extends StatelessWidget {
-  const BuildMovieCard({
+class SeeMoreMovieCard extends StatelessWidget {
+  const SeeMoreMovieCard({
     super.key,
     required this.movie,
   });
