@@ -213,3 +213,4 @@ part './../theme/style/color_manger.dart';
 part './../theme/theme_data/theme_data.dart';
 
 part './../../widgets/build_carousel_widget.dart';
+part './../../widgets/carousel_item.dart';
