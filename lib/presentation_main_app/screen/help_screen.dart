@@ -27,33 +27,21 @@ class SupportScreen extends StatelessWidget {
             children: [
               OptionCard(
                 title: 'Mail',
-                imageWidget: SvgPicture.asset(
-                  Assets.imagesGoogle,
-                  width: 30.w,
-                  height: 30.h,
-                ),
+                imageWidget: Assets.imagesGoogle,
                 onTap: () {
                   urlLauncher(Uri.parse('mailto:hussein.mohmed1907@gmail.com'));
                 },
               ),
               OptionCard(
                 title: 'GitHub',
-                imageWidget: SvgPicture.asset(
-                  Assets.imagesGithub,
-                  width: 30.w,
-                  height: 30.h,
-                ),
+                imageWidget: Assets.imagesGithub,
                 onTap: () {
                   urlLauncher(Uri.parse('https://github.com/HusseinMohamed99'));
                 },
               ),
               OptionCard(
                 title: 'LinkedIn',
-                imageWidget: SvgPicture.asset(
-                  Assets.imagesLinkedin,
-                  width: 30.w,
-                  height: 30.h,
-                ),
+                imageWidget: Assets.imagesLinkedin,
                 onTap: () {
                   urlLauncher(
                       Uri.parse('https://www.linkedin.com/in/hussein99'));
@@ -61,11 +49,7 @@ class SupportScreen extends StatelessWidget {
               ),
               OptionCard(
                 title: 'Google play',
-                imageWidget: SvgPicture.asset(
-                  Assets.imagesGooglePlay,
-                  width: 30.w,
-                  height: 30.h,
-                ),
+                imageWidget: Assets.imagesGooglePlay,
                 onTap: () {
                   urlLauncher(Uri.parse(
                     'https://play.google.com/store/apps/dev?id=5842045484913788359',

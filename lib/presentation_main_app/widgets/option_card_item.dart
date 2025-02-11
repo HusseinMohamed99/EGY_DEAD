@@ -11,7 +11,7 @@ class OptionCard extends StatelessWidget {
   final VoidCallback onTap;
   final String title;
   final IconData? icon;
-  final Widget? imageWidget;
+  final String? imageWidget;
 
   @override
   Widget build(BuildContext context) {
@@ -33,12 +33,17 @@ class OptionCard extends StatelessWidget {
               CircleAvatar(
                 radius: 22.r,
                 backgroundColor: const Color.fromRGBO(105, 155, 247, 0.15),
-                child: imageWidget ??
-                    Icon(
-                      icon,
-                      size: 26.sp,
-                      color: ColorManager.primaryGreenColor,
-                    ),
+                child: imageWidget != null
+                    ? SvgPicture.asset(
+                        imageWidget!,
+                        width: 30.w,
+                        height: 30.h,
+                      )
+                    : Icon(
+                        icon,
+                        size: 26.sp,
+                        color: ColorManager.primaryGreenColor,
+                      ),
               ),
               const Space(width: 35, height: 0),
               Text(
