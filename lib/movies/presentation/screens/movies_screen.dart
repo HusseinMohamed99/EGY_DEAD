@@ -7,17 +7,17 @@ class MoviesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Column(
       children: [
-        NowPlayingWidget(),
+        NowPlayingBlocBuilder(),
         Expanded(
           child: CustomScrollView(
             slivers: [
               SliverToBoxAdapter(child: PopularMoviesWidget()),
               SliverToBoxAdapter(child: UpcomingMoviesWidget()),
               SliverToBoxAdapter(child: TopRatedMoviesWidget()),
-              SliverToBoxAdapter(child: Space(height: 24, width: 0)),
             ],
           ),
         ),
+        Space(height: 24, width: 0),
       ],
     );
   }

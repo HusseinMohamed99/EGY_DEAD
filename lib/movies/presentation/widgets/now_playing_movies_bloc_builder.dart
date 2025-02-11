@@ -1,7 +1,7 @@
 part of './../../../core/helpers/export_manager/export_manager.dart';
 
-class NowPlayingWidget extends StatelessWidget {
-  const NowPlayingWidget({super.key});
+class NowPlayingBlocBuilder extends StatelessWidget {
+  const NowPlayingBlocBuilder({super.key});
 
   @override
   Widget build(BuildContext context) {
