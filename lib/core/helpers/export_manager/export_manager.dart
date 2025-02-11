@@ -210,3 +210,4 @@ part './../theme/style/color_manger.dart';
 part './../theme/theme_data/theme_data.dart';
 
 part './../../../movies/presentation/widgets/movie_details_display.dart';
+part './../../../movies/presentation/widgets/build_see_more_movie_card.dart';
