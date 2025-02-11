@@ -8,7 +8,7 @@ class CinemaDuration extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      _showDuration(duration ?? 0),
+      showDuration(duration ?? 0),
       style: TextStyleManager.labelSmall(
         context: context,
         color: ColorManager.greyColor,
