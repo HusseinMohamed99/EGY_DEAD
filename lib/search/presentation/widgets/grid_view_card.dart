@@ -27,13 +27,8 @@ class GridViewCard extends StatelessWidget {
           child: AspectRatio(
             aspectRatio: 2 / 3,
             child: Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8).r,
-                border: Border.all(
-                  color: ColorManager.whiteColor,
-                  width: 1.0,
-                ),
-              ),
+              decoration: buildContainerDecoration(),
+              
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(8).r,
                 child: CachedImage(
