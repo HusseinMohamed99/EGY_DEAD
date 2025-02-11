@@ -3,8 +3,8 @@ part of './../helpers/export_manager/export_manager.dart';
 final sl = GetIt.instance;
 
 Future<void> serviceLocator() async {
-  sl.registerFactory(() => InternetCubit());
-  sl.registerFactory(() => MainBloc());
+  sl.registerFactory(InternetCubit.new);
+  sl.registerFactory(MainBloc.new);
 
   /// TVS =>
   /// TVS Bloc
@@ -29,7 +29,7 @@ Future<void> serviceLocator() async {
       () => TvsRepository(baseTvRemoteDataSource: sl()));
 
   /// TVS Data Source
-  sl.registerLazySingleton<BaseTvRemoteDataSource>(() => TvRemoteDataSource());
+  sl.registerLazySingleton<BaseTvRemoteDataSource>(TvRemoteDataSource.new);
 
   /// MOVIES =>
   /// Movies Bloc
@@ -73,8 +73,7 @@ Future<void> serviceLocator() async {
       () => MoviesRepository(remoteMovieDataSource: sl()));
 
   /// Movies Data Source
-  sl.registerLazySingleton<RemoteMovieDataSource>(
-      () => MovieRemoteDataSource());
+  sl.registerLazySingleton<RemoteMovieDataSource>(MovieRemoteDataSource.new);
 
   /// Search =>
   /// Search Bloc
@@ -89,5 +88,5 @@ Future<void> serviceLocator() async {
 
   /// Search Data Source
   sl.registerLazySingleton<SearchRemoteDataSource>(
-      () => SearchRemoteDataSourceImpl());
+      SearchRemoteDataSourceImpl.new);
 }
