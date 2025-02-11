@@ -12,7 +12,7 @@ class MovieDetailsScreen extends StatelessWidget {
         ..add(GetMoviesRecommendationEvent(movieID))
         ..add(GetMoviesSimilarEvent(movieID)),
       child: const Scaffold(
-        body: MovieDescriptionPanel(),
+        body: MovieDescriptionBLocBuilder(),
       ),
     );
   }

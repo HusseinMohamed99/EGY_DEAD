@@ -42,7 +42,7 @@ import 'package:url_launcher/url_launcher.dart';
 part '../../../movies/presentation/function/navigate_to_see_more_screen.dart';
 part '../../../movies/presentation/widgets/build_content_movies.dart';
 part '../../../movies/presentation/widgets/film_descriptions.dart';
-part '../../../movies/presentation/widgets/movie_description_panel.dart';
+part '../../../movies/presentation/widgets/movie_description_bloc_builder.dart';
 part '../../../movies/presentation/widgets/movie_recommendations_display.dart';
 part '../../../movies/presentation/widgets/now_playing_movies_widget.dart';
 part '../../../movies/presentation/widgets/upcoming_movies_widget.dart';
@@ -208,3 +208,5 @@ part './../functions/show_genres.dart';
 part './../responsive/spacing.dart';
 part './../theme/style/color_manger.dart';
 part './../theme/theme_data/theme_data.dart';
+
+part './../../../movies/presentation/widgets/movie_details_display.dart';
