@@ -53,6 +53,12 @@ class AppRouters {
             movieItems: arguments as MovieSeeMoreModel,
           ),
         );
+      case Routes.tvSeeMoreScreen:
+        return MaterialPageRoute(
+          builder: (_) => TvSeeMoreScreen(
+            tvSeeMoreModel: arguments as TvSeeMoreModel,
+          ),
+        );
     }
     return null;
   }

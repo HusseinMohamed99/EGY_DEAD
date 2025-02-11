@@ -13,8 +13,14 @@ class BuildContentMovies extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        BuildHeaderWidget(
-          movieItems: movieItems,
+        HeaderWidget(
+          title: movieItems.title,
+          onTap: () {
+            navigateToSeeMore(
+              context: context,
+              model: movieItems,
+            );
+          },
         ),
         ContentMoviesWidget(movies: movieItems.movies),
       ],
@@ -34,7 +40,7 @@ class ContentMoviesWidget extends StatelessWidget {
     return HorizontalListView(
       itemCount: movies.length,
       itemBuilder: (context, index) {
-        return HorizontalListViewCard(movies: movies[index]);
+        return HorizontalMoviesListViewCard(movies: movies[index]);
       },
     );
   }

@@ -4,20 +4,23 @@ class BuildContentTv extends StatelessWidget {
   const BuildContentTv({
     super.key,
     required this.tvModel,
-    required this.title,
   });
-  final List<Tvs> tvModel;
-  final String title;
+  final TvSeeMoreModel tvModel;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        BuildHeaderTvWidget(
-          tvModel: tvModel,
-          title: title,
+        HeaderWidget(
+          title: tvModel.title,
+          onTap: () {
+            navigateToTvSeeMore(
+              context: context,
+              tvModel: tvModel,
+            );
+          },
         ),
-        ContentTvWidget(tvModel: tvModel),
+        ContentTvWidget(tvModel: tvModel.tvList),
       ],
     );
   }
@@ -41,86 +44,20 @@ class ContentTvWidget extends StatelessWidget {
   }
 }
 
-class BuildHeaderTvWidget extends StatelessWidget {
-  const BuildHeaderTvWidget({
-    super.key,
-    required this.title,
-    required this.tvModel,
-  });
-  final String title;
-  final List<Tvs> tvModel;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(
-            title,
-            style: TextStyleManager.titleSmall(context: context),
-          ),
-          GestureDetector(
-            onTap: () {
-              navigateToTvSeeMore(
-                context: context,
-                tvModel: tvModel,
-                title: title,
-              );
-            },
-            child: Row(
-              children: [
-                Text(
-                  AppString.seeMore,
-                  style: TextStyleManager.labelSmall(context: context),
-                ),
-                Icon(
-                  Icons.arrow_forward_ios,
-                  size: 16.sp,
-                  color: ColorManager.whiteColor,
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
 class HorizontalTvCardView extends StatelessWidget {
   const HorizontalTvCardView({
     super.key,
     required this.tvModel,
   });
-
   final Tvs? tvModel;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.all(const Radius.circular(8.0).r),
-        border: Border.all(
-          color: ColorManager.whiteColor,
-          width: 1.0,
-        ),
-      ),
-      child: GestureDetector(
-        onTap: () {
-          navigateToTvDetails(context, tvModel?.id ?? 0);
-        },
-        child: ClipRRect(
-          borderRadius: const BorderRadius.all(Radius.circular(8.0)).r,
-          child: CachedImage(
-            boxFit: BoxFit.fitHeight,
-            imageUrl: ApiConstance.imageURL(tvModel?.backdropPath ?? ''),
-            width: 120.w,
-            height: double.infinity,
-          ),
-        ),
-      ),
+    return ContentDisplayCard(
+      navigateToDetailsSection: () {
+        navigateToTvDetails(context, tvModel?.id ?? 0);
+      },
+      imageUrl: ApiConstance.imageURL(tvModel?.backdropPath ?? ''),
     );
   }
 }

@@ -11,14 +11,18 @@ class TopRatedTvsWidget extends StatelessWidget {
       builder: (context, state) {
         if (state.topRatedStates == RequestState.loading) {
           return BuildContentTv(
-            tvModel: state.topRatedTvs,
-            title: AppString.topRated,
+            tvModel: TvSeeMoreModel(
+              title: AppString.topRated,
+              tvList: state.topRatedTvs,
+            ),
           ).skeletonize();
         } else if (state.topRatedStates == RequestState.loaded) {
           state.topRatedTvs.shuffle(Random());
           return BuildContentTv(
-            tvModel: state.topRatedTvs,
-            title: AppString.topRated,
+            tvModel: TvSeeMoreModel(
+              title: AppString.topRated,
+              tvList: state.topRatedTvs,
+            ),
           );
         } else {
           return BuildErrorMessage(errorMessage: state.topRatedMessage);

@@ -11,14 +11,18 @@ class PopularTvsWidget extends StatelessWidget {
       builder: (context, state) {
         if (state.popularState == RequestState.loading) {
           return BuildContentTv(
-            tvModel: state.popularTvs,
-            title: AppString.popular,
+            tvModel: TvSeeMoreModel(
+              title: AppString.popular,
+              tvList: state.popularTvs,
+            ),
           ).skeletonize();
         } else if (state.popularState == RequestState.loaded) {
           state.popularTvs.shuffle(Random());
           return BuildContentTv(
-            tvModel: state.popularTvs,
-            title: AppString.popular,
+            tvModel: TvSeeMoreModel(
+              title: AppString.popular,
+              tvList: state.popularTvs,
+            ),
           );
         } else {
           return BuildErrorMessage(errorMessage: state.popularMessage);

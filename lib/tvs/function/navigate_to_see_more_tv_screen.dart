@@ -2,16 +2,16 @@ part of './../../core/helpers/export_manager/export_manager.dart';
 
 void navigateToTvSeeMore({
   required BuildContext context,
-  required List<Tvs> tvModel,
-  required String title,
+  required TvSeeMoreModel tvModel,
 }) {
-  Navigator.push(
-    context,
-    MaterialPageRoute(
-      builder: (context) => SeeMoreScreen(
-        tvsList: tvModel,
-        name: title,
-      ),
-    ),
-  );
+  context.pushNamed(Routes.tvSeeMoreScreen, arguments: tvModel);
+}
+
+class TvSeeMoreModel {
+  TvSeeMoreModel({
+    required this.tvList,
+    required this.title,
+  });
+  final List<Tvs> tvList;
+  final String title;
 }

@@ -1,12 +1,9 @@
 part of './../../../core/helpers/export_manager/export_manager.dart';
 
-class BuildHeaderWidget extends StatelessWidget {
-  const BuildHeaderWidget({
-    super.key,
-    required this.movieItems,
-  });
-  final MovieSeeMoreModel movieItems;
-
+class HeaderWidget extends StatelessWidget {
+  const HeaderWidget({super.key, required this.title, required this.onTap});
+  final String title;
+  final VoidCallback onTap;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -15,16 +12,11 @@ class BuildHeaderWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
-            movieItems.title,
+            title,
             style: TextStyleManager.titleSmall(context: context),
           ),
           GestureDetector(
-            onTap: () {
-              navigateToSeeMore(
-                context: context,
-                model: movieItems,
-              );
-            },
+            onTap: onTap,
             child: Row(
               children: [
                 Text(

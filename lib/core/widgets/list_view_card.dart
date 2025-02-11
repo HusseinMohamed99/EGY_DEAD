@@ -1,7 +1,7 @@
 part of '../helpers/export_manager/export_manager.dart';
 
-class HorizontalListViewCard extends StatelessWidget {
-  const HorizontalListViewCard({
+class HorizontalMoviesListViewCard extends StatelessWidget {
+  const HorizontalMoviesListViewCard({
     super.key,
     required this.movies,
   });

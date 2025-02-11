@@ -8,4 +8,5 @@ class Routes {
   static const supportScreen = '/SupportScreen';
   static const movieDetailsScreen = '/MovieDetailsScreen';
   static const movieSeeMoreScreen = '/MovieSeeMoreScreen';
+  static const tvSeeMoreScreen = '/TvSeeMoreScreen';
 }

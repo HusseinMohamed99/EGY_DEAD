@@ -1,24 +1,21 @@
 part of './../../../core/helpers/export_manager/export_manager.dart';
 
-class SeeMoreScreen extends StatelessWidget {
-  const SeeMoreScreen({
+class TvSeeMoreScreen extends StatelessWidget {
+  const TvSeeMoreScreen({
     super.key,
-    required this.tvsList,
-    required this.name,
+    required this.tvSeeMoreModel,
   });
-
-  final List<Tvs> tvsList;
-  final String name;
+  final TvSeeMoreModel tvSeeMoreModel;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: _buildAppBar(context, title: '$name Series'),
+      appBar: _buildAppBar(context, title: '${tvSeeMoreModel.title} Series'),
       body: ExploreAllMoviesOrTvsPage(
-        itemCount: tvsList.length,
+        itemCount: tvSeeMoreModel.tvList.length,
         itemBuilder: (context, index) {
-          if (index < tvsList.length) {
-            final tvs = tvsList[index];
+          if (index < tvSeeMoreModel.tvList.length) {
+            final tvs = tvSeeMoreModel.tvList[index];
             return BuildTvsCard(tvs: tvs);
           } else {
             return const LoadingIndicator();
