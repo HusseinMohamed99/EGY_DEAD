@@ -22,7 +22,7 @@ class BuildCarouselItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return CarouselItem(
       navigateToDetailsSection: () {
-        navigateToMovieDetails(context, movie.id);
+        navigateToDetailsSection(context, movie.id);
       },
       imageUrl: ApiConstance.imageURL(movie.backdropPath),
       title: movie.title,

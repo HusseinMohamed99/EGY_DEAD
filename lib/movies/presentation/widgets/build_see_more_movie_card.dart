@@ -14,7 +14,7 @@ class BuildMovieCard extends StatelessWidget {
       padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 10.w),
       margin: EdgeInsets.symmetric(vertical: 10.h),
       child: GestureDetector(
-        onTap: () => navigateToMovieDetails(context, movie.id),
+        onTap: () => navigateToDetailsSection(context, movie.id),
         child: Row(
           children: [
             Container(

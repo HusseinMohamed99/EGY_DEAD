@@ -20,7 +20,7 @@ class HorizontalListViewCard extends StatelessWidget {
       ),
       child: InkWell(
         onTap: () {
-          navigateToMovieDetails(context, movies?.id ?? 0);
+          navigateToDetailsSection(context, movies?.id ?? 0);
         },
         child: ClipRRect(
           borderRadius: const BorderRadius.all(Radius.circular(8.0)).r,
