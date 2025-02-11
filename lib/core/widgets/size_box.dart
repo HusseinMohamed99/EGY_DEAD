@@ -1,4 +1,4 @@
-part of './../helpers/export_manager/export_manager.dart';
+part of '../helpers/export_manager/export_manager.dart';
 
 class Space extends StatelessWidget {
   const Space({required this.height, required this.width, super.key});

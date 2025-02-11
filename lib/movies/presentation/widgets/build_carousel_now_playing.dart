@@ -5,13 +5,7 @@ class NowPlayingCarousel extends StatelessWidget {
   final List<Movies> movies;
   @override
   Widget build(BuildContext context) {
-    return CarouselSlider(
-      options: CarouselOptions(
-        autoPlay: true,
-        height: context.height * 0.3,
-        viewportFraction: 1.0,
-        onPageChanged: (index, reason) {},
-      ),
+    return BuildCarouselWidget(
       items: movies.map((movie) => BuildCarouselItem(movie: movie)).toList(),
     );
   }

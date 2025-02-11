@@ -1,4 +1,4 @@
-part of './../helpers/export_manager/export_manager.dart';
+part of '../helpers/export_manager/export_manager.dart';
 
 class CastCard extends StatelessWidget {
   const CastCard({

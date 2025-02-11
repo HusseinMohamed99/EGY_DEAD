@@ -1,4 +1,4 @@
-part of './../helpers/export_manager/export_manager.dart';
+part of '../helpers/export_manager/export_manager.dart';
 
 AppBar _buildAppBar(BuildContext context, {required String title}) {
   return AppBar(
