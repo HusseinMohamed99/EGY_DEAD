@@ -44,7 +44,6 @@ class _HomePageState extends State<HomePage> {
             builder: (context, state) {
               if (state == InternetState.gained) {
                 // Navigate to MainScreen once connected
-
                 return BlocProvider(
                   create: (context) => sl<MainBloc>(),
                   child: const MainScreen(),
