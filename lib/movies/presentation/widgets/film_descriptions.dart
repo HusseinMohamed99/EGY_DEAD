@@ -13,11 +13,17 @@ class FilmDescription extends StatelessWidget {
     return Column(
       children: [
         FilmInfoRow(moviesDetailsStates: moviesDetailsStates),
-        const Space(height: 16, width: 0),
-        CinemaOverviewAndGenres(
-          overview: moviesDetailsStates.moviesDetails?.overview ?? '',
-          genres: moviesDetailsStates.moviesDetails?.genres ?? [],
-        ),
+        if (moviesDetailsStates.moviesDetails?.genres != null &&
+            moviesDetailsStates.moviesDetails?.overview != '')
+          Column(
+            children: [
+              const Space(height: 16, width: 0),
+              CinemaOverviewAndGenres(
+                overview: moviesDetailsStates.moviesDetails?.overview ?? '',
+                genres: moviesDetailsStates.moviesDetails?.genres ?? [],
+              ),
+            ],
+          ),
       ],
     );
   }
