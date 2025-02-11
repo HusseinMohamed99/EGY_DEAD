@@ -49,6 +49,7 @@ part '../../../movies/presentation/widgets/now_playing_movies_bloc_builder.dart'
 part '../../../movies/presentation/widgets/upcoming_movies_widget.dart';
 part '../../../tvs/presentation/screens/tv_see_more.dart';
 part '../../../tvs/presentation/widgets/recommendation_loaded.dart';
+part '../../../tvs/presentation/widgets/series_loaded_item.dart';
 part '../../widgets/build_app_bar.dart';
 part '../../widgets/build_container_decoration.dart';
 part '../../widgets/build_header_widget.dart';
@@ -179,8 +180,6 @@ part './../../../tvs/presentation/widgets/build_tab_bar_section.dart';
 part './../../../tvs/presentation/widgets/on_the_air_carousel.dart';
 part './../../../tvs/presentation/widgets/on_the_air_widget.dart';
 part './../../../tvs/presentation/widgets/popular_tvs_widget.dart';
-part './../../../tvs/presentation/widgets/recommendation_loaded_item.dart';
-part './../../../tvs/presentation/widgets/seasons_loaded_item.dart';
 part './../../../tvs/presentation/widgets/see_more_tv_card.dart';
 part './../../../tvs/presentation/widgets/series_description.dart';
 part './../../../tvs/presentation/widgets/series_info_row.dart';

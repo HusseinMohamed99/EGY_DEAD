@@ -23,10 +23,11 @@ class SimilarLoadedListView extends StatelessWidget {
         ),
         itemCount: state.tvsSimilar.length,
         itemBuilder: (context, index) {
-          return RecommendationLoadedItem(
-            backdropPath: state.tvsSimilar[index].backdropPath ?? '',
-            id: state.tvsSimilar[index].id,
+          return SeriesLoadedItem(
+            imageUrl: state.tvsSimilar[index].backdropPath ?? '',
             name: state.tvsSimilar[index].name,
+            onTap: () =>
+                navigateToTvDetails(context, state.tvsSimilar[index].id),
           );
         },
         separatorBuilder: (context, index) {

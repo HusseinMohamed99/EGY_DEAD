@@ -29,7 +29,7 @@ class SeasonSeriesLoaded extends StatelessWidget {
   final TvsDetailsStates state;
   @override
   Widget build(BuildContext context) {
-    if (state.tvsDetails!.season.isEmpty) {
+    if (state.tvsDetails?.season.isEmpty ?? true) {
       return Image.asset(
         Assets.imagesNoData,
         height: 100.h,
@@ -40,7 +40,11 @@ class SeasonSeriesLoaded extends StatelessWidget {
         itemCount: state.tvsDetails!.season.length,
         itemBuilder: (context, index) {
           final season = state.tvsDetails!.season[index];
-          return SeasonsLoadedItem(season: season);
+          return SeriesLoadedItem(
+            imageUrl: season.posterPath,
+            episodeCount: season.episodeCount.toString(),
+            name: season.name,
+          );
         },
       );
     }

@@ -18,10 +18,11 @@ class RecommendationLoaded extends StatelessWidget {
       return SeriesListView(
         itemCount: state.tvsRecommendation.length,
         itemBuilder: (context, index) {
-          return RecommendationLoadedItem(
-            backdropPath: state.tvsRecommendation[index].backdropPath ?? '',
-            id: state.tvsRecommendation[index].id,
+          return SeriesLoadedItem(
+            imageUrl: state.tvsRecommendation[index].backdropPath ?? '',
             name: state.tvsRecommendation[index].name,
+            onTap: () =>
+                navigateToTvDetails(context, state.tvsRecommendation[index].id),
           );
         },
       );
