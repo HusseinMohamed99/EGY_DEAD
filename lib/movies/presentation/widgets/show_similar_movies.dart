@@ -32,7 +32,9 @@ class ShowSimilarMovies extends StatelessWidget {
     return BlocBuilder<MoviesDetailsBloc, MoviesDetailsStates>(
       builder: (context, state) {
         if (state.moviesDetailsStates == RequestState.loading) {
-          return SizedBox(height: 170.h, child: const LoadingIndicator());
+          return SimilarMovieListView(
+            moviesDetailsStates: state,
+          ).skeletonize();
         } else if (state.moviesDetailsStates == RequestState.loaded) {
           return SimilarMovieListView(moviesDetailsStates: state);
         } else {
