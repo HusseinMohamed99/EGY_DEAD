@@ -216,3 +216,8 @@ part './../functions/show_genres.dart';
 part './../responsive/spacing.dart';
 part './../theme/style/color_manger.dart';
 part './../theme/theme_data/theme_data.dart';
+
+part './../../../presentation_main_app/widgets/option_card_item.dart';
+part './../../../presentation_main_app/widgets/logo_widget.dart';
+part './../functions/app_policy.dart';
+part './../functions/rating_on_play_store.dart';
