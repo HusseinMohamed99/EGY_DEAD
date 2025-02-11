@@ -41,27 +41,29 @@ class MovieDetailsDisplay extends StatelessWidget {
         ShowSimilar(moviesDetailsStates: moviesDetailsStates),
     ];
 
-    return SingleChildScrollView(
-      key: const Key('movieDetailScrollView'),
-      child: Stack(
-        children: [
-          Column(
-            children: [
-              CinemaBackdropWidget(
-                  backdropPath:
-                      moviesDetailsStates.moviesDetails?.backdropPath ?? ''),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: sections
-                    .map(
-                      (section) => PaddedSection(child: section),
-                    )
-                    .toList(),
-              ),
+    return Column(
+      children: [
+        CinemaBackdropWidget(
+            backdropPath:
+                moviesDetailsStates.moviesDetails?.backdropPath ?? ''),
+        Expanded(
+          child: CustomScrollView(
+            key: const Key('movieDetailScrollView'),
+            slivers: [
+              SliverToBoxAdapter(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: sections
+                      .map(
+                        (section) => PaddedSection(child: section),
+                      )
+                      .toList(),
+                ),
+              )
             ],
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
