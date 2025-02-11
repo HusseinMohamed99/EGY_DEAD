@@ -19,9 +19,7 @@ class SupportScreen extends StatelessWidget {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          LogoWidget(
-            topPadding: 16.h,
-          ),
+          LogoWidget(topPadding: 16.h),
           Column(
             spacing: 8.h,
             children: [
