@@ -1,4 +1,4 @@
-part of './../../../core/helpers/export_manager/export_manager.dart';
+part of '../helpers/export_manager/export_manager.dart';
 
 class HeaderWidget extends StatelessWidget {
   const HeaderWidget({super.key, required this.title, required this.onTap});

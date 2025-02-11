@@ -1,4 +1,4 @@
-part of './../../../core/helpers/export_manager/export_manager.dart';
+part of '../helpers/export_manager/export_manager.dart';
 
 class BuildRating extends StatelessWidget {
   const BuildRating({super.key, required this.rating});
