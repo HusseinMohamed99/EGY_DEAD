@@ -10,13 +10,7 @@ class BuildMovieCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
-        color: ColorManager.darkPrimary,
-        borderRadius: BorderRadius.circular(8).r,
-        border: Border.all(
-          color: ColorManager.whiteColor,
-        ),
-      ),
+      decoration: buildContainerDecoration(),
       padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 10.w),
       margin: EdgeInsets.symmetric(vertical: 10.h),
       child: GestureDetector(
@@ -24,13 +18,7 @@ class BuildMovieCard extends StatelessWidget {
         child: Row(
           children: [
             Container(
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8.0).r,
-                border: Border.all(
-                  color: ColorManager.whiteColor,
-                ),
-              ),
+              decoration: buildContainerDecoration(),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(8.0).r,
                 child: CachedImage(
