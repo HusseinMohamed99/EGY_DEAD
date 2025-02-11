@@ -18,27 +18,25 @@ class ShowRecommendations extends StatelessWidget {
           style: TextStyleManager.titleSmall(context: context),
         ),
         const Space(height: 8, width: 0),
-        const MovieRecommendationsDisplay(),
+        const MovieRecommendationsBlocBuilder(),
       ],
     );
   }
 }
 
-class MovieRecommendationsDisplay extends StatelessWidget {
-  const MovieRecommendationsDisplay({super.key});
+class MovieRecommendationsBlocBuilder extends StatelessWidget {
+  const MovieRecommendationsBlocBuilder({super.key});
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<MoviesDetailsBloc, MoviesDetailsStates>(
       builder: (context, state) {
         if (state.moviesRecommendationStates == RequestState.loading) {
-          return MoviesRecommendationWidget(
+          return MoviesRecommendationListView(
             moviesDetailsStates: state,
           ).skeletonize();
-        }
-
-        if (state.moviesRecommendationStates == RequestState.loaded) {
-          return MoviesRecommendationWidget(
+        } else if (state.moviesRecommendationStates == RequestState.loaded) {
+          return MoviesRecommendationListView(
             moviesDetailsStates: state,
           );
         } else {
@@ -51,8 +49,8 @@ class MovieRecommendationsDisplay extends StatelessWidget {
   }
 }
 
-class MoviesRecommendationWidget extends StatelessWidget {
-  const MoviesRecommendationWidget({
+class MoviesRecommendationListView extends StatelessWidget {
+  const MoviesRecommendationListView({
     super.key,
     required this.moviesDetailsStates,
   });
@@ -60,53 +58,18 @@ class MoviesRecommendationWidget extends StatelessWidget {
   final MoviesDetailsStates moviesDetailsStates;
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 170.h,
-      child: ListView.builder(
-        shrinkWrap: true,
-        scrollDirection: Axis.horizontal,
-        itemCount: moviesDetailsStates.moviesRecommendation.length,
-        itemBuilder: (context, index) {
-          final recommendation =
-              moviesDetailsStates.moviesRecommendation[index];
-          return Padding(
-            padding: EdgeInsets.only(right: 8.w),
-            child: GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => MovieDetailsScreen(
-                      movieID: recommendation.id,
-                    ),
-                  ),
-                );
-              },
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10).r,
-                  border: Border.all(
-                    color: ColorManager.whiteColor,
-                  ),
-                ),
-                child: ClipRRect(
-                  borderRadius: const BorderRadius.all(
-                    Radius.circular(8.0),
-                  ).r,
-                  child: CachedImage(
-                    imageUrl: ApiConstance.imageURL(
-                      recommendation.backdropPath ?? '',
-                    ),
-                    width: 120.w,
-                    height: double.infinity,
-                    boxFit: BoxFit.fitHeight,
-                  ),
-                ),
-              ),
-            ),
-          );
-        },
-      ),
+    return HorizontalListView(
+      padding: EdgeInsets.only(right: 8.w),
+      itemBuilder: (context, index) {
+        final recommendation = moviesDetailsStates.moviesRecommendation[index];
+        return ContentDisplayCard(
+          navigateToDetailsSection: () {
+            navigateToDetailsSection(context, recommendation.id);
+          },
+          imageUrl: ApiConstance.imageURL(recommendation.backdropPath ?? ''),
+        );
+      },
+      itemCount: moviesDetailsStates.moviesRecommendation.length,
     );
   }
 }

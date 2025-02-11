@@ -7,17 +7,18 @@ class HorizontalListView extends StatelessWidget {
     super.key,
     required this.itemCount,
     required this.itemBuilder,
+    this.padding,
   });
   final int itemCount;
   final Widget Function(BuildContext context, int index) itemBuilder;
-
+  final EdgeInsetsGeometry? padding;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: 130.h,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
-        padding: EdgeInsets.symmetric(horizontal: 16.0.w),
+        padding: padding ?? EdgeInsets.symmetric(horizontal: 16.0.w),
         physics: const BouncingScrollPhysics(),
         itemCount: itemCount,
         itemBuilder: itemBuilder,
