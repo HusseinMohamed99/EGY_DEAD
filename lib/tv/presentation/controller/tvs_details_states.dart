@@ -1,0 +1,65 @@
+part of '../../../core/helpers/export_manager/export_manager.dart';
+
+class TvsDetailsStates extends Equatable {
+  const TvsDetailsStates({
+    this.tvsDetails,
+    this.tvsDetailsStates = RequestState.loading,
+    this.tvsDetailsMessage = '',
+    this.tvsRecommendation = const [],
+    this.tvsRecommendationStates = RequestState.loading,
+    this.tvsRecommendationMessage = '',
+    this.tvsSimilar = const [],
+    this.tvsSimilarStates = RequestState.loading,
+    this.tvsSimilarMessage = '',
+  });
+  final TvDetails? tvsDetails;
+  final RequestState tvsDetailsStates;
+  final String tvsDetailsMessage;
+
+  final List<TvsRecommendation> tvsRecommendation;
+  final RequestState tvsRecommendationStates;
+  final String tvsRecommendationMessage;
+
+  final List<TvsSimilar> tvsSimilar;
+  final RequestState tvsSimilarStates;
+  final String tvsSimilarMessage;
+
+  TvsDetailsStates copyWith({
+    TvDetails? tvsDetails,
+    RequestState? tvsDetailsStates,
+    String? tvsDetailsMessage,
+    List<TvsRecommendation>? tvsRecommendation,
+    RequestState? tvsRecommendationStates,
+    String? tvsRecommendationMessage,
+    List<TvsSimilar>? tvsSimilar,
+    RequestState? tvsSimilarStates,
+    String? tvsSimilarMessage,
+  }) {
+    return TvsDetailsStates(
+      tvsDetailsMessage: tvsDetailsMessage ?? this.tvsDetailsMessage,
+      tvsDetails: tvsDetails ?? this.tvsDetails,
+      tvsDetailsStates: tvsDetailsStates ?? this.tvsDetailsStates,
+      tvsRecommendation: tvsRecommendation ?? this.tvsRecommendation,
+      tvsRecommendationStates:
+          tvsRecommendationStates ?? this.tvsRecommendationStates,
+      tvsRecommendationMessage:
+          tvsRecommendationMessage ?? this.tvsRecommendationMessage,
+      tvsSimilar: tvsSimilar ?? this.tvsSimilar,
+      tvsSimilarStates: tvsSimilarStates ?? this.tvsSimilarStates,
+      tvsSimilarMessage: tvsSimilarMessage ?? this.tvsSimilarMessage,
+    );
+  }
+
+  @override
+  List<Object?> get props => [
+        tvsDetails,
+        tvsDetailsMessage,
+        tvsDetailsStates,
+        tvsRecommendation,
+        tvsRecommendationMessage,
+        tvsRecommendationStates,
+        tvsSimilar,
+        tvsSimilarMessage,
+        tvsSimilarStates,
+      ];
+}
