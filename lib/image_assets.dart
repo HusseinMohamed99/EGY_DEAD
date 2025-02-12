@@ -29,5 +29,13 @@ class Assets {
   /// Assets for imagesNoData
   /// assets/images/No-data.png
   static const String imagesNoData = "assets/images/No-data.png";
+
+  /// Assets for imagesSplash
+  /// assets/images/Splash.png
+  static const String imagesSplash = "assets/images/Splash.png";
+
+  /// Assets for imagesSplashAndroid12
+  /// assets/images/splash_android12.png
+  static const String imagesSplashAndroid12 = "assets/images/splash_android12.png";
 }
 
