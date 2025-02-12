@@ -30,6 +30,7 @@ dependencies:
   get_it: ^8.0.2
   google_mobile_ads: ^5.3.1
   package_info_plus: ^8.1.1
+  sentry_flutter: ^8.13.0
   skeletonizer: ^1.4.2
   stream_transform: ^2.1.0
   url_launcher: ^6.3.1
