@@ -15,7 +15,7 @@ class SeeMoreTvCard extends StatelessWidget {
       releaseDate: tvs.firstAirDate,
       title: tvs.name,
       rating: tvs.voteAverage,
-      onTap: () => navigateToDetailsSection(context, tvs.id),
+      onTap: () => navigateToTvDetails(context, tvs.id),
     );
   }
 }
