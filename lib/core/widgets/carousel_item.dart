@@ -20,7 +20,7 @@ class CarouselItem extends StatelessWidget {
           dev.log('⚠️ Interstitial ad is not ready, loading a new one...');
           AdManager.loadInterstitialAd();
         }
-        navigateToDetailsSection;
+        navigateToDetailsSection();
       },
       child: Stack(
         children: [
