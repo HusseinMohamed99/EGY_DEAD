@@ -14,12 +14,7 @@ class CarouselItem extends StatelessWidget {
     return GestureDetector(
       key: const Key('openMinimalDetail'),
       onTap: () {
-        if (AdManager.interstitialAd != null) {
-          AdManager.interstitialAd!.show();
-        } else {
-          dev.log('⚠️ Interstitial ad is not ready, loading a new one...');
-          AdManager.loadInterstitialAd();
-        }
+    
         navigateToDetailsSection();
       },
       child: Stack(

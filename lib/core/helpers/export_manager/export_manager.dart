@@ -19,7 +19,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get_it/get_it.dart';
-import 'package:movies_app/core/ads_manager/ad_manager.dart';
 import 'package:movies_app/core/helpers/app_string/app_string.dart';
 import 'package:movies_app/core/helpers/constant/constant.dart';
 import 'package:movies_app/core/helpers/enum/enum.dart';

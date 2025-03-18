@@ -1,10 +1,6 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_mobile_ads/google_mobile_ads.dart';
-import 'package:movies_app/core/ads_manager/ad_manager.dart';
 import 'package:movies_app/core/helpers/export_manager/export_manager.dart';
 
 class MainScreen extends StatefulWidget {
@@ -15,26 +11,6 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  @override
-  void initState() {
-    super.initState();
-
-    try {
-      AdManager.loadAdBanner(() {
-        setState(() {});
-      });
-    } catch (e) {
-      log('Error loading banner ad: $e');
-    }
-  }
-
-  @override
-  void dispose() {
-    AdManager.disposeAdBanner();
-    AdManager.disposeInterstitialAd();
-    super.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<MainBloc, MainState>(
@@ -71,19 +47,7 @@ class _MainScreenState extends State<MainScreen> {
                 ],
               ),
             ),
-            body: Column(
-              children: [
-                Expanded(child: state.screens[state.currentIndex]),
-                Visibility(
-                  visible: AdManager.bannerAd != null,
-                  child: SizedBox(
-                    height: AdManager.bannerAd!.size.height.toDouble(),
-                    width: AdManager.bannerAd!.size.width.toDouble(),
-                    child: AdWidget(ad: AdManager.bannerAd!),
-                  ),
-                ),
-              ],
-            ),
+            body: state.screens[state.currentIndex],
           ),
         );
       },

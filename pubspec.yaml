@@ -28,7 +28,6 @@ dependencies:
   flutter_spinkit: ^5.2.1
   flutter_svg: ^2.0.14
   get_it: ^8.0.2
-  google_mobile_ads: ^5.3.1
   package_info_plus: ^8.1.1
   sentry_flutter: ^8.13.0
   skeletonizer: ^1.4.2
