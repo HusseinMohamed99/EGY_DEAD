@@ -1,9 +1,5 @@
 # EGY DEAD
 
-![GitHub All Releases](https://img.shields.io/github/downloads/HusseinMohamed99/EGY_DEAD/total?color=green)
-
-[![Download APK](https://playerzon.com/asset/download.png)](https://github.com/HusseinMohamed99/EGY_DEAD/releases/download/v2.0.0/EGY.DEAD.apk)
-
 **EGY DEAD** is a Flutter app for movie and series enthusiasts, offering detailed information on films, anime, and TV shows with features for easy browsing, categorization, and exploration.
 
 ---
