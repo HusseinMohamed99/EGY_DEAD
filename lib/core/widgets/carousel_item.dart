@@ -13,10 +13,7 @@ class CarouselItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       key: const Key('openMinimalDetail'),
-      onTap: () {
-    
-        navigateToDetailsSection();
-      },
+      onTap: navigateToDetailsSection,
       child: Stack(
         children: [
           CachedImage(
