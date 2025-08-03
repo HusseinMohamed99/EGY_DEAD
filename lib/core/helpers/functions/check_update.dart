@@ -18,7 +18,7 @@ Future<void> checkForUpdate(BuildContext context, bool mounted) async {
     dev.log('Current app version: $currentVersion');
 
     if (_isVersionOlder(currentVersion, latestVersion)) {
-      if (mounted) {
+      if (context.mounted) {
         await _showUpdateDialog(context);
       }
     }

@@ -54,8 +54,9 @@ class SupportScreen extends StatelessWidget {
                 title: 'Google play',
                 imageWidget: Assets.imagesGooglePlay,
                 onTap: () {
-                  if (dotenv.env['googlePlay'] != null) {
-                    urlLauncher(Uri.parse(dotenv.env['googlePlay']!));
+                  final store = dotenv.env['googlePlay']?.trim();
+                  if (store != null) {
+                    urlLauncher(Uri.parse(store));
                   }
                 },
               ),
