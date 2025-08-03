@@ -87,7 +87,7 @@ Widget _getRatingBarIndicator(double rating) {
       rating: rating,
       itemSize: 16.sp,
       unratedColor: ColorManager.greyColor,
-      itemBuilder: (_, __) {
+      itemBuilder: (_, _) {
         return Icon(
           Icons.star_rate_rounded,
           color: ColorManager.iconRateColor,

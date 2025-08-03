@@ -23,14 +23,14 @@ class CachedImage extends StatelessWidget {
       height: height?.h,
       width: width?.w,
       fit: boxFit ?? BoxFit.fitWidth,
-      placeholder: (_, __) => const Center(
+      placeholder: (_, _) => const Center(
         child: SpinKitDoubleBounce(
           color: ColorManager.primaryGreenColor,
           duration: Duration(milliseconds: 3000),
           size: 50.0,
         ),
       ),
-      errorWidget: (_, __, ___) => Center(
+      errorWidget: (_, _, _) => Center(
         child: SvgPicture.asset(
           Assets.imagesError,
           fit: BoxFit.fitWidth,
