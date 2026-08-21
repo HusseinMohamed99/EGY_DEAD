@@ -50,7 +50,8 @@ Future<void> _showUpdateDialog(BuildContext context) async {
           style: TextStyleManager.titleSmall(context: context),
         ),
         content: const Text(
-          'يوجد إصدار جديد من التطبيق. يُفضل تحديث التطبيق للحصول على أحدث الميزات.',
+          'يوجد إصدار جديد من التطبيق.'
+          ' يُفضل تحديث التطبيق للحصول على أحدث الميزات.',
         ),
         actions: <Widget>[
           TextButton(

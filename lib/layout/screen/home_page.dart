@@ -49,7 +49,8 @@ class _HomePageState extends State<HomePage> {
               } else if (state == InternetState.lost) {
                 return SvgPicture.asset(Assets.imagesError);
               } else {
-                return const CircularProgressIndicator.adaptive(); // Loading indicator
+                return const CircularProgressIndicator.adaptive();
+                // Loading indicator
               }
             },
           ),

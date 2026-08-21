@@ -10,6 +10,8 @@
 include: package:flutter_lints/flutter.yaml
 
 analyzer:
+  exclude:
+    - build/**
   errors:
     unrelated_type_equality_checks: ignore
   plugins:
@@ -35,7 +37,7 @@ linter:
     prefer_single_quotes: true
     sort_child_properties_last: true
     unawaited_futures: true
-    no_self_assignments: true 
+    no_self_assignments: true
     use_enums: true
     avoid_unused_constructor_parameters: true
     unnecessary_lambdas: true
