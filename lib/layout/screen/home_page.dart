@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:movies_app/core/helpers/app_string/app_string.dart';
-import 'package:movies_app/core/helpers/enum/enum.dart';
-import 'package:movies_app/core/helpers/export_manager/export_manager.dart';
-import 'package:movies_app/image_assets.dart';
-import 'package:movies_app/layout/screen/main_screen.dart';
+import 'package:laqta_app/core/helpers/app_string/app_string.dart';
+import 'package:laqta_app/core/helpers/enum/enum.dart';
+import 'package:laqta_app/core/helpers/export_manager/export_manager.dart';
+import 'package:laqta_app/image_assets.dart';
+import 'package:laqta_app/layout/screen/main_screen.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -27,9 +27,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return AnnotatedRegion<SystemUiOverlayStyle>(
-      value: const SystemUiOverlayStyle(
-        statusBarColor: Colors.transparent,
-      ),
+      value: const SystemUiOverlayStyle(statusBarColor: Colors.transparent),
       child: Scaffold(
         body: Center(
           child: BlocConsumer<InternetCubit, InternetState>(
@@ -51,8 +49,7 @@ class _HomePageState extends State<HomePage> {
               } else if (state == InternetState.lost) {
                 return SvgPicture.asset(Assets.imagesError);
               } else {
-                return const CircularProgressIndicator
-                    .adaptive(); // Loading indicator
+                return const CircularProgressIndicator.adaptive(); // Loading indicator
               }
             },
           ),

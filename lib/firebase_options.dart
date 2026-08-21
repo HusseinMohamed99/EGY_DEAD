@@ -50,19 +50,18 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyCdx9Y7MsXx8wQjxaVPlRICyilBmR8lnVU',
-    appId: '1:58162803729:android:abef183be9e7678d572db0',
-    messagingSenderId: '58162803729',
-    projectId: 'egydead-df0d2',
-    storageBucket: 'egydead-df0d2.firebasestorage.app',
+    apiKey: 'AIzaSyD5msdUGxm3A6GbPMvJlHeZeYFwSAYycFo',
+    appId: '1:638659647159:android:2a2752a7cf88f84dab5f32',
+    messagingSenderId: '638659647159',
+    projectId: 'laqta-fb464',
+    storageBucket: 'laqta-fb464.firebasestorage.app',
   );
-
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyDwdF67VBzYNf9GUE25i9BOtQ7RrtEYqk0',
-    appId: '1:58162803729:ios:4799f4779839f328572db0',
-    messagingSenderId: '58162803729',
-    projectId: 'egydead-df0d2',
-    storageBucket: 'egydead-df0d2.firebasestorage.app',
-    iosBundleId: 'com.example.moviesApp',
+    apiKey: 'AIzaSyCfVEw_ejtj4nidA7d5EBBbYa2SlhdWv-Y',
+    appId: '1:638659647159:ios:d67b02ea47ab3071ab5f32',
+    messagingSenderId: '638659647159',
+    projectId: 'laqta-fb464',
+    storageBucket: 'laqta-fb464.firebasestorage.app',
+    iosBundleId: 'com.hsalutations.laqta',
   );
 }

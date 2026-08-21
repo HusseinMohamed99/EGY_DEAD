@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:movies_app/core/helpers/logs/app_logs.dart';
+import 'package:laqta_app/core/helpers/logs/app_logs.dart';
 
 class ExploreAllMoviesOrTvsPage extends StatefulWidget {
   const ExploreAllMoviesOrTvsPage({

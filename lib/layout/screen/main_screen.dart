@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movies_app/core/helpers/export_manager/export_manager.dart';
+import 'package:laqta_app/core/helpers/export_manager/export_manager.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -16,9 +16,7 @@ class _MainScreenState extends State<MainScreen> {
     return BlocBuilder<MainBloc, MainState>(
       builder: (context, state) {
         return AnnotatedRegion<SystemUiOverlayStyle>(
-          value: const SystemUiOverlayStyle(
-            statusBarColor: Colors.transparent,
-          ),
+          value: const SystemUiOverlayStyle(statusBarColor: Colors.transparent),
           child: Scaffold(
             resizeToAvoidBottomInset: false,
             bottomNavigationBar: Container(
@@ -43,7 +41,9 @@ class _MainScreenState extends State<MainScreen> {
                   bottomNavigationBarItem(icon: Icons.tv, label: 'Tvs'),
                   bottomNavigationBarItem(icon: Icons.search, label: 'Search'),
                   bottomNavigationBarItem(
-                      icon: Icons.settings, label: 'Settings'),
+                    icon: Icons.settings,
+                    label: 'Settings',
+                  ),
                 ],
               ),
             ),

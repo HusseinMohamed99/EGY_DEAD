@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:movies_app/core/helpers/export_manager/export_manager.dart';
+import 'package:laqta_app/core/helpers/export_manager/export_manager.dart';
 
 class SearchBarItem extends StatefulWidget {
-  const SearchBarItem({
-    super.key,
-  });
+  const SearchBarItem({super.key});
 
   @override
   State<SearchBarItem> createState() => _SearchBarItemState();
@@ -34,15 +32,11 @@ class _SearchBarItemState extends State<SearchBarItem> {
       },
       decoration: InputDecoration(
         focusedBorder: OutlineInputBorder(
-          borderSide: const BorderSide(
-            color: ColorManager.whiteColor,
-          ),
+          borderSide: const BorderSide(color: ColorManager.whiteColor),
           borderRadius: BorderRadius.circular(8).r,
         ),
         enabledBorder: OutlineInputBorder(
-          borderSide: const BorderSide(
-            color: ColorManager.whiteColor,
-          ),
+          borderSide: const BorderSide(color: ColorManager.whiteColor),
           borderRadius: BorderRadius.circular(8).r,
         ),
         prefixIcon: Icon(

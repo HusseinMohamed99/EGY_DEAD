@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:movies_app/core/helpers/export_manager/export_manager.dart';
+import 'package:laqta_app/core/helpers/export_manager/export_manager.dart';
 
 class HorizontalListView extends StatelessWidget {
   const HorizontalListView({
@@ -23,10 +23,7 @@ class HorizontalListView extends StatelessWidget {
         itemCount: itemCount,
         itemBuilder: itemBuilder,
         separatorBuilder: (context, index) {
-          return const Space(
-            height: 10,
-            width: 16,
-          );
+          return const Space(height: 10, width: 16);
         },
       ),
     );

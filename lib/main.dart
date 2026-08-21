@@ -4,9 +4,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:movies_app/core/helpers/constant/constant.dart';
-import 'package:movies_app/core/helpers/export_manager/export_manager.dart';
-import 'package:movies_app/firebase_options.dart';
+import 'package:laqta_app/core/helpers/constant/constant.dart';
+import 'package:laqta_app/core/helpers/export_manager/export_manager.dart';
+import 'package:laqta_app/firebase_options.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
 Future<void> main() async {
@@ -20,11 +20,7 @@ Future<void> main() async {
   await serviceLocator();
   FlutterNativeSplash.remove();
 
-  runApp(
-    EgyDeadApp(
-      appRouter: AppRouters(),
-    ),
-  );
+  runApp(EgyDeadApp(appRouter: AppRouters()));
 
   PackageInfo packageInfo = await PackageInfo.fromPlatform();
   appPackageName = packageInfo.packageName;
