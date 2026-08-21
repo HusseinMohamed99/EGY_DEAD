@@ -35,14 +35,14 @@ def keystoreProperties = new Properties()
        keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
    }
 android {
-    namespace = "com.example.movies_app"
+    namespace = "com.hsalutations.laqta"
     compileSdkVersion = flutter.compileSdkVersion
-    ndkVersion = "27.0.12077973"
+    ndkVersion = "28.2.13676358"
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_18
         targetCompatibility JavaVersion.VERSION_18
-    } 
+    }
        kotlinOptions {
         jvmTarget = JavaVersion.VERSION_18
     }
@@ -56,16 +56,16 @@ signingConfigs {
       }
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "com.Dev.egyDead"
+        applicationId "com.hsalutations.laqta"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-build-configuration.
-        minSdk = 23
+        minSdkVersion = flutter.minSdkVersion
         targetSdk = flutter.targetSdkVersion
         versionCode = flutterVersionCode.toInteger()
         versionName = flutterVersionName
     }
 
-   
+
     buildTypes {
         release {
               // TODO: Add your own signing config for the release build.
