@@ -3,10 +3,12 @@ part of './../export_manager/export_manager.dart';
 Future<void> checkForUpdate(BuildContext context, bool mounted) async {
   final remoteConfig = FirebaseRemoteConfig.instance;
 
-  await remoteConfig.setConfigSettings(RemoteConfigSettings(
-    fetchTimeout: const Duration(seconds: 10),
-    minimumFetchInterval: const Duration(hours: 1),
-  ));
+  await remoteConfig.setConfigSettings(
+    RemoteConfigSettings(
+      fetchTimeout: const Duration(seconds: 10),
+      minimumFetchInterval: const Duration(hours: 1),
+    ),
+  );
 
   try {
     await remoteConfig.fetchAndActivate();
